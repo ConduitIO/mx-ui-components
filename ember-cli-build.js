@@ -2,9 +2,32 @@
 
 const EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
 
+const isProduction = EmberAddon.env() === 'production';
+
+const purgeCSS = {
+  module: require('@fullhuman/postcss-purgecss'),
+  options: {
+    content: ['./addon/templates/**/*.hbs', './addon/components/**/*.hbs'],
+    defaultExtractor: (content) => content.match(/[A-Za-z0-9-_:/]+/g) || [],
+  },
+};
+
 module.exports = function (defaults) {
   let app = new EmberAddon(defaults, {
-    // Add options here
+    postcssOptions: {
+      compile: {
+        plugins: [
+          {
+            module: require('postcss-import'),
+            options: {
+              path: ['node_modules'],
+            },
+          },
+          require('tailwindcss')('./addon/tailwind.config.js'),
+          ...(isProduction ? [purgeCSS] : []),
+        ],
+      },
+    },
   });
 
   /*
