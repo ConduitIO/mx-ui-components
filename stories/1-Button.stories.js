@@ -8,7 +8,7 @@ export default {
 };
 
 const Template = (args) => ({
-  template: hbs`<Mxa::Button @buttonType='secondary'>Cancel</Mxa::Button>`,
+  template: hbs`<Mxa::Button @buttonType='secondary'>Foo</Mxa::Button>`,
   context: args,
 });
 
