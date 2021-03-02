@@ -10,6 +10,4 @@ const Template = (args) => ({
 });
 
 export const Default = Template.bind({});
-Default.args = {
-  name: 'Mxa::SearchInput',
-};
+Default.args = {};
