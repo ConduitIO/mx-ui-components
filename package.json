@@ -34,6 +34,7 @@
   "devDependencies": {
     "@babel/core": "^7.13.8",
     "@ember/optional-features": "^2.0.0",
+    "@ember/render-modifiers": "^1.0.2",
     "@ember/test-helpers": "^2.1.4",
     "@fullhuman/postcss-purgecss": "^4.0.2",
     "@glimmer/component": "^1.0.3",
