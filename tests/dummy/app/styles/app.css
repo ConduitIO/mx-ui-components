@@ -5,3 +5,7 @@
 
 @import 'tailwindcss/utilities';
 @import 'utilities.css';
+
+body {
+  background-color: #f3f3f4;
+}
