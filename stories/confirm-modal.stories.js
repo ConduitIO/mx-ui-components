@@ -5,7 +5,7 @@ export default {
   title: 'Mxa::ConfirmModal',
 };
 
-export const actionsData = {
+const actionsData = {
   destroyConnector: action('destroyConnector'),
   hideDeleteConnectorModal: action('hideDeleteConnectorModal'),
 };
