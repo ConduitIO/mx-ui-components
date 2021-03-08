@@ -1,15 +1,37 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
+import { render, click } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
+import sinon from 'sinon';
 
 module('Integration | Modifier | on-click-outside', function(hooks) {
   setupRenderingTest(hooks);
 
-  // Replace this with your real tests.
-  test('it renders', async function(assert) {
-    await render(hbs`<div {{on-click-outside}}></div>`);
+  hooks.beforeEach(function() {
+    this.set('theAction', sinon.spy());
+  });
 
-    assert.ok(true);
+  test('it calls the function when clicked outside', async function(assert) {
+    await render(hbs`
+      <div data-test-outside>
+        <div {{on-click-outside this.theAction '[data-test-outside]'}} data-test-inside></div>
+      </div>
+    `);
+
+    await click('[data-test-outside]');
+
+    assert.ok(this.theAction.calledOnce);
+  });
+
+  test('it does not call the function when clicked inside', async function(assert) {
+    await render(hbs`
+      <div data-test-outside>
+        <div {{on-click-outside this.theAction '[data-test-outside]'}} data-test-inside></div>
+      </div>
+    `);
+
+    await click('[data-test-inside]');
+
+    assert.ok(this.theAction.notCalled);
   });
 });
