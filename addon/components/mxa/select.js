@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { action, get } from '@ember/object';
+import { action, get } from "@ember/object";
 
 export default class MxaSelectComponent extends Component {
   @tracked
@@ -21,9 +21,7 @@ export default class MxaSelectComponent extends Component {
 
   @action
   toggleOptions(event) {
-    if (this.args.isDisabled) {
-      return;
-    }
+    if (this.args.isDisabled) { return; }
     this.isShowingOptions = !this.isShowingOptions;
     event.stopPropagation();
   }

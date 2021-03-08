@@ -1,5 +1,6 @@
+
 import Component from '@glimmer/component';
-import { get } from '@ember/object';
+import { get } from "@ember/object";
 
 export default class MxaSelectOptionComponent extends Component {
   get optionName() {
