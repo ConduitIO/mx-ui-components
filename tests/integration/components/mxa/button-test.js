@@ -6,21 +6,27 @@ import { hbs } from 'ember-cli-htmlbars';
 module('Integration | Component | mxa/button', function(hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders', async function(assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.set('myAction', function(val) { ... });
-
+  test('it renders the primary button by default', async function(assert) {
     await render(hbs`<Mxa::Button />`);
 
-    assert.equal(this.element.textContent.trim(), '');
+    assert.dom('button').hasClass('mxa-btn-primary');
+  });
 
-    // Template block usage:
-    await render(hbs`
-      <Mxa::Button>
-        template block text
-      </Mxa::Button>
-    `);
+  test('it renders the primary button', async function(assert) {
+    await render(hbs`<Mxa::Button @buttonType='primary' />`);
 
-    assert.equal(this.element.textContent.trim(), 'template block text');
+    assert.dom('button').hasClass('mxa-btn-primary');
+  });
+
+  test('it renders the secondary button', async function(assert) {
+    await render(hbs`<Mxa::Button @buttonType='secondary' />`);
+
+    assert.dom('button').hasClass('mxa-btn-secondary');
+  });
+
+  test('it renders the tertiary button', async function(assert) {
+    await render(hbs`<Mxa::Button @buttonType='tertiary' />`);
+
+    assert.dom('button').hasClass('mxa-btn-tertiary');
   });
 });

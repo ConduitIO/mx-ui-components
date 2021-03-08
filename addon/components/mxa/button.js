@@ -8,12 +8,13 @@ export default class MxaButtonComponent extends Component {
       case 'secondary':
         return 'mxa-btn-secondary';
       case 'tertiary':
-        return '';
+        return 'mxa-btn-tertiary';
+      default:
+        return 'mxa-btn-primary';
     }
   }
 
   get buttonClass() {
-    const buttonType = this.args.buttonType ? this.args.buttonType : 'primary';
-    return this.buildButtonClass(buttonType);
+    return this.buildButtonClass(this.args.buttonType);
   }
 }
