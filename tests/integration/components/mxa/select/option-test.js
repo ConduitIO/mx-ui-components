@@ -1,26 +1,53 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
+import { render, click } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
+import sinon from 'sinon';
 
 module('Integration | Component | mxa/select/option', function(hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders', async function(assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.set('myAction', function(val) { ... });
+  hooks.beforeEach(function() {
+    this.set('option', { name: 'hey', value: 'hi' });
+    this.set('otherOption', { name: 'sayonara', value: 'bye' });
+    this.set('setSelectedOption', sinon.spy());
+  });
 
-    await render(hbs`<Mxa::Select::Option />`);
+  test('it displays as checked when the selected option is the option', async function(assert) {
+    await render(hbs`<Mxa::Select::Option
+      @option={{this.option}}
+      @selectedOption={{this.option}}
+      @setSelectedOption={{this.setSelectedOption}}
+      @optionNameKey='name'
+      @optionValueKey='value'
+    />`);
 
-    assert.equal(this.element.textContent.trim(), '');
+    assert.dom('[data-test-select-option-selected]').exists();
+  });
 
-    // Template block usage:
-    await render(hbs`
-      <Mxa::Select::Option>
-        template block text
-      </Mxa::Select::Option>
-    `);
+  test('it displays as checked when the selected option is the option', async function(assert) {
+    await render(hbs`<Mxa::Select::Option
+      @option={{this.option}}
+      @selectedOption={{this.otherOption}}
+      @setSelectedOption={{this.setSelectedOption}}
+      @optionNameKey='name'
+      @optionValueKey='value'
+    />`);
 
-    assert.equal(this.element.textContent.trim(), 'template block text');
+    assert.dom('[data-test-select-option-selected]').doesNotExist();
+  });
+
+  test('it calls the set selected option action when clicked', async function(assert) {
+    await render(hbs`<Mxa::Select::Option
+      @option={{this.option}}
+      @selectedOption={{this.option}}
+      @setSelectedOption={{this.setSelectedOption}}
+      @optionNameKey='name'
+      @optionValueKey='value'
+    />`);
+
+    await click('[data-test-select-option-button]');
+
+    assert.ok(this.setSelectedOption.calledOnce);
   });
 });
