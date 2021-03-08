@@ -1,0 +1,40 @@
+<div class="relative"
+{{on-click-tag-input}}
+>
+  <div class="flex items-center rounded border border-frost-100 focus-within:outline-none focus-within:ring-plum-100 focus-within:border-plum-100">
+    <div class="flex items-center space-x-1">
+      {{#each this.selectedTags as |tag|}}
+        <div class="bg-frost-100 p-1 text-xs rounded flex items-center" data-test-tags-selected={{tag}}>
+          <span class="mr-1">{{tag}}</span>
+          <svg class="text-slate-60 fill-current h-3 w-3 pt-0.5" {{on 'click' (fn this.removeTag tag)}} data-test-tags-remove-button>
+            <use xlink:href="/svg-defs.svg#close-16"></use>
+          </svg>
+        </div>
+      {{/each}}
+    </div>
+
+
+    <Input type="text"
+      @id="tags-input"
+      class="rounded pl-2 pr-4 py-2 text-xs  focus:outline-none"
+      {{on 'input' this.checkInputForExistingTags}}
+      {{on 'keydown' this.checkBackspace}}
+      data-test-tags-input
+    />
+  </div>
+
+  {{#if this.foundTags}}
+    <div class="absolute mt-1 w-full rounded-md bg-white shadow-lg z-10">
+      <ul tabindex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-item-3" class="max-h-56  p-4 rounded-md text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm">
+        {{#each this.foundTags as |tag|}}
+          <div
+            class="cursor-pointer"
+            {{on-select-tag (fn this.selectTag tag)}}
+            data-test-tags-found={{tag}}
+          >{{tag}}</div>
+        {{/each}}
+      </ul>
+    </div>
+  {{/if}}
+</div>
+
