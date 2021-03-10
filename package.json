@@ -1,12 +1,12 @@
 {
   "name": "mx-ui-components",
   "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "Meroxa UI component library",
   "keywords": [
     "ember-addon"
   ],
   "repository": "",
-  "license": "MIT",
+  "license": "Apache 2.0",
   "author": "",
   "directories": {
     "doc": "doc",
