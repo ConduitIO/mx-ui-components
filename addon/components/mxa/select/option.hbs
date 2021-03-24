@@ -1,6 +1,11 @@
 <li id="listbox-item-0" role="option" class="text-gray-900 cursor-default select-none relative py-2 pl-3 pr-9" data-test-select-option>
   <div class="flex items-center" {{on 'click' (fn @setSelectedOption @option)}} data-test-select-option-button={{this.optionName}}>
     <!-- Selected: "font-semibold", Not Selected: "font-normal" -->
+
+    {{#if (has-block)}}
+      {{yield}}
+    {{/if}}
+
     <span class="ml-1 block font-normal truncate">
       {{this.optionName}}
     </span>
