@@ -20,7 +20,7 @@ export default class MxaSelectComponent extends Component {
   }
 
   @action
-  toggleOptions(event) {
+  toggleOptions() {
     if (this.args.isDisabled) {
       return;
     }

@@ -1,12 +1,24 @@
 <div ...attributes>
   <label class="flex items-center space-x-2" data-test-toggle>
-    <div class="flex items-center rounded-full border w-10 h-6 p-0.5 {{if this.isChecked 'bg-forest-100 border-forest-100' 'bg-slate-20 border-slate-20'}} cursor-pointer">
-      <input type="checkbox" class="transition-transform transform ease-in-out checked:translate-x-3.5 appearance-none w-5 h-5 rounded-full bg-white outline-none cursor-pointer"
-      {{on 'click' (fn (mut this.isChecked) (not this.isChecked))}}
-      {{on 'change' @toggleAction}}
+    <div
+      class="flex items-center rounded-full border w-10 h-6 p-0.5
+        {{if
+          this.isChecked
+          'bg-forest-100 border-forest-100'
+          'bg-slate-20 border-slate-20'
+        }}
+         cursor-pointer"
+    >
+      <input
+        type="checkbox"
+        class="transition-transform transform ease-in-out checked:translate-x-3.5 appearance-none w-5 h-5 rounded-full bg-white outline-none cursor-pointer"
+        checked={{this.isChecked}}
+        {{on 'click' (fn (mut this.isChecked) (not this.isChecked))}}
+        {{on 'change' @toggleAction}}
       />
     </div>
-
-    <div class="text-sm w-20" data-test-toggle-label>{{@label}}</div>
+    <div class="text-sm w-20" data-test-toggle-label>
+      {{@label}}
+    </div>
   </label>
 </div>
