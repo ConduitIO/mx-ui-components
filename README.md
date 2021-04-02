@@ -26,10 +26,20 @@ Usage
 [Longer description of how to use the addon in apps.]
 
 
-Contributing
+Development
 ------------------------------------------------------------------------------
 
-See the [Contributing](CONTRIBUTING.md) guide for details.
+This addon uses [Storybook](https://storybook.js.org/) to allow the development
+and display of UI components. Add new and modify existing components via
+[Stories](https://storybook.js.org/docs/react/get-started/whats-a-story)
+located in the `stories` folder.
+
+## Run Storybook
+
+* `yarn run storybook`
+
+For more info on testing, building and linting the project,
+see the [Contributing](CONTRIBUTING.md) guide for details.
 
 
 License
