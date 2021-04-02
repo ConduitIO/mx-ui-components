@@ -15,4 +15,15 @@ module('Integration | Component | mxa/unbound-input', function(hooks) {
 
     assert.ok(this.onInput.called);
   });
+
+  test('it displays an accessible input if a label text and an id is provded', async function(assert) {
+    this.set('onInput', () => {});
+    this.set('label', 'Address');
+
+    await render(hbs`<Mxa::UnboundInput @label={{this.label}} @id="address-field" @onInput={{this.onInput}}/>`);
+
+    assert.dom('[data-test-label]').includesText('Address');
+    assert.dom('[data-test-label]').hasAttribute('for', 'address-field');
+    assert.dom('[data-test-unbound-input]').hasAttribute('id', 'address-field');
+  });
 });
