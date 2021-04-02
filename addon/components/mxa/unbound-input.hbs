@@ -1,4 +1,8 @@
+{{#if @label}}
+  <Mxa::Label for={{@id}} @isRequired={{@isRequired}}>{{@label}}</Mxa::Label>
+{{/if}}
 <input
+  id={{@id}}
   type="text"
   class="mxa-input w-full text-sm {{if @isValid 'bg-white border-frost-100' 'bg-saffron-5 focus:bg-saffron-5 border-saffron-100 focus:border-saffron-100'}}"
   value={{@value}}
