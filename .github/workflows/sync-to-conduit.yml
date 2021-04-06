@@ -9,6 +9,7 @@ jobs:
   trigger-sync:
     name: Start Sync to ConduitIO
     runs-on: ubuntu-latest
+    if: ${{ github.repository == 'meroxa/mx-ui-components' }}
 
     steps:
       - name: Dispatch Event
