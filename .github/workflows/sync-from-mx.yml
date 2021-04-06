@@ -1,0 +1,24 @@
+name: GitHub Repo Sync from Mx
+
+on:
+  repository_dispatch:
+    types: [sync-mx-to-conduit]
+
+jobs:
+  sync-conduit-io:
+    name: Sync from Mx
+    runs-on: ubuntu-latest
+    if: ${{ github.repository == 'ConduitIO/mx-ui-components' }}
+
+    steps:
+      # Checks out a copy of your repository on the ubuntu-latest machine
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run Sync
+        uses: repo-sync/github-sync@v2.3.0
+        with:
+          source_repo: "https://${{ secrets.PAT }}@github.com/meroxa/mx-ui-components.git"
+          source_branch: "main"
+          destination_branch: "main"
+          github_token: ${{ secrets.PAT }}
