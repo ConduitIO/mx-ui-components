@@ -1,0 +1,19 @@
+name: GitHub Repo Sync to ConduitIO
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  trigger-sync:
+    name: Start Sync to ConduitIO
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Dispatch Event
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.CONDUIT_PAT }}
+          event-type: sync-mx-to-conduit
+          repository: ConduitIO/mx-ui-components
