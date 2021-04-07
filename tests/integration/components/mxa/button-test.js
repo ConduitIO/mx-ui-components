@@ -29,4 +29,10 @@ module('Integration | Component | mxa/button', function(hooks) {
 
     assert.dom('button').hasClass('mxa-btn-tertiary');
   });
+
+  test('it renders the danger button', async function(assert) {
+    await render(hbs`<Mxa::Button @buttonType='danger' />`);
+
+    assert.dom('button').hasClass('bg-saffron-100');
+  });
 });

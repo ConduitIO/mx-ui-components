@@ -36,6 +36,7 @@
       {{#if @isTextInputRequired}}
         <Mxa::Button
           {{on 'click' @confirmedAction}}
+          @buttonType="danger"
           disabled={{not (eq @entityName this.confirmedEntityName)}}
           data-test-confirm-submit-button
         >
