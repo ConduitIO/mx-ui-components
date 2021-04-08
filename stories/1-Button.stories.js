@@ -24,3 +24,15 @@ Secondary.args = {
   children: 'Button',
   buttonType: 'secondary',
 };
+
+export const Tertiary = Template.bind({});
+Tertiary.args = {
+  children: 'Button',
+  buttonType: 'tertiary',
+};
+
+export const Danger = Template.bind({});
+Danger.args = {
+  children: 'Button',
+  buttonType: 'danger',
+};

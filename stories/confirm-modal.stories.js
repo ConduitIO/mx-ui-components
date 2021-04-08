@@ -14,15 +14,15 @@ const Template = (args) => ({
   template: hbs`
   <Mxa::ConfirmModal
   @onDismiss={{this.hideDeleteConnectorModal}}
-  @confirmableActionName='Delete'
+  @confirmableActionName={{this.confirmActionName}}
   @entityName={{this.selectedNode.name}}
   @entityType='Connector'
   @confirmedAction={{fn this.destroyConnector this.selectedNode}}
-  @isTextInputRequired={{true}}
+  @isTextInputRequired={{this.isInputTextRequired}}
   as
   |entityName|
   >
-  Deleting a connector cannot be undone. Please input your connector's name <code>({{entityName}})</code> below to confirm you would like to delete this connector
+  {{this.modalText}}
   </Mxa::ConfirmModal>`,
   context: args,
 });
@@ -30,8 +30,21 @@ const Template = (args) => ({
 export const Default = Template.bind({});
 Default.args = {
   isInputTextRequired: true,
+  confirmActionName: 'Delete',
+  modalText: 'Deleting a connector cannot be undone. Please input your connector\'s name below to confirm you would like to delete this connector',
   selectedNode: {
     name: 'foo',
+  },
+  ...actionsData,
+};
+
+export const SoftConfirm = Template.bind({});
+SoftConfirm.args = {
+  isInputTextRequired: false,
+  confirmActionName: 'Update',
+  modalText: 'Do you really want to update this?',
+  selectedNode: {
+    name: 'bar',
   },
   ...actionsData,
 };

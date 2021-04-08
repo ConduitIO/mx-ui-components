@@ -43,6 +43,10 @@ module('Integration | Component | mxa/confirm-modal', function(hooks) {
       await click('[data-test-confirm-submit-button]');
       assert.ok(this.confirmedAction.calledOnce);
     });
+
+    test('it displays the default submit button', async function(assert) {
+      assert.dom('[data-test-confirm-submit-button]').hasClass('mxa-btn-primary');
+    });
   });
 
   module('when text confirming', function(hooks) {
@@ -79,6 +83,10 @@ module('Integration | Component | mxa/confirm-modal', function(hooks) {
     test('it enables the submit button when there is a text match', async function(assert) {
       await fillIn('[data-test-confirm-input]', 'Plumbus');
       assert.dom('[data-test-confirm-submit-button]').isEnabled();
+    });
+
+    test('it displays the danger submit button', async function(assert) {
+      assert.dom('[data-test-confirm-submit-button]').hasClass('bg-saffron-100');
     });
   });
 });

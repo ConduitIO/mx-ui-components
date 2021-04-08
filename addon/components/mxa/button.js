@@ -9,6 +9,8 @@ export default class MxaButtonComponent extends Component {
         return 'mxa-btn-secondary';
       case 'tertiary':
         return 'mxa-btn-tertiary';
+      case 'danger':
+        return 'mxa-btn-primary bg-saffron-100 border-saffron-100';
       default:
         return 'mxa-btn-primary';
     }
