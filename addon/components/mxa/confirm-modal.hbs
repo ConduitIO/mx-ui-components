@@ -1,15 +1,16 @@
-<Mxa::Modal
-  @onDismiss={{@onDismiss}}
->
-  <Mxa::DialogCard class="inline-block align-bottom bg-white text-left overflow-visible transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+<Mxa::Modal @onDismiss={{@onDismiss}}>
+  <Mxa::DialogCard
+    class="inline-block align-bottom bg-white text-left overflow-visible transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+  >
     <div class="font-medium py-4 border-b border-frost-60">
       <div class="px-4">
         <div class="text-2xl" data-test-confirm-header>
-          {{@confirmableActionName}} {{@entityName}} ?
+          {{@confirmableActionName}}
+          {{@entityName}}
+          ?
         </div>
       </div>
     </div>
-
     <div class="px-4 py-4">
       <p class="mb-4" data-test-confirm-block>
         {{yield @entityName}}
@@ -23,34 +24,33 @@
         />
       {{/if}}
     </div>
-
     <div class="px-6 py-4 flex items-center justify-end">
       <Mxa::Button
-        @buttonType='secondary'
+        @buttonType="secondary"
         class="mr-2"
-        {{on 'click' @onDismiss}}
         data-test-confirm-cancel-button
+        {{on 'click' @onDismiss}}
       >
         Cancel
       </Mxa::Button>
       {{#if @isTextInputRequired}}
-        <Mxa::Button
-          {{on 'click' @confirmedAction}}
+        <Mxa::AsyncButton
+          @onClick={{@confirmedAction}}
           @buttonType="danger"
-          disabled={{not (eq @entityName this.confirmedEntityName)}}
+          @isDisabled={{not (eq @entityName this.confirmedEntityName)}}
           data-test-confirm-submit-button
         >
           {{@confirmableActionName}}
-        </Mxa::Button>
+        </Mxa::AsyncButton>
       {{else}}
-        <Mxa::Button
-          {{on 'click' @confirmedAction}}
+        <Mxa::AsyncButton
+          @onClick={{@confirmedAction}}
+          @buttonType="danger"
           data-test-confirm-submit-button
         >
           {{@confirmableActionName}}
-        </Mxa::Button>
+        </Mxa::AsyncButton>
       {{/if}}
     </div>
-
   </Mxa::DialogCard>
 </Mxa::Modal>

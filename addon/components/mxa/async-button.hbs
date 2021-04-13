@@ -1,5 +1,5 @@
 <Mxa::Button
-  @buttonType="primary"
+  @buttonType={{or @buttonType 'primary'}}
   disabled={{or this.actionTask.isRunning @isDisabled}}
   ...attributes
   {{on 'click' (perform this.actionTask)}}
