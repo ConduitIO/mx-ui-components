@@ -1,5 +1,5 @@
 <div ...attributes>
-  <label class="flex items-center space-x-2" data-test-toggle>
+  <div class="flex items-center space-x-2">
     <div
       class="flex items-center rounded-full border w-10 h-6 p-0.5
         {{if
@@ -10,15 +10,19 @@
          cursor-pointer"
     >
       <input
+        id={{this.fieldId}}
         type="checkbox"
         class="transition-transform transform ease-in-out checked:translate-x-3.5 appearance-none w-5 h-5 rounded-full bg-white outline-none cursor-pointer"
         checked={{this.isChecked}}
         {{on 'click' (fn (mut this.isChecked) (not this.isChecked))}}
         {{on 'change' @toggleAction}}
+        data-test-toggle
       />
     </div>
-    <div class="text-sm w-20" data-test-toggle-label>
-      {{@label}}
-    </div>
-  </label>
+    {{#if @label}}
+      <label class="text-sm w-20" for={{this.fieldId}} data-test-toggle-label>
+        {{@label}}
+      </label>
+    {{/if}}
+  </div>
 </div>
