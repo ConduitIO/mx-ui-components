@@ -42,6 +42,38 @@ For more info on testing, building and linting the project,
 see the [Contributing](CONTRIBUTING.md) guide for details.
 
 
+Accessibility
+-------------------------------------------------------------------------------
+This addon uses [ember-a11y-testing](https://emberobserver.com/addons/ember-a11y-testing)
+to verify that UI components are accessible.
+
+When creating a new component, you can create an integration test case and
+add the `a11yAudit` test helper after rendering the component to surface
+and fix any a11y bugs.
+
+Example test case:
+
+```
+import { a11yAudit } from 'ember-a11y-testing/test-support';
+// ...
+
+module('Integration | Component | my-accessible-form-field', function(hooks) {
+  test('test for a11y', async function(assert) {
+    await render(hbs`
+      <MyAccessibleFormField />
+    `);
+
+    await a11yAudit();
+    assert.ok(true, 'no a11y detected');
+  });
+});
+```
+
+For more information, check out the documentation for [ember-a11y-testing](https://github.com/ember-a11y/ember-a11y-testing#ember-a11y-testing).
+When encountering any accessibility bugs, you can review strategies on fixing
+them with the list of [WCAG rules by Axe Core](https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md).
+
+
 License
 ------------------------------------------------------------------------------
 
