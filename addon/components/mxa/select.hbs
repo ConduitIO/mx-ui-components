@@ -7,7 +7,8 @@
       aria-labelledby="listbox-label"
       class="relative w-full
         {{if @isDisabled 'bg-frost-100' 'bg-white'}}
-         border border-frost-100 rounded shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-plum-100 focus:border-plum-100 sm:text-sm"
+         border border-frost-100 rounded shadow-sm pl-3 pr-10 py-2 text-left cursor-default
+         focus:outline-none focus:ring-1 focus:ring-plum-100 focus:border-plum-100 sm:text-sm"
       data-test-select-button
       ...attributes
       {{on 'click' this.toggleOptions}}
@@ -48,7 +49,7 @@
     -->
     {{#if this.isShowingOptions}}
       <div
-        class="absolute mt-1 w-full rounded-md bg-white shadow-lg z-10"
+        class="absolute mt-1 min-w-min w-full rounded-md bg-white shadow-lg z-10"
         {{on-click-outside
           (fn (mut this.isShowingOptions) false)
           'document'

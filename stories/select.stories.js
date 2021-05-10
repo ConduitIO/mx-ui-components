@@ -17,13 +17,15 @@ export default {
 
 const Template = (args) => ({
   template: hbs`
-  <Mxa::Select
-    @label='Type'
-    @options={{this.connectorTypes}}
-    @selectedOption={{this.selectedConnectorType}}
-    @onChange={{this.setConnectorType}}
-    @isDisabled={{this.isEditing}}
-  />
+  <div class={{this.wrapperClass}}>
+    <Mxa::Select
+      @label='Type'
+      @options={{this.connectorTypes}}
+      @selectedOption={{this.selectedConnectorType}}
+      @onChange={{this.setConnectorType}}
+      @isDisabled={{this.isEditing}}
+    />
+  </div>
 `,
   context: args,
 });
@@ -36,4 +38,16 @@ Default.args = {
   setConnectorType: action(function (value) {
     this.set('selectedConnectorType', value);
   }),
+  wrapperClass: null,
+};
+
+export const Short = Template.bind({});
+Short.args = {
+  connectorTypes: connectorTypes,
+  selectedConnectorType: connectorTypes[0],
+  isEditing: false,
+  setConnectorType: action(function (value) {
+    this.set('selectedConnectorType', value);
+  }),
+  wrapperClass: 'w-20',
 };
