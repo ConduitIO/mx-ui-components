@@ -3,6 +3,7 @@ import { tracked } from '@glimmer/tracking';
 import { dasherize } from '@ember/string';
 import { assert } from '@ember/debug';
 import { isPresent } from '@ember/utils';
+import { action } from '@ember/object';
 
 export default class MxaToggleComponent extends Component {
   @tracked
@@ -21,5 +22,10 @@ export default class MxaToggleComponent extends Component {
 
   get fieldId() {
     return this.args.id ? this.args.id : dasherize(this.args.label);
+  }
+
+  @action toggleAction(event) {
+    this.isChecked = !this.isChecked;
+    this.args.toggleAction(event);
   }
 }

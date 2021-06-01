@@ -1,0 +1,20 @@
+.mxa-toggle input:after {
+  content: "";
+  height: 90%;
+  width: 52%;
+  position: absolute;
+  top: 5%;
+  left: 3%;
+  right: auto;
+  display: block;
+  border-radius: 1rem;
+  background-color: #ffffff;
+  outline: none;
+  transform: translateX(0);
+  transition: transform 0.15s;
+  transition-timing-function: ease-in-out;
+}
+
+.mxa-toggle input:checked:after {
+  transform: translateX(82%);
+}
