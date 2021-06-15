@@ -1,4 +1,3 @@
 import Component from '@glimmer/component';
 
-export default class MxaConfirmModalComponent extends Component {
-}
+export default class MxaConfirmModalComponent extends Component {}

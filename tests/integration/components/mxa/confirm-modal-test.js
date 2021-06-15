@@ -72,6 +72,10 @@ module('Integration | Component | mxa/confirm-modal', function(hooks) {
       assert.dom('[data-test-confirm-input]').exists();
     });
 
+    test('it automatically focusses on the text input section', function(assert) {
+      assert.dom('[data-test-confirm-input]').isFocused();
+    });
+
     test('it disables the submit button by default', function(assert) {
       assert.dom('[data-test-confirm-submit-button]').isDisabled();
     });
