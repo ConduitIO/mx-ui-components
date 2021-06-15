@@ -1,0 +1,15 @@
+<Mxa::Modal @onDismiss={{@onDismiss}} data-test-modal-dialog>
+  <Mxa::DialogCard
+    class="inline-block align-bottom bg-white text-left overflow-visible p-8 transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+    {{did-insert this.didInsert}}
+    ...attributes>
+    <button class="absolute right-4 top-6" type="button" {{on "click" @onDismiss}} data-test-modal-dialog-close>
+      <svg class="fill-current h-3 w-3 mr-2">
+        <use xlink:href="/svg-defs.svg#close-12"></use>
+      </svg>
+    </button>
+    <section data-test-modal-dialog-content>
+      {{yield}}
+    </section>
+  </Mxa::DialogCard>
+</Mxa::Modal>
