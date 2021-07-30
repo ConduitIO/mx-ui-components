@@ -53,7 +53,7 @@ and fix any a11y bugs.
 
 Example test case:
 
-```
+```javascript
 import { a11yAudit } from 'ember-a11y-testing/test-support';
 // ...
 
