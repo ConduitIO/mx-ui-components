@@ -1,4 +1,4 @@
-import { module, test } from 'qunit';
+import { module, skip, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
@@ -55,10 +55,47 @@ module('Integration | Component | mxa/button', function(hooks) {
     assert.dom('button').hasText('Submit');
   });
 
-  test('it is accessible', async function(assert) {
-    await render(hbs`<Mxa::Button />`);
+  module('color accessibility', function(hooks) {
+    test('default', async function(assert) {
+      await render(hbs`<Mxa::Button />`);
 
-    await a11yAudit();
-    assert.ok(true, 'no a11y detected');
+      await a11yAudit();
+      assert.ok(true, 'no a11y detected');
+    });
+
+    test('primary', async function(assert) {
+      await render(hbs`<Mxa::Button @buttonType="primary" />`);
+
+      await a11yAudit();
+      assert.ok(true, 'no a11y detected');
+    });
+
+    test('secondary', async function(assert) {
+      await render(hbs`<Mxa::Button @buttonType="secondary" />`);
+
+      await a11yAudit();
+      assert.ok(true, 'no a11y detected');
+    });
+
+    test('tertiary', async function(assert) {
+      await render(hbs`<Mxa::Button @buttonType="tertiary" />`);
+
+      await a11yAudit();
+      assert.ok(true, 'no a11y detected');
+    });
+
+    skip('danger', async function(assert) {
+      await render(hbs`<Mxa::Button @buttonType="danger" />`);
+
+      await a11yAudit();
+      assert.ok(true, 'no a11y detected');
+    });
+
+    test('disabled', async function(assert) {
+      await render(hbs`<Mxa::Button disabled />`);
+
+      await a11yAudit();
+      assert.ok(true, 'no a11y detected');
+    });
   });
 });

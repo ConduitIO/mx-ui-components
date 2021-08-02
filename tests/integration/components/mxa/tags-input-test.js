@@ -1,7 +1,8 @@
-import { module, test } from 'qunit';
+import { module, skip, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render, fillIn, click } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
+import { a11yAudit } from 'ember-a11y-testing/test-support';
 
 module('Integration | Component | mxa/tags-input', function(hooks) {
   setupRenderingTest(hooks);
@@ -33,5 +34,10 @@ module('Integration | Component | mxa/tags-input', function(hooks) {
     await click('[data-test-tags-found="attack"]');
     await click('[data-test-tags-selected="attack"] [data-test-tags-remove-button]');
     assert.dom('[data-test-tags-selected="attack"]').doesNotExist();
+  });
+
+  skip('it is accessible', async function(assert) {
+    await a11yAudit();
+    assert.ok(true, 'no a11y detected');
   });
 });
