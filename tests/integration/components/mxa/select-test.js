@@ -3,6 +3,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render, click } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import sinon from 'sinon';
+import { a11yAudit } from 'ember-a11y-testing/test-support';
 
 module('Integration | Component | mxa/select', function(hooks) {
   setupRenderingTest(hooks);
@@ -49,6 +50,20 @@ module('Integration | Component | mxa/select', function(hooks) {
 
     assert.dom('[data-test-select-button]').hasClass('bg-frost-100');
     assert.ok(this.onChange.notCalled);
+  });
+
+  test('it is accessible', async function(assert) {
+    await render(hbs`
+    <Mxa::Select
+      @label="Ship Name"
+      @options={{this.options}}
+      @selectedOption={{this.selectedOption}}
+      @onChange={{this.onChange}}
+      @isDisabled={{false}}
+    />`);
+
+    await a11yAudit();
+    assert.ok(true, 'no a11y detected');
   });
 
   module('when toggled', function(hooks) {

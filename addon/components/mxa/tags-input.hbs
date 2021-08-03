@@ -1,6 +1,13 @@
 <div class="relative"
 {{on-click-tag-input}}
 >
+  <Mxa::Label for="tags-input" data-test-tags-input-label>
+    <div class="flex flex-col text-slate-100">
+      <span data-test-tags-input-label-main {{did-insert this.setA11yWarning}}>{{yield to="label-main"}}</span>
+      <span class="normal-case leading-6" data-test-tags-input-label-extra>{{yield to="label-extra"}}</span>
+    </div>
+  </Mxa::Label>
+
   <div class="flex items-center rounded border border-frost-100 focus-within:outline-none focus-within:ring-plum-100 focus-within:border-plum-100">
     <div class="flex items-center space-x-1">
       {{#each this.selectedTags as |tag|}}
@@ -13,10 +20,10 @@
       {{/each}}
     </div>
 
-
     <Input type="text"
       @id="tags-input"
-      class="rounded pl-2 pr-4 py-2 text-xs  focus:outline-none"
+      class="rounded pl-2 pr-4 py-2 text-xs  focus:outline-none w-full"
+      placeholder={{@placeholder}}
       {{on 'input' this.checkInputForExistingTags}}
       {{on 'keydown' this.checkBackspace}}
       data-test-tags-input
@@ -37,4 +44,3 @@
     </div>
   {{/if}}
 </div>
-

@@ -3,6 +3,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render, click } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import sinon from 'sinon';
+import { a11yAudit } from 'ember-a11y-testing/test-support';
 
 module('Integration | Component | mxa/select/option', function(hooks) {
   setupRenderingTest(hooks);
@@ -49,5 +50,23 @@ module('Integration | Component | mxa/select/option', function(hooks) {
     await click('[data-test-select-option-button]');
 
     assert.ok(this.setSelectedOption.calledOnce);
+  });
+
+  test('it is accessible', async function(assert) {
+    await render(hbs`
+      <label id="label-id">Option List</label>
+      <ul role="listbox" aria-labelledby="label-id">
+        <Mxa::Select::Option
+        @option={{this.option}}
+        @selectedOption={{this.option}}
+        @setSelectedOption={{this.setSelectedOption}}
+        @optionNameKey='name'
+        @optionValueKey='value'
+      />
+      </ul>
+    `);
+
+    await a11yAudit();
+    assert.ok(true, 'no a11y detected');
   });
 });

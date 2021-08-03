@@ -3,5 +3,9 @@
      disabled:bg-slate-20 disabled:border-slate-20 disabled:cursor-not-allowed disabled:text-slate-40 text-sm"
   ...attributes
 >
-  {{yield}}
+  {{#if (has-block)}}
+    {{yield}}
+  {{else}}
+    {{this.buttonTitle}}
+  {{/if}}
 </button>

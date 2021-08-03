@@ -3,6 +3,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { click, find, render, waitFor, waitUntil } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { timeout } from 'ember-concurrency';
+import { a11yAudit } from 'ember-a11y-testing/test-support';
 
 module('Integration | Component | mxa/async-button', function(hooks) {
   setupRenderingTest(hooks);
@@ -97,5 +98,12 @@ module('Integration | Component | mxa/async-button', function(hooks) {
       // ...as it has after it finished loading.
       assert.equal(buttonElement.offsetWidth, initialWidth);
     });
+  });
+
+  test('it is accessible', async function(assert) {
+    await render(hbs`<Mxa::AsyncButton @onClick={{this.onClick}}>accessibility</Mxa::AsyncButton>`);
+
+    await a11yAudit();
+    assert.ok(true, 'no a11y detected');
   });
 });

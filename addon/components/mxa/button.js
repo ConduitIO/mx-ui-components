@@ -19,4 +19,8 @@ export default class MxaButtonComponent extends Component {
   get buttonClass() {
     return this.buildButtonClass(this.args.buttonType);
   }
+
+  get buttonTitle() {
+    return this.args.title || 'Submit';
+  }
 }

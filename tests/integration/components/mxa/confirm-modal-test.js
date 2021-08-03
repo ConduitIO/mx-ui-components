@@ -1,8 +1,9 @@
-import { module, test } from 'qunit';
+import { module, skip, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render, click, fillIn } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import sinon from 'sinon';
+import { a11yAudit } from 'ember-a11y-testing/test-support';
 
 module('Integration | Component | mxa/confirm-modal', function(hooks) {
   setupRenderingTest(hooks);
@@ -46,6 +47,11 @@ module('Integration | Component | mxa/confirm-modal', function(hooks) {
 
     test('it displays the default submit button', async function(assert) {
       assert.dom('[data-test-confirm-submit-button]').hasClass('mxa-btn-primary');
+    });
+
+    skip('it is accessible', async function(assert) {
+      await a11yAudit();
+      assert.ok(true, 'no a11y detected');
     });
   });
 
@@ -91,6 +97,11 @@ module('Integration | Component | mxa/confirm-modal', function(hooks) {
 
     test('it displays the danger submit button', async function(assert) {
       assert.dom('[data-test-confirm-submit-button]').hasClass('bg-saffron-100');
+    });
+
+    skip('it is accessible', async function(assert) {
+      await a11yAudit();
+      assert.ok(true, 'no a11y detected');
     });
   });
 });
