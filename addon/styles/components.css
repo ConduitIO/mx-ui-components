@@ -1,7 +1,7 @@
 .mxa-toggle input:after {
   content: "";
-  height: 90%;
-  width: 52%;
+  height: 16px;
+  width: 16px;
   position: absolute;
   top: 5%;
   left: 3%;
@@ -16,5 +16,5 @@
 }
 
 .mxa-toggle input:checked:after {
-  transform: translateX(82%);
+  transform: translateX(20px);
 }
