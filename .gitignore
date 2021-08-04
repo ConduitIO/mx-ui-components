@@ -19,6 +19,7 @@
 /npm-debug.log*
 /testem.log
 /yarn-error.log
+build-storybook.log
 
 # ember-try
 /.node_modules.ember-try/
