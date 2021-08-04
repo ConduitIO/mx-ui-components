@@ -15,7 +15,7 @@ module('Integration | Component | mxa/badge', function(hooks) {
   test('it has a default color', async function(assert) {
     await render(hbs`<Mxa::Badge>Badge text</Mxa::Badge>`);
 
-    assert.dom('[data-test-badge]').hasClass('bg-slate-60');
+    assert.dom('[data-test-badge]').hasClass('bg-slate-100');
   });
 
   test('it can have a different color', async function(assert) {
