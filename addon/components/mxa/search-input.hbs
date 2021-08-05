@@ -2,8 +2,9 @@
   <label
     for="mxa-search-input"
     class="absolute inset-y-0 left-0 flex items-center"
+    data-test-mxa-search-input-label
   >
-    <svg class="text-slate-60 fill-current h-4 w-6 mt-0.5 ml-2">
+    <svg class="text-slate-100 fill-current h-4 w-6 mt-0.5 ml-2">
       <use xlink:href="/svg-defs.svg#search-16"></use>
     </svg>
     <span class="sr-only">Search</span>
@@ -11,8 +12,9 @@
   <input
     id="mxa-search-input"
     type="text"
-    class="mxa-input rounded bg-white border border-slate-20 placeholder-slate-60 pl-8 pr-4 py-2 w-full text-sm"
+    class="mxa-input rounded bg-white border border-slate-20 placeholder-slate-100 pl-8 pr-4 py-2 w-full text-sm"
     placeholder={{or @placeholder "Search..."}}
     {{on 'input' @onInput}}
+    data-test-mxa-search-input
   />
 </div>

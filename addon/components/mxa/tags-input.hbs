@@ -13,7 +13,7 @@
       {{#each this.selectedTags as |tag|}}
         <div class="bg-frost-100 p-1 text-xs rounded flex items-center" data-test-tags-selected={{tag}}>
           <span class="mr-1">{{tag}}</span>
-          <svg class="text-slate-60 fill-current h-3 w-3 pt-0.5" {{on 'click' (fn this.removeTag tag)}} data-test-tags-remove-button>
+          <svg class="text-slate-100 fill-current h-3 w-3 pt-0.5" {{on 'click' (fn this.removeTag tag)}} data-test-tags-remove-button>
             <use xlink:href="/svg-defs.svg#close-16"></use>
           </svg>
         </div>
@@ -22,7 +22,7 @@
 
     <Input type="text"
       @id="tags-input"
-      class="rounded pl-2 pr-4 py-2 text-xs  focus:outline-none w-full"
+      class="rounded pl-2 pr-4 py-2 text-xs focus:outline-none w-full placeholder-slate-100"
       placeholder={{@placeholder}}
       {{on 'input' this.checkInputForExistingTags}}
       {{on 'keydown' this.checkBackspace}}
