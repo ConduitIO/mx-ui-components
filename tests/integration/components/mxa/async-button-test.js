@@ -123,7 +123,7 @@ module('Integration | Component | mxa/async-button', function (hooks) {
     hooks.beforeEach(async function () {
       const fakeTimeout = () => {
         // Add some lag time
-        // and use rawTimeout which does not signal to test waiters
+        // Use rawTimeout which does not signal to test waiters
         return rawTimeout(600);
       };
 
@@ -138,7 +138,7 @@ module('Integration | Component | mxa/async-button', function (hooks) {
       // Use click wait helper which calls settled() internally
       await click('[data-test-async-button]');
 
-      // Ensure the action actually happened
+      // Ensure the action was actually called
       assert.ok(this.onClick.calledOnce);
       assert.dom('[data-test-async-button]').hasText('Synth');
     });
