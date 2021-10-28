@@ -1,10 +1,10 @@
-<div class='relative'>
+<div class='relative' ...attributes>
   <div
     class='flex items-center rounded border border-frost-100 focus-within:outline-none focus-within:ring-plum-100 focus-within:border-plum-100'
   >
     <Input
       type='text'
-      @id='typeahead-select-input'
+      @id={{@id}}
       @value={{this.inputValue}}
       class='rounded pl-2 pr-4 py-2 text-xs focus:outline-none w-full placeholder-slate-100'
       placeholder={{@placeholder}}

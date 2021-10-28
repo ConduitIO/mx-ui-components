@@ -1,8 +1,10 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
+import { click, render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import sinon from 'sinon';
+
+import { a11yAudit } from 'ember-a11y-testing/test-support';
 
 module('Integration | Component | mxa/typeahead-select', function (hooks) {
   setupRenderingTest(hooks);
@@ -31,12 +33,12 @@ module('Integration | Component | mxa/typeahead-select', function (hooks) {
       @isDisabled={{false}}
     />`);
 
-    assert.dom('[data-test-select-display-selected]').containsText('Piano');
+    assert.dom('[data-test-typeahead-select-input]').hasValue('Piano');
   });
 
   test('it can be disabled', async function (assert) {
     await render(hbs`
-    <Mxa::Select
+    <Mxa::TypeaheadSelect
       @label="Ship Name"
       @options={{this.options}}
       @selectedOption={{this.selectedOption}}
@@ -44,10 +46,7 @@ module('Integration | Component | mxa/typeahead-select', function (hooks) {
       @isDisabled={{true}}
     />`);
 
-    await click('[data-test-select-button]');
-
-    assert.dom('[data-test-select-button]').hasClass('bg-frost-100');
-    assert.ok(this.onChange.notCalled);
+    assert.dom('[data-test-typeahead-select-input]').isDisabled();
   });
 
   test('it is accessible', async function (assert) {
@@ -67,7 +66,7 @@ module('Integration | Component | mxa/typeahead-select', function (hooks) {
   module('when focused', function (hooks) {
     hooks.beforeEach(async function () {
       await render(hbs`
-      <Mxa::Select
+      <Mxa::TypeaheadSelect
         @label="Ship Name"
         @options={{this.options}}
         @selectedOption={{this.selectedOption}}
@@ -75,7 +74,7 @@ module('Integration | Component | mxa/typeahead-select', function (hooks) {
         @isDisabled={{false}}
       />`);
 
-      await click('[data-test-select-button]');
+      await click('[data-test-typeahead-select-input]');
     });
 
     test('it displays the options', function (assert) {
@@ -83,7 +82,10 @@ module('Integration | Component | mxa/typeahead-select', function (hooks) {
         '[data-test-select-option]'
       );
       assert.dom('[data-test-select-option]').exists({ count: 4 });
-      assert.dom(options[1]).containsText('Rocinante');
+      assert.dom(options[0]).containsText('Piano');
+      assert.dom(options[1]).containsText('Guitar');
+      assert.dom(options[2]).containsText('Bass');
+      assert.dom(options[3]).containsText('Drums');
     });
 
     test('it marks the selected option', function (assert) {
@@ -99,7 +101,7 @@ module('Integration | Component | mxa/typeahead-select', function (hooks) {
   module('when selecting an option', function (hooks) {
     hooks.beforeEach(async function () {
       await render(hbs`
-      <Mxa::Select
+      <Mxa::TypeaheadSelect
         @label="Ship Name"
         @options={{this.options}}
         @selectedOption={{this.selectedOption}}
@@ -107,7 +109,7 @@ module('Integration | Component | mxa/typeahead-select', function (hooks) {
         @isDisabled={{false}}
       />`);
 
-      await click('[data-test-select-button]');
+      await click('[data-test-typeahead-select-input]');
       await click(
         this.element.querySelectorAll('[data-test-select-option-button]')[1]
       );
@@ -116,7 +118,7 @@ module('Integration | Component | mxa/typeahead-select', function (hooks) {
     test('it calls the onChange action with the selected option', function (assert) {
       assert.ok(
         this.onChange.calledOnceWith(
-          sinon.match({ name: 'Rocinante', value: 'roci' })
+          sinon.match({ name: 'Guitar', value: 'guitar' })
         )
       );
     });
