@@ -1,6 +1,9 @@
 <div class='relative' ...attributes>
   <div
     class='flex items-center rounded border border-frost-100 focus-within:outline-none focus-within:ring-plum-100 focus-within:border-plum-100'
+    aria-expanded={{this.isShowingMatches}}
+    aria-owns='typeahead-select-listbox'
+    aria-haspopup='listbox'
   >
     <Input
       type='text'
@@ -10,6 +13,10 @@
       placeholder={{@placeholder}}
       data-test-typeahead-select-input
       disabled={{@isDisabled}}
+      aria-autocomplete='list'
+      aria-controls='typeahead-select-listbox'
+      aria-labelledby={{@labelID}}
+      aria-activedescendant
       {{on 'focus' this.showMatches}}
       {{on 'blur' this.hideMatches}}
     />
@@ -35,18 +42,22 @@
   {{#if this.isShowingMatches}}
     <div class='absolute mt-1 w-full rounded-md bg-white shadow-lg z-10'>
       <ul
+        id='typeahead-select-listbox'
         tabindex='-1'
         role='listbox'
-        aria-labelledby='listbox-label'
-        aria-activedescendant='listbox-item-3'
+        aria-labelledby={{@labelID}}
         class='max-h-56 rounded-md text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm'
       >
-        {{#each this.matches as |match|}}
+        {{#each this.matches as |match idx|}}
           <li
-            id='listbox-item-0'
+            id={{concat 'listbox-item-' idx}}
             role='option'
             class='text-gray-900 cursor-default select-none relative hover:bg-slate-5'
             data-test-select-option
+            aria-selected={{eq
+              (get match this.optionValueKey)
+              (get @selectedOption this.optionValueKey)
+            }}
           >
             <div
               class='flex items-center cursor-pointer py-2 pl-3 pr-9'
