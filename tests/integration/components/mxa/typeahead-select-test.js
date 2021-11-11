@@ -39,7 +39,6 @@ module('Integration | Component | mxa/typeahead-select', function (hooks) {
   test('it can be disabled', async function (assert) {
     await render(hbs`
     <Mxa::TypeaheadSelect
-      @label="Ship Name"
       @options={{this.options}}
       @selectedOption={{this.selectedOption}}
       @onChange={{this.onChange}}
@@ -52,7 +51,6 @@ module('Integration | Component | mxa/typeahead-select', function (hooks) {
   test('it is accessible', async function (assert) {
     await render(hbs`
     <Mxa::Select
-      @label="Ship Name"
       @options={{this.options}}
       @selectedOption={{this.selectedOption}}
       @onChange={{this.onChange}}
@@ -67,7 +65,6 @@ module('Integration | Component | mxa/typeahead-select', function (hooks) {
     hooks.beforeEach(async function () {
       await render(hbs`
       <Mxa::TypeaheadSelect
-        @label="Ship Name"
         @options={{this.options}}
         @selectedOption={{this.selectedOption}}
         @onChange={{this.onChange}}
@@ -102,7 +99,6 @@ module('Integration | Component | mxa/typeahead-select', function (hooks) {
     hooks.beforeEach(async function () {
       await render(hbs`
       <Mxa::TypeaheadSelect
-        @label="Ship Name"
         @options={{this.options}}
         @selectedOption={{this.selectedOption}}
         @onChange={{this.onChange}}
