@@ -1,8 +1,11 @@
 <div class='relative' ...attributes>
+  {{#if @label}}
+    <Mxa::Label for={{@id}} @isRequired={{@isRequired}}>{{@label}}</Mxa::Label>
+  {{/if}}
   <div
-    class='flex items-center rounded border border-frost-100 focus-within:outline-none focus-within:ring-plum-100 focus-within:border-plum-100'
+    class='flex items-center w-full rounded border border-frost-100 focus-within:outline-none focus-within:ring-plum-100 focus-within:border-plum-100'
     aria-expanded={{this.isShowingMatches}}
-    aria-owns='typeahead-select-listbox'
+    aria-owns={{@id}}
     aria-haspopup='listbox'
   >
     <Input
@@ -14,14 +17,13 @@
       data-test-typeahead-select-input
       disabled={{@isDisabled}}
       aria-autocomplete='list'
-      aria-controls='typeahead-select-listbox'
-      aria-labelledby={{@labelID}}
-      aria-activedescendant
+      aria-controls={{concat "typeaheadselectlistbox" @id}}
+      autocomplete="off"
       {{on 'focus' this.showMatches}}
       {{on 'blur' this.hideMatches}}
     />
     <span
-      class='ml-3 absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none'
+      class='ml-3 absolute right-0 flex items-center pr-2 pointer-events-none'
     >
       <svg
         class='h-5 w-5 text-gray-400'
@@ -39,63 +41,60 @@
     </span>
   </div>
 
-  {{#if this.isShowingMatches}}
-    <div class='absolute mt-1 w-full rounded-md bg-white shadow-lg z-10'>
-      <ul
-        id='typeahead-select-listbox'
-        tabindex='-1'
-        role='listbox'
-        aria-labelledby={{@labelID}}
-        class='max-h-56 rounded-md text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm'
-      >
-        {{#each this.matches as |match idx|}}
-          <li
-            id={{concat 'listbox-item-' idx}}
-            role='option'
-            class='text-gray-900 cursor-default select-none relative hover:bg-slate-5'
-            data-test-select-option
-            aria-selected={{eq
+  <div class='absolute mt-1 w-full rounded-md bg-white shadow-lg z-10 {{unless this.isShowingMatches "hidden"}}' data-test-typeahead-matches>
+    <ul
+      id={{concat "typeaheadselectlistbox" @id}}
+      tabindex='1'
+      role='listbox'
+      class='max-h-56 rounded-md text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm'
+    >
+      {{#each this.matches as |match idx|}}
+        <li
+          id={{concat 'listbox-item-' idx}}
+          role='option'
+          class='text-gray-900 cursor-default select-none relative hover:bg-slate-5'
+          data-test-select-option
+          aria-selected={{eq
+            (get match this.optionValueKey)
+            (get @selectedOption this.optionValueKey)
+          }}
+        >
+          <div
+            class='flex items-center cursor-pointer py-2 pl-3 pr-9'
+            data-test-select-option-button={{get match this.optionNameKey}}
+            {{on 'mousedown' (fn this.setSelectedOption match)}}
+          >
+            <span class='ml-1 block font-normal truncate'>
+              {{get match this.optionNameKey}}
+            </span>
+          </div>
+          {{#if
+            (eq
               (get match this.optionValueKey)
               (get @selectedOption this.optionValueKey)
-            }}
-          >
-            <div
-              class='flex items-center cursor-pointer py-2 pl-3 pr-9'
-              data-test-select-option-button={{get match this.optionNameKey}}
-              {{on 'mousedown' (fn this.setSelectedOption match)}}
+            )
+          }}
+            <span
+              class='absolute inset-y-0 right-0 flex items-center pr-4'
+              data-test-select-option-selected
             >
-              <span class='ml-1 block font-normal truncate'>
-                {{get match this.optionNameKey}}
-              </span>
-            </div>
-            {{#if
-              (eq
-                (get match this.optionValueKey)
-                (get @selectedOption this.optionValueKey)
-              )
-            }}
-              <span
-                class='absolute inset-y-0 right-0 flex items-center pr-4'
-                data-test-select-option-selected
+              <svg
+                class='h-5 w-5'
+                xmlns='http://www.w3.org/2000/svg'
+                viewBox='0 0 20 20'
+                fill='currentColor'
+                aria-hidden='true'
               >
-                <svg
-                  class='h-5 w-5'
-                  xmlns='http://www.w3.org/2000/svg'
-                  viewBox='0 0 20 20'
-                  fill='currentColor'
-                  aria-hidden='true'
-                >
-                  <path
-                    fill-rule='evenodd'
-                    d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'
-                    clip-rule='evenodd'
-                  ></path>
-                </svg>
-              </span>
-            {{/if}}
-          </li>
-        {{/each}}
-      </ul>
-    </div>
-  {{/if}}
+                <path
+                  fill-rule='evenodd'
+                  d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'
+                  clip-rule='evenodd'
+                ></path>
+              </svg>
+            </span>
+          {{/if}}
+        </li>
+      {{/each}}
+    </ul>
+  </div>
 </div>

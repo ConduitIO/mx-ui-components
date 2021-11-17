@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { click, render } from '@ember/test-helpers';
+import { click, fillIn, render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import sinon from 'sinon';
 
@@ -48,9 +48,11 @@ module('Integration | Component | mxa/typeahead-select', function (hooks) {
     assert.dom('[data-test-typeahead-select-input]').isDisabled();
   });
 
-  test('it is accessible', async function (assert) {
+  test('it is accessible (with embedded label)', async function (assert) {
     await render(hbs`
-    <Mxa::Select
+    <Mxa::TypeaheadSelect
+      @id="my-random-id"
+      @label="Your Instrument"
       @options={{this.options}}
       @selectedOption={{this.selectedOption}}
       @onChange={{this.onChange}}
@@ -59,6 +61,35 @@ module('Integration | Component | mxa/typeahead-select', function (hooks) {
 
     await a11yAudit();
     assert.ok(true, 'no a11y detected');
+  });
+
+  test('it is accessible (with external label)', async function (assert) {
+    await render(hbs`
+    <label for="my-random-id">My external label</label>
+    <Mxa::TypeaheadSelect
+      @id="my-random-id"
+      @options={{this.options}}
+      @selectedOption={{this.selectedOption}}
+      @onChange={{this.onChange}}
+      @isDisabled={{false}}
+    />`);
+
+    await a11yAudit();
+    assert.ok(true, 'no a11y detected');
+  });
+
+  test('it hides the option list when not focused', async function (assert) {
+    await render(hbs`
+    <Mxa::TypeaheadSelect
+      @id="my-random-id"
+      @label="Your Instrument"
+      @options={{this.options}}
+      @selectedOption={{this.selectedOption}}
+      @onChange={{this.onChange}}
+      @isDisabled={{false}}
+    />`);
+
+    assert.dom('[data-test-typeahead-matches]').hasClass('hidden');
   });
 
   module('when focused', function (hooks) {
@@ -92,6 +123,23 @@ module('Integration | Component | mxa/typeahead-select', function (hooks) {
       assert
         .dom(options[0].querySelector('[data-test-select-option-selected]'))
         .exists();
+    });
+
+    test('it filters the options according to the search query', async function (assert) {
+      await fillIn('[data-test-typeahead-select-input]', 'a');
+
+      const options = this.element.querySelectorAll(
+        '[data-test-select-option]'
+      );
+
+      assert.dom('[data-test-select-option]').exists({ count: 3 });
+      assert.dom(options[0]).containsText('Piano');
+      assert.dom(options[1]).containsText('Guitar');
+      assert.dom(options[2]).containsText('Bass');
+    });
+
+    test('it displays the options list when focused', function (assert) {
+      assert.dom('[data-test-typeahead-matches]').doesNotHaveClass('hidden');
     });
   });
 
