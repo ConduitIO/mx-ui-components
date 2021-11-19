@@ -17,10 +17,15 @@
       data-test-typeahead-select-input
       disabled={{@isDisabled}}
       aria-autocomplete='list'
-      aria-controls={{concat "typeaheadselectlistbox" @id}}
-      autocomplete="off"
+      aria-controls={{concat 'typeaheadselectlistbox' @id}}
+      autocomplete='off'
       {{on 'focus' this.showMatches}}
       {{on 'blur' this.hideMatches}}
+      {{on 'keydown' this.checkFocus}}
+      {{on-key 'Escape' this.escapeMatches}}
+      {{on-key 'ArrowDown' this.nextMatch}}
+      {{on-key 'ArrowUp' this.previousMatch}}
+      {{on-key 'Enter' (fn this.enterMatch this.internalSelectedOption)}}
     />
     <span
       class='ml-3 absolute right-0 flex items-center pr-2 pointer-events-none'
@@ -41,9 +46,16 @@
     </span>
   </div>
 
-  <div class='absolute mt-1 w-full rounded-md bg-white shadow-lg z-10 {{unless this.isShowingMatches "hidden"}}' data-test-typeahead-matches>
+  <div
+    class='absolute mt-1 w-full rounded-md bg-white shadow-lg z-10
+      {{if
+        (or (not this.isShowingMatches) (eq this.matches.length 0))
+        'hidden'
+      }}'
+    data-test-typeahead-matches
+  >
     <ul
-      id={{concat "typeaheadselectlistbox" @id}}
+      id={{concat 'typeaheadselectlistbox' @id}}
       tabindex='1'
       role='listbox'
       class='max-h-56 rounded-md text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm'
@@ -52,7 +64,14 @@
         <li
           id={{concat 'listbox-item-' idx}}
           role='option'
-          class='text-gray-900 cursor-default select-none relative hover:bg-slate-5'
+          class='text-gray-900 cursor-default select-none relative hover:bg-slate-5
+            {{if
+              (eq
+                (get match this.optionValueKey)
+                (get this.internalSelectedOption this.optionValueKey)
+              )
+              'bg-slate-5'
+            }}'
           data-test-select-option
           aria-selected={{eq
             (get match this.optionValueKey)

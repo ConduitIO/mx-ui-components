@@ -17,6 +17,8 @@ export default class MxaTypeaheadSelectComponent extends Component {
   @tracked
   isShowingMatches = false;
 
+  isFocusedWithoutPopup = false;
+
   get optionNameKey() {
     return this.args.optionNameKey || 'name';
   }
@@ -52,10 +54,18 @@ export default class MxaTypeaheadSelectComponent extends Component {
     }
   }
 
+  @tracked
+  internalSelectedIdx = 0;
+
+  get internalSelectedOption() {
+    return this.matches[this.internalSelectedIdx];
+  }
+
   @action
   setSelectedOption(option) {
     this.args.onChange(option);
     this.inputValue = this.args.selectedOption[this.optionNameKey];
+    this.internalSelectedIdx = 0;
     this.isShowingMatches = false;
   }
 
@@ -68,6 +78,48 @@ export default class MxaTypeaheadSelectComponent extends Component {
   @action
   hideMatches() {
     this.inputValue = this.args.selectedOption[this.optionNameKey];
+    this.internalSelectedIdx = 0;
     this.isShowingMatches = false;
+  }
+
+  @action
+  escapeMatches() {
+    this.hideMatches();
+    this.isFocusedWithoutPopup = true;
+  }
+
+  @action
+  enterMatch(option) {
+    if (option === undefined) {
+      this.inputValue = '';
+    } else {
+      this.setSelectedOption(option);
+    }
+
+    this.isFocusedWithoutPopup = true;
+  }
+
+  @action
+  nextMatch() {
+    const matchIdx = this.internalSelectedIdx;
+    const nextIdx = (matchIdx + 1) % this.matches.length;
+
+    this.internalSelectedIdx = nextIdx;
+  }
+
+  @action
+  previousMatch() {
+    const matchIdx = this.internalSelectedIdx;
+    const previousIdx = matchIdx === 0 ? this.matches.length - 1 : matchIdx - 1;
+
+    this.internalSelectedIdx = previousIdx;
+  }
+
+  @action
+  checkFocus() {
+    if (this.isFocusedWithoutPopup) {
+      this.isShowingMatches = true;
+      this.isFocusedWithoutPopup = false;
+    }
   }
 }

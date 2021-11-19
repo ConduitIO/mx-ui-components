@@ -1,9 +1,8 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { click, fillIn, render } from '@ember/test-helpers';
+import { click, fillIn, render, triggerKeyEvent } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import sinon from 'sinon';
-
 import { a11yAudit } from 'ember-a11y-testing/test-support';
 
 module('Integration | Component | mxa/typeahead-select', function (hooks) {
@@ -109,6 +108,7 @@ module('Integration | Component | mxa/typeahead-select', function (hooks) {
       const options = this.element.querySelectorAll(
         '[data-test-select-option]'
       );
+      assert.dom('[data-test-typeahead-matches]').doesNotHaveClass('hidden');
       assert.dom('[data-test-select-option]').exists({ count: 4 });
       assert.dom(options[0]).containsText('Piano');
       assert.dom(options[1]).containsText('Guitar');
@@ -141,9 +141,43 @@ module('Integration | Component | mxa/typeahead-select', function (hooks) {
     test('it displays the options list when focused', function (assert) {
       assert.dom('[data-test-typeahead-matches]').doesNotHaveClass('hidden');
     });
+
+    test('it allows keyboard navigation', async function (assert) {
+      const options = this.element.querySelectorAll(
+        '[data-test-select-option]'
+      );
+      assert.dom(options[0]).hasClass('bg-slate-5');
+
+      await triggerKeyEvent(
+        '[data-test-typeahead-select-input]',
+        'keydown',
+        'ArrowDown'
+      );
+      assert.dom(options[0]).doesNotHaveClass('bg-slate-5');
+      assert.dom(options[1]).hasClass('bg-slate-5');
+
+      await triggerKeyEvent(
+        '[data-test-typeahead-select-input]',
+        'keydown',
+        'ArrowUp'
+      );
+      assert.dom(options[0]).hasClass('bg-slate-5');
+      assert.dom(options[1]).doesNotHaveClass('bg-slate-5');
+    });
+
+    test('it hides the options when the escape key is pressed', async function (assert) {
+      assert.dom('[data-test-typeahead-matches]').doesNotHaveClass('hidden');
+      await triggerKeyEvent(
+        '[data-test-typeahead-select-input]',
+        'keydown',
+        'Escape'
+      );
+      assert.dom('[data-test-typeahead-matches]').hasClass('hidden');
+      assert.dom('[data-test-typeahead-select-input]').isFocused();
+    });
   });
 
-  module('when selecting an option', function (hooks) {
+  module('when selecting an option by click', function (hooks) {
     hooks.beforeEach(async function () {
       await render(hbs`
       <Mxa::TypeaheadSelect
@@ -163,6 +197,34 @@ module('Integration | Component | mxa/typeahead-select', function (hooks) {
       assert.ok(
         this.onChange.calledOnceWith(
           sinon.match({ name: 'Guitar', value: 'guitar' })
+        )
+      );
+    });
+  });
+
+  module('when selecting an option by keyboard', function (hooks) {
+    hooks.beforeEach(async function () {
+      await render(hbs`
+      <Mxa::TypeaheadSelect
+        @options={{this.options}}
+        @selectedOption={{this.selectedOption}}
+        @onChange={{this.onChange}}
+        @isDisabled={{false}}
+      />`);
+
+      await click('[data-test-typeahead-select-input]');
+
+      await triggerKeyEvent(
+        '[data-test-typeahead-select-input]',
+        'keydown',
+        'Enter'
+      );
+    });
+
+    test('it calls the onChange action with the selected option', function (assert) {
+      assert.ok(
+        this.onChange.calledOnceWith(
+          sinon.match({ name: 'Piano', value: 'piano' })
         )
       );
     });
