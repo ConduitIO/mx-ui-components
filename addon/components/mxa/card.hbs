@@ -1,3 +1,15 @@
-<div class="bg-white rounded shadow p-6" ...attributes>
-  {{yield}}
+<div class="{{if @isContainer "w-container" "w-full"}} bg-white border border-slate-20 rounded-md py-6 px-8" data-test-mxa-card ...attributes>
+  {{#if (has-block "title")}}
+    <h1 class="text-gray-900 font-semibold mb-8 text-4xl" data-test-mxa-card-title>
+      {{yield to="title"}}
+    </h1>
+  {{/if}}
+  {{#if (has-block "sub-title")}}
+    <h2 class="text-gray-900 font-semibold mb-8 text-2xl" data-test-mxa-card-sub-title>
+      {{yield to="sub-title"}}
+    </h2>
+  {{/if}}
+  <section data-test-mxa-card-body>
+    {{yield to="body"}}
+  </section>
 </div>
