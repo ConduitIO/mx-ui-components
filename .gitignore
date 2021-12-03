@@ -26,3 +26,4 @@ build-storybook.log
 /bower.json.ember-try
 /package.json.ember-try
 /storybook-static
+/.storybook/preview-head.html
