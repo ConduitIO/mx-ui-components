@@ -1,3 +1,19 @@
-<div class="bg-white rounded-md shadow-sm" ...attributes>
-  {{yield}}
-</div>
+<Mxa::Card @isContainer={{true}} ...attributes>
+  {{#if (has-block "title")}}
+    <h1 class="text-gray-900 font-semibold mb-8 text-4xl" data-test-mxa-dialog-card-title>
+      {{yield to="title"}}
+    </h1>
+  {{/if}}
+  {{#if (has-block "sub-title")}}
+    <h2 class="text-gray-900 font-semibold mb-8 text-2xl" data-test-mxa-dialog-card-sub-title>
+      {{yield to="sub-title"}}
+    </h2>
+  {{/if}}
+  {{#if (has-block "body")}}
+    <section data-test-mxa-dialog-card-body>
+      {{yield to="body"}}
+    </section>
+  {{else}}
+    {{yield}}
+  {{/if}}
+</Mxa::Card>
