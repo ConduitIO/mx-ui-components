@@ -1,4 +1,4 @@
-import { module, skip, test } from 'qunit';
+import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render, click, fillIn } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
@@ -8,23 +8,28 @@ import { a11yAudit } from 'ember-a11y-testing/test-support';
 module('Integration | Component | mxa/confirm-modal', function(hooks) {
   setupRenderingTest(hooks);
 
+  hooks.beforeEach(async function() {
+    this.set('onDismiss', sinon.spy());
+    this.set('confirmedAction', sinon.spy());
+    this.set('confirmableActionName', 'Squanch');
+
+    await render(hbs`
+      <Mxa::ConfirmModal
+        @onDismiss={{this.onDismiss}}
+        @confirmableActionName={{this.confirmableActionName}}
+        @entityName='Plumbus'
+        @confirmedAction={{this.confirmedAction}}
+        @isTextInputRequired={{this.isTextInputRequired}}
+        as |entityName|
+      >
+        Are you sure you want to squanch {{entityName}}?
+      </Mxa::ConfirmModal>
+    `);
+  });
+
   module('when confirming', async function(hooks) {
     hooks.beforeEach(async function() {
-      this.set('onDismiss', sinon.spy());
-      this.set('confirmedAction', sinon.spy());
-
-      await render(hbs`
-        <Mxa::ConfirmModal
-          @onDismiss={{this.onDismiss}}
-          @confirmableActionName='Squanch'
-          @entityName='Plumbus'
-          @confirmedAction={{this.confirmedAction}}
-          @isTextInputRequired={{false}}
-          as |entityName|
-        >
-          Are you sure you want to squanch {{entityName}}?
-        </Mxa::ConfirmModal>
-      `);
+      this.set('isTextInputRequired', false);
     });
 
     test('it yields the entity name out for the block', function(assert) {
@@ -35,8 +40,17 @@ module('Integration | Component | mxa/confirm-modal', function(hooks) {
       assert.dom('[data-test-confirm-header]').containsText('Squanch Plumbus ?');
     });
 
-    test('it triggers the onDismiss action when canceled', async function(assert) {
+    test('it automatically focusses on the close dialog button', function(assert) {
+      assert.dom('[data-test-modal-dialog-close]').isFocused();
+    });
+
+    test('it triggers the onDismiss action when canceled (Cancel CTA)', async function(assert) {
       await click('[data-test-confirm-cancel-button]');
+      assert.ok(this.onDismiss.calledOnce);
+    });
+
+    test('it triggers the onDismiss action when canceled (close dialog via x)', async function(assert) {
+      await click('[data-test-modal-dialog-close]');
       assert.ok(this.onDismiss.calledOnce);
     });
 
@@ -49,7 +63,21 @@ module('Integration | Component | mxa/confirm-modal', function(hooks) {
       assert.dom('[data-test-confirm-submit-button]').hasClass('mxa-btn-primary');
     });
 
-    skip('it is accessible', async function(assert) {
+    test('the submit button is enabled by default', async function(assert) {
+      assert.dom('[data-test-confirm-submit-button]').isNotDisabled();
+    });
+
+    test('the submit button displays the specified action title', async function(assert) {
+      assert.dom('[data-test-confirm-submit-button]').includesText('Squanch');
+    });
+
+    test('the title and the submit button display the default action title (Delete) if no other is specified', async function(assert) {
+      this.set('confirmableActionName', null);
+      assert.dom('[data-test-confirm-header]').containsText('Delete Plumbus ?');
+      assert.dom('[data-test-confirm-submit-button]').includesText('Delete');
+    });
+
+    test('it is accessible', async function(assert) {
       await a11yAudit();
       assert.ok(true, 'no a11y detected');
     });
@@ -57,21 +85,7 @@ module('Integration | Component | mxa/confirm-modal', function(hooks) {
 
   module('when text confirming', function(hooks) {
     hooks.beforeEach(async function() {
-      this.set('onDismiss', sinon.spy());
-      this.set('confirmedAction', sinon.spy());
-
-      await render(hbs`
-        <Mxa::ConfirmModal
-          @onDismiss={{this.onDismiss}}
-          @confirmableActionName='Squanch'
-          @entityName='Plumbus'
-          @confirmedAction={{this.confirmedAction}}
-          @isTextInputRequired={{true}}
-          as |entityName|
-        >
-          Are you sure you want to squanch {{entityName}}
-        </Mxa::ConfirmModal>
-      `);
+      this.set('isTextInputRequired', true);
     });
 
     test('it shows the confirm text input section', function(assert) {
@@ -84,6 +98,16 @@ module('Integration | Component | mxa/confirm-modal', function(hooks) {
 
     test('it disables the submit button by default', function(assert) {
       assert.dom('[data-test-confirm-submit-button]').isDisabled();
+    });
+
+    test('it triggers the onDismiss action when canceled (Cancel CTA)', async function(assert) {
+      await click('[data-test-confirm-cancel-button]');
+      assert.ok(this.onDismiss.calledOnce);
+    });
+
+    test('it triggers the onDismiss action when canceled (close dialog via x)', async function(assert) {
+      await click('[data-test-modal-dialog-close]');
+      assert.ok(this.onDismiss.calledOnce);
     });
 
     test('it disables the submit button when there is no text match', function(assert) {
@@ -99,7 +123,17 @@ module('Integration | Component | mxa/confirm-modal', function(hooks) {
       assert.dom('[data-test-confirm-submit-button]').hasClass('bg-saffron-100');
     });
 
-    skip('it is accessible', async function(assert) {
+    test('the submit button displays the specified action title', async function(assert) {
+      assert.dom('[data-test-confirm-submit-button]').includesText('Squanch');
+    });
+
+    test('the title and the submit button display the default action title (Delete) if no other is specified', async function(assert) {
+      this.set('confirmableActionName', null);
+      assert.dom('[data-test-confirm-header]').containsText('Delete Plumbus ?');
+      assert.dom('[data-test-confirm-submit-button]').includesText('Delete');
+    });
+
+    test('it is accessible', async function(assert) {
       await a11yAudit();
       assert.ok(true, 'no a11y detected');
     });
