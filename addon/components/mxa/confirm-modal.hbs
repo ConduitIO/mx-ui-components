@@ -1,57 +1,38 @@
-<Mxa::Modal @onDismiss={{@onDismiss}}>
-  <Mxa::DialogCard
-    class="inline-block align-bottom bg-white text-left overflow-visible transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
-  >
-    <div class="font-medium py-4 border-b border-frost-60">
-      <div class="px-4">
-        <div class="text-2xl" data-test-confirm-header>
-          {{@confirmableActionName}}
-          {{@entityName}}
-          ?
-        </div>
-      </div>
-    </div>
-    <div class="px-4 py-4">
-      <p class="mb-4" data-test-confirm-block>
-        {{yield @entityName}}
-      </p>
-      {{#if @isTextInputRequired}}
-        <Input
-          type="text"
-          class="mxa-input w-full bg-white border-frost-100"
-          @value={{this.confirmedEntityName}}
-          {{focus-on-render}}
-          data-test-confirm-input
-        />
-      {{/if}}
-    </div>
-    <div class="px-6 py-4 flex items-center justify-end">
-      <Mxa::Button
-        @buttonType="secondary"
-        class="mr-2"
-        data-test-confirm-cancel-button
-        {{on 'click' @onDismiss}}
-      >
-        Cancel
-      </Mxa::Button>
-      {{#if @isTextInputRequired}}
-        <Mxa::AsyncButton
-          @onClick={{@confirmedAction}}
-          @buttonType="danger"
-          @isDisabled={{not (eq @entityName this.confirmedEntityName)}}
-          data-test-confirm-submit-button
-        >
-          {{@confirmableActionName}}
-        </Mxa::AsyncButton>
-      {{else}}
-        <Mxa::AsyncButton
-          @onClick={{@confirmedAction}}
-          @buttonType="danger"
-          data-test-confirm-submit-button
-        >
-          {{@confirmableActionName}}
-        </Mxa::AsyncButton>
-      {{/if}}
-    </div>
-  </Mxa::DialogCard>
-</Mxa::Modal>
+<Mxa::ModalDialog
+  @title={{this.fullTitle}}
+  @forConfirmation={{true}}
+  @onDismiss={{@onDismiss}}>
+  <div class="py-4">
+    <label for={{concat "delete-" @entityName}} class="inline-block my-4 text-gray-900" data-test-confirm-block>
+      {{yield @entityName}}
+    </label>
+    {{#if @isTextInputRequired}}
+      <Input
+        id={{concat "delete-" @entityName}}
+        type="text"
+        class="mxa-input w-full bg-white border-frost-100"
+        @value={{this.confirmedEntityName}}
+        {{focus-on-render}}
+        data-test-confirm-input
+      />
+    {{/if}}
+  </div>
+  <div class="flex items-center justify-end mt-4">
+    <Mxa::Button
+      @buttonType="secondary"
+      class="mr-2"
+      data-test-confirm-cancel-button
+      {{on 'click' @onDismiss}}
+    >
+      Cancel
+    </Mxa::Button>
+    <Mxa::AsyncButton
+      @onClick={{@confirmedAction}}
+      @buttonType="danger"
+      @isDisabled={{this.isDisabled}}
+      data-test-confirm-submit-button
+    >
+      {{this.buttonTitle}}
+    </Mxa::AsyncButton>
+  </div>
+</Mxa::ModalDialog>

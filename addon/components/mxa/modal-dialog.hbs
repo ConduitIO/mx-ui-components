@@ -1,6 +1,6 @@
 <Mxa::Modal @onDismiss={{@onDismiss}} data-test-modal>
   <Mxa::DialogCard
-    class="inline-block align-bottom bg-white text-left overflow-visible p-8 transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+    class="inline-block align-bottom bg-white border border-slate-20 text-left overflow-visible transform transition-all w-container sm:my-8 sm:align-middle sm:max-w-3xl sm:w-container"
     role="dialog"
     aria-modal="true"
     aria-labelledby={{this.titleId}}
@@ -17,7 +17,13 @@
         <use xlink:href="/svg-defs.svg#close-12"></use>
       </svg>
     </button>
-    <h2 id={{this.titleId}} data-test-modal-dialog-title>{{@title}}</h2>
+    {{#if @forConfirmation}}
+      <div class="font-medium border-b border-frost-60">
+        <h1 id={{this.titleId}} class="text-gray-900 font-semibold text-4xl mb-8" data-test-confirm-header>{{@title}}</h1>
+      </div>
+    {{else}}
+      <h2 id={{this.titleId}} class="text-gray-900 font-semibold text-4xl mb-8" data-test-modal-dialog-title>{{@title}}</h2>
+    {{/if}}
     <section id={{this.contentId}} data-test-modal-dialog-content>
       {{yield}}
     </section>

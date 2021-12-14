@@ -9,7 +9,11 @@
       {{yield to="sub-title"}}
     </h2>
   {{/if}}
-  <section data-test-mxa-card-body>
-    {{yield to="body"}}
-  </section>
+  {{#if (has-block "body")}}
+    <section data-test-mxa-card-body>
+      {{yield to="body"}}
+    </section>
+  {{else}}
+    {{yield}}
+  {{/if}}
 </div>
