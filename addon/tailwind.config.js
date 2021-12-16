@@ -11,7 +11,14 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      margin: ['last'],
+      backgroundColor: ['disabled', 'checked', 'active'],
+      borderColor: ['disabled', 'focus-within'],
+      textColor: ['disabled'],
+      cursor: ['disabled'],
+      translate: ['checked'],
+    },
   },
   plugins: [require('@meroxa/ui-base')],
 };

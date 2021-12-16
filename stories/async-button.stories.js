@@ -11,7 +11,7 @@ export default {
 };
 
 const Template = (args) => ({
-  template: hbs`<Mxa::AsyncButton @buttonType={{this.buttonType}} @onClick={{this.onClick}}>{{this.children}}</Mxa::AsyncButton>`,
+  template: hbs`<Mxa::AsyncButton @buttonType={{this.buttonType}} @onClick={{this.onClick}} @noFill={{this.noFill}} disabled={{this.isDisabled}}>{{this.children}}</Mxa::AsyncButton>`,
   context: args,
 });
 
@@ -52,5 +52,25 @@ Danger.args = {
   buttonType: 'danger',
   onClick: action(function () {
     return waitFor(8000);
+  }),
+};
+
+export const DangerNoFill = Template.bind({});
+DangerNoFill.args = {
+  children: 'Button',
+  buttonType: 'danger',
+  onClick: action(function () {
+    return waitFor(8000);
+  }),
+  noFill: true,
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  children: 'Label',
+  buttonType: 'primary',
+  isDisabled: true,
+  onClick: action(function () {
+    return waitFor(2000);
   }),
 };
