@@ -26,9 +26,10 @@
     "test-coverage": "COVERAGE=true ember test",
     "test:ember-compatibility": "ember try:each",
     "storybook": "ember serve & start-storybook -p 6006 -s dist",
-    "build:dev": "ember build && yarn build-storybook -s dist",
-    "build:prod": "ember build && yarn build-storybook -s dist",
-    "chromatic": "npx chromatic --build-script-name 'build:prod'"
+    "build:dev": "ember build && build-storybook -s dist",
+    "build:prod": "ember build && build-storybook -s dist",
+    "chromatic": "npx chromatic --build-script-name 'build:prod'",
+    "build-storybook": "yarn run build:prod --"
   },
   "dependencies": {
     "ember-cli-babel": "^7.26.6",
