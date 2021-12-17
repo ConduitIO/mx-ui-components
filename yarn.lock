@@ -1915,7 +1915,7 @@
 
 "@meroxa/ui-base@https://github.com/meroxa/ui-base.git":
   version "1.0.0"
-  resolved "https://github.com/meroxa/ui-base.git#4ce603cdf26495298ce94b4e8d8da19f2e9a6a32"
+  resolved "https://github.com/meroxa/ui-base.git#bbc463b5f1ed6b4bc289773b0b917615ad43621d"
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
