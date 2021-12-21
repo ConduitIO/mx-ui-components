@@ -1,0 +1,9 @@
+<nav
+  class="w-16 {{if @isDark "bg-slate-100 text-white" "bg-slate-5 text-slate-100"}} fixed h-full sidebar z-20 overflow-hidden"
+  data-test-sidebar
+  ...attributes
+>
+  <div class="flex flex-col items-center h-full">
+    {{yield}}
+  </div>
+</nav>
