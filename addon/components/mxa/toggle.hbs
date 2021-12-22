@@ -3,12 +3,12 @@
     <input
       id={{this.fieldId}}
       type="checkbox"
-      class="transform appearance-none w-10 h-5 outline-none
-      flex items-center rounded-full border p-0.5 cursor-pointer
+      class="transform appearance-none w-11 h-6 outline-none
+      flex items-center rounded-full border p-1 cursor-pointer
       {{if
         this.isChecked
         'bg-forest-100 border-forest-100'
-        'bg-slate-20 border-slate-20'
+        'bg-frost-100 border-frost-100'
       }}"
       checked={{this.isChecked}}
       {{on 'change' this.toggleAction}}

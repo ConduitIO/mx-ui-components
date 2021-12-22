@@ -34,7 +34,31 @@ module('Integration | Component | mxa/button', function(hooks) {
   test('it renders the danger button', async function(assert) {
     await render(hbs`<Mxa::Button @buttonType='danger' />`);
 
-    assert.dom('button').hasClass('bg-saffron-100');
+    assert.dom('button').hasClass('mxa-btn-danger');
+  });
+
+  test('it renders the the button in its disabled state', async function(assert) {
+    await render(hbs`<Mxa::Button disabled />`);
+
+    assert.dom('button').hasStyle({
+      backgroundColor: 'rgb(214, 215, 217)',
+      color: 'rgb(17, 24, 39)',
+    });
+  });
+
+  test('it renders the the button - no fill state', async function(assert) {
+    await render(hbs`<Mxa::Button @buttonType="danger" @noFill={{true}} />`);
+
+    assert.dom('button').hasStyle({
+      backgroundColor: 'rgb(255, 255, 255)',
+      color: 'rgb(220, 38, 38)',
+    });
+  });
+
+  test('it renders the the button - small', async function(assert) {
+    await render(hbs`<Mxa::Button @small={{true}} />`);
+
+    assert.dom('button').hasClass('mxa-btn-small');
   });
 
   test('it renders the content on block invocation', async function(assert) {

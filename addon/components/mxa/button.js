@@ -1,19 +1,26 @@
 import Component from '@glimmer/component';
 
 export default class MxaButtonComponent extends Component {
+  get buttonTypeClass() {
+    return this.args.buttonType ? `mxa-btn-${this.args.buttonType}` : 'mxa-btn-primary';
+  }
+
   buildButtonClass(buttonType) {
-    switch (buttonType) {
-      case 'primary':
-        return 'mxa-btn-primary';
-      case 'secondary':
-        return 'mxa-btn-secondary';
-      case 'tertiary':
-        return 'mxa-btn-tertiary';
-      case 'danger':
-        return 'mxa-btn-primary bg-saffron-100 border-saffron-100';
-      default:
-        return 'mxa-btn-primary';
+    let classesList = [];
+
+    if (this.args.small) {
+      classesList.push('mxa-btn-small');
+    } else {
+      classesList.push('mxa-btn');
     }
+
+    if (this.args.noFill) {
+      classesList.push('bg-white', 'border-red-600', 'text-red-600', 'active:bg-frost-20');
+    }
+
+    classesList.push(this.buttonTypeClass);
+
+    return classesList.join(' ');
   }
 
   get buttonClass() {

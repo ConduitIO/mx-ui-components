@@ -60,7 +60,7 @@ module('Integration | Component | mxa/confirm-modal', function(hooks) {
     });
 
     test('it displays the default submit button', async function(assert) {
-      assert.dom('[data-test-confirm-submit-button]').hasClass('mxa-btn-primary');
+      assert.dom('[data-test-confirm-submit-button]').hasClass('mxa-btn-danger');
     });
 
     test('the submit button is enabled by default', async function(assert) {
@@ -120,7 +120,7 @@ module('Integration | Component | mxa/confirm-modal', function(hooks) {
     });
 
     test('it displays the danger submit button', async function(assert) {
-      assert.dom('[data-test-confirm-submit-button]').hasClass('bg-saffron-100');
+      assert.dom('[data-test-confirm-submit-button]').hasClass('mxa-btn-danger');
     });
 
     test('the submit button displays the specified action title', async function(assert) {
