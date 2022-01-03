@@ -1,0 +1,15 @@
+<div class="bg-saffron-100 w-slim" data-test-notification-card-marker></div>
+<section class="pl-4 pr-8 py-4 flex flex-col gap-x-2" data-test-error>
+  <header class="flex items-center flex-start gap-x-2 mb-2" data-test-error-title>
+    <div>
+      <svg class="stroke-current h-6 w-6 text-gray-900">
+        <use xlink:href="/svg-defs.svg#alert-triangle-16"></use>
+      </svg>
+    </div>
+    {{yield to="header"}}
+  </header>
+  {{yield to="body"}}
+  <div class="mt-2 pl-8" data-test-error-controls>
+    {{yield to="controls"}}
+  </div>
+</section>

@@ -7,6 +7,7 @@ module.exports = {
     extend: {
       width: {
         container: '846px',
+        slim: '8px',
       },
     },
   },
