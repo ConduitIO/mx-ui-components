@@ -1,0 +1,28 @@
+<div data-test-sidebar-item ...attributes>
+  {{#if @route}}
+    {{#if @query}}
+      <LinkTo
+        @route={{@route}}
+        @query={{@query}}
+        class="flex flex-col items-center py-4 px-4 {{if @isDark "text-white hover:bg-slate-dark" "text-slate-100 hover:bg-white"}} text-tiny"
+        aria-label={{@label}}
+        data-test-sidebar-item-link={{@route}}
+      >
+        {{yield}}
+      </LinkTo>
+    {{else}}
+      <LinkTo
+        @route={{@route}}
+        class="flex flex-col items-center py-4 px-4 {{if @isDark "text-white hover:bg-slate-dark" "text-slate-100 hover:bg-white"}} text-tiny"
+        aria-label={{@label}}
+        data-test-sidebar-item-link={{@route}}
+      >
+        {{yield}}
+      </LinkTo>
+    {{/if}}
+  {{else}}
+    <div class="flex flex-col items-center {{if @isDark "text-white hover:bg-slate-dark" "text-slate-100 hover:bg-white"}} text-tiny">
+      {{yield}}
+    </div>
+  {{/if}}
+</div>
