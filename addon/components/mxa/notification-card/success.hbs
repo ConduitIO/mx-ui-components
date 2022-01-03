@@ -1,0 +1,14 @@
+<div class="bg-teal-600 w-slim" data-test-notification-card-marker></div>
+<section class="px-4 py-4 flex gap-x-4" data-test-success>
+  <div class="flex items-center flex-start">
+    <svg class="stroke-current h-6 w-6 text-gray-900">
+      <use xlink:href="/svg-defs.svg#check"></use>
+    </svg>
+  </div>
+  <div>
+    {{yield to="body"}}
+  </div>
+  <div class="flex items-center" data-test-success-controls>
+    {{yield to="controls"}}
+  </div>
+</section>

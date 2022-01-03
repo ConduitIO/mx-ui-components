@@ -12,6 +12,7 @@ module.exports = {
       },
       width: {
         container: '846px',
+        slim: '8px',
       },
     },
   },

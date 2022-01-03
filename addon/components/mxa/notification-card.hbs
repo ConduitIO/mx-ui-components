@@ -1,0 +1,40 @@
+<article class="bg-white border rounded border-slate-20 shadow-md w-80 flex items-stretch overflow-hidden text-sm" data-test-notification-card ...attributes>
+  {{#if this.isError}}
+    <Mxa::NotificationCard::Error>
+      <:header>
+        {{#if @error}}
+          <h3 class="normal-case text-sm">{{@error.message}}</h3>
+        {{else}}
+          <h3 class="normal-case text-sm">{{@message}}</h3>
+        {{/if}}
+      </:header>
+      <:body>
+        {{#if @error.details}}
+          <div class="pl-12" data-test-error-detail>
+            <ul class="list-disc leading-6">
+              {{#each @error.details as |detail|}}
+                <li>{{detail}}</li>
+              {{/each}}
+            </ul>
+          </div>
+        {{/if}}
+      </:body>
+      <:controls>
+        <Mxa::Button class="mxa-btn-secondary" {{on "click" @onDismiss}} data-test-error-dismiss>
+          Dismiss
+        </Mxa::Button>
+      </:controls>
+    </Mxa::NotificationCard::Error>
+  {{else}}
+    <Mxa::NotificationCard::Success>
+      <:body>
+        {{@message}}
+      </:body>
+      <:controls>
+        <Mxa::Button class="mxa-btn-secondary" {{on "click" @onDismiss}} data-test-success-dismiss>
+          Dismiss
+        </Mxa::Button>
+      </:controls>
+    </Mxa::NotificationCard::Success>
+  {{/if}}
+</article>
