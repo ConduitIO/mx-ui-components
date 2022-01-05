@@ -3,7 +3,7 @@
     <Mxa::Label for={{@id}} @isRequired={{@isRequired}}>{{@label}}</Mxa::Label>
   {{/if}}
   <div
-    class='flex items-center w-full rounded border border-frost-100 focus-within:outline-none focus-within:ring-plum-100 focus-within:border-plum-100'
+    class='flex items-center w-full rounded border border-gray-300 focus-within:outline-none focus-within:ring-plum-100 focus-within:border-plum-100'
     aria-expanded={{this.isShowingMatches}}
     aria-owns={{@id}}
     aria-haspopup='listbox'
@@ -12,7 +12,7 @@
       type='text'
       @id={{@id}}
       @value={{this.inputValue}}
-      class='rounded pl-2 pr-4 py-2 text-xs focus:outline-none w-full placeholder-slate-100'
+      class='rounded pl-2 pr-4 py-2 text-xs focus:outline-none w-full placeholder-slate-100 border-gray-300 disabled:bg-gray-100'
       placeholder={{@placeholder}}
       data-test-typeahead-select-input
       disabled={{@isDisabled}}

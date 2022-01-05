@@ -11,6 +11,8 @@ const Template = (args) => ({
     @label={{this.label}}
     @id={{this.id}}
     @isRequired={{this.isRequired}}
+    disabled={{this.isDisabled}}
+    @value="Fair Weather"
   />`,
   context: args,
 });
@@ -25,6 +27,13 @@ export const InvalidUnbound = Template.bind({});
 InvalidUnbound.args = {
   inputAction: () => {},
   isValid: false,
+};
+
+export const DisabledUnbound = Template.bind({});
+DisabledUnbound.args = {
+  inputAction: () => {},
+  isValid: true,
+  isDisabled: true,
 };
 
 export const LabeledUnbound = Template.bind({});

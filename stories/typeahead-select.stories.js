@@ -84,3 +84,16 @@ ExternalLabel.args = {
   wrapperClass: null,
   id: 'fruit-basket',
 };
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  connectorTypes: options,
+  selectedConnectorType: options[0],
+  isEditing: false,
+  setConnectorType: action(function (value) {
+    this.set('selectedConnectorType', value);
+  }),
+  label: 'Fruit',
+  id: 'fruit-basket',
+  isEditing: true,
+};
