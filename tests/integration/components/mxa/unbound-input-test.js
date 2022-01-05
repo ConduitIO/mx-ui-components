@@ -26,4 +26,12 @@ module('Integration | Component | mxa/unbound-input', function(hooks) {
     assert.dom('[data-test-label]').hasAttribute('for', 'address-field');
     assert.dom('[data-test-unbound-input]').hasAttribute('id', 'address-field');
   });
+
+  test('it allows disabling the input', async function(assert) {
+    this.set('onInput', () => {});
+
+    await render(hbs`<Mxa::UnboundInput @onInput={{this.onInput}} disabled />`);
+
+    assert.dom('[data-test-unbound-input]').isDisabled();
+  });
 });
