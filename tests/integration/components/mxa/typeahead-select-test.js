@@ -77,6 +77,21 @@ module('Integration | Component | mxa/typeahead-select', function (hooks) {
     assert.ok(true, 'no a11y detected');
   });
 
+  test('it is accessible (disabled)', async function (assert) {
+    await render(hbs`
+    <label for="my-random-id">My external label</label>
+    <Mxa::TypeaheadSelect
+      @id="my-random-id"
+      @options={{this.options}}
+      @selectedOption={{this.selectedOption}}
+      @onChange={{this.onChange}}
+      @isDisabled={{true}}
+    />`);
+
+    await a11yAudit();
+    assert.ok(true, 'no a11y detected');
+  });
+
   test('it hides the option list when not focused', async function (assert) {
     await render(hbs`
     <Mxa::TypeaheadSelect
