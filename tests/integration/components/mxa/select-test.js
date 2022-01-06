@@ -48,7 +48,7 @@ module('Integration | Component | mxa/select', function(hooks) {
 
     await click('[data-test-select-button]');
 
-    assert.dom('[data-test-select-button]').hasClass('bg-frost-100');
+    assert.dom('[data-test-select-button]').hasClass('bg-gray-100');
     assert.ok(this.onChange.notCalled);
   });
 

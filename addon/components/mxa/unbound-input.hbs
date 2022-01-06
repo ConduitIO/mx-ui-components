@@ -4,7 +4,7 @@
 <input
   id={{@id}}
   type="text"
-  class="mxa-input w-full text-sm disabled:bg-gray-100 {{if @isValid 'bg-white border-gray-300' 'bg-saffron-5 focus:bg-saffron-5 border-saffron-100 focus:border-saffron-100'}}"
+  class="mxa-input w-full text-sm disabled:bg-gray-100 disabled:border-gray-100 disabled:text-gray-500 {{if @isValid 'bg-white border-gray-300' 'bg-saffron-5 focus:bg-saffron-5 border-saffron-100 focus:border-saffron-100'}}"
   value={{@value}}
   placeholder={{@placeholder}}
   {{on 'input' @onInput}}
