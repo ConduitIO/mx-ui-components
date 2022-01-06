@@ -1,10 +1,12 @@
-<div data-test-sidebar-item ...attributes>
+<div class="mxa-sidebar-item relative" data-test-sidebar-item ...attributes>
   {{#if @route}}
     {{#if @query}}
       <LinkTo
         @route={{@route}}
         @query={{@query}}
-        class="flex flex-col items-center py-4 px-4 {{if @isDark "text-white hover:bg-slate-dark" "text-slate-100 hover:bg-white"}} text-tiny"
+        class="flex flex-col items-center justify-center py-4 px-4 hover:text-gray-900
+          {{if @isDark "text-white hover:bg-gray-300" "text-gray-500"}} text-tiny w-sidebar
+          {{if @isHome "is-home"}}"
         aria-label={{@label}}
         data-test-sidebar-item-link={{@route}}
       >
@@ -13,7 +15,9 @@
     {{else}}
       <LinkTo
         @route={{@route}}
-        class="flex flex-col items-center py-4 px-4 {{if @isDark "text-white hover:bg-slate-dark" "text-slate-100 hover:bg-white"}} text-tiny"
+        class="flex flex-col items-center justify-center py-4 px-4 hover:text-gray-900
+          {{if @isDark "text-white hover:bg-gray-300" "text-gray-500"}} text-tiny w-sidebar
+          {{if @isHome "is-home"}}"
         aria-label={{@label}}
         data-test-sidebar-item-link={{@route}}
       >
@@ -21,7 +25,9 @@
       </LinkTo>
     {{/if}}
   {{else}}
-    <div class="flex flex-col items-center {{if @isDark "text-white hover:bg-slate-dark" "text-slate-100 hover:bg-white"}} text-tiny">
+    <div class="flex flex-col items-center justify-center hover:text-gray-900
+      {{if @isDark "text-white hover:bg-gray-300" "text-gray-500"}} text-tiny w-sidebar
+      {{if @isActive "active text-gray-900"}}">
       {{yield}}
     </div>
   {{/if}}
