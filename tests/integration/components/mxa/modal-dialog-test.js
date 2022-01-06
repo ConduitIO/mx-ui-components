@@ -82,6 +82,26 @@ module('Integration | Component | mxa/modal-dialog', function(hooks) {
     assert.dom('[data-test-modal-dialog-close]').isFocused();
   });
 
+  test('it renders a short version (default)', async function(assert) {
+    await render(hbs`
+      <Mxa::ModalDialog @onDismiss={{this.dummyAction}} @title={{this.title}}>
+        template block text
+      </Mxa::ModalDialog>
+    `);
+
+    assert.dom('[data-test-modal-dialog]').hasClass('sm:w-box');
+  });
+
+  test('it renders a wide version', async function(assert) {
+    await render(hbs`
+      <Mxa::ModalDialog @onDismiss={{this.dummyAction}} @title={{this.title}} @isWide={{true}}>
+        template block text
+      </Mxa::ModalDialog>
+    `);
+
+    assert.dom('[data-test-modal-dialog]').hasClass('sm:w-container');
+  });
+
   test('it is accessible', async function(assert) {
     await render(hbs`
       <Mxa::ModalDialog @onDismiss={{this.dummyAction}} @title={{this.title}}>
