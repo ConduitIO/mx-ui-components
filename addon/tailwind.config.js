@@ -12,14 +12,16 @@ module.exports = {
       },
       width: {
         container: '846px',
+        box: '500px',
         slim: '8px',
+        sidebar: '60px',
       },
     },
   },
   variants: {
     extend: {
       margin: ['last'],
-      backgroundColor: ['disabled', 'checked', 'active'],
+      backgroundColor: ['disabled', 'checked', 'active', 'hover'],
       borderColor: ['disabled', 'focus-within'],
       textColor: ['disabled'],
       cursor: ['disabled'],

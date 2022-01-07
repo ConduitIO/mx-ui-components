@@ -4,6 +4,8 @@ import { render, fillIn } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import sinon from 'sinon';
 
+import { a11yAudit } from 'ember-a11y-testing/test-support';
+
 module('Integration | Component | mxa/unbound-input', function(hooks) {
   setupRenderingTest(hooks);
 
@@ -33,5 +35,13 @@ module('Integration | Component | mxa/unbound-input', function(hooks) {
     await render(hbs`<Mxa::UnboundInput @onInput={{this.onInput}} disabled />`);
 
     assert.dom('[data-test-unbound-input]').isDisabled();
+  });
+
+  test('the disabled input state is accessible', async function(assert) {
+    this.set('onInput', () => {});
+
+    await render(hbs`<Mxa::UnboundInput @onInput={{this.onInput}} @label="Address" @id="address-field" disabled />`);
+    await a11yAudit();
+    assert.ok(true, 'no accessibility errors');
   });
 });

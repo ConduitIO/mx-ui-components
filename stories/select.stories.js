@@ -23,7 +23,7 @@ const Template = (args) => ({
       @options={{this.connectorTypes}}
       @selectedOption={{this.selectedConnectorType}}
       @onChange={{this.setConnectorType}}
-      @isDisabled={{this.isEditing}}
+      @isDisabled={{this.isDisabled}}
     />
   </div>
 `,
@@ -50,4 +50,16 @@ Short.args = {
     this.set('selectedConnectorType', value);
   }),
   wrapperClass: 'w-20',
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  connectorTypes: connectorTypes,
+  selectedConnectorType: connectorTypes[0],
+  isEditing: false,
+  setConnectorType: action(function (value) {
+    this.set('selectedConnectorType', value);
+  }),
+  wrapperClass: null,
+  isDisabled: true,
 };

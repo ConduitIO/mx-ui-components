@@ -12,9 +12,8 @@ const actionsData = {
 
 const Template = (args) => ({
   template: hbs`
-  <Mxa::ModalDialog @onDismiss={{this.hideModal}}>
-    <h1>You got 2 new messages</h1>
-    <p>Check them out in your team inbox!</p>
+  <Mxa::ModalDialog @onDismiss={{this.hideModal}} @title={{this.title}} @isWide={{this.isWide}}>
+    <p class="text-sm">Check them out in your team inbox!</p>
     <div class="mt-6">
       <Mxa::Button @buttonType="secondary" {{on "click" this.hideModal}}>Cancel</Mxa::Button>
       <Mxa::Button @buttonType="primary" {{on "click" this.submit}}>Go to my inbox</Mxa::Button>
@@ -25,5 +24,13 @@ const Template = (args) => ({
 
 export const Default = Template.bind({});
 Default.args = {
+  title: 'You got 2 new messages',
+  ...actionsData,
+};
+
+export const Wide = Template.bind({});
+Wide.args = {
+  title: 'You got 2 new messages',
+  isWide: true,
   ...actionsData,
 };
