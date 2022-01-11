@@ -3,7 +3,7 @@ import { dropTask } from 'ember-concurrency';
 import { htmlSafe } from '@ember/template';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
-import { waitFor } from 'ember-test-waiters';
+import { waitFor } from '@ember/test-waiters';
 
 export default class MxaAsyncButtonComponent extends Component {
   @tracked initialWidth;
