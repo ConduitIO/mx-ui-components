@@ -30,6 +30,36 @@ const Template = (args) => ({
   context: args,
 });
 
+const CustomOptionsTemplate = (args) => ({
+  template: hbs`
+  <div class={{this.wrapperClass}}>
+    <Mxa::Select
+      @label='Type'
+      @options={{this.connectorTypes}}
+      @selectedOption={{this.selectedConnectorType}}
+      @onChange={{this.setConnectorType}}
+      @isDisabled={{this.isDisabled}}
+    />
+  </div>
+`,
+  context: args,
+});
+
+const DisabledOptionsTemplate = (args) => ({
+  template: hbs`
+  <div class={{this.wrapperClass}}>
+    <Mxa::Select
+      @label='Type'
+      @options={{this.connectorTypes}}
+      @selectedOption={{this.selectedConnectorType}}
+      @onChange={{this.setConnectorType}}
+      @isDisabled={{this.isDisabled}}
+    />
+  </div>
+`,
+  context: args,
+});
+
 export const Default = Template.bind({});
 Default.args = {
   connectorTypes: connectorTypes,
