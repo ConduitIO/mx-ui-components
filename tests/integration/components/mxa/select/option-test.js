@@ -52,6 +52,21 @@ module('Integration | Component | mxa/select/option', function(hooks) {
     assert.ok(this.setSelectedOption.calledOnce);
   });
 
+  test('it does not call the set selected option action when clicked but disabled', async function(assert) {
+    await render(hbs`<Mxa::Select::Option
+      @option={{this.option}}
+      @selectedOption={{this.option}}
+      @setSelectedOption={{this.setSelectedOption}}
+      @optionNameKey='name'
+      @optionValueKey='value'
+      @isDisabled={{true}}
+    />`);
+
+    await click('[data-test-select-option-button]');
+
+    assert.ok(this.setSelectedOption.notCalled);
+  });
+
   test('it is accessible', async function(assert) {
     await render(hbs`
       <label id="label-id">Option List</label>
