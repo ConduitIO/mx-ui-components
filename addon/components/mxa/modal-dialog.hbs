@@ -1,29 +1,42 @@
 <Mxa::Modal @onDismiss={{@onDismiss}} data-test-modal>
   <Mxa::DialogCard
-    class="inline-block align-bottom bg-white border border-slate-20 text-left overflow-visible transform transition-all w-container sm:my-8 sm:align-middle sm:max-w-3xl {{if @isWide "sm:w-container" "sm:w-box"}}"
+    class="inline-block align-bottom bg-white border border-slate-20 text-left overflow-visible transform transition-all w-container sm:my-8 sm:align-middle sm:max-w-3xl
+      {{if @isWide "sm:w-container" "sm:w-box"}}"
     role="dialog"
     aria-modal="true"
     aria-labelledby={{this.titleId}}
     aria-describedby={{this.contentId}}
     {{did-insert this.onDidInsert}}
     data-test-modal-dialog
-    ...attributes>
-    <button type="button"
+    ...attributes
+  >
+    <button
+      type="button"
       aria-label="Close dialog"
       class="absolute right-4 top-4 flex pl-0.5 pt-0.5 items-center justify-center"
       {{on "click" @onDismiss}}
-      {{focus-on-render}} data-test-modal-dialog-close>
+      {{focus-on-render}}
+      data-test-modal-dialog-close
+    >
       <svg class="fill-current h-3 w-3">
-        <use xlink:href="/svg-defs.svg#close-16"></use>
+        <use xlink:href={{root-url "/svg-defs.svg#close-16"}}></use>
       </svg>
     </button>
     {{#if @forConfirmation}}
       <div class="font-medium border-b border-frost-60">
-        <h1 id={{this.titleId}} class="text-gray-900 font-semibold text-2xl mb-8" data-test-confirm-header>{{@title}}</h1>
+        <h1
+          id={{this.titleId}}
+          class="text-gray-900 font-semibold text-2xl mb-8"
+          data-test-confirm-header
+        >{{@title}}</h1>
       </div>
     {{else}}
       {{#if @title}}
-        <h2 id={{this.titleId}} class="text-gray-900 font-semibold text-2xl mb-8" data-test-modal-dialog-title>{{@title}}</h2>
+        <h2
+          id={{this.titleId}}
+          class="text-gray-900 font-semibold text-2xl mb-8"
+          data-test-modal-dialog-title
+        >{{@title}}</h2>
       {{/if}}
     {{/if}}
     <section id={{this.contentId}} data-test-modal-dialog-content>
