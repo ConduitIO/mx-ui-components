@@ -1,3 +1,7 @@
-<svg class="{{unless @noFill "fill-current"}} {{unless @noStroke "stroke-current"}} {{this.sizeClass}}" data-test-icon={{@iconName}} ...attributes>
-  <use xlink:href={{concat "/svg-defs.svg#" @iconName}}></use>
+<svg
+  class="{{unless @noFill "fill-current"}} {{unless @noStroke "stroke-current"}} {{this.sizeClass}}"
+  data-test-icon={{@iconName}}
+  ...attributes
+>
+  <use xlink:href={{root-url (concat "/svg-defs.svg#" @iconName)}}></use>
 </svg>
