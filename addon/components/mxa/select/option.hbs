@@ -1,22 +1,27 @@
 <li
   id="listbox-item-0"
   role="option"
-  class="text-gray-900 cursor-default select-none relative hover:bg-slate-5"
+  class="cursor-default select-none relative hover:bg-slate-5 {{if @isDisabled "bg-gray-100 text-gray-500" "text-gray-900"}}"
   data-test-select-option
 >
   <div
-    class="flex items-center cursor-pointer py-2 pl-3 pr-9"
+    class="flex items-center cursor-pointer py-2 pl-4 pr-9 mr-2"
     data-test-select-option-button={{this.optionName}}
-    {{on 'click' (fn @setSelectedOption @option)}}
+    {{on 'click' (fn this.setOption @option)}}
   >
-    <!-- Selected: "font-semibold", Not Selected: "font-normal" -->
-    {{#if (has-block)}}
-      {{yield}}
+    {{#if this.optionCategory}}
+      <Mxa::Select::Option::Category @name={{this.optionName}} @category={{this.optionCategory}} />
+    {{else}}
+      {{#if (has-block)}}
+        <div class="mr-3">{{yield}}</div>
+      {{/if}}
+      <!-- Selected: "font-semibold", Not Selected: "font-normal" -->
+      <span class="block font-normal truncate">
+        {{this.optionName}}
+      </span>
     {{/if}}
-    <span class="ml-1 block font-normal truncate">
-      {{this.optionName}}
-    </span>
   </div>
+
   {{#if (eq this.optionValue this.selectedOptionValue)}}
     <!--
       Checkmark, only display for selected option.
