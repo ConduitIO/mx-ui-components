@@ -1,0 +1,23 @@
+{{#unless @isDisabled}}
+  {{#if @route}}
+    <td class="p-4 border-gray-200 text-gray-900" data-test-mxa-overview-list-item ...attributes>
+      <div class="flex items-center space-x-2">
+        <div data-test-mxa-overview-list-item-link>
+          <LinkTo
+            class="font-medium text-sm"
+            @route={{@route}}
+            @model={{@model}}
+          >
+            {{yield}}
+          </LinkTo>
+        </div>
+      </div>
+    </td>
+  {{else}}
+    <td class="p-4 border-gray-200" data-test-mxa-overview-list-item ...attributes>
+      <div class="font-medium {{if @isItalic "text-xs italic" "text-sm text-gray-900"}}" data-test-mxa-overview-list-item-content>
+        {{yield}}
+      </div>
+    </td>
+  {{/if}}
+{{/unless}}
