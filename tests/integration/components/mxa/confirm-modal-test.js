@@ -27,7 +27,7 @@ module('Integration | Component | mxa/confirm-modal', function(hooks) {
     `);
   });
 
-  module('when confirming', async function(hooks) {
+  module('when confirming', function(hooks) {
     hooks.beforeEach(async function() {
       this.set('isTextInputRequired', false);
     });
