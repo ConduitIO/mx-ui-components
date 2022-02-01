@@ -143,7 +143,7 @@ module('Integration | Component | mxa/async-button', function (hooks) {
     });
   });
 
-  module('async test waiting', async function () {
+  module('async test waiting', function (hooks) {
     hooks.beforeEach(async function () {
       const fakeTimeout = () => {
         // Add some lag time
