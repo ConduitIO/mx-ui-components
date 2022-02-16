@@ -5,6 +5,7 @@ module.exports = {
     './index.html',
     './addon/components/**/*.hbs',
     './addon/components/**/*.js',
+    './stories/**/*.js',
   ],
   safelist: [
     {
