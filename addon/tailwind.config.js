@@ -1,8 +1,16 @@
 /*global module require*/
 
 module.exports = {
-  purge: [],
-  darkMode: false, // or 'media' or 'class'
+  content: [
+    './index.html',
+    './addon/components/**/*.hbs',
+    './addon/components/**/*.js',
+  ],
+  safelist: [
+    {
+      pattern: /mxa-btn\S*/,
+    },
+  ],
   theme: {
     extend: {
       fontSize: {
@@ -16,16 +24,6 @@ module.exports = {
         slim: '8px',
         sidebar: '60px',
       },
-    },
-  },
-  variants: {
-    extend: {
-      margin: ['last'],
-      backgroundColor: ['disabled', 'checked', 'active', 'hover'],
-      borderColor: ['disabled', 'focus-within'],
-      textColor: ['disabled'],
-      cursor: ['disabled'],
-      translate: ['checked'],
     },
   },
   plugins: [require('@meroxa/ui-base')],

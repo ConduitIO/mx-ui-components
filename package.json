@@ -44,10 +44,9 @@
     "@ember/render-modifiers": "^2.0.3",
     "@ember/test-helpers": "^2.5.0",
     "@embroider/test-setup": "^0.47.1",
-    "@fullhuman/postcss-purgecss": "^4.0.2",
     "@glimmer/component": "^1.0.4",
     "@glimmer/tracking": "^1.0.4",
-    "@meroxa/ui-base": "https://github.com/meroxa/ui-base.git",
+    "@meroxa/ui-base": "https://github.com/meroxa/ui-base.git#v2.0.0",
     "@storybook/addon-a11y": "^6.1.20",
     "@storybook/addon-actions": "^6.1.20",
     "@storybook/addon-essentials": "^6.1.20",
@@ -56,6 +55,7 @@
     "@storybook/addon-postcss": "^2.0.0",
     "@storybook/ember": "^6.1.20",
     "@storybook/ember-cli-storybook": "^0.3.0",
+    "autoprefixer": "^10.4.2",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "babel-plugin-ember-modules-api-polyfill": "^2.12.0",
@@ -94,16 +94,15 @@
     "eslint-plugin-qunit": "^6.1.1",
     "loader.js": "^4.7.0",
     "npm-run-all": "^4.1.5",
-    "postcss": "^8.3.6",
-    "postcss-import": "^14.0.0",
+    "postcss-import": "^14.0.2",
     "prettier": "^2.3.0",
     "qunit": "^2.15.0",
     "qunit-dom": "^1.6.0",
     "sinon": "^9.2.4",
-    "tailwindcss": "^2.0.3"
+    "tailwindcss": "^3.0.22"
   },
   "engines": {
-    "node": "10.* || >= 12"
+    "node": "12.* || 14.* || >= 16"
   },
   "ember": {
     "edition": "octane"
