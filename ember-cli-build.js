@@ -2,20 +2,13 @@
 const { maybeEmbroider } = require('@embroider/test-setup');
 const EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
 
-const isProduction = EmberAddon.env() === 'production';
-
-const purgeCSS = {
-  module: require('@fullhuman/postcss-purgecss'),
-  options: {
-    content: ['./addon/templates/**/*.hbs', './addon/components/**/*.hbs'],
-    defaultExtractor: (content) => content.match(/[A-Za-z0-9-_:/]+/g) || [],
-  },
-};
+const autoprefixer = require('autoprefixer');
 
 module.exports = function (defaults) {
   let app = new EmberAddon(defaults, {
     postcssOptions: {
       compile: {
+        cacheInclude: [/.*\.(css|scss|hbs)$/, /.tailwind\.config\.js$/],
         plugins: [
           {
             module: require('postcss-import'),
@@ -24,7 +17,7 @@ module.exports = function (defaults) {
             },
           },
           require('tailwindcss')('./addon/tailwind.config.js'),
-          ...(isProduction ? [purgeCSS] : []),
+          autoprefixer,
         ],
       },
     },
