@@ -13,7 +13,7 @@ export const Badges = () => hbs`
 
 <h3 class='text-base font-semibold'>Badge Examples</h3>
 	<div class="space-x-2">
-		<Mxa::Badge @color="bg-saffron-100">Error</Mxa::Badge> <Mxa::Badge @color="bg-teal-600">Healthy</Mxa::Badge> <Mxa::Badge @color="bg-slate-100">Pending</Mxa::Badge> <Mxa::Badge @color="bg-slate-20">Paused</Mxa::Badge>
+		<Mxa::Badge @color="bg-orange-700">Error</Mxa::Badge> <Mxa::Badge @color="bg-teal-600">Healthy</Mxa::Badge> <Mxa::Badge @color="bg-slate-100">Pending</Mxa::Badge> <Mxa::Badge @color="bg-slate-20">Paused</Mxa::Badge>
 	</div>
 </div>
 `;

@@ -20,9 +20,9 @@ module('Integration | Component | mxa/badge', function(hooks) {
 
   test('it can have a different color', async function(assert) {
     await render(
-      hbs`<Mxa::Badge @color='bg-saffron-100'>Badge text</Mxa::Badge>`
+      hbs`<Mxa::Badge @color='bg-orange-700'>Badge text</Mxa::Badge>`
     );
 
-    assert.dom('[data-test-badge]').hasClass('bg-saffron-100');
+    assert.dom('[data-test-badge]').hasClass('bg-orange-700');
   });
 });
