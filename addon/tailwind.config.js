@@ -9,7 +9,8 @@ module.exports = {
   ],
   safelist: [
     {
-      pattern: /mxa-btn\S*/,
+      pattern: /(mxa-btn\S*|\S*cyan\S*|\S*red\S*)/,
+      variants: ['active', 'disabled'],
     },
   ],
   theme: {
