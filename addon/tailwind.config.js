@@ -27,5 +27,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require('@meroxa/ui-base')],
+  plugins: [require('@tailwindcss/forms'), require('@meroxa/ui-base')],
 };
