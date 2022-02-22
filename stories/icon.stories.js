@@ -1,6 +1,6 @@
 import { hbs } from 'ember-cli-htmlbars';
 
-let colorOptions = ['text-white', 'text-slate-100', 'text-saffron-100', 'text-sky-100'];
+let colorOptions = ['text-white', 'text-slate-100', 'text-orange-700', 'text-cyan-500'];
 
 export default {
   title: 'Mxa::Icon',

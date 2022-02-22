@@ -43,7 +43,7 @@ module('Integration | Component | mxa/notification-card/error', function(hooks) 
       </:body>
     </Mxa::NotificationCard::Error>`);
 
-    assert.dom('[data-test-notification-card-marker]').hasClass('bg-saffron-100');
+    assert.dom('[data-test-notification-card-marker]').hasClass('bg-orange-700');
   });
 
   test('it is accessible', async function(assert) {

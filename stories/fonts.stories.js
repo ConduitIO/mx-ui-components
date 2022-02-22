@@ -20,14 +20,14 @@ const Template = (args) => ({
     {{#each this.allOptions as |size|}}
       {{#unless (eq size "all")}}
       <div class="mt-8">
-        <p class="text-sm text-right text-plum-100">{{concat ".text-" size}}</p>
+        <p class="text-sm text-right text-purple-600">{{concat ".text-" size}}</p>
         <p class={{concat "text-" size}}>Build enterprise grade data pipelines in minutes not months</p>
       </div>
       {{/unless}}
     {{/each}}
   {{else}}
     <div class="mt-8">
-      <p class="text-sm text-right text-plum-100">{{concat ".text-" this.size}}</p>
+      <p class="text-sm text-right text-purple-600">{{concat ".text-" this.size}}</p>
       <p class={{concat "text-" this.size}}>Build enterprise grade data pipelines in minutes not months</p>
     </div>
   {{/if}}
