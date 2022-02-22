@@ -15,7 +15,7 @@ export default class MxaButtonComponent extends Component {
     }
 
     if (this.args.noFill) {
-      classesList.push('bg-white', 'border-red-600', 'text-red-600', 'active:bg-frost-20');
+      classesList.push('bg-white', 'border-red-600', 'text-red-600', 'active:bg-gray-50');
     }
 
     classesList.push(this.buttonTypeClass);
