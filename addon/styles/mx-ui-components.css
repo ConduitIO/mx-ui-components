@@ -19,23 +19,31 @@
   transform: translateX(20px);
 }
 
-.mxa-label {
+.mxa-label,
+.mox-label {
   display: flex;
   margin-bottom: 0.15rem;
   align-items: center;
   font-weight: 500;
-  color: #333741;
 }
 
-.mxa-label.required:after {
+.mxa-label.required:after,
+.mox-label.required:after {
   content: "";
   display: block;
   width: 4px;
   height: 4px;
-  background-color: #DE583E;
   position: relative;
   border-radius: 4px;
   margin-left: 0.2rem;
+}
+
+.mxa-label.required:after {
+  background-color: #C2410C; /* orange-700 */
+}
+
+.mox-label.required:after {
+  background-color: #EF4444; /* red-500 */
 }
 
 .mxa-sidebar-item a.active {
