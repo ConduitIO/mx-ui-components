@@ -1,0 +1,29 @@
+{{#unless @isDisabled}}
+  {{#if @isHeader}}
+    <th class="text-xs uppercase font-medium py-3 px-4 text-gray-300" data-test-mox-list-header-item ...attributes>
+      {{yield}}
+    </th>
+  {{else}}
+    {{#if @route}}
+      <td class="p-4 text-cyan-500" data-test-mox-list-item ...attributes>
+        <div class="flex items-center space-x-2">
+          <div data-test-mox-list-link>
+            <LinkTo
+              class="font-medium text-sm"
+              @route={{@route}}
+              @model={{@model}}
+            >
+              {{yield}}
+            </LinkTo>
+          </div>
+        </div>
+      </td>
+    {{else}}
+      <td class="p-4 text-white" data-test-mox-list-item ...attributes>
+        <div class="font-medium text-sm" data-test-mox-list-item-content>
+          {{yield}}
+        </div>
+      </td>
+    {{/if}}
+  {{/if}}
+{{/unless}}
