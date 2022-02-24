@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 
 export default {
-  title: 'Mox::Badge',
+  title: 'Mox/Mox::Badge',
   parameters: {
     backgrounds: {
       default: 'Dark',

@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 
 export default {
-  title: 'Mxa::DialogCard',
+  title: 'Mxa/Mxa::DialogCard',
 };
 
 const TemplateSimple = (args) => ({

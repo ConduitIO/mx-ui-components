@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 
 export default {
-  title: 'Mxa::Card',
+  title: 'Mxa/Mxa::Card',
 };
 
 const Template = (args) => ({

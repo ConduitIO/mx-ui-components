@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 
 export default {
-  title: 'Mxa::Node',
+  title: 'Mxa/Mxa::Node',
   argTypes: {
     name: { control: 'text' },
   },

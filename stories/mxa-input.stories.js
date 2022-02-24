@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 
 export default {
-  title: 'Mxa::Input',
+  title: 'Mxa/Mxa::Input',
 };
 
 export const Default = () => hbs`<Mxa::Input class="mb-2" disabled={{false}} @value="Sun" />`;

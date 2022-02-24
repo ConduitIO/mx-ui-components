@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 
 export default {
-  title: 'Mxa::Toggle',
+  title: 'Mxa/Mxa::Toggle',
 };
 
 const Template = (args) => ({
