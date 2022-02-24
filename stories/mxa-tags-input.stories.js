@@ -3,7 +3,7 @@ import { action } from '@ember/object';
 import { Promise } from 'rsvp';
 
 export default {
-  title: 'Mxa::TagsInput',
+  title: 'Mxa/Mxa::TagsInput',
 };
 
 const Template = (args) => ({

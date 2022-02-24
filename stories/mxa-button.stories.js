@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 
 export default {
-  title: 'Mxa::Button',
+  title: 'Mxa/Mxa::Button',
   argTypes: {
     children: { control: 'text' },
     buttonType: { control: 'text' },

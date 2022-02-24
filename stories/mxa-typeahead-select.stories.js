@@ -8,7 +8,7 @@ const options = [
 ];
 
 export default {
-  title: 'Mxa::TypeaheadSelect',
+  title: 'Mxa/Mxa::TypeaheadSelect',
   argTypes: {
     options: { control: 'text' },
     buttonType: { control: 'text' },

@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 
 export default {
-  title: 'Mxa::UnboundInput',
+  title: 'Mxa/Mxa::UnboundInput',
 };
 
 const Template = (args) => ({

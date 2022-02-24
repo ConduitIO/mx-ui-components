@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 
 export default {
-  title: 'Mxa::SearchInput',
+  title: 'Mxa/Mxa::SearchInput',
 };
 
 const Template = (args) => ({

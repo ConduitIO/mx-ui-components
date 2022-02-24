@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 
 export default {
-  title: 'Mox::TextArea',
+  title: 'Mox/Mox::TextArea',
   parameters: {
     backgrounds: {
       default: 'Dark',

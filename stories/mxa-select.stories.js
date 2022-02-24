@@ -25,7 +25,7 @@ const resourceTypes = [
 ];
 
 export default {
-  title: 'Mxa::Select',
+  title: 'Mxa/Mxa::Select',
   argTypes: {
     options: { control: 'text' },
     buttonType: { control: 'text' },

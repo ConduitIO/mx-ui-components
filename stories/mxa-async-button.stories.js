@@ -3,7 +3,7 @@ import { action } from '@ember/object';
 import { Promise } from 'rsvp';
 
 export default {
-  title: 'Mxa::AsyncButton',
+  title: 'Mxa/Mxa::AsyncButton',
   argTypes: {
     children: { control: 'text' },
     buttonType: { control: 'text' },

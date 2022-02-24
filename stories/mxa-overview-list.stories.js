@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 
 export default {
-  title: 'Mxa::OverviewList',
+  title: 'Mxa/Mxa::OverviewList',
 };
 
 const Template = (args) => ({

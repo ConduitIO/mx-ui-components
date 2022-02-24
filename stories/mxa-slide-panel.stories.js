@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 
 export default {
-  title: 'Mxa::SlidePanel',
+  title: 'Mxa/Mxa::SlidePanel',
 };
 
 export const Default = () =>

@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 
 export default {
-  title: 'Mxa::Badge',
+  title: 'Mxa/Mxa::Badge',
 };
 
 export const Badges = () => hbs`

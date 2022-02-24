@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 
 export default {
-  title: 'Mxa::SideBar',
+  title: 'Mxa/Mxa::SideBar',
 };
 
 const Template = (args) => ({

@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 
 export default {
-  title: 'Mxa::NotificationCard',
+  title: 'Mxa/Mxa::NotificationCard',
 };
 
 const TemplateDefault= (args) => ({
