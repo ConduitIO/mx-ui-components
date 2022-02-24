@@ -1,24 +1,22 @@
 import { hbs } from 'ember-cli-htmlbars';
 
 export default {
-  title: 'Mox::Input',
+  title: 'Mox::TextArea',
   parameters: {
     backgrounds: {
       default: 'Dark',
     },
   },
-  inputAction: () => {},
 };
 
 const Template = (args) => ({
-  template: hbs`
-  <Mox::Input class="mb-2" @value={{this.value}} @onInput={{this.inputAction}} @placeholder={{this.placeholder}} @label={{this.label}} disabled={{this.isDisabled}} @isRequired={{this.isRequired}} />`,
+  template: hbs`<Mox::TextArea class="mb-2" @value={{this.value}} @onInput={{this.inputAction}} @placeholder={{this.placeholder}} @label={{this.label}} disabled={{this.isDisabled}} @isRequired={{this.isRequired}} />`,
   context: args,
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  value: 'Sun',
+  value: 'Moon',
   placeholder: 'Name',
   label: 'Name',
   inputAction: () => {},
@@ -26,7 +24,7 @@ Default.args = {
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  value: 'Rain',
+  value: 'Sun',
   isDisabled: true,
   label: 'Name',
   inputAction: () => {},
@@ -35,7 +33,7 @@ Disabled.args = {
 export const Placeholder = Template.bind({});
 Placeholder.args = {
   value: '',
-  placeholder: 'Your Name',
+  placeholder: 'Name',
   label: 'Name',
   inputAction: () => {},
 };
