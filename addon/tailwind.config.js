@@ -10,7 +10,7 @@ module.exports = {
   safelist: [
     {
       pattern: /(mxa-btn\S*|\S*cyan\S*|\S*red\S*)/,
-      variants: ['active', 'disabled', 'checked'],
+      variants: ['active', 'disabled', 'checked', 'hover'],
     },
   ],
   theme: {
