@@ -1,18 +1,18 @@
-<div class="mxa-toggle" ...attributes>
+<div class="mox-toggle" ...attributes>
   <div class="flex items-center space-x-2">
     <input
       id={{this.fieldId}}
       type="checkbox"
-      class="transform appearance-none w-11 h-6 outline-none
+      class="transform appearance-none outline-none
       flex items-center rounded-full border p-1 cursor-pointer
-      bg-gray-300 border-gray-300
-      checked:bg-forest-100 checked:border-forest-100 checked:text-forest-100"
+      bg-gray-400 border-gray-400
+      checked:bg-cyan-500 checked:border-cyan-500 checked:text-cyan-500"
       checked={{this.isChecked}}
       {{on 'change' this.toggleAction}}
-      data-test-toggle
+      data-test-mox-toggle
     />
     {{#if @label}}
-      <label class="text-sm w-20" for={{this.fieldId}} data-test-toggle-label>
+      <label class="text-sm w-20 text-gray-300" for={{this.fieldId}} data-test-mox-toggle-label>
         {{@label}}
       </label>
     {{/if}}

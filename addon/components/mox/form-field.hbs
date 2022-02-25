@@ -1,0 +1,17 @@
+<section class="border border-gray-400 rounded flex items-center justify-between p-4 gap-x-4 flex-1" data-test-mox-form-field ...attributes>
+  <div>
+    {{yield to="icon"}}
+  </div>
+  <div>
+    <label class="text-sm font-medium text-white" for={{@id}}>
+      {{yield to="title"}}
+    </label>
+    <div class="text-xs text-gray-400">
+      {{yield to="description"}}
+    </div>
+  </div>
+  <div class="flex-auto"></div>
+  <div>
+    {{yield to="controls"}}
+  </div>
+</section>
