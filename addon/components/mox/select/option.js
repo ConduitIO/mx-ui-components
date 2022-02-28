@@ -1,7 +1,7 @@
 import Component from '@glimmer/component';
 import { action, get } from '@ember/object';
 
-export default class MxaSelectOptionComponent extends Component {
+export default class MoxSelectOptionComponent extends Component {
   get optionName() {
     const optionNameKey = this.args.optionNameKey;
 

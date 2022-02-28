@@ -40,7 +40,7 @@ const LabelledTemplate = (args) => ({
   template: hbs`
   <Mox::Label for={{this.id}}>Food</Mox::Label>
   <div class={{this.wrapperClass}}>
-    <Mxa::TypeaheadSelect
+    <Mox::TypeaheadSelect
       @options={{this.connectorTypes}}
       @selectedOption={{this.selectedConnectorType}}
       @onChange={{this.setConnectorType}}
