@@ -9,9 +9,9 @@
         {{if
           @isDisabled
           "bg-gray-700 text-gray-500"
-          "bg-gray-800  focus:border-cyan-500 focus:ring-cyan-500"
+          "bg-gray-800 text-white focus:border-cyan-500 focus:ring-cyan-500"
         }}
-        text-white border border-gray-500 rounded shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none sm:text-sm"
+        border border-gray-500 rounded shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none sm:text-sm"
       data-test-select-button
       ...attributes
       {{on "click" this.toggleOptions}}
