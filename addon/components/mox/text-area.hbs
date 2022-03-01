@@ -4,12 +4,10 @@
 <textarea
   id={{@id}}
   type="text"
-  class="px-4 py-2 w-full bg-gray-800 border-gray-800
-        text-white text-sm focus:border-cyan-500 focus:ring-cyan-500 disabled:bg-gray-700 disabled:text-gray-500 rounded
-        block w-full rounded resize-none"
+  class="px-4 py-2 w-full bg-gray-800 border-gray-800 text-white text-sm focus:border-cyan-500 focus:ring-cyan-500 disabled:bg-gray-700 disabled:text-gray-500 rounded block resize-none"
   value={{@value}}
   placeholder={{@placeholder}}
-  {{on 'input' @onInput}}
+  {{on "input" @onInput}}
   data-test-mox-text-area
   ...attributes
-/>
+></textarea>
