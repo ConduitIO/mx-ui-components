@@ -2,16 +2,11 @@
   <div class="mt-1 relative">
     <button
       type="button"
+      disabled={{@isDisabled}}
       aria-haspopup="listbox"
       aria-expanded="true"
       aria-labelledby="listbox-label"
-      class="relative w-full
-        {{if
-          @isDisabled
-          "bg-gray-700 text-gray-500"
-          "bg-gray-800 text-white focus:border-cyan-500 focus:ring-cyan-500 focus:ring-1"
-        }}
-        border border-gray-500 rounded shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none sm:text-sm"
+      class="relative w-full disabled:bg-gray-700 disabled:text-gray-500 disabled:border-gray-700 disabled:cursor-not-allowed bg-gray-800 text-white border-gray-500 focus:border-cyan-500 focus:ring-cyan-500 focus:ring-1 border rounded shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none sm:text-sm"
       data-test-select-button
       ...attributes
       {{on "click" this.toggleOptions}}
