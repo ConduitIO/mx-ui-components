@@ -1,0 +1,6 @@
+<li class="p-4 border-b-2 {{if @isActive "border-cyan-500" "border-transparent"}}">
+  <LinkTo @route={{@route}}><span class="{{if @isActive "font-bold"}}">{{@label}}</span>
+    <span
+      class="bg-gray-500 text-xs text-white inline-block p-0.5 rounded-sm"
+    >{{@count}}</span></LinkTo>
+</li>
