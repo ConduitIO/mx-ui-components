@@ -6,9 +6,10 @@ import { tracked } from '@glimmer/tracking';
 import { waitFor } from '@ember/test-waiters';
 
 const buttonColors = {
-  'primary': 'border-cyan-500 text-white active:text-cyan-500',
-  'secondary': 'border-white text-white active:text-gray-300 active:border-gray-300',
-  'danger': 'border-red-500 text-red-500 active:text-white',
+  primary: 'border-cyan-500 text-white active:text-cyan-500',
+  secondary:
+    'border-white text-white active:text-gray-300 active:border-gray-300',
+  danger: 'border-red-500 text-red-500 active:text-white',
 };
 
 export default class MoxButtonComponent extends Component {
@@ -27,7 +28,7 @@ export default class MoxButtonComponent extends Component {
     return buttonColors[type];
   }
 
-  buildButtonClass(buttonType) {
+  buildButtonClass() {
     let classesList = ['border', 'active:border-2'];
 
     if (this.args.small) {
@@ -46,16 +47,31 @@ export default class MoxButtonComponent extends Component {
   }
 
   get disabledClass() {
-    return 'disabled:border-0 disabled:bg-gray-800 disabled:text-gray-300 disabled:font-normal';
+    return 'disabled:border-transparent disabled:bg-gray-800 disabled:text-gray-300 disabled:font-normal disabled:cursor-not-allowed';
   }
 
   get buttonTitle() {
     return this.args.title || 'Submit';
   }
 
+  get buttonTypeAttr() {
+    if (this.args.type === 'submit') {
+      return 'submit';
+    } else {
+      return 'button';
+    }
+  }
+
+  get isDisabled() {
+    return this.args.isDisabled || this.actionTask.isRunning;
+  }
+
   @dropTask
   @waitFor
-  *actionTask() {
+  *actionTask(event) {
+    if (this.args.type === 'submit') {
+      event.preventDefault();
+    }
     yield this.args.onClick();
   }
 

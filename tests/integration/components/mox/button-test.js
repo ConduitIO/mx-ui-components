@@ -6,11 +6,11 @@ import { rawTimeout, timeout } from 'ember-concurrency';
 import { a11yAudit } from 'ember-a11y-testing/test-support';
 import sinon from 'sinon';
 
-module('Integration | Component | mox/button', function(hooks) {
+module('Integration | Component | mox/button', function (hooks) {
   setupRenderingTest(hooks);
 
-  module('default button', function() {
-    test('it renders the primary button by default', async function(assert) {
+  module('default button', function () {
+    test('it renders the primary button by default', async function (assert) {
       await render(hbs`<Mox::Button />`);
 
       assert.dom('[data-test-mox-button]').exists();
@@ -19,7 +19,7 @@ module('Integration | Component | mox/button', function(hooks) {
       assert.dom('button').hasClass('text-white');
     });
 
-    test('it renders the primary button', async function(assert) {
+    test('it renders the primary button', async function (assert) {
       await render(hbs`<Mox::Button @buttonType='primary' />`);
 
       assert.dom('button').hasClass('border-cyan-500');
@@ -27,7 +27,7 @@ module('Integration | Component | mox/button', function(hooks) {
       assert.dom('button').hasClass('text-white');
     });
 
-    test('it renders the secondary button', async function(assert) {
+    test('it renders the secondary button', async function (assert) {
       await render(hbs`<Mox::Button @buttonType='secondary' />`);
 
       assert.dom('button').hasClass('border-white');
@@ -36,7 +36,7 @@ module('Integration | Component | mox/button', function(hooks) {
       assert.dom('button').hasClass('text-white');
     });
 
-    test('it renders the danger button', async function(assert) {
+    test('it renders the danger button', async function (assert) {
       await render(hbs`<Mox::Button @buttonType='danger' />`);
 
       assert.dom('button').hasClass('border-red-500');
@@ -44,8 +44,8 @@ module('Integration | Component | mox/button', function(hooks) {
       assert.dom('button').hasClass('text-red-500');
     });
 
-    test('it renders the the button in its disabled state', async function(assert) {
-      await render(hbs`<Mox::Button disabled />`);
+    test('it renders the the button in its disabled state', async function (assert) {
+      await render(hbs`<Mox::Button @isDisabled={{true}} />`);
 
       assert.dom('button').hasStyle({
         backgroundColor: 'rgb(31, 41, 55)',
@@ -53,68 +53,68 @@ module('Integration | Component | mox/button', function(hooks) {
       });
     });
 
-    test('it renders the the button - small', async function(assert) {
+    test('it renders the the button - small', async function (assert) {
       await render(hbs`<Mox::Button @small={{true}} />`);
 
       assert.dom('button').hasClass('mxa-btn-small');
     });
 
-    test('it renders the content on block invocation', async function(assert) {
+    test('it renders the content on block invocation', async function (assert) {
       await render(hbs`<Mox::Button>Upload</Mox::Button>`);
 
       assert.dom('button').hasText('Upload');
     });
 
-    test('it renders text that is passed via the @title argument', async function(assert) {
+    test('it renders text that is passed via the @title argument', async function (assert) {
       await render(hbs`<Mox::Button @title="Download" />`);
 
       assert.dom('button').hasText('Download');
     });
 
-    test('it renders default text when no content is provided', async function(assert) {
+    test('it renders default text when no content is provided', async function (assert) {
       await render(hbs`<Mox::Button />`);
 
       assert.dom('button').hasText('Submit');
     });
 
-    module('color accessibility', function(hooks) {
-      test('default', async function(assert) {
+    module('color accessibility', function () {
+      test('default', async function (assert) {
         await render(hbs`<Mox::Button />`);
 
         await a11yAudit();
         assert.ok(true, 'no a11y detected');
       });
 
-      test('primary', async function(assert) {
+      test('primary', async function (assert) {
         await render(hbs`<Mox::Button @buttonType="primary" />`);
 
         await a11yAudit();
         assert.ok(true, 'no a11y detected');
       });
 
-      test('secondary', async function(assert) {
+      test('secondary', async function (assert) {
         await render(hbs`<Mox::Button @buttonType="secondary" />`);
 
         await a11yAudit();
         assert.ok(true, 'no a11y detected');
       });
 
-      test('tertiary', async function(assert) {
+      test('tertiary', async function (assert) {
         await render(hbs`<Mox::Button @buttonType="tertiary" />`);
 
         await a11yAudit();
         assert.ok(true, 'no a11y detected');
       });
 
-      test('danger', async function(assert) {
+      test('danger', async function (assert) {
         await render(hbs`<Mox::Button @buttonType="danger" />`);
 
         await a11yAudit();
         assert.ok(true, 'no a11y detected');
       });
 
-      test('disabled', async function(assert) {
-        await render(hbs`<Mox::Button disabled />`);
+      test('disabled', async function (assert) {
+        await render(hbs`<Mox::Button @isDisabled={{true}} />`);
 
         await a11yAudit();
         assert.ok(true, 'no a11y detected');
@@ -122,13 +122,13 @@ module('Integration | Component | mox/button', function(hooks) {
     });
   });
 
-  module('async button (@onClick argument is set)', function() {
+  module('async button (@onClick argument is set)', function (hooks) {
     hooks.beforeEach(function () {
       this.dummyAction = () => {};
     });
 
     module('has all style formats as default button controls', function () {
-      test('it renders the primary button by default', async function(assert) {
+      test('it renders the primary button by default', async function (assert) {
         await render(hbs`<Mox::Button @onClick={{this.dummyAction}} />`);
 
         assert.dom('[data-test-mox-button]').exists();
@@ -137,16 +137,20 @@ module('Integration | Component | mox/button', function(hooks) {
         assert.dom('button').hasClass('text-white');
       });
 
-      test('it renders the primary button', async function(assert) {
-        await render(hbs`<Mox::Button @buttonType='primary' @onClick={{this.dummyAction}} />`);
+      test('it renders the primary button', async function (assert) {
+        await render(
+          hbs`<Mox::Button @buttonType='primary' @onClick={{this.dummyAction}} />`
+        );
 
         assert.dom('button').hasClass('border-cyan-500');
         assert.dom('button').hasClass('active:text-cyan-500');
         assert.dom('button').hasClass('text-white');
       });
 
-      test('it renders the secondary button', async function(assert) {
-        await render(hbs`<Mox::Button @buttonType='secondary' @onClick={{this.dummyAction}} />`);
+      test('it renders the secondary button', async function (assert) {
+        await render(
+          hbs`<Mox::Button @buttonType='secondary' @onClick={{this.dummyAction}} />`
+        );
 
         assert.dom('button').hasClass('border-white');
         assert.dom('button').hasClass('active:text-gray-300');
@@ -154,16 +158,20 @@ module('Integration | Component | mox/button', function(hooks) {
         assert.dom('button').hasClass('text-white');
       });
 
-      test('it renders the danger button', async function(assert) {
-        await render(hbs`<Mox::Button @buttonType='danger' @onClick={{this.dummyAction}} />`);
+      test('it renders the danger button', async function (assert) {
+        await render(
+          hbs`<Mox::Button @buttonType='danger' @onClick={{this.dummyAction}} />`
+        );
 
         assert.dom('button').hasClass('border-red-500');
         assert.dom('button').hasClass('active:text-white');
         assert.dom('button').hasClass('text-red-500');
       });
 
-      test('it renders the the button in its disabled state', async function(assert) {
-        await render(hbs`<Mox::Button disabled @onClick={{this.dummyAction}} />`);
+      test('it renders the the button in its disabled state', async function (assert) {
+        await render(
+          hbs`<Mox::Button @isDisabled={{true}} @onClick={{this.dummyAction}} />`
+        );
 
         assert.dom('button').hasStyle({
           backgroundColor: 'rgb(31, 41, 55)',
@@ -171,8 +179,10 @@ module('Integration | Component | mox/button', function(hooks) {
         });
       });
 
-      test('it renders the the button - small', async function(assert) {
-        await render(hbs`<Mox::Button @small={{true}} @onClick={{this.dummyAction}} />`);
+      test('it renders the the button - small', async function (assert) {
+        await render(
+          hbs`<Mox::Button @small={{true}} @onClick={{this.dummyAction}} />`
+        );
 
         assert.dom('button').hasClass('mxa-btn-small');
       });

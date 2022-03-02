@@ -48,10 +48,7 @@ module('Integration | Component | mox/select', function (hooks) {
       @isDisabled={{true}}
     />`);
 
-    await click('[data-test-select-button]');
-
-    assert.dom('[data-test-select-button]').hasClass('bg-gray-700');
-    assert.ok(this.onChange.notCalled);
+    assert.dom('[data-test-select-button]').isDisabled();
   });
 
   test('it is accessible', async function (assert) {
