@@ -1,0 +1,15 @@
+<section data-test-mox-accordion ...attributes>
+  <header>
+    <button
+      class="text-cyan-500 flex gap-x-4 items-center hover:text-cyan-300 focus:text-cyan-300 transition-colors"
+      type="button" {{on "click" this.toggle}} data-test-mox-accordion-button>
+      <Mox::Icon @iconName="chevron-right-24" class="transition {{if this.isOpen "rotate-90"}}" />
+      {{yield to="header"}}
+    </button>
+  </header>
+  {{#if this.isOpen}}
+    <div class="text-gray-300 py-4" data-test-mox-accordion-body>
+      {{yield to="body"}}
+    </div>
+  {{/if}}
+</section>
