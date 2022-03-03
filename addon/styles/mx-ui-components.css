@@ -91,3 +91,32 @@
 .mxa-sidebar-item .is-home.active:before {
   display: none;
 }
+
+a.mox-tab-link {
+  padding: 1rem 0.5rem;
+  color: #D1D5DB; /* gray-300 */
+  border-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: transparent; /* transparent */
+}
+
+a.mox-tab-link:hover:not(:focus) {
+  color: #ffffff;
+  border-bottom-color: #ffffff; /* white */
+}
+
+a.active.mox-tab-link {
+  color: #06B6D4; /* cyan-500 */
+  border-bottom-color: #06B6D4; /* cyan-500 */
+  font-weight: 700; /* font-bold */
+}
+
+a.active.mox-tab-link:hover:not(:focus) {
+  color: #67e8f9;
+  border-bottom-color: #67e8f9; /* cyan-300 */
+}
+
+a.active.mox-tab-link:focus {
+  color: #06B6D4; /* cyan-500 */
+  border-bottom-color: #6B7280; /* gray-500 */
+}
