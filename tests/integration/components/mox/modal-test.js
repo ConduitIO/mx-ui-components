@@ -20,6 +20,21 @@ module('Integration | Component | mox/modal', function (hooks) {
     assert.ok(this.onDismiss.calledOnce);
   });
 
+  test('it yields out the title and content ids', async function (assert) {
+    this.set('onDismiss', sinon.spy());
+
+    await render(hbs`
+      <Mox::Modal @onDismiss={{this.onDismiss}} as |titleId contentId|>
+        MUDA MUDA MUDA
+        <div data-test-title-id>{{titleId}}</div>
+        <div data-test-content-id>{{contentId}}</div>
+      </Mox::Modal>
+    `);
+
+    assert.dom('[data-test-title-id]').containsText('mox-modal-title-');
+    assert.dom('[data-test-content-id]').containsText('mox-dialog-content');
+  });
+
   test('it yields a title, subtitle and content ', async function (assert) {
     this.set('onDismiss', sinon.spy());
 

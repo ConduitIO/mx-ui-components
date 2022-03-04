@@ -1,0 +1,28 @@
+<div
+  class="bg-black rounded pr-4 py-3 mb-2 mt-0.5 text-sm text-white relative flex items-center"
+  data-test-copy-input={{this.elementId}}
+  ...attributes
+>
+  <code class="pl-4 pr-12 w-full text-white" value={{@value}}>
+    <span class="text-cyan-500 select-none font-semibold">$&nbsp;</span>
+    <span id={{this.elementId}} class="select-all" data-test-code-value>
+      {{@value}}
+    </span>
+  </code>
+  <button
+    type="button"
+    class="py-3 pr-4 absolute right-0 top-0.5 transition duration-200 hidden"
+    aria-label="Copy value to clipboard"
+    {{mox-copy-me this.elementId}}
+    data-test-code-copy-button
+  >
+    <svg class="text-white fill-current h-4 w-4">
+      <use xlink:href="/svg-defs.svg#copy-16"></use>
+    </svg>
+    <EmberTooltip @side="top-end" @event="click" class="justify-self-end">
+      <div class="text-xs break-all" data-test-copy-input-tooltip>
+        Copied to clipboard
+      </div>
+    </EmberTooltip>
+  </button>
+</div>
