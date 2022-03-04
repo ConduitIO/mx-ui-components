@@ -1,7 +1,11 @@
 <li data-test-mox-tab-item={{@route}}>
-  <Mox::Link @route={{@route}}
-    class="mox-tab-link {{if @isActive "active"}}
-    hover:border-white focus:border-dotted focus:border-gray-500 focus:text-gray-300" tabindex="0" ...attributes>
+  <Mox::Link
+    @route={{@route}}
+    class="{{if @isActive "arg-active"}}
+      mox-tab-link hover:border-white focus:border-dotted focus:border-gray-500 focus:text-gray-300"
+    tabindex="0"
+    ...attributes
+  >
     {{yield}}
   </Mox::Link>
 </li>

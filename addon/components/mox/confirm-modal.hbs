@@ -1,0 +1,38 @@
+<Mox::ModalDialog @onDismiss={{@onDismiss}}>
+
+  <:title>
+    {{this.fullTitle}}
+  </:title>
+
+  <:body>
+    <label for={{concat "delete-" @entityName}} class="inline-block" data-test-confirm-block>
+      {{yield @entityName}}
+    </label>
+    {{#if @isTextInputRequired}}
+      <div class="mt-6"></div>
+      <Mox::Input
+        id={{concat "delete-" @entityName}}
+        type="text"
+        @value={{this.confirmedEntityName}}
+        @onInput={{fn (mut this.confirmedEntityName)}}
+        {{focus-on-render}}
+        data-test-confirm-input
+      />
+    {{/if}}
+  </:body>
+
+  <:footer as |f|>
+    <f.secondaryAction data-test-confirm-cancel-button>
+      Cancel
+    </f.secondaryAction>
+    <f.primaryAction
+      @onClick={{@confirmedAction}}
+      @buttonType="danger"
+      @isDisabled={{this.isDisabled}}
+      data-test-confirm-submit-button
+    >
+      {{this.buttonTitle}}
+    </f.primaryAction>
+  </:footer>
+
+</Mox::ModalDialog>

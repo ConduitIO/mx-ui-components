@@ -11,7 +11,7 @@
     <Mox::Input
       id={{@id}}
       @value={{this.inputValue}}
-      @onInput={{this.setInputValue}}
+      @onInput={{fn (mut this.inputValue)}}
       placeholder={{@placeholder}}
       data-test-typeahead-select-input
       disabled={{@isDisabled}}

@@ -62,11 +62,6 @@ export default class MoxTypeaheadSelect extends Component {
   }
 
   @action
-  setInputValue(event) {
-    this.inputValue = event.target.value;
-  }
-
-  @action
   setSelectedOption(option) {
     this.args.onChange(option);
     this.inputValue = this.args.selectedOption[this.optionNameKey];

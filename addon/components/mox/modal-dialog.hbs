@@ -1,0 +1,42 @@
+<Mox::Modal
+  @onDismiss={{@onDismiss}}
+  @didInsert={{@didInsert}}
+  @isWide={{@isWide}}
+  data-test-modal-dialog
+>
+  <:default as |titleId|>
+    <div class="flex items-center justify-between mb-6">
+      <h1 id={{titleId}} class="text-white font-semibold text-2xl" data-test-modal-dialog-title>
+        {{yield to="title"}}
+      </h1>
+      <button
+        type="button"
+        aria-label="Close dialog"
+        class="h-4 w-4"
+        {{on "click" @onDismiss}}
+        {{focus-on-render}}
+        data-test-modal-dialog-close
+      >
+        <svg class="text-white fill-current h-4 w-4">
+          <use xlink:href={{root-url "/svg-defs.svg#close-16"}}></use>
+        </svg>
+      </button>
+    </div>
+  </:default>
+
+  <:content as |c|>
+    <div class="mb-6" data-test-modal-dialog-body>
+      {{yield to="body"}}
+    </div>
+
+    <div class="flex items-center justify-end space-x-4" data-test-modal-dialog-footer>
+      {{yield
+        (hash
+          secondaryAction=(component c.secondaryAction) primaryAction=(component c.primaryAction)
+        )
+        to="footer"
+      }}
+    </div>
+  </:content>
+
+</Mox::Modal>

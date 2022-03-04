@@ -36,7 +36,7 @@ const Template = (args) => ({
   context: args,
   parameters: {
     background: 'Dark',
-  }
+  },
 });
 
 const SmallTemplate = (args) => ({

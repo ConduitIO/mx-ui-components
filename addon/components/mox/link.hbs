@@ -1,13 +1,31 @@
 {{#if @route}}
-  <LinkTo
-    class="font-medium text-sm text-cyan-500 hover:text-white transition duration-300"
-    @route={{@route}}
-    @model={{@model}}
-    data-test-mox-link={{@route}}
-    ...attributes
-  >
-    {{yield}}
-  </LinkTo>
+  {{#if @model}}
+    <LinkTo
+      class="font-medium text-sm text-cyan-500 hover:text-white transition duration-300"
+      @route={{@route}}
+      @model={{@model}}
+      data-test-mox-link={{@route}}
+      ...attributes
+    >
+      {{yield}}
+    </LinkTo>
+  {{else}}
+    <LinkTo
+      class="font-medium text-sm text-cyan-500 hover:text-white transition duration-300"
+      @route={{@route}}
+      data-test-mox-link={{@route}}
+      ...attributes
+    >
+      {{yield}}
+    </LinkTo>
+  {{/if}}
 {{else}}
-  <a href={{@externalUrl}} target="_blank" class="font-medium text-sm text-cyan-500 hover:text-white transition" data-test-mox-link rel="noopener noreferrer" ...attributes>{{yield}}</a>
+  <a
+    href={{@externalUrl}}
+    target="_blank"
+    class="font-medium text-sm text-cyan-500 hover:text-white transition"
+    data-test-mox-link
+    rel="noopener noreferrer"
+    ...attributes
+  >{{yield}}</a>
 {{/if}}
