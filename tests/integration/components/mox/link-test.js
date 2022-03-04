@@ -4,10 +4,10 @@ import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { a11yAudit } from 'ember-a11y-testing/test-support';
 
-module('Integration | Component | mox/link', function(hooks) {
+module('Integration | Component | mox/link', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders an empty link by default', async function(assert) {
+  test('it renders an empty link by default', async function (assert) {
     await render(hbs`
       <Mox::Link>
         A link
@@ -18,7 +18,7 @@ module('Integration | Component | mox/link', function(hooks) {
     assert.dom('[data-test-mox-link]').doesNotHaveAttribute('href');
   });
 
-  test('it renders (@route)', async function(assert) {
+  test('it renders (@route)', async function (assert) {
     await render(hbs`
       <Mox::Link @route="application">
         Internal link
@@ -26,10 +26,10 @@ module('Integration | Component | mox/link', function(hooks) {
     `);
 
     assert.dom('[data-test-mox-link]').includesText('Internal link');
-    assert.dom('[data-test-mox-link]').hasAttribute('href', '#');
+    assert.dom('[data-test-mox-link]').hasAttribute('href', '/');
   });
 
-  test('it renders (@externalUrl)', async function(assert) {
+  test('it renders (@externalUrl)', async function (assert) {
     await render(hbs`
       <Mox::Link @externalUrl="http://localhost:7357">
         External link
@@ -37,10 +37,12 @@ module('Integration | Component | mox/link', function(hooks) {
     `);
 
     assert.dom('[data-test-mox-link]').includesText('External link');
-    assert.dom('[data-test-mox-link]').hasAttribute('href', 'http://localhost:7357');
+    assert
+      .dom('[data-test-mox-link]')
+      .hasAttribute('href', 'http://localhost:7357');
   });
 
-  test('it is accessible (@route)', async function(assert) {
+  test('it is accessible (@route)', async function (assert) {
     await render(hbs`
       <div class="bg-gray-900">
         <Mox::Link @route="application">
@@ -53,7 +55,7 @@ module('Integration | Component | mox/link', function(hooks) {
     assert.ok(true, 'no a11y errors detected');
   });
 
-  test('it is accessible (@externalUrl)', async function(assert) {
+  test('it is accessible (@externalUrl)', async function (assert) {
     await render(hbs`
       <div class="bg-gray-900">
         <Mox::Link @externalUrl="http://localhost:7357">

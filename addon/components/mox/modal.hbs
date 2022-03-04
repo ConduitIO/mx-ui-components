@@ -1,0 +1,58 @@
+<div class="fixed z-10 inset-0 overflow-y-auto text-white" data-test-modal>
+  <div
+    class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0"
+  >
+    <div
+      class="fixed inset-0 transition-opacity"
+      {{on "click" @onDismiss}}
+      {{on-key "Escape" @onDismiss}}
+      data-test-modal-outside-trigger
+    >
+      <div class="absolute inset-0 bg-gray-800 opacity-90"></div>
+    </div>
+
+    <span class="hidden sm:inline-block sm:align-middle sm:h-screen"></span>&#8203;
+
+    <div
+      class="inline-block align-bottom bg-gray-900 rounded-md p-8 text-left overflow-visible transform transition-all w-container sm:my-8 sm:align-middle sm:max-w-3xl
+        {{if @isWide "sm:w-container" "sm:w-box"}}"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby={{this.titleId}}
+      aria-describedby={{this.contentId}}
+      {{did-insert this.onDidInsert}}
+      ...attributes
+    >
+      {{#if (has-block "title")}}
+        <h1
+          id={{this.titleId}}
+          class="text-white font-semibold mb-8 text-2xl"
+          data-test-mox-modal-title
+        >
+          {{yield to="title"}}
+        </h1>
+      {{/if}}
+
+      {{#if (has-block "sub-title")}}
+        <h2 class="text-white font-semibold mb-8 text-xl" data-test-mox-modal-sub-title>
+          {{yield to="sub-title"}}
+        </h2>
+      {{/if}}
+
+      {{yield this.titleId this.contentId}}
+
+      {{#if (has-block "content")}}
+        <section id={{this.contentId}} data-test-mox-modal-content>
+          {{yield
+            (hash
+              primaryAction=(component "mox/button")
+              secondaryAction=(component "mox/button" buttonType="secondary" onClick=@onDismiss)
+            )
+            to="content"
+          }}
+        </section>
+      {{/if}}
+
+    </div>
+  </div>
+</div>
