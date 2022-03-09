@@ -14,34 +14,28 @@ module('Integration | Component | mox/button', function (hooks) {
       await render(hbs`<Mox::Button />`);
 
       assert.dom('[data-test-mox-button]').exists();
-      assert.dom('button').hasClass('border-cyan-500');
-      assert.dom('button').hasClass('active:text-cyan-500');
+      assert.dom('button').hasClass('bg-cyan-700');
       assert.dom('button').hasClass('text-white');
     });
 
     test('it renders the primary button', async function (assert) {
       await render(hbs`<Mox::Button @buttonType='primary' />`);
 
-      assert.dom('button').hasClass('border-cyan-500');
-      assert.dom('button').hasClass('active:text-cyan-500');
+      assert.dom('button').hasClass('bg-cyan-700');
       assert.dom('button').hasClass('text-white');
     });
 
     test('it renders the secondary button', async function (assert) {
       await render(hbs`<Mox::Button @buttonType='secondary' />`);
 
-      assert.dom('button').hasClass('border-white');
-      assert.dom('button').hasClass('active:text-gray-300');
-      assert.dom('button').hasClass('active:border-gray-300');
-      assert.dom('button').hasClass('text-white');
+      assert.dom('button').hasClass('bg-gray-700');
     });
 
     test('it renders the danger button', async function (assert) {
       await render(hbs`<Mox::Button @buttonType='danger' />`);
 
-      assert.dom('button').hasClass('border-red-500');
-      assert.dom('button').hasClass('active:text-white');
-      assert.dom('button').hasClass('text-red-500');
+      assert.dom('button').hasClass('bg-red-800');
+      assert.dom('button').hasClass('text-white');
     });
 
     test('it renders the the button in its disabled state', async function (assert) {
@@ -49,7 +43,7 @@ module('Integration | Component | mox/button', function (hooks) {
 
       assert.dom('button').hasStyle({
         backgroundColor: 'rgb(31, 41, 55)',
-        color: 'rgb(209, 213, 219)',
+        color: 'rgb(156, 163, 175)',
       });
     });
 
@@ -132,9 +126,7 @@ module('Integration | Component | mox/button', function (hooks) {
         await render(hbs`<Mox::Button @onClick={{this.dummyAction}} />`);
 
         assert.dom('[data-test-mox-button]').exists();
-        assert.dom('button').hasClass('border-cyan-500');
-        assert.dom('button').hasClass('active:text-cyan-500');
-        assert.dom('button').hasClass('text-white');
+        assert.dom('button').hasClass('bg-cyan-700');
       });
 
       test('it renders the primary button', async function (assert) {
@@ -142,9 +134,7 @@ module('Integration | Component | mox/button', function (hooks) {
           hbs`<Mox::Button @buttonType='primary' @onClick={{this.dummyAction}} />`
         );
 
-        assert.dom('button').hasClass('border-cyan-500');
-        assert.dom('button').hasClass('active:text-cyan-500');
-        assert.dom('button').hasClass('text-white');
+        assert.dom('button').hasClass('bg-cyan-700');
       });
 
       test('it renders the secondary button', async function (assert) {
@@ -152,10 +142,7 @@ module('Integration | Component | mox/button', function (hooks) {
           hbs`<Mox::Button @buttonType='secondary' @onClick={{this.dummyAction}} />`
         );
 
-        assert.dom('button').hasClass('border-white');
-        assert.dom('button').hasClass('active:text-gray-300');
-        assert.dom('button').hasClass('active:border-gray-300');
-        assert.dom('button').hasClass('text-white');
+        assert.dom('button').hasClass('bg-gray-700');
       });
 
       test('it renders the danger button', async function (assert) {
@@ -163,9 +150,7 @@ module('Integration | Component | mox/button', function (hooks) {
           hbs`<Mox::Button @buttonType='danger' @onClick={{this.dummyAction}} />`
         );
 
-        assert.dom('button').hasClass('border-red-500');
-        assert.dom('button').hasClass('active:text-white');
-        assert.dom('button').hasClass('text-red-500');
+        assert.dom('button').hasClass('bg-red-800');
       });
 
       test('it renders the the button in its disabled state', async function (assert) {
@@ -175,7 +160,7 @@ module('Integration | Component | mox/button', function (hooks) {
 
         assert.dom('button').hasStyle({
           backgroundColor: 'rgb(31, 41, 55)',
-          color: 'rgb(209, 213, 219)',
+          color: 'rgb(156, 163, 175)',
         });
       });
 

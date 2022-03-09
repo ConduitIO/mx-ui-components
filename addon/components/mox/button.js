@@ -6,10 +6,12 @@ import { tracked } from '@glimmer/tracking';
 import { waitFor } from '@ember/test-waiters';
 
 const buttonColors = {
-  primary: 'border-cyan-500 text-white active:text-cyan-500',
+  primary:
+    'border-cyan-700 bg-cyan-700 active:bg-cyan-800 hover:border-cyan-600 hover:bg-cyan-600 focus:bg-cyan-600',
   secondary:
-    'border-white text-white active:text-gray-300 active:border-gray-300',
-  danger: 'border-red-500 text-red-500 active:text-white',
+    'border-gray-700 bg-gray-700 active:bg-gray-800 hover:border-gray-600 hover:bg-gray-600 focus:bg-gray-600',
+  danger:
+    'border-red-800 bg-red-800 active:bg-red-900 hover:bg-red-700 hover:border-red-700 focus:border-red-900',
 };
 
 export default class MoxButtonComponent extends Component {
@@ -29,7 +31,15 @@ export default class MoxButtonComponent extends Component {
   }
 
   buildButtonClass() {
-    let classesList = ['border', 'active:border-2'];
+    let classesList = [
+      'border',
+      'text-white',
+      'focus:outline-none',
+      'focus:ring-1',
+      'focus:ring-inset',
+      'focus:ring-white',
+      'focus:border-white',
+    ];
 
     if (this.args.small) {
       classesList.push('mxa-btn-small');
@@ -47,7 +57,7 @@ export default class MoxButtonComponent extends Component {
   }
 
   get disabledClass() {
-    return 'disabled:border-transparent disabled:bg-gray-800 disabled:text-gray-300 disabled:font-normal disabled:cursor-not-allowed';
+    return 'disabled:border-gray-400 disabled:bg-gray-800 disabled:text-gray-400 disabled:font-normal disabled:cursor-not-allowed';
   }
 
   get buttonTitle() {
