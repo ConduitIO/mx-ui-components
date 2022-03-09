@@ -66,7 +66,7 @@ module('Integration | Component | mox/confirm-modal', function (hooks) {
     test('it displays the default submit button', async function (assert) {
       assert
         .dom('[data-test-confirm-submit-button]')
-        .hasClass('border-red-500');
+        .hasClass('border-red-800');
     });
 
     test('the submit button is enabled by default', async function (assert) {
@@ -130,7 +130,7 @@ module('Integration | Component | mox/confirm-modal', function (hooks) {
     test('it displays the danger submit button', async function (assert) {
       assert
         .dom('[data-test-confirm-submit-button]')
-        .hasClass('border-red-500');
+        .hasClass('border-red-800');
     });
 
     test('the submit button displays the specified action title', async function (assert) {

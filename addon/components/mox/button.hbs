@@ -1,6 +1,6 @@
 {{#if @onClick}}
   <button
-    class="{{this.buttonClass}} {{this.disabledClass}} bg-transparent"
+    class="{{this.buttonClass}} {{this.disabledClass}}"
     type={{this.buttonTypeAttr}}
     disabled={{this.isDisabled}}
     style={{this.buttonStyle}}
@@ -37,7 +37,7 @@
   </button>
 {{else}}
   <button
-    class="{{this.buttonClass}} {{this.disabledClass}} bg-transparent"
+    class="{{this.buttonClass}} {{this.disabledClass}}"
     type={{this.buttonTypeAttr}}
     disabled={{this.isDisabled}}
     data-test-mox-button
