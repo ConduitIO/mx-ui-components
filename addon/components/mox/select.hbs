@@ -6,7 +6,14 @@
       aria-haspopup="listbox"
       aria-expanded="true"
       aria-labelledby="listbox-label"
-      class="relative w-full disabled:bg-gray-700 disabled:text-gray-500 disabled:border-gray-700 disabled:cursor-not-allowed bg-gray-800 text-white border-gray-500 focus:border-cyan-500 focus:ring-cyan-500 focus:ring-1 border rounded shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none sm:text-sm"
+      aria-invalid={{not this.isValid}}
+      aria-describedBy={{concat @id "-error-message"}}
+      class="relative w-full border rounded shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none sm:text-sm focus:ring-1 bg-gray-800 text-white
+      disabled:bg-gray-700 disabled:text-gray-500 disabled:border-gray-700 disabled:cursor-not-allowed
+      {{if this.isValid
+        'border-gray-500 focus:border-cyan-500 focus:ring-cyan-500'
+        'border-red-800 active:border-red-900 focus:border-red-900 focus:ring-red-900'
+      }}"
       data-test-select-button
       ...attributes
       {{on "click" this.toggleOptions}}
@@ -62,4 +69,7 @@
       </div>
     {{/if}}
   </div>
+  {{#if @error}}
+    <p class="text-red-500 text-xs" id={{concat @id "-error-message"}} data-test-mox-select-error>{{@error}}</p>
+  {{/if}}
 </div>
