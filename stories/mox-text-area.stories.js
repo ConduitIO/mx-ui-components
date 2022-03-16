@@ -10,7 +10,11 @@ export default {
 };
 
 const Template = (args) => ({
-  template: hbs`<Mox::TextArea class="mb-2" @value={{this.value}} @onInput={{this.inputAction}} @placeholder={{this.placeholder}} @label={{this.label}} disabled={{this.isDisabled}} @isRequired={{this.isRequired}} />`,
+  template: hbs`<Mox::TextArea class="mb-2"
+    @value={{this.value}} @onInput={{this.inputAction}}
+    @placeholder={{this.placeholder}} @label={{this.label}}
+    disabled={{this.isDisabled}} @isRequired={{this.isRequired}}
+    @isValid={{this.isValid}} @error={{this.error}} />`,
   context: args,
 });
 
@@ -44,5 +48,16 @@ Required.args = {
   placeholder: 'Your Name',
   label: 'Name',
   isRequired: true,
+  inputAction: () => {},
+};
+
+export const Errors = Template.bind({});
+Errors.args = {
+  value: '',
+  placeholder: 'e.g. Saturn',
+  label: 'Planet Name',
+  isRequired: true,
+  isValid: false,
+  error: 'You forgot to specify a planet',
   inputAction: () => {},
 };
