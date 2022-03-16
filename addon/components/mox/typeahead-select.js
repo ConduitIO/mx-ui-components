@@ -2,11 +2,15 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { A } from '@ember/array';
+import { isPresent } from '@ember/utils';
 
 export default class MoxTypeaheadSelect extends Component {
   constructor() {
     super(...arguments);
     this.inputValue = this.args.selectedOption[this.optionNameKey];
+    if (isPresent(this.args.isValid)) {
+      this.isValid = this.args.isValid;
+    }
   }
 
   allOptions = A(this.args.options);
@@ -16,6 +20,9 @@ export default class MoxTypeaheadSelect extends Component {
 
   @tracked
   isShowingMatches = false;
+
+  @tracked
+  isValid = true;
 
   isFocusedWithoutPopup = false;
 
