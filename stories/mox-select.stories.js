@@ -45,6 +45,8 @@ const Template = (args) => ({
       @selectedOption={{this.selectedConnectorType}}
       @onChange={{this.setConnectorType}}
       @isDisabled={{this.isDisabled}}
+      @isValid={{this.isValid}}
+      @error={{this.error}}
     />
   </div>
 `,
@@ -191,4 +193,18 @@ DisabledOptions.args = {
     this.set('selectedConnectorType', value);
   }),
   wrapperClass: 'w-48',
+};
+
+export const Errors = Template.bind({});
+Errors.args = {
+  connectorTypes: connectorTypes,
+  selectedConnectorType: connectorTypes[0],
+  isEditing: false,
+  setConnectorType: action(function (value) {
+    this.set('selectedConnectorType', value);
+  }),
+  wrapperClass: null,
+  isValid: false,
+  error: 'Invalid connector',
+  inputAction: () => {},
 };

@@ -51,6 +51,36 @@ module('Integration | Component | mox/select', function (hooks) {
     assert.dom('[data-test-select-button]').isDisabled();
   });
 
+  test('it highlights the field if it is invalid', async function(assert) {
+    this.set('onInput', () => {});
+
+    await render(hbs`<Mox::Select
+      @label="Ship Name"
+      @options={{this.options}}
+      @selectedOption={{this.selectedOption}}
+      @onChange={{this.onChange}}
+      @isDisabled={{false}}
+      @isValid={{false}}
+    />`);
+
+    assert.dom('[data-test-select-button]').hasClass('border-red-800');
+  });
+
+  test('it may display a validation error alongside the field', async function(assert) {
+    this.set('onInput', () => {});
+
+    await render(hbs`<Mox::Select
+      @label="Ship Name"
+      @options={{this.options}}
+      @selectedOption={{this.selectedOption}}
+      @onChange={{this.onChange}}
+      @isDisabled={{false}}
+      @error="Connector missing"
+    />`);
+
+    assert.dom('[data-test-mox-select-error]').includesText(`Connector missing`);
+  });
+
   test('it is accessible', async function (assert) {
     await render(hbs`
     <Mox::Select
@@ -63,6 +93,24 @@ module('Integration | Component | mox/select', function (hooks) {
 
     await a11yAudit();
     assert.ok(true, 'no a11y detected');
+  });
+
+  test('the invalid input state is accessible', async function(assert) {
+    this.set('onInput', () => {});
+
+    await render(hbs`<div class="bg-gray-900">
+      <Mox::Select
+        @label="Ship Name"
+        @options={{this.options}}
+        @selectedOption={{this.selectedOption}}
+        @onChange={{this.onChange}}
+        @isDisabled={{false}}
+        @isValid={{false}}
+        @error="Connector missing"
+      />
+    </div>`);
+    await a11yAudit();
+    assert.ok(true, 'no accessibility errors');
   });
 
   module('when toggled', function (hooks) {
