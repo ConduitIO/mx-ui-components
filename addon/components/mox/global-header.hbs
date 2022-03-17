@@ -1,6 +1,6 @@
 <header class="flex justify-between py-8" data-test-global-header>
   <div class="flex items-center space-x-4">
-    <a href="/" data-test-logo>
+    <a href="/" aria-label="Go to Homepage" data-test-global-header-logo>
       <svg
         width="58"
         height="24"
@@ -23,13 +23,13 @@
       </svg>
     </a>
     {{#if (has-block "env-switcher")}}
-      <div>
+      <div class="text-white">
         {{yield to="env-switcher"}}
       </div>
     {{/if}}
   </div>
 
-  <div class="flex items-center space-x-2">
+  <div class="flex items-center space-x-2 text-white">
     {{#if (has-block "help-menu")}}
       <div>
         {{yield to="help-menu"}}
@@ -37,7 +37,7 @@
     {{/if}}
 
     {{#if (has-block "user-menu")}}
-      <div>
+      <div class="text-white">
         {{yield to="user-menu"}}
       </div>
     {{/if}}
