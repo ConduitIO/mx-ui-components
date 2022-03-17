@@ -18,6 +18,8 @@
       aria-autocomplete="list"
       aria-controls={{concat "typeaheadselectlistbox" @id}}
       autocomplete="off"
+      @isValid={{this.isValid}}
+      @error={{@error}}
       {{on "focus" this.showMatches}}
       {{on "blur" this.hideMatches}}
       {{on "keydown" this.checkFocus}}

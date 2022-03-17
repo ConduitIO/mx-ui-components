@@ -47,6 +47,32 @@ module('Integration | Component | mox/typeahead-select', function (hooks) {
     assert.dom('[data-test-typeahead-select-input]').isDisabled();
   });
 
+  test('it highlights the field if it is invalid', async function (assert) {
+    await render(hbs`
+    <Mox::TypeaheadSelect
+      @options={{this.options}}
+      @selectedOption={{this.selectedOption}}
+      @onChange={{this.onChange}}
+      @isDisabled={{true}}
+      @isValid={{false}}
+    />`);
+
+    assert.dom('[data-test-mox-input]').hasClass('border-red-800');
+  });
+
+  test('it may display a validation error alongside the field', async function (assert) {
+    await render(hbs`
+    <Mox::TypeaheadSelect
+      @options={{this.options}}
+      @selectedOption={{this.selectedOption}}
+      @onChange={{this.onChange}}
+      @isDisabled={{true}}
+      @error="Name can't be blank"
+    />`);
+
+    assert.dom('[data-test-mox-input-error]').includesText(`Name can't be blank`);
+  });
+
   test('it is accessible (with embedded label)', async function (assert) {
     await render(hbs`
     <Mox::TypeaheadSelect
@@ -87,6 +113,25 @@ module('Integration | Component | mox/typeahead-select', function (hooks) {
       @onChange={{this.onChange}}
       @isDisabled={{true}}
     />`);
+
+    await a11yAudit();
+    assert.ok(true, 'no a11y detected');
+  });
+
+  test('it is accessible (validation error)', async function (assert) {
+    await render(hbs`
+    <div class="bg-gray-900">
+      <Mox::TypeaheadSelect
+        @id="my-random-id"
+        @label="Your Instrument"
+        @options={{this.options}}
+        @selectedOption={{this.selectedOption}}
+        @onChange={{this.onChange}}
+        @isDisabled={{false}}
+        @isValid={{false}}
+        @error="Missing something?"
+      />
+    </div>`);
 
     await a11yAudit();
     assert.ok(true, 'no a11y detected');

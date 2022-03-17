@@ -30,6 +30,8 @@ const Template = (args) => ({
       @isDisabled={{this.isEditing}}
       @label={{this.label}}
       @id={{this.id}}
+      @isValid={{this.isValid}}
+      @error={{this.error}}
     />
   </div>
 `,
@@ -100,4 +102,18 @@ Disabled.args = {
   }),
   label: 'Fruit',
   id: 'fruit-basket',
+};
+
+export const Errors = Template.bind({});
+Errors.args = {
+  connectorTypes: options,
+  selectedConnectorType: options[0],
+  isEditing: true,
+  setConnectorType: action(function (value) {
+    this.set('selectedConnectorType', value);
+  }),
+  label: 'Fruit',
+  id: 'fruit-basket',
+  isValid: false,
+  error: 'No more fruit',
 };
