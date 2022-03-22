@@ -45,6 +45,24 @@ module('Integration | Component | mox/text-area', function(hooks) {
     assert.dom('[data-test-mox-text-area]').hasClass('border-red-800');
   });
 
+  test('it allows to validate and invalidate the field after rendering', async function(assert) {
+    this.set('onInput', () => {});
+    this.set('isValid', null);
+
+    await render(hbs`<Mox::TextArea @onInput={{this.onInput}} @isValid={{this.isValid}} />`);
+
+    assert.dom('[data-test-mox-text-area]').doesNotHaveClass('border-red-800');
+
+    this.set('isValid', false);
+
+    assert.dom('[data-test-mox-text-area]').hasClass('border-red-800');
+
+    this.set('isValid', true);
+
+    assert.dom('[data-test-mox-text-area]').doesNotHaveClass('border-red-800');
+  });
+
+
   test('it may display a validation error alongside the field', async function(assert) {
     this.set('onInput', () => {});
 

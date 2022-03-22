@@ -7,15 +7,12 @@ export default class MoxSelectComponent extends Component {
   @tracked
   isShowingOptions = false;
 
-  @tracked
-  isValid = true;
-
-  constructor() {
-    super(...arguments);
-
+  get isValid() {
     if (isPresent(this.args.isValid)) {
-      this.isValid = this.args.isValid;
+      return this.args.isValid;
     }
+
+    return true;
   }
 
   get optionNameKey() {

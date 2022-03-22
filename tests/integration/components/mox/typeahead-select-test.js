@@ -60,6 +60,29 @@ module('Integration | Component | mox/typeahead-select', function (hooks) {
     assert.dom('[data-test-mox-input]').hasClass('border-red-800');
   });
 
+  test('it allows to validate and invalidate the field after rendering', async function(assert) {
+    this.set('isValid', null);
+
+    await render(hbs`
+    <Mox::TypeaheadSelect
+      @options={{this.options}}
+      @selectedOption={{this.selectedOption}}
+      @onChange={{this.onChange}}
+      @isDisabled={{true}}
+      @isValid={{this.isValid}}
+    />`);
+
+    assert.dom('[data-test-mox-input]').doesNotHaveClass('border-red-800');
+
+    this.set('isValid', false);
+
+    assert.dom('[data-test-mox-input]').hasClass('border-red-800');
+
+    this.set('isValid', true);
+
+    assert.dom('[data-test-mox-input]').doesNotHaveClass('border-red-800');
+  });
+
   test('it may display a validation error alongside the field', async function (assert) {
     await render(hbs`
     <Mox::TypeaheadSelect
