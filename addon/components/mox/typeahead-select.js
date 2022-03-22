@@ -8,9 +8,6 @@ export default class MoxTypeaheadSelect extends Component {
   constructor() {
     super(...arguments);
     this.inputValue = this.args.selectedOption[this.optionNameKey];
-    if (isPresent(this.args.isValid)) {
-      this.isValid = this.args.isValid;
-    }
   }
 
   allOptions = A(this.args.options);
@@ -21,10 +18,15 @@ export default class MoxTypeaheadSelect extends Component {
   @tracked
   isShowingMatches = false;
 
-  @tracked
-  isValid = true;
-
   isFocusedWithoutPopup = false;
+
+  get isValid() {
+    if (isPresent(this.args.isValid)) {
+      return this.args.isValid;
+    }
+
+    return true;
+  }
 
   get optionNameKey() {
     return this.args.optionNameKey || 'name';

@@ -66,6 +66,30 @@ module('Integration | Component | mox/select', function (hooks) {
     assert.dom('[data-test-select-button]').hasClass('border-red-800');
   });
 
+  test('it allows to validate and invalidate the field after rendering', async function(assert) {
+    this.set('onInput', () => {});
+    this.set('isValid', null);
+
+    await render(hbs`<Mox::Select
+      @label="Ship Name"
+      @options={{this.options}}
+      @selectedOption={{this.selectedOption}}
+      @onChange={{this.onChange}}
+      @isDisabled={{false}}
+      @isValid={{this.isValid}}
+    />`);
+
+    assert.dom('[data-test-select-button]').doesNotHaveClass('border-red-800');
+
+    this.set('isValid', false);
+
+    assert.dom('[data-test-select-button]').hasClass('border-red-800');
+
+    this.set('isValid', true);
+
+    assert.dom('[data-test-select-button]').doesNotHaveClass('border-red-800');
+  });
+
   test('it may display a validation error alongside the field', async function(assert) {
     this.set('onInput', () => {});
 
