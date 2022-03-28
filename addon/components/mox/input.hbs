@@ -15,6 +15,4 @@
   data-test-mox-input
   ...attributes
 />
-{{#if @error}}
-  <p class="text-red-500 text-xs" id={{concat @id "-error-message"}} data-test-mox-input-error>{{@error}}</p>
-{{/if}}
+<Mox::FormError @error={{@error}} id={{concat @id "-error-message"}} data-test-mox-input-error />
