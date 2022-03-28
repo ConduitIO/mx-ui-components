@@ -1,6 +1,5 @@
 {{#if @model}}
   <LinkTo
-    class="font-medium text-sm text-cyan-500 hover:text-white transition duration-300"
     @route={{@route}}
     @model={{@model}}
     data-test-mox-link={{@route}}
@@ -10,7 +9,6 @@
   </LinkTo>
 {{else}}
   <LinkTo
-    class="font-medium text-sm text-cyan-500 hover:text-white transition duration-300"
     @route={{@route}}
     data-test-mox-link={{@route}}
     ...attributes
