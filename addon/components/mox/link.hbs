@@ -1,24 +1,7 @@
 {{#if @route}}
-  {{#if @model}}
-    <LinkTo
-      class="font-medium text-sm text-cyan-500 hover:text-white transition duration-300"
-      @route={{@route}}
-      @model={{@model}}
-      data-test-mox-link={{@route}}
-      ...attributes
-    >
-      {{yield}}
-    </LinkTo>
-  {{else}}
-    <LinkTo
-      class="font-medium text-sm text-cyan-500 hover:text-white transition duration-300"
-      @route={{@route}}
-      data-test-mox-link={{@route}}
-      ...attributes
-    >
-      {{yield}}
-    </LinkTo>
-  {{/if}}
+  <Mox::LinkTo @route={{@route}} @model={{@model}} data-test-mox-link={{@route}} ...attributes>
+    {{yield}}
+  </Mox::LinkTo>
 {{else}}
   <a
     href={{@externalUrl}}
