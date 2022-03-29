@@ -42,6 +42,28 @@ module('Integration | Component | mox/link', function (hooks) {
       .hasAttribute('href', 'http://localhost:7357');
   });
 
+  test('it renders (@route + button UI)', async function (assert) {
+    await render(hbs`
+      <Mox::Link @route="application" @isButton={{true}}>
+        Internal link
+      </Mox::Link>
+    `);
+
+    assert.dom('[data-test-mox-link]').hasClass('border-cyan-700');
+    assert.dom('[data-test-mox-link]').hasClass('bg-cyan-700');
+  });
+
+  test('it renders (@externalURL + button UI)', async function (assert) {
+    await render(hbs`
+      <Mox::Link @externalUrl="http://localhost:7357" @isButton={{true}}>
+        External link
+      </Mox::Link>
+    `);
+
+    assert.dom('[data-test-mox-link]').hasClass('border-cyan-700');
+    assert.dom('[data-test-mox-link]').hasClass('bg-cyan-700');
+  });
+
   test('it is accessible (@route)', async function (assert) {
     await render(hbs`
       <div class="bg-gray-900">
