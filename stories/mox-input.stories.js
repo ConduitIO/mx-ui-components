@@ -12,11 +12,28 @@ export default {
 
 const Template = (args) => ({
   template: hbs`
-  <Mox::Input class="mb-2"
+  <Mox::Input
     @value={{this.value}} @onInput={{this.inputAction}}
     @placeholder={{this.placeholder}} @label={{this.label}}
     disabled={{this.isDisabled}} @isRequired={{this.isRequired}}
     @isValid={{this.isValid}} @error={{this.error}} />`,
+  context: args,
+});
+
+const TemplateStackedFormFields = (args) => ({
+  template: hbs`
+  <div class="flex flex-col">
+    <Mox::Input
+      @value={{this.value}} @onInput={{this.inputAction}}
+      @placeholder={{this.placeholder}} @label={{this.label}}
+      disabled={{this.isDisabled}} @isRequired={{this.isRequired}}
+      @isValid={{this.isValid}} @error={{this.error}} />
+    <Mox::Input
+      @value={{this.secondValue}} @onInput={{this.inputAction}}
+      @placeholder={{this.placeholder}} @label={{this.secondLabel}}
+      disabled={{this.isDisabled}} @isRequired={{this.isRequired}}
+      @isValid={{this.isValid}} @error={{this.secondError}} />
+  </div>`,
   context: args,
 });
 
@@ -61,5 +78,19 @@ Errors.args = {
   isRequired: true,
   isValid: false,
   error: 'You forgot to specify a planet',
+  inputAction: () => {},
+};
+
+export const Stacked = TemplateStackedFormFields.bind({});
+Stacked.args = {
+  value: 'Mercury',
+  secondValue: 'Moon',
+  placeholder: 'Your Name',
+  label: 'Planet',
+  secondLabel: 'Other',
+  isRequired: true,
+  isValid: false,
+  error: 'You forgot to specify a planet',
+  secondError: 'You forgot to specify a natural satellite',
   inputAction: () => {},
 };

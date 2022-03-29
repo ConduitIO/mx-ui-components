@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, fillIn } from '@ember/test-helpers';
+import { render, fillIn, find } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import sinon from 'sinon';
 
@@ -69,6 +69,30 @@ module('Integration | Component | mox/input', function(hooks) {
 
     assert.dom('[data-test-mox-input-error]').includesText(`Name can't be blank`);
   });
+
+  test('validation errors do not impact the subsequent form layout', async function(assert) {
+    this.set('onInput', () => {});
+    this.set('error', null);
+
+    await render(hbs`
+      <div class="flex flex-col">
+        <Mox::Input
+          @onInput={{this.onInput}} @error={{this.error}} data-test-first-field />
+        <Mox::Input @onInput={{this.inputAction}} data-test-second-field />
+      </div>
+
+      `);
+
+    let secondField = await find('[data-test-second-field]');
+    assert.dom('[data-test-first-field] [data-test-mox-input-error]').doesNotExist();
+    assert.equal(secondField.offsetTop, 54);
+
+    this.set('error', 'message1');
+
+    assert.dom('[data-test-first-field] + [data-test-mox-input-error]').includesText('message1');
+    assert.equal(secondField.offsetTop, 54, 'the second field does not change its position relative to the top');
+  });
+
 
   test('the disabled input state is accessible', async function(assert) {
     this.set('onInput', () => {});

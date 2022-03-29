@@ -69,7 +69,5 @@
       </div>
     {{/if}}
   </div>
-  {{#if @error}}
-    <p class="text-red-500 text-xs" id={{concat @id "-error-message"}} data-test-mox-select-error>{{@error}}</p>
-  {{/if}}
+  <Mox::FormError @error={{@error}} id={{concat @id "-error-message"}} data-test-mox-select-error />
 </div>
