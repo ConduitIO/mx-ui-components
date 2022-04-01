@@ -12,7 +12,7 @@ export default {
 
 const Template = (args) => ({
   template: hbs`
-    <Mox::Accordion @isOpen={{this.isOpen}}>
+    <Mox::Accordion @isOpen={{this.isOpen}} @route="/">
       <:header>
         <Mox::Icon @iconName={{this.iconName}} @noStroke={{this.noStroke}} />
         <h3 class="text-lg">{{this.accordionTitle}}</h3>

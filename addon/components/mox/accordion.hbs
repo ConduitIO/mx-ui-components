@@ -1,11 +1,19 @@
 <section data-test-mox-accordion ...attributes>
-  <header>
+  <header class="flex items-center gap-x-4">
     <button
-      class="text-cyan-500 flex gap-x-4 items-center hover:text-cyan-300 focus:text-cyan-300 transition-colors"
-      type="button" {{on "click" this.toggle}} data-test-mox-accordion-button>
+      class="text-cyan-500 hover:text-cyan-300 focus:text-cyan-300 transition-colors"
+      type="button" {{on "click" this.toggle}} aria-label="Open row" data-test-mox-accordion-button>
       <Mox::Icon @iconName="chevron-right-24" class="transition {{if this.isOpen "rotate-90"}}" />
-      {{yield to="header"}}
     </button>
+    {{#if @route}}
+      <Mox::Link @route={{@route}} @model={{@model}} class="flex items-center gap-x-4" data-test-mox-accordion-header-link>
+        {{yield to="header"}}
+      </Mox::Link>
+    {{else}}
+      <div class="flex items-center gap-x-4 text-white" data-test-mox-accordion-header>
+        {{yield to="header"}}
+      </div>
+    {{/if}}
   </header>
   {{#if this.isOpen}}
     <div class="text-gray-300 py-4" data-test-mox-accordion-body>

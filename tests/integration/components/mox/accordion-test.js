@@ -7,7 +7,7 @@ import { a11yAudit } from 'ember-a11y-testing/test-support';
 module('Integration | Component | mox/accordion', function(hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders', async function(assert) {
+  test('it renders (default)', async function(assert) {
     await render(hbs`
       <Mox::Accordion>
         <:header>
@@ -20,7 +20,26 @@ module('Integration | Component | mox/accordion', function(hooks) {
     `);
 
     assert.dom('[data-test-mox-accordion]').exists();
-    assert.dom('[data-test-mox-accordion-button]').includesText('Hola');
+    assert.dom('[data-test-mox-accordion-button]').exists();
+    assert.dom('[data-test-mox-accordion-header]').includesText('Hola');
+    assert.dom('[data-test-mox-accordion-body]').doesNotExist();
+  });
+
+  test('it renders (with a link)', async function(assert) {
+    await render(hbs`
+      <Mox::Accordion @route="application">
+        <:header>
+          Hola
+        </:header>
+        <:body>
+          Que tal
+        </:body>
+      </Mox::Accordion>
+    `);
+
+    assert.dom('[data-test-mox-accordion]').exists();
+    assert.dom('[data-test-mox-accordion-button]').exists();
+    assert.dom('[data-test-mox-accordion-header-link]').includesText('Hola');
     assert.dom('[data-test-mox-accordion-body]').doesNotExist();
   });
 
