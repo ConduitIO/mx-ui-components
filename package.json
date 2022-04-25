@@ -107,7 +107,8 @@
     "node": ">= 12.20.* || 14.* || >= 16"
   },
   "resolutions": {
-    "minimist": "^1.2.6"
+    "minimist": "^1.2.6",
+    "hawk": "^8.0.1"
   },
   "ember": {
     "edition": "octane"
