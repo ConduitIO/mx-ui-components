@@ -106,6 +106,9 @@
   "engines": {
     "node": "12.* || 14.* || >= 16"
   },
+  "resolutions": {
+    "minimist": "^1.2.6"
+  },
   "ember": {
     "edition": "octane"
   },
