@@ -113,8 +113,8 @@
 
     <symbol id="alert-triangle-16" width="24" height="24" fill="none">
       <path d="M10.2898 3.85923L1.81978 17.9992C1.64514 18.3017 1.55274 18.6445 1.55177 18.9937C1.55079 19.343 1.64127 19.6864 1.8142 19.9898C1.98714 20.2931 2.2365 20.546 2.53748 20.7231C2.83847 20.9002 3.18058 20.9954 3.52978 20.9992H20.4698C20.819 20.9954 21.1611 20.9002 21.4621 20.7231C21.7631 20.546 22.0124 20.2931 22.1854 19.9898C22.3583 19.6864 22.4488 19.343 22.4478 18.9937C22.4468 18.6445 22.3544 18.3017 22.1798 17.9992L13.7098 3.85923C13.5315 3.56533 13.2805 3.32235 12.981 3.15371C12.6814 2.98508 12.3435 2.89648 11.9998 2.89648C11.656 2.89648 11.3181 2.98508 11.0186 3.15371C10.7191 3.32235 10.468 3.56533 10.2898 3.85923V3.85923Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M12 9V13" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M12 17H12.01" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M12 9V13" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M12 17H12.01" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     </symbol>
 
     <symbol id='copy-16' width="16" height="16" viewBox="0 0 16 16" fill="none"

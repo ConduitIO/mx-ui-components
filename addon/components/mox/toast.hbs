@@ -1,0 +1,29 @@
+<article
+  class="bg-gray-800 text-white rounded shadow-md w-80 flex items-stretch text-sm"
+  data-test-toast={{@type}}
+  ...attributes
+>
+  <div class="{{this.typeDetails.bgColorClass}} w-slim" data-test-toast-marker></div>
+  <section class="px-4 py-4 flex gap-x-4 w-full">
+    <div class="flex flex-start">
+      <svg class="stroke-current h-6 w-6 {{this.typeDetails.textColorClass}}">
+        <use xlink:href={{root-url this.typeDetails.svg}}></use>
+      </svg>
+    </div>
+    <div>
+      <div class="uppercase {{this.typeDetails.textColorClass}}">
+        {{this.typeDetails.title}}
+      </div>
+      {{#if (has-block "body")}}
+        <div class="mt-4">
+          {{yield to="body"}}
+        </div>
+      {{/if}}
+      {{#if (has-block "controls")}}
+        <div class="flex items-center justify-end mt-4" data-test-controls={{@type}}>
+          {{yield to="controls"}}
+        </div>
+      {{/if}}
+    </div>
+  </section>
+</article>
