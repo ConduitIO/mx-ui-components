@@ -1,6 +1,7 @@
 <article
   class="bg-gray-800 text-white rounded shadow-md w-80 flex items-stretch text-sm"
-  data-test-toast={{@type}}
+  data-test-toast
+  data-test-toast-type={{@toastType}}
   ...attributes
 >
   <div class="{{this.typeDetails.bgColorClass}} w-slim" data-test-toast-marker></div>
@@ -11,7 +12,7 @@
       </svg>
     </div>
     <div>
-      <div class="uppercase {{this.typeDetails.textColorClass}}">
+      <div class="uppercase {{this.typeDetails.textColorClass}}" data-test-toast-title>
         {{this.typeDetails.title}}
       </div>
       {{#if (has-block "body")}}
@@ -20,7 +21,7 @@
         </div>
       {{/if}}
       {{#if (has-block "controls")}}
-        <div class="flex items-center justify-end mt-4" data-test-controls={{@type}}>
+        <div class="flex items-center justify-end mt-4" data-test-toast-controls>
           {{yield to="controls"}}
         </div>
       {{/if}}

@@ -11,7 +11,7 @@ export default {
 
 const Template = (args) => ({
   template: hbs`
-    <Mox::Toast @type={{this.type}}>
+    <Mox::Toast @toastType={{this.toastType}}>
       <:body>This is a toast. Mmm toast. It is not a buttered toast, it is just a toast.</:body>
       <:controls>
         <Mox::Button @buttonType="secondary" @small={{true}}>
@@ -27,10 +27,10 @@ Default.args = {};
 
 export const Success = Template.bind({});
 Success.args = {
-  type: 'success',
+  toastType: 'success',
 };
 
 export const Error = Template.bind({});
 Error.args = {
-  type: 'error',
+  toastType: 'error',
 };

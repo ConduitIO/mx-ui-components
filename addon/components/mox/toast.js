@@ -2,7 +2,7 @@ import Component from '@glimmer/component';
 
 export default class MoxToastComponent extends Component {
   get typeDetails() {
-    const classes = {
+    const details = {
       success: {
         title: 'success!',
         bgColorClass: 'bg-green-500',
@@ -17,6 +17,6 @@ export default class MoxToastComponent extends Component {
       },
     };
 
-    return classes[this.args.type] || classes['success'];
+    return details[this.args.toastType] || details['success'];
   }
 }
