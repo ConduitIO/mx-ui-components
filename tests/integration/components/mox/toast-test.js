@@ -48,10 +48,10 @@ module('Integration | Component | mox/toast', function (hooks) {
     await render(hbs`
     <Mox::Toast @toastType="success">
       <:body>This is a toast. Mmm toast. It is not a buttered toast, it is just a toast.</:body>
-      <:controls>
-        <Mox::Button @buttonType="secondary" @small={{true}}>
+      <:controls as |controls|>
+        <controls.dismissAction>
           Dismiss
-        </Mox::Button>
+        </controls.dismissAction>
       </:controls>
     </Mox::Toast>
     `);
@@ -65,10 +65,10 @@ module('Integration | Component | mox/toast', function (hooks) {
     await render(hbs`
     <Mox::Toast @toastType="error">
       <:body>This is a toast. Mmm toast. It is not a buttered toast, it is just a toast.</:body>
-      <:controls>
-        <Mox::Button @buttonType="secondary" @small={{true}}>
+      <:controls as |controls|>
+        <controls.dismissAction>
           Dismiss
-        </Mox::Button>
+        </controls.dismissAction>
       </:controls>
     </Mox::Toast>
     `);
@@ -76,5 +76,39 @@ module('Integration | Component | mox/toast', function (hooks) {
     assert.dom('[data-test-toast-title]').hasText('action required');
     assert.dom('[data-test-toast-title]').hasClass('text-red-500');
     assert.dom('[data-test-toast-marker]').hasClass('bg-red-500');
+  });
+
+  test('it renders a warning toast', async function (assert) {
+    await render(hbs`
+    <Mox::Toast @toastType="warning">
+      <:body>This is a toast. Mmm toast. It is not a buttered toast, it is just a toast.</:body>
+      <:controls as |controls|>
+        <controls.dismissAction>
+          Dismiss
+        </controls.dismissAction>
+      </:controls>
+    </Mox::Toast>
+    `);
+
+    assert.dom('[data-test-toast-title]').hasText('heads up');
+    assert.dom('[data-test-toast-title]').hasClass('text-yellow-400');
+    assert.dom('[data-test-toast-marker]').hasClass('bg-yellow-400');
+  });
+
+  test('it renders an info toast', async function (assert) {
+    await render(hbs`
+    <Mox::Toast @toastType="info">
+      <:body>This is a toast. Mmm toast. It is not a buttered toast, it is just a toast.</:body>
+      <:controls as |controls|>
+        <controls.dismissAction>
+          Dismiss
+        </controls.dismissAction>
+      </:controls>
+    </Mox::Toast>
+    `);
+
+    assert.dom('[data-test-toast-title]').hasText('heads up');
+    assert.dom('[data-test-toast-title]').hasClass('text-cyan-500');
+    assert.dom('[data-test-toast-marker]').hasClass('bg-cyan-500');
   });
 });

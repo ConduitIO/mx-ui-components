@@ -11,7 +11,7 @@
         <use xlink:href={{root-url this.typeDetails.svg}}></use>
       </svg>
     </div>
-    <div>
+    <div class="w-full">
       <div class="uppercase {{this.typeDetails.textColorClass}}" data-test-toast-title>
         {{this.typeDetails.title}}
       </div>
@@ -22,7 +22,10 @@
       {{/if}}
       {{#if (has-block "controls")}}
         <div class="flex items-center justify-end mt-4" data-test-toast-controls>
-          {{yield to="controls"}}
+          {{yield
+            (hash dismissAction=(component "mox/button" buttonType="secondary" small=true))
+            to="controls"
+          }}
         </div>
       {{/if}}
     </div>

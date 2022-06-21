@@ -13,10 +13,10 @@ const Template = (args) => ({
   template: hbs`
     <Mox::Toast @toastType={{this.toastType}}>
       <:body>This is a toast. Mmm toast. It is not a buttered toast, it is just a toast.</:body>
-      <:controls>
-        <Mox::Button @buttonType="secondary" @small={{true}}>
+      <:controls as |controls|>
+        <controls.dismissAction>
           Dismiss
-        </Mox::Button>
+        </controls.dismissAction>
       </:controls>
     </Mox::Toast>`,
   context: args,
@@ -33,4 +33,14 @@ Success.args = {
 export const Error = Template.bind({});
 Error.args = {
   toastType: 'error',
+};
+
+export const Info = Template.bind({});
+Info.args = {
+  toastType: 'info',
+};
+
+export const Warning = Template.bind({});
+Warning.args = {
+  toastType: 'warning',
 };
