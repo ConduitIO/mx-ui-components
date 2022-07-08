@@ -23,8 +23,8 @@ ember install mx-ui-components
 Usage
 ------------------------------------------------------------------------------
 
-[Longer description of how to use the addon in apps.]
-
+All component usage is documented via Storybook stories. Please see the instructions below on how to run storybook.
+Or you can view [the demo storybook site](https://6109b9596e1c1300390c39c5-gbnmeyicen.chromatic.com/?path=/story/fonts--font-sizes)
 
 Development
 ------------------------------------------------------------------------------
