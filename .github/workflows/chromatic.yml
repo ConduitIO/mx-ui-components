@@ -8,7 +8,6 @@ jobs:
   chromatic-deployment:
     # Operating System
     runs-on: ubuntu-latest
-    if: ${{ github.repository == 'meroxa/mx-ui-components' }}
     # Job steps
     steps:
       - uses: actions/checkout@v1
