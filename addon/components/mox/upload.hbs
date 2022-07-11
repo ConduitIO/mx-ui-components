@@ -1,0 +1,51 @@
+<div data-test-mox-upload ...attributes>
+  <div class="flex items-center justify-between" data-test-mox-upload-description>
+    {{#if @label}}
+      <Mox::Label class="text-white" for={{concat "credential-paste-field-" this.fieldName}} @isRequired={{true}} data-test-mox-upload-label>
+        {{@label}}
+      </Mox::Label>
+    {{/if}}
+    {{#if @format}}
+      <span class="text-xs text-white text-right">
+        {{@format}}
+        and .txt format required
+      </span>
+    {{/if}}
+  </div>
+  {{#if (not this.isPasting)}}
+    <div
+      class="flex items-center justify-center
+        {{if @isCompact "p-2" "p-4"}}
+         text-center rounded border border-gray-400 space-x-1"
+    >
+      <button class="text-cyan-500 font-semibold" data-test-mox-upload-paste type="button" {{on "click" (fn (mut this.isPasting) true)}}>
+        Paste text
+      </button>
+      <span class="text-white">
+        or
+      </span>
+      <button class="text-cyan-500 font-semibold" data-test-mox-upload-file-upload type="button" {{on "click" this.clickHiddenFileInput}}>
+        browse file
+      </button>
+    </div>
+  {{else if this.isPasting}}
+    <Mox::TextArea
+      id="credential-paste-field"
+      value={{this.pastingValue}}
+      placeholder=""
+      @onInput={{@onInput}}
+      data-test-mox-upload-paste-field
+    />
+    <button class="text-xs text-cyan-500 font-semibold" type="button" {{on "click" this.clickHiddenFileInput}} data-test-mox-upload-go-back-to-file-upload>
+      Browse file
+    </button>
+  {{/if}}
+  <input
+    class="hidden"
+    type="file"
+    id={{concat this.fieldName "-file-input"}}
+    accept={{if @format (concat @format " ,.txt") "*"}}
+    {{on "change" this.handleFileInput}}
+    data-test-mox-upload-file-upload-field
+  />
+</div>
