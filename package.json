@@ -5,8 +5,11 @@
   "keywords": [
     "ember-addon"
   ],
-  "repository": "",
-  "license": "Apache 2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ConduitIO/mx-ui-components.git"
+  },
+  "license": "Apache-2.0",
   "author": "",
   "directories": {
     "doc": "doc",
@@ -29,7 +32,9 @@
     "build:dev": "ember build && build-storybook -s dist",
     "build:prod": "ember build && build-storybook -s dist",
     "chromatic": "npx chromatic --build-script-name 'build:prod'",
-    "build-storybook": "yarn run build:prod --"
+    "build-storybook": "yarn run build:prod --",
+    "release": "release-it",
+    "release:dry-run": "release-it --dry-run"
   },
   "dependencies": {
     "ember-cli-babel": "^7.26.10",
@@ -100,6 +105,7 @@
     "prettier": "^2.5.1",
     "qunit": "^2.17.2",
     "qunit-dom": "^1.6.0",
+    "release-it": "^15.1.1",
     "sinon": "^9.2.4",
     "tailwindcss": "^3.0.22"
   },
@@ -115,5 +121,15 @@
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
+  },
+  "release-it": {
+    "git": {
+      "tagName": "v${version}"
+    },
+    "github": {
+      "release": true,
+      "releaseName": "v${version}"
+    },
+    "npm": false
   }
 }
