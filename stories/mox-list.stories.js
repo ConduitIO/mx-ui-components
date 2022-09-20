@@ -65,7 +65,6 @@ const SortableTemplate = (args) => ({
   template: hbs`
   <Mox::List @items={{this.listItems}}>
     <:header as |s|>
-      {{log (eq s.sortedBy "name")}}
       <Mox::List::Item @isHeader={{true}} @isActive={{eq s.sortedBy "name"}} @sort={{fn s.sortByColumn "name"}}>
         Name
       </Mox::List::Item>

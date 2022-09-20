@@ -25,8 +25,7 @@ export default class MoxListComponent extends Component {
   }
 
   @action
-  sortByColumn(attr, sortDirection, ev) {
-    console.log({ message: 'sorted...', attr, sortDirection });
+  sortByColumn(attr, sortDirection) {
     this.sortedBy = attr;
     this.sortDirection = sortDirection;
   }
