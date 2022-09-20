@@ -1,10 +1,10 @@
 <div data-test-mox-list ...attributes>
   <table class="table-auto w-full text-left">
     <Mox::List::Header>
-      {{yield to="header"}}
+      {{yield (hash sortByColumn=this.sortByColumn sortedBy=this.sortedBy) to="header"}}
     </Mox::List::Header>
     <Mox::List::Body>
-      {{yield to="body"}}
+      {{yield this.sortedItems to="body"}}
     </Mox::List::Body>
   </table>
 </div>
