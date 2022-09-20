@@ -32,6 +32,8 @@ const Template = (args) => ({
 
 export const Default = Template.bind({});
 export const Large = Template.bind({});
+export const Small = Template.bind({});
+export const XSmall = Template.bind({});
 
 Default.args = {
   allOptions: colorOptions,
@@ -42,4 +44,16 @@ Large.args = {
   allOptions: colorOptions,
   color: 'text-gray-300',
   size: 'large',
+};
+
+Small.args = {
+  allOptions: colorOptions,
+  color: 'text-gray-300',
+  size: 'small',
+};
+
+XSmall.args = {
+  allOptions: colorOptions,
+  color: 'text-gray-300',
+  size: 'x-small',
 };

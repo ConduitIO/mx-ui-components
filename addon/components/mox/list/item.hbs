@@ -1,7 +1,19 @@
 {{#unless @isDisabled}}
   {{#if @isHeader}}
-    <th class="text-xs uppercase font-medium py-3 px-4 text-gray-300" data-test-mox-list-header-item ...attributes>
-      {{yield}}
+    <th class="text-xs uppercase py-3 px-4  align-middle relative" data-test-mox-list-header-item ...attributes>
+      <div class="inline-block mt-auto py-0.5 {{if @isActive "text-white font-semibold" "text-gray-300 font-medium"}}" data-test-mox-list-header-item-label>
+        {{yield}}
+      </div>
+      {{#if @sort}}
+        <div class="inline-block mt-0 mx-2 absolute">
+          <button class="block hover:text-cyan-500 focus:text-cyan-500 {{if @isActive "text-gray-500"}}" type="button" {{on "click" (fn @sort "asc")}} data-test-mox-list-header-sort-asc>
+            <Mox::Icon @iconName="chevron-down-24" class="transition rotate-180" @size="x-small" />
+          </button>
+          <button class="block hover:text-cyan-500 focus:text-cyan-500 {{if @isActive "text-gray-500"}}" type="button" {{on "click" (fn @sort "desc")}} data-test-mox-list-header-sort-desc>
+            <Mox::Icon @iconName="chevron-down-24" class="transition" @size="x-small" />
+          </button>
+        </div>
+      {{/if}}
     </th>
   {{else}}
     {{#if @route}}

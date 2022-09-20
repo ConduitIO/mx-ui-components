@@ -27,6 +27,20 @@ module('Integration | Component | mox/icon', function(hooks) {
     assert.dom('[data-test-mox-icon="connectors-16"]').hasClass('w-8');
   });
 
+  test('it renders a small variant of the icon', async function(assert) {
+    await render(hbs`<Mox::Icon @iconName="connectors-16" @size="small" />`);
+
+    assert.dom('[data-test-mox-icon="connectors-16"]').hasClass('h-4');
+    assert.dom('[data-test-mox-icon="connectors-16"]').hasClass('w-4');
+  });
+
+  test('it renders an extra small variant of the icon', async function(assert) {
+    await render(hbs`<Mox::Icon @iconName="connectors-16" @size="x-small" />`);
+
+    assert.dom('[data-test-mox-icon="connectors-16"]').hasClass('h-2.5');
+    assert.dom('[data-test-mox-icon="connectors-16"]').hasClass('w-2.5');
+  });
+
   test('it renders with currentFill and currentStroke by default', async function(assert) {
     await render(hbs`<Mox::Icon @iconName="connectors-16" />`);
 
