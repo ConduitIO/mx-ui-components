@@ -1,29 +1,31 @@
 name: Release
 
 on:
-  workflow_dispatch:
-    inputs:
-      versionInc:
-        description: 'Version increment'
-        required: true
-        type: choice
-        options:
-        - patch
-        - minor
-        - major
+  push:
+    branches:
+      - main
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   release:
+    name: Release
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout Repo
+        uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: git config
-        run: |
-          git config user.name "meroxa-machine"
-          git config user.email "machine@meroxa.io"
-      - run: yarn install
-      - run: npm run release -- ${{ inputs.versionInc }} --ci
+
+      - name: Use Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14'
+
+      - name: Install Dependencies
+        run: yarn
+
+      - name: Create Release Pull Request
+        uses: changesets/action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.MEROXA_MACHINE }}
