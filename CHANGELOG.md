@@ -1,5 +1,11 @@
 # mx-ui-components
 
+## 1.9.1
+
+### Patch Changes
+
+- c104e28: Move changesets/cli from deps -> devDeps
+
 ## 1.9.0
 
 ### Minor Changes
