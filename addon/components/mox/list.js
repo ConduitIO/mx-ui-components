@@ -13,12 +13,7 @@ export default class MoxListComponent extends Component {
   @tracked
   sortDirection;
 
-  constructor() {
-    super(...arguments);
-    this.items = this.args.items;
-  }
-
-  @sort('items', 'sortSetting') sortedItems;
+  @sort('args.items', 'sortSetting') sortedItems;
 
   get sortSetting() {
     return [`${this.sortedBy}:${this.sortDirection}`];

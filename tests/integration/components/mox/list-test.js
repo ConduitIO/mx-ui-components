@@ -169,4 +169,78 @@ module('Integration | Component | mox/list', function(hooks) {
       assert.dom(updatedListItems[3]).includesText('Fire Veil');
     });
   });
+
+  module('empty sortable list', function() {
+    test('it renders', async function (assert) {
+      this.items = [];
+
+      await render(
+        hbs`
+        <Mox::List @items={{this.items}}>
+          <:header as |s|>
+            <Mox::List::Item @isHeader={{true}} @isActive={{eq s.sortedBy "name"}} @sort={{fn s.sortByColumn "name"}} data-test-name>
+              Name
+            </Mox::List::Item>
+            <Mox::List::Item @isHeader={{true}} @isActive={{eq s.sortedBy "description"}} @sort={{fn s.sortByColumn "description"}} data-test-description>
+              Description
+            </Mox::List::Item>
+          </:header>
+          <:body as |sortedItems|>
+            {{#each sortedItems as |item|}}
+              <Mox::List::Row>
+                <Mox::List::Item>
+                  {{item.name}}
+                </Mox::List::Item>
+                <Mox::List::Item>
+                  {{item.description}}
+                </Mox::List::Item>
+              </Mox::List::Row>
+            {{/each}}
+          </:body>
+        </Mox::List>
+      `);
+
+      assert.dom('[data-test-mox-list-header]').includesText('Name');
+      assert.dom('[data-test-mox-list-header]').includesText('Description');
+      assert.dom('[data-test-mox-list-row]').doesNotExist();
+    });
+
+    test('it updates the list when the @items argument is updated', async function (assert) {
+      this.items = [];
+
+      await render(
+        hbs`
+        <Mox::List @items={{this.items}}>
+          <:header as |s|>
+            <Mox::List::Item @isHeader={{true}} @isActive={{eq s.sortedBy "name"}} @sort={{fn s.sortByColumn "name"}} data-test-name>
+              Name
+            </Mox::List::Item>
+            <Mox::List::Item @isHeader={{true}} @isActive={{eq s.sortedBy "description"}} @sort={{fn s.sortByColumn "description"}} data-test-description>
+              Description
+            </Mox::List::Item>
+          </:header>
+          <:body as |sortedItems|>
+            {{#each sortedItems as |item|}}
+              <Mox::List::Row>
+                <Mox::List::Item>
+                  {{item.name}}
+                </Mox::List::Item>
+                <Mox::List::Item>
+                  {{item.description}}
+                </Mox::List::Item>
+              </Mox::List::Row>
+            {{/each}}
+          </:body>
+        </Mox::List>
+      `);
+
+      assert.dom('[data-test-mox-list-row]').doesNotExist();
+
+      this.set('items', [{ name: 'Misty', description: 'aqua pokemon' }, { name: 'Giovanni', description: 'ground pokemon' }]);
+
+      assert.dom('[data-test-mox-list-row]').exists({ count: 2 });
+      assert.dom('[data-test-mox-list-body]').includesText('Misty');
+      assert.dom('[data-test-mox-list-body]').includesText('ground pokemon');
+    });
+  });
 });
