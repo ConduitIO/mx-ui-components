@@ -102,24 +102,15 @@ a.mox-tab-link {
 
 a.mox-tab-link:hover:not(:focus) {
   color: #ffffff;
-  border-bottom-color: #ffffff; /* white */
+  border-bottom-color: #D1D5DB; /* white */
 }
 
 a.active.mox-tab-link,
-a.arg-active.mox-tab-link {
+a.arg-active.mox-tab-link,
+a.active.mox-tab-link:hover,
+a.arg-active.mox-tab-link:hover {
   color: #06B6D4; /* cyan-500 */
   border-bottom-color: #06B6D4; /* cyan-500 */
   font-weight: 700; /* font-bold */
-}
-
-a.active.mox-tab-link:hover:not(:focus),
-a.arg-active.mox-tab-link:hover:not(:focus){
-  color: #67e8f9;
-  border-bottom-color: #67e8f9; /* cyan-300 */
-}
-
-a.active.mox-tab-link:focus,
-a.arg-active.mox-tab-link:focus {
-  color: #06B6D4; /* cyan-500 */
-  border-bottom-color: #6B7280; /* gray-500 */
+  border-style: solid;
 }
