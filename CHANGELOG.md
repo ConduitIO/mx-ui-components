@@ -1,5 +1,11 @@
 # mx-ui-components
 
+## 1.9.3
+
+### Patch Changes
+
+- [#21](https://github.com/ConduitIO/mx-ui-components/pull/21) [`6934762`](https://github.com/ConduitIO/mx-ui-components/commit/69347629ec56df0faf229a9811c9af551822e1d5) Thanks [@jayjayjpg](https://github.com/jayjayjpg)! - fix(tabs): make hover/focus/active states more user-friendly
+
 ## 1.9.2
 
 ### Patch Changes
