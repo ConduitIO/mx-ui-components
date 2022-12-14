@@ -1,6 +1,9 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@2.1.1/schema.json",
-  "changelog": ["@changesets/changelog-github", { "repo": "ConduitIO/mx-ui-components" }],
+  "changelog": [
+    "@changesets/changelog-github",
+    { "repo": "ConduitIO/mx-ui-components" }
+  ],
   "commit": false,
   "fixed": [],
   "linked": [],

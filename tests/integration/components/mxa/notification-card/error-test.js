@@ -5,21 +5,23 @@ import { hbs } from 'ember-cli-htmlbars';
 
 import { a11yAudit } from 'ember-a11y-testing/test-support';
 
-module('Integration | Component | mxa/notification-card/error', function(hooks) {
-  setupRenderingTest(hooks);
+module(
+  'Integration | Component | mxa/notification-card/error',
+  function (hooks) {
+    setupRenderingTest(hooks);
 
-  test('it renders', async function(assert) {
-    await render(hbs`<Mxa::NotificationCard::Error>
+    test('it renders', async function (assert) {
+      await render(hbs`<Mxa::NotificationCard::Error>
       <:body>
         My text body
       </:body>
     </Mxa::NotificationCard::Error>`);
 
-    assert.dom('[data-test-error]').hasText('My text body');
-  });
+      assert.dom('[data-test-error]').hasText('My text body');
+    });
 
-  test('it renders with title and controls', async function(assert) {
-    await render(hbs`<Mxa::NotificationCard::Error>
+    test('it renders with title and controls', async function (assert) {
+      await render(hbs`<Mxa::NotificationCard::Error>
       <:header>
         My title
       </:header>
@@ -31,29 +33,32 @@ module('Integration | Component | mxa/notification-card/error', function(hooks) 
       </:controls>
     </Mxa::NotificationCard::Error>`);
 
-    assert.dom('[data-test-error]').includesText('My text body');
-    assert.dom('[data-test-error-title]').hasText('My title');
-    assert.dom('[data-test-error-controls]').hasText('My controls');
-  });
+      assert.dom('[data-test-error]').includesText('My text body');
+      assert.dom('[data-test-error-title]').hasText('My title');
+      assert.dom('[data-test-error-controls]').hasText('My controls');
+    });
 
-  test('it is displayed as error card', async function(assert) {
-    await render(hbs`<Mxa::NotificationCard::Error>
+    test('it is displayed as error card', async function (assert) {
+      await render(hbs`<Mxa::NotificationCard::Error>
       <:body>
         My text body
       </:body>
     </Mxa::NotificationCard::Error>`);
 
-    assert.dom('[data-test-notification-card-marker]').hasClass('bg-orange-700');
-  });
+      assert
+        .dom('[data-test-notification-card-marker]')
+        .hasClass('bg-orange-700');
+    });
 
-  test('it is accessible', async function(assert) {
-    await render(hbs`<Mxa::NotificationCard::Error>
+    test('it is accessible', async function (assert) {
+      await render(hbs`<Mxa::NotificationCard::Error>
       <:body>
         My text body
       </:body>
     </Mxa::NotificationCard::Error>`);
 
-    await a11yAudit();
-    assert.ok(true, 'no accessibility errors');
-  });
-});
+      await a11yAudit();
+      assert.ok(true, 'no accessibility errors');
+    });
+  }
+);

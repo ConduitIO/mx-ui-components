@@ -4,10 +4,10 @@ import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { a11yAudit } from 'ember-a11y-testing/test-support';
 
-module('Integration | Component | mox/tabs', function(hooks) {
+module('Integration | Component | mox/tabs', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders', async function(assert) {
+  test('it renders', async function (assert) {
     await render(hbs`
       <Mox::Tabs>
         <li>template block text</li>
@@ -17,7 +17,7 @@ module('Integration | Component | mox/tabs', function(hooks) {
     assert.dom('[data-test-mox-tabs]').hasText('template block text');
   });
 
-  test('it is accessible', async function(assert) {
+  test('it is accessible', async function (assert) {
     await render(hbs`
       <div class="bg-gray-900">
         <Mox::Tabs>

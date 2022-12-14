@@ -5,7 +5,7 @@
 
 .mxa-toggle input:after,
 .mox-toggle input:after {
-  content: "";
+  content: '';
   height: 20px;
   width: 20px;
   position: absolute;
@@ -53,7 +53,7 @@
 
 .mxa-label.required:after,
 .mox-label.required:after {
-  content: "";
+  content: '';
   display: block;
   width: 4px;
   height: 4px;
@@ -63,11 +63,11 @@
 }
 
 .mxa-label.required:after {
-  background-color: #C2410C; /* orange-700 */
+  background-color: #c2410c; /* orange-700 */
 }
 
 .mox-label.required:after {
-  background-color: #EF4444; /* red-500 */
+  background-color: #ef4444; /* red-500 */
 }
 
 .mxa-sidebar-item a.active {
@@ -75,7 +75,7 @@
 }
 
 .mxa-sidebar-item a.active:before {
-  content: "";
+  content: '';
   display: block;
   width: 15px;
   height: 7px;
@@ -94,7 +94,7 @@
 
 a.mox-tab-link {
   padding: 1rem 0.5rem;
-  color: #D1D5DB; /* gray-300 */
+  color: #d1d5db; /* gray-300 */
   border-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: transparent; /* transparent */
@@ -102,15 +102,15 @@ a.mox-tab-link {
 
 a.mox-tab-link:hover:not(:focus) {
   color: #ffffff;
-  border-bottom-color: #D1D5DB; /* white */
+  border-bottom-color: #d1d5db; /* white */
 }
 
 a.active.mox-tab-link,
 a.arg-active.mox-tab-link,
 a.active.mox-tab-link:hover,
 a.arg-active.mox-tab-link:hover {
-  color: #06B6D4; /* cyan-500 */
-  border-bottom-color: #06B6D4; /* cyan-500 */
+  color: #06b6d4; /* cyan-500 */
+  border-bottom-color: #06b6d4; /* cyan-500 */
   font-weight: 700; /* font-bold */
   border-style: solid;
 }

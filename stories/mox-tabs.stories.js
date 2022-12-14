@@ -9,7 +9,6 @@ export default {
   },
 };
 
-
 const Template = (args) => ({
   template: hbs`<Mox::Tabs>
     <Mox::Tabs::Item @isActive={{this.isActive}}>Item One</Mox::Tabs::Item>

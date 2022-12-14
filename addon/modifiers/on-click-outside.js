@@ -1,6 +1,7 @@
 import { modifier } from 'ember-modifier';
 
-export default modifier((element, [callback, outsideElementSelector], options) => {
+export default modifier(
+  (element, [callback, outsideElementSelector], options) => {
     function handleClick(event) {
       if (!element.contains(event.target)) {
         callback(event);

@@ -1,18 +1,9 @@
 {{#if @model}}
-  <LinkTo
-    @route={{@route}}
-    @model={{@model}}
-    data-test-mox-link={{@route}}
-    ...attributes
-  >
+  <LinkTo @route={{@route}} @model={{@model}} data-test-mox-link={{@route}} ...attributes>
     {{yield}}
   </LinkTo>
 {{else}}
-  <LinkTo
-    @route={{@route}}
-    data-test-mox-link={{@route}}
-    ...attributes
-  >
+  <LinkTo @route={{@route}} data-test-mox-link={{@route}} ...attributes>
     {{yield}}
   </LinkTo>
 {{/if}}

@@ -1,4 +1,8 @@
-<div class="{{if @isContainer "w-container" "w-full"}} bg-white border border-slate-20 rounded-md p-8" data-test-mxa-card ...attributes>
+<div
+  class="{{if @isContainer 'w-container' 'w-full'}} bg-white border border-slate-20 rounded-md p-8"
+  data-test-mxa-card
+  ...attributes
+>
   {{#if (has-block "title")}}
     <h1 class="text-gray-900 font-semibold mb-8 text-2xl" data-test-mxa-card-title>
       {{yield to="title"}}

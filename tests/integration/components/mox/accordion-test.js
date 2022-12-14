@@ -4,10 +4,10 @@ import { click, render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { a11yAudit } from 'ember-a11y-testing/test-support';
 
-module('Integration | Component | mox/accordion', function(hooks) {
+module('Integration | Component | mox/accordion', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders (default)', async function(assert) {
+  test('it renders (default)', async function (assert) {
     await render(hbs`
       <Mox::Accordion>
         <:header>
@@ -25,7 +25,7 @@ module('Integration | Component | mox/accordion', function(hooks) {
     assert.dom('[data-test-mox-accordion-body]').doesNotExist();
   });
 
-  test('it renders (with a link)', async function(assert) {
+  test('it renders (with a link)', async function (assert) {
     await render(hbs`
       <Mox::Accordion @route="application">
         <:header>
@@ -43,7 +43,7 @@ module('Integration | Component | mox/accordion', function(hooks) {
     assert.dom('[data-test-mox-accordion-body]').doesNotExist();
   });
 
-  test('it hides the body by default', async function(assert) {
+  test('it hides the body by default', async function (assert) {
     await render(hbs`
       <Mox::Accordion>
         <:header>
@@ -58,7 +58,7 @@ module('Integration | Component | mox/accordion', function(hooks) {
     assert.dom('[data-test-mox-accordion-body]').doesNotExist();
   });
 
-  test('it displays the body if @isOpen is set to true', async function(assert) {
+  test('it displays the body if @isOpen is set to true', async function (assert) {
     await render(hbs`
       <Mox::Accordion @isOpen={{true}}>
         <:header>
@@ -73,7 +73,7 @@ module('Integration | Component | mox/accordion', function(hooks) {
     assert.dom('[data-test-mox-accordion-body]').includesText('Que tal');
   });
 
-  test('it allows opening the accordion view via click', async function(assert) {
+  test('it allows opening the accordion view via click', async function (assert) {
     await render(hbs`
       <Mox::Accordion>
         <:header>
@@ -92,7 +92,7 @@ module('Integration | Component | mox/accordion', function(hooks) {
     assert.dom('[data-test-mox-accordion-body]').includesText('Que tal');
   });
 
-  test('it allows closing the accordion view via click', async function(assert) {
+  test('it allows closing the accordion view via click', async function (assert) {
     await render(hbs`
       <Mox::Accordion @isOpen={{true}}>
         <:header>
@@ -111,7 +111,7 @@ module('Integration | Component | mox/accordion', function(hooks) {
     assert.dom('[data-test-mox-accordion-body]').doesNotExist();
   });
 
-  test('it is accessible (closed state)', async function(assert) {
+  test('it is accessible (closed state)', async function (assert) {
     await render(hbs`
       <div class="bg-gray-900">
         <Mox::Accordion>
@@ -129,7 +129,7 @@ module('Integration | Component | mox/accordion', function(hooks) {
     assert.ok(true, 'it is accessible in its closed state');
   });
 
-  test('it is accessible (open state)', async function(assert) {
+  test('it is accessible (open state)', async function (assert) {
     await render(hbs`
       <div class="bg-gray-900">
         <Mox::Accordion @isOpen={{true}}>

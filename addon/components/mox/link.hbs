@@ -1,22 +1,30 @@
 {{#if @route}}
-  <Mox::LinkTo @route={{@route}} @model={{@model}}
-    class={{if @isButton
+  <Mox::LinkTo
+    @route={{@route}}
+    @model={{@model}}
+    class={{if
+      @isButton
       "mxa-btn border block text-white border-cyan-700 bg-cyan-700
         active:bg-cyan-800 hover:border-cyan-600 hover:bg-cyan-600
         focus:outline-none focus:ring-1 focus:ring-white focus:border-white focus:bg-cyan-600"
-      "font-medium text-sm text-cyan-500 hover:text-white transition duration-300"}}
-    data-test-mox-link={{@route}} ...attributes>
+      "font-medium text-sm text-cyan-500 hover:text-white transition duration-300"
+    }}
+    data-test-mox-link={{@route}}
+    ...attributes
+  >
     {{yield}}
   </Mox::LinkTo>
 {{else}}
   <a
     href={{@externalUrl}}
     target="_blank"
-    class={{if @isButton
+    class={{if
+      @isButton
       "mxa-btn border block text-white border-cyan-700 bg-cyan-700
         active:bg-cyan-800 hover:border-cyan-600 hover:bg-cyan-600
         focus:outline-none focus:ring-1 focus:ring-white focus:border-white focus:bg-cyan-600"
-      "font-medium text-sm text-cyan-500 hover:text-white transition"}}
+      "font-medium text-sm text-cyan-500 hover:text-white transition"
+    }}
     data-test-mox-link
     rel="noopener noreferrer"
     ...attributes

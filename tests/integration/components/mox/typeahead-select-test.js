@@ -60,7 +60,7 @@ module('Integration | Component | mox/typeahead-select', function (hooks) {
     assert.dom('[data-test-mox-input]').hasClass('border-red-800');
   });
 
-  test('it allows to validate and invalidate the field after rendering', async function(assert) {
+  test('it allows to validate and invalidate the field after rendering', async function (assert) {
     this.set('isValid', null);
 
     await render(hbs`
@@ -93,7 +93,9 @@ module('Integration | Component | mox/typeahead-select', function (hooks) {
       @error="Name can't be blank"
     />`);
 
-    assert.dom('[data-test-mox-input-error]').includesText(`Name can't be blank`);
+    assert
+      .dom('[data-test-mox-input-error]')
+      .includesText(`Name can't be blank`);
   });
 
   test('it is accessible (with embedded label)', async function (assert) {

@@ -8,12 +8,12 @@
       aria-labelledby="listbox-label"
       aria-invalid={{not this.isValid}}
       aria-describedBy={{concat @id "-error-message"}}
-      class="relative w-full border rounded shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none sm:text-sm focus:ring-1 bg-gray-800 text-white
-      disabled:bg-gray-700 disabled:text-gray-500 disabled:border-gray-700 disabled:cursor-not-allowed
-      {{if this.isValid
-        'border-gray-500 focus:border-cyan-500 focus:ring-cyan-500'
-        'border-red-800 active:border-red-900 focus:border-red-900 focus:ring-red-900'
-      }}"
+      class="relative w-full border rounded shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none sm:text-sm focus:ring-1 bg-gray-800 text-white disabled:bg-gray-700 disabled:text-gray-500 disabled:border-gray-700 disabled:cursor-not-allowed
+        {{if
+          this.isValid
+          'border-gray-500 focus:border-cyan-500 focus:ring-cyan-500'
+          'border-red-800 active:border-red-900 focus:border-red-900 focus:ring-red-900'
+        }}"
       data-test-select-button
       ...attributes
       {{on "click" this.toggleOptions}}

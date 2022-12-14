@@ -48,6 +48,8 @@ module('Unit | Component | mox/global-header', function (hooks) {
 
     await a11yAudit();
     assert.ok(true, 'no a11y errors');
-    assert.dom('[data-test-global-header-logo]').hasAttribute('aria-label', 'Go to Homepage');
+    assert
+      .dom('[data-test-global-header-logo]')
+      .hasAttribute('aria-label', 'Go to Homepage');
   });
 });

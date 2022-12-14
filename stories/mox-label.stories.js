@@ -11,4 +11,5 @@ export default {
 
 export const DefaultLabel = () => hbs`<Mox::Label>Label</Mox::Label>`;
 
-export const RequiredLabel = () => hbs`<Mox::Label @isRequired={{true}}>This is required</Mox::Label>`;
+export const RequiredLabel = () =>
+  hbs`<Mox::Label @isRequired={{true}}>This is required</Mox::Label>`;

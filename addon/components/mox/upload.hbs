@@ -1,7 +1,12 @@
 <div data-test-mox-upload ...attributes>
   <div class="flex items-center justify-between" data-test-mox-upload-description>
     {{#if @label}}
-      <Mox::Label class="text-white" for={{concat "credential-paste-field-" this.fieldName}} @isRequired={{true}} data-test-mox-upload-label>
+      <Mox::Label
+        class="text-white"
+        for={{concat "credential-paste-field-" this.fieldName}}
+        @isRequired={{true}}
+        data-test-mox-upload-label
+      >
         {{@label}}
       </Mox::Label>
     {{/if}}
@@ -15,16 +20,26 @@
   {{#if (not this.isPasting)}}
     <div
       class="flex items-center justify-center
-        {{if @isCompact "p-2" "p-4"}}
-         text-center rounded border border-gray-400 space-x-1"
+        {{if @isCompact 'p-2' 'p-4'}}
+        text-center rounded border border-gray-400 space-x-1"
     >
-      <button class="text-cyan-500 font-semibold" data-test-mox-upload-paste type="button" {{on "click" (fn (mut this.isPasting) true)}}>
+      <button
+        class="text-cyan-500 font-semibold"
+        data-test-mox-upload-paste
+        type="button"
+        {{on "click" (fn (mut this.isPasting) true)}}
+      >
         Paste text
       </button>
       <span class="text-white">
         or
       </span>
-      <button class="text-cyan-500 font-semibold" data-test-mox-upload-file-upload type="button" {{on "click" this.clickHiddenFileInput}}>
+      <button
+        class="text-cyan-500 font-semibold"
+        data-test-mox-upload-file-upload
+        type="button"
+        {{on "click" this.clickHiddenFileInput}}
+      >
         browse file
       </button>
     </div>
@@ -36,7 +51,12 @@
       @onInput={{@onInput}}
       data-test-mox-upload-paste-field
     />
-    <button class="text-xs text-cyan-500 font-semibold" type="button" {{on "click" this.clickHiddenFileInput}} data-test-mox-upload-go-back-to-file-upload>
+    <button
+      class="text-xs text-cyan-500 font-semibold"
+      type="button"
+      {{on "click" this.clickHiddenFileInput}}
+      data-test-mox-upload-go-back-to-file-upload
+    >
       Browse file
     </button>
   {{/if}}

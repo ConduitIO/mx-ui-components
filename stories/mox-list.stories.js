@@ -105,9 +105,29 @@ export const Default = Template.bind({});
 export const Sortable = SortableTemplate.bind({});
 Sortable.args = {
   listItems: [
-    { name: 'Lunar Curtain', description: 'Casts [MBarrier] on the party.', damage: 0, price: 0 },
-    { name: 'Fire Veil', description: 'Uses "Fire3" on all opponents', damage: 1200, price: 800 },
-    { name: 'Stardust', description: 'Uses "Comet2" on all opponents', damage: 1120, price: 8000 },
-    { name: 'Hi-Potion', description: 'Restores HP by 500', damage: 500, price: 300 },
+    {
+      name: 'Lunar Curtain',
+      description: 'Casts [MBarrier] on the party.',
+      damage: 0,
+      price: 0,
+    },
+    {
+      name: 'Fire Veil',
+      description: 'Uses "Fire3" on all opponents',
+      damage: 1200,
+      price: 800,
+    },
+    {
+      name: 'Stardust',
+      description: 'Uses "Comet2" on all opponents',
+      damage: 1120,
+      price: 8000,
+    },
+    {
+      name: 'Hi-Potion',
+      description: 'Restores HP by 500',
+      damage: 500,
+      price: 300,
+    },
   ],
 };

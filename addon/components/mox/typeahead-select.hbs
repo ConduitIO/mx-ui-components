@@ -47,7 +47,7 @@
 
   <div
     class="absolute mt-1 w-full rounded-md bg-gray-800 z-10
-      {{if (or (not this.isShowingMatches) (eq this.matches.length 0)) "hidden"}}"
+      {{if (or (not this.isShowingMatches) (eq this.matches.length 0)) 'hidden'}}"
     data-test-typeahead-matches
   >
     <ul
@@ -66,7 +66,7 @@
                 (get match this.optionValueKey)
                 (get this.internalSelectedOption this.optionValueKey)
               )
-              "bg-gray-700"
+              'bg-gray-700'
             }}"
           data-test-select-option
           aria-selected={{eq

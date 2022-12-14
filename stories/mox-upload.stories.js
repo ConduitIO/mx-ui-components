@@ -10,7 +10,6 @@ export default {
   },
 };
 
-
 const Template = (args) => ({
   template: hbs`<div class="w-72">
     <Mox::Upload @isActive={{this.isActive}}
@@ -25,7 +24,7 @@ const Template = (args) => ({
 export const Default = Template.bind({});
 Default.args = {
   label: 'Pokemon',
-  format: ".jpeg",
+  format: '.jpeg',
   isCompact: false,
   inputAction: action(function (value) {
     this.set('currentValue', value);
@@ -35,7 +34,7 @@ Default.args = {
 export const Compact = Template.bind({});
 Compact.args = {
   label: 'Digimon',
-  format: ".csv,.png",
+  format: '.csv,.png',
   isCompact: true,
   inputAction: action(function (value) {
     this.set('currentValue', value);

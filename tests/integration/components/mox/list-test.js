@@ -4,7 +4,7 @@ import { click, findAll, render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { a11yAudit } from 'ember-a11y-testing/test-support';
 
-module('Integration | Component | mox/list', function(hooks) {
+module('Integration | Component | mox/list', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
@@ -21,12 +21,10 @@ module('Integration | Component | mox/list', function(hooks) {
 
     assert.dom('[data-test-mox-list]').includesText('A table header');
     assert.dom('[data-test-mox-list]').includesText('The actual list');
-    assert
-      .dom('[data-test-mox-list-body]')
-      .includesText('The actual list');
+    assert.dom('[data-test-mox-list-body]').includesText('The actual list');
   });
 
-  test('it is accessible (dark background)', async function(assert) {
+  test('it is accessible (dark background)', async function (assert) {
     await render(hbs`
       <div class="bg-gray-900">
         <Mox::List>
@@ -50,13 +48,33 @@ module('Integration | Component | mox/list', function(hooks) {
     assert.ok(true, 'no a11y detected');
   });
 
-  module('sortable list', function(hooks) {
-    hooks.beforeEach(async function() {
+  module('sortable list', function (hooks) {
+    hooks.beforeEach(async function () {
       this.listItems = [
-        { name: 'Lunar Curtain', description: 'Casts [MBarrier] on the party.', id: 1, price: 1 },
-        { name: 'Fire Veil', description: 'Uses "Fire3" on all opponents', id: 2, price: 800 },
-        { name: 'Stardust', description: 'Uses "Comet2" on all opponents', id: 3, price: 8000 },
-        { name: 'Hi-Potion', description: 'Restores HP by 500', id: 4, price: 0 },
+        {
+          name: 'Lunar Curtain',
+          description: 'Casts [MBarrier] on the party.',
+          id: 1,
+          price: 1,
+        },
+        {
+          name: 'Fire Veil',
+          description: 'Uses "Fire3" on all opponents',
+          id: 2,
+          price: 800,
+        },
+        {
+          name: 'Stardust',
+          description: 'Uses "Comet2" on all opponents',
+          id: 3,
+          price: 8000,
+        },
+        {
+          name: 'Hi-Potion',
+          description: 'Restores HP by 500',
+          id: 4,
+          price: 0,
+        },
       ];
 
       await render(
@@ -95,7 +113,8 @@ module('Integration | Component | mox/list', function(hooks) {
             {{/each}}
           </:body>
         </Mox::List>
-      `);
+      `
+      );
     });
 
     test('it renders', function (assert) {
@@ -104,7 +123,9 @@ module('Integration | Component | mox/list', function(hooks) {
       assert.dom('[data-test-mox-list-header]').includesText('ID');
       assert.dom('[data-test-mox-list-header]').includesText('Price');
       assert.dom('[data-test-mox-list-body]').includesText('Lunar Curtain');
-      assert.dom('[data-test-mox-list-body]').includesText('Casts [MBarrier] on the party.');
+      assert
+        .dom('[data-test-mox-list-body]')
+        .includesText('Casts [MBarrier] on the party.');
       assert.dom('[data-test-mox-list-body]').includesText('1');
       assert.dom('[data-test-mox-list-body]').includesText('0');
       assert.dom('[data-test-mox-list-row]').exists({ count: 4 });
@@ -112,25 +133,77 @@ module('Integration | Component | mox/list', function(hooks) {
 
     test('it renders the active state for the currently selected column', async function (assert) {
       // precondition: none of the header columns are marked as active by default
-      assert.dom('[data-test-mox-list-header-item] [data-test-mox-list-header-item-label]').doesNotHaveClass('text-white');
-      assert.dom('[data-test-mox-list-header-item] [data-test-mox-list-header-item-label]').doesNotHaveClass('font-semibold');
+      assert
+        .dom(
+          '[data-test-mox-list-header-item] [data-test-mox-list-header-item-label]'
+        )
+        .doesNotHaveClass('text-white');
+      assert
+        .dom(
+          '[data-test-mox-list-header-item] [data-test-mox-list-header-item-label]'
+        )
+        .doesNotHaveClass('font-semibold');
 
-      assert.dom('[data-test-name][data-test-mox-list-header-item] [data-test-mox-list-header-item-label]').doesNotHaveClass('text-white');
-      assert.dom('[data-test-name][data-test-mox-list-header-item] [data-test-mox-list-header-item-label]').doesNotHaveClass('font-semibold');
+      assert
+        .dom(
+          '[data-test-name][data-test-mox-list-header-item] [data-test-mox-list-header-item-label]'
+        )
+        .doesNotHaveClass('text-white');
+      assert
+        .dom(
+          '[data-test-name][data-test-mox-list-header-item] [data-test-mox-list-header-item-label]'
+        )
+        .doesNotHaveClass('font-semibold');
 
       await click('[data-test-name] [data-test-mox-list-header-sort-desc]');
 
       // it only marks the name column as active
-      assert.dom('[data-test-name][data-test-mox-list-header-item] [data-test-mox-list-header-item-label]').hasClass('text-white');
-      assert.dom('[data-test-name][data-test-mox-list-header-item] [data-test-mox-list-header-item-label]').hasClass('font-semibold');
-      assert.dom('[data-test-name][data-test-mox-list-header-item] [data-test-mox-list-header-sort-asc]').hasStyle({ color: 'rgb(107, 114, 128)' });
+      assert
+        .dom(
+          '[data-test-name][data-test-mox-list-header-item] [data-test-mox-list-header-item-label]'
+        )
+        .hasClass('text-white');
+      assert
+        .dom(
+          '[data-test-name][data-test-mox-list-header-item] [data-test-mox-list-header-item-label]'
+        )
+        .hasClass('font-semibold');
+      assert
+        .dom(
+          '[data-test-name][data-test-mox-list-header-item] [data-test-mox-list-header-sort-asc]'
+        )
+        .hasStyle({ color: 'rgb(107, 114, 128)' });
 
-      assert.dom('[data-test-description][data-test-mox-list-header-item] [data-test-mox-list-header-item-label]').doesNotHaveClass('text-white');
-      assert.dom('[data-test-description][data-test-mox-list-header-item] [data-test-mox-list-header-item-label]').doesNotHaveClass('font-semibold');
-      assert.dom('[data-test-id][data-test-mox-list-header-item] [data-test-mox-list-header-item-label]').doesNotHaveClass('text-white');
-      assert.dom('[data-test-id][data-test-mox-list-header-item] [data-test-mox-list-header-item-label]').doesNotHaveClass('font-semibold');
-      assert.dom('[data-test-price][data-test-mox-list-header-item] [data-test-mox-list-header-item-label]').doesNotHaveClass('text-white');
-      assert.dom('[data-test-price][data-test-mox-list-header-item] [data-test-mox-list-header-item-label]').doesNotHaveClass('font-semibold');
+      assert
+        .dom(
+          '[data-test-description][data-test-mox-list-header-item] [data-test-mox-list-header-item-label]'
+        )
+        .doesNotHaveClass('text-white');
+      assert
+        .dom(
+          '[data-test-description][data-test-mox-list-header-item] [data-test-mox-list-header-item-label]'
+        )
+        .doesNotHaveClass('font-semibold');
+      assert
+        .dom(
+          '[data-test-id][data-test-mox-list-header-item] [data-test-mox-list-header-item-label]'
+        )
+        .doesNotHaveClass('text-white');
+      assert
+        .dom(
+          '[data-test-id][data-test-mox-list-header-item] [data-test-mox-list-header-item-label]'
+        )
+        .doesNotHaveClass('font-semibold');
+      assert
+        .dom(
+          '[data-test-price][data-test-mox-list-header-item] [data-test-mox-list-header-item-label]'
+        )
+        .doesNotHaveClass('text-white');
+      assert
+        .dom(
+          '[data-test-price][data-test-mox-list-header-item] [data-test-mox-list-header-item-label]'
+        )
+        .doesNotHaveClass('font-semibold');
     });
 
     test('it sorts list entries by column (descending)', async function (assert) {
@@ -159,7 +232,9 @@ module('Integration | Component | mox/list', function(hooks) {
       assert.dom(listItems[2]).includesText('Stardust');
       assert.dom(listItems[3]).includesText('Hi-Potion');
 
-      await click('[data-test-description] [data-test-mox-list-header-sort-asc]');
+      await click(
+        '[data-test-description] [data-test-mox-list-header-sort-asc]'
+      );
 
       let updatedListItems = await findAll('[data-test-mox-list-row]');
 
@@ -170,7 +245,7 @@ module('Integration | Component | mox/list', function(hooks) {
     });
   });
 
-  module('empty sortable list', function() {
+  module('empty sortable list', function () {
     test('it renders', async function (assert) {
       this.items = [];
 
@@ -198,7 +273,8 @@ module('Integration | Component | mox/list', function(hooks) {
             {{/each}}
           </:body>
         </Mox::List>
-      `);
+      `
+      );
 
       assert.dom('[data-test-mox-list-header]').includesText('Name');
       assert.dom('[data-test-mox-list-header]').includesText('Description');
@@ -232,11 +308,15 @@ module('Integration | Component | mox/list', function(hooks) {
             {{/each}}
           </:body>
         </Mox::List>
-      `);
+      `
+      );
 
       assert.dom('[data-test-mox-list-row]').doesNotExist();
 
-      this.set('items', [{ name: 'Misty', description: 'aqua pokemon' }, { name: 'Giovanni', description: 'ground pokemon' }]);
+      this.set('items', [
+        { name: 'Misty', description: 'aqua pokemon' },
+        { name: 'Giovanni', description: 'ground pokemon' },
+      ]);
 
       assert.dom('[data-test-mox-list-row]').exists({ count: 2 });
       assert.dom('[data-test-mox-list-body]').includesText('Misty');

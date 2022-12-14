@@ -19,15 +19,17 @@ export const Default = Template.bind({});
 Default.args = {
   titleText: 'Centered',
   subTitleText: 'Layout (centered)',
-  bodyText: 'You may toggle the isContainer argument to review different width sizes',
+  bodyText:
+    'You may toggle the isContainer argument to review different width sizes',
   isContainer: true,
 };
 
-export const FullLayout= Template.bind({});
+export const FullLayout = Template.bind({});
 FullLayout.args = {
   titleText: 'Fullscreen',
   subTitleText: 'Layout (fullscreen)',
-  bodyText: 'You may toggle the isContainer argument to review different width sizes',
+  bodyText:
+    'You may toggle the isContainer argument to review different width sizes',
   isContainer: true,
 };
 FullLayout.parameters = {

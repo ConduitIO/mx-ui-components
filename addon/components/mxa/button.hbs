@@ -1,8 +1,9 @@
 <button
   class="{{this.buttonClass}}
-     disabled:bg-slate-20 disabled:border-slate-20 disabled:cursor-not-allowed disabled:text-slate-100"
+    disabled:bg-slate-20 disabled:border-slate-20 disabled:cursor-not-allowed disabled:text-slate-100"
   type="button"
-  ...attributes>
+  ...attributes
+>
   {{#if (has-block)}}
     {{yield}}
   {{else}}

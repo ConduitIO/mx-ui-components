@@ -40,7 +40,7 @@ module('Integration | Component | mxa/async-button', function (hooks) {
       assert.dom('button').hasClass('mxa-btn-danger');
     });
 
-    test('it renders the the button in its disabled state', async function(assert) {
+    test('it renders the the button in its disabled state', async function (assert) {
       await render(hbs`<Mxa::Button disabled />`);
 
       assert.dom('button').hasStyle({
@@ -49,7 +49,7 @@ module('Integration | Component | mxa/async-button', function (hooks) {
       });
     });
 
-    test('it renders the the button - no fill state', async function(assert) {
+    test('it renders the the button - no fill state', async function (assert) {
       await render(hbs`<Mxa::Button @buttonType="danger" @noFill={{true}} />`);
 
       assert.dom('button').hasStyle({
@@ -58,7 +58,7 @@ module('Integration | Component | mxa/async-button', function (hooks) {
       });
     });
 
-    test('it renders the the button - small', async function(assert) {
+    test('it renders the the button - small', async function (assert) {
       await render(hbs`<Mxa::Button @small={{true}} />`);
 
       assert.dom('button').hasClass('mxa-btn-small');

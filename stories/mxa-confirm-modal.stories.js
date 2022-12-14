@@ -31,7 +31,8 @@ export const Default = Template.bind({});
 Default.args = {
   isInputTextRequired: true,
   confirmActionName: 'Delete',
-  modalText: 'Deleting a connector cannot be undone. Please input your connector\'s name below to confirm you would like to delete this connector',
+  modalText:
+    "Deleting a connector cannot be undone. Please input your connector's name below to confirm you would like to delete this connector",
   selectedNode: {
     name: 'foo',
   },

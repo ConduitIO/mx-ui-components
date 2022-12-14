@@ -4,9 +4,12 @@
 <input
   id={{@id}}
   type="text"
-  class="px-4 py-2 w-full text-white text-sm rounded bg-gray-800
-    disabled:bg-gray-700 disabled:border-gray-700 disabled:text-gray-500 disabled:cursor-not-allowed
-    {{if this.isValid 'border-gray-500 focus:border-cyan-500 focus:ring-cyan-500' 'border-red-800 active:border-red-900 focus:border-red-900 focus:ring-red-900'}}"
+  class="px-4 py-2 w-full text-white text-sm rounded bg-gray-800 disabled:bg-gray-700 disabled:border-gray-700 disabled:text-gray-500 disabled:cursor-not-allowed
+    {{if
+      this.isValid
+      'border-gray-500 focus:border-cyan-500 focus:ring-cyan-500'
+      'border-red-800 active:border-red-900 focus:border-red-900 focus:ring-red-900'
+    }}"
   value={{@value}}
   placeholder={{@placeholder}}
   aria-invalid={{not this.isValid}}

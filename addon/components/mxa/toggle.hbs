@@ -3,12 +3,9 @@
     <input
       id={{this.fieldId}}
       type="checkbox"
-      class="transform appearance-none w-11 h-6 outline-none
-      flex items-center rounded-full border p-1 cursor-pointer
-      bg-gray-300 border-gray-300
-      checked:bg-forest-100 checked:border-forest-100 checked:text-forest-100"
+      class="transform appearance-none w-11 h-6 outline-none flex items-center rounded-full border p-1 cursor-pointer bg-gray-300 border-gray-300 checked:bg-forest-100 checked:border-forest-100 checked:text-forest-100"
       checked={{this.isChecked}}
-      {{on 'change' this.toggleAction}}
+      {{on "change" this.toggleAction}}
       data-test-toggle
     />
     {{#if @label}}

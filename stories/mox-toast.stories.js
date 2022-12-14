@@ -28,29 +28,34 @@ Default.args = {};
 export const Success = Template.bind({});
 Success.args = {
   toastType: 'success',
-  message: 'This is a toast. Mmm toast. It is not a buttered toast, it is just a toast.',
+  message:
+    'This is a toast. Mmm toast. It is not a buttered toast, it is just a toast.',
 };
 
 export const Error = Template.bind({});
 Error.args = {
   toastType: 'error',
-  message: 'This is a toast. Mmm toast. It is not a buttered toast, it is just a toast.',
+  message:
+    'This is a toast. Mmm toast. It is not a buttered toast, it is just a toast.',
 };
 
 export const Info = Template.bind({});
 Info.args = {
   toastType: 'info',
-  message: 'This is a toast. Mmm toast. It is not a buttered toast, it is just a toast.',
+  message:
+    'This is a toast. Mmm toast. It is not a buttered toast, it is just a toast.',
 };
 
 export const Warning = Template.bind({});
 Warning.args = {
   toastType: 'warning',
-  message: 'This is a toast. Mmm toast. It is not a buttered toast, it is just a toast.',
+  message:
+    'This is a toast. Mmm toast. It is not a buttered toast, it is just a toast.',
 };
 
 export const LongText = Template.bind({});
 LongText.args = {
   toastType: 'success',
-  message: 'MMMMMMMMHHHhHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMmmmmmmmmmmmmmmmmmmmmmm.',
+  message:
+    'MMMMMMMMHHHhHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMmmmmmmmmmmmmmmmmmmmmmm.',
 };

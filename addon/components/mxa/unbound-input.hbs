@@ -4,10 +4,15 @@
 <input
   id={{@id}}
   type="text"
-  class="mxa-input w-full text-sm disabled:bg-gray-100 disabled:border-gray-100 disabled:text-gray-500 {{if @isValid 'bg-white border-gray-300' 'bg-red-50 focus:bg-red-50 border-orange-700 focus:border-orange-700'}}"
+  class="mxa-input w-full text-sm disabled:bg-gray-100 disabled:border-gray-100 disabled:text-gray-500
+    {{if
+      @isValid
+      'bg-white border-gray-300'
+      'bg-red-50 focus:bg-red-50 border-orange-700 focus:border-orange-700'
+    }}"
   value={{@value}}
   placeholder={{@placeholder}}
-  {{on 'input' @onInput}}
+  {{on "input" @onInput}}
   data-test-unbound-input
   ...attributes
 />

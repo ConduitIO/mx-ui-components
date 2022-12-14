@@ -4,7 +4,7 @@ export default {
   title: 'Mxa/Mxa::NotificationCard',
 };
 
-const TemplateDefault= (args) => ({
+const TemplateDefault = (args) => ({
   template: hbs`
     <Mxa::NotificationCard @isError={{this.isError}} @onDismiss={{this.dismissAction}} @message={{this.message}} />`,
   context: args,
@@ -30,7 +30,7 @@ Error.args = {
   error: {
     message: 'Something went wrong',
     details: ['error 1', 'error 2', 'another error'],
-  }
+  },
 };
 
 export const SimpleError = TemplateDefault.bind({});

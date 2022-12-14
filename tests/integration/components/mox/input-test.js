@@ -6,10 +6,10 @@ import sinon from 'sinon';
 
 import { a11yAudit } from 'ember-a11y-testing/test-support';
 
-module('Integration | Component | mox/input', function(hooks) {
+module('Integration | Component | mox/input', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it calls the onInput action on input', async function(assert) {
+  test('it calls the onInput action on input', async function (assert) {
     this.set('onInput', sinon.spy());
     await render(hbs`<Mox::Input @onInput={{this.onInput}}/>`);
 
@@ -18,18 +18,20 @@ module('Integration | Component | mox/input', function(hooks) {
     assert.ok(this.onInput.called);
   });
 
-  test('it displays an accessible input if a label text and an id is provded', async function(assert) {
+  test('it displays an accessible input if a label text and an id is provded', async function (assert) {
     this.set('onInput', () => {});
     this.set('label', 'Address');
 
-    await render(hbs`<Mox::Input @label={{this.label}} @id="address-field" @onInput={{this.onInput}} />`);
+    await render(
+      hbs`<Mox::Input @label={{this.label}} @id="address-field" @onInput={{this.onInput}} />`
+    );
 
     assert.dom('[data-test-mox-label]').includesText('Address');
     assert.dom('[data-test-mox-label]').hasAttribute('for', 'address-field');
     assert.dom('[data-test-mox-input]').hasAttribute('id', 'address-field');
   });
 
-  test('it allows disabling the input', async function(assert) {
+  test('it allows disabling the input', async function (assert) {
     this.set('onInput', () => {});
 
     await render(hbs`<Mox::Input @onInput={{this.onInput}} disabled />`);
@@ -37,19 +39,23 @@ module('Integration | Component | mox/input', function(hooks) {
     assert.dom('[data-test-mox-input]').isDisabled();
   });
 
-  test('it highlights the field if it is invalid', async function(assert) {
+  test('it highlights the field if it is invalid', async function (assert) {
     this.set('onInput', () => {});
 
-    await render(hbs`<Mox::Input @onInput={{this.onInput}} @isValid={{false}} />`);
+    await render(
+      hbs`<Mox::Input @onInput={{this.onInput}} @isValid={{false}} />`
+    );
 
     assert.dom('[data-test-mox-input]').hasClass('border-red-800');
   });
 
-  test('it allows to validate and invalidate the field after rendering', async function(assert) {
+  test('it allows to validate and invalidate the field after rendering', async function (assert) {
     this.set('onInput', () => {});
     this.set('isValid', null);
 
-    await render(hbs`<Mox::Input @onInput={{this.onInput}} @isValid={{this.isValid}} />`);
+    await render(
+      hbs`<Mox::Input @onInput={{this.onInput}} @isValid={{this.isValid}} />`
+    );
 
     assert.dom('[data-test-mox-input]').doesNotHaveClass('border-red-800');
 
@@ -62,15 +68,19 @@ module('Integration | Component | mox/input', function(hooks) {
     assert.dom('[data-test-mox-input]').doesNotHaveClass('border-red-800');
   });
 
-  test('it may display a validation error alongside the field', async function(assert) {
+  test('it may display a validation error alongside the field', async function (assert) {
     this.set('onInput', () => {});
 
-    await render(hbs`<Mox::Input @onInput={{this.onInput}} @error="Name can't be blank" />`);
+    await render(
+      hbs`<Mox::Input @onInput={{this.onInput}} @error="Name can't be blank" />`
+    );
 
-    assert.dom('[data-test-mox-input-error]').includesText(`Name can't be blank`);
+    assert
+      .dom('[data-test-mox-input-error]')
+      .includesText(`Name can't be blank`);
   });
 
-  test('validation errors do not impact the subsequent form layout', async function(assert) {
+  test('validation errors do not impact the subsequent form layout', async function (assert) {
     this.set('onInput', () => {});
     this.set('error', null);
 
@@ -84,25 +94,34 @@ module('Integration | Component | mox/input', function(hooks) {
       `);
 
     let secondField = await find('[data-test-second-field]');
-    assert.dom('[data-test-first-field] [data-test-mox-input-error]').doesNotExist();
+    assert
+      .dom('[data-test-first-field] [data-test-mox-input-error]')
+      .doesNotExist();
     assert.equal(secondField.offsetTop, 54);
 
     this.set('error', 'message1');
 
-    assert.dom('[data-test-first-field] + [data-test-mox-input-error]').includesText('message1');
-    assert.equal(secondField.offsetTop, 54, 'the second field does not change its position relative to the top');
+    assert
+      .dom('[data-test-first-field] + [data-test-mox-input-error]')
+      .includesText('message1');
+    assert.equal(
+      secondField.offsetTop,
+      54,
+      'the second field does not change its position relative to the top'
+    );
   });
 
-
-  test('the disabled input state is accessible', async function(assert) {
+  test('the disabled input state is accessible', async function (assert) {
     this.set('onInput', () => {});
 
-    await render(hbs`<Mox::Input @onInput={{this.onInput}} @label="Address" @id="address-field" disabled />`);
+    await render(
+      hbs`<Mox::Input @onInput={{this.onInput}} @label="Address" @id="address-field" disabled />`
+    );
     await a11yAudit();
     assert.ok(true, 'no accessibility errors');
   });
 
-  test('the disabled input state used together with an external label is accessible', async function(assert) {
+  test('the disabled input state used together with an external label is accessible', async function (assert) {
     this.set('onInput', () => {});
 
     await render(hbs`
@@ -113,10 +132,12 @@ module('Integration | Component | mox/input', function(hooks) {
     assert.ok(true, 'no accessibility errors');
   });
 
-  test('the invalid input state is accessible', async function(assert) {
+  test('the invalid input state is accessible', async function (assert) {
     this.set('onInput', () => {});
 
-    await render(hbs`<div class="bg-gray-900"><Mox::Input @onInput={{this.onInput}} @label="Address" @id="address-field" @isValid={{false}} @error="Missing something?" /></div>`);
+    await render(
+      hbs`<div class="bg-gray-900"><Mox::Input @onInput={{this.onInput}} @label="Address" @id="address-field" @isValid={{false}} @error="Missing something?" /></div>`
+    );
     await a11yAudit();
     assert.ok(true, 'no accessibility errors');
   });

@@ -1,3 +1,8 @@
-<div class="transform transition-transform duration-500 {{if this.isShowing '' 'translate-x-full'}}" {{did-insert this.animateIn}} ...attributes data-test-slide-panel>
+<div
+  class="transform transition-transform duration-500 {{if this.isShowing '' 'translate-x-full'}}"
+  {{did-insert this.animateIn}}
+  ...attributes
+  data-test-slide-panel
+>
   {{yield this.animateOut}}
 </div>

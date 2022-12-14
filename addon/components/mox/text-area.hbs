@@ -4,9 +4,12 @@
 <textarea
   id={{@id}}
   type="text"
-  class="px-4 py-2 w-full bg-gray-800 text-white text-sm rounded block resize-none
-  disabled:bg-gray-700 disabled:text-gray-500
-  {{if this.isValid 'border-gray-500 focus:border-cyan-500 focus:ring-cyan-500' 'border-red-800 active:border-red-900 focus:border-red-900 focus:ring-red-900'}}"
+  class="px-4 py-2 w-full bg-gray-800 text-white text-sm rounded block resize-none disabled:bg-gray-700 disabled:text-gray-500
+    {{if
+      this.isValid
+      'border-gray-500 focus:border-cyan-500 focus:ring-cyan-500'
+      'border-red-800 active:border-red-900 focus:border-red-900 focus:ring-red-900'
+    }}"
   value={{@value}}
   placeholder={{@placeholder}}
   {{on "input" @onInput}}
@@ -15,4 +18,8 @@
   data-test-mox-text-area
   ...attributes
 ></textarea>
-<Mox::FormError @error={{@error}} id={{concat @id "-error-message"}} data-test-mox-text-area-error />
+<Mox::FormError
+  @error={{@error}}
+  id={{concat @id "-error-message"}}
+  data-test-mox-text-area-error
+/>

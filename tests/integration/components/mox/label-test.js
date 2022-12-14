@@ -3,10 +3,10 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
-module('Integration | Component | mox/label', function(hooks) {
+module('Integration | Component | mox/label', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders', async function(assert) {
+  test('it renders', async function (assert) {
     await render(hbs`
       <Mox::Label>
         Label text
@@ -16,7 +16,7 @@ module('Integration | Component | mox/label', function(hooks) {
     assert.equal(this.element.textContent.trim(), 'Label text');
   });
 
-  test('it is not marked as required by default', async function(assert) {
+  test('it is not marked as required by default', async function (assert) {
     await render(hbs`
       <Mox::Label>
         Label text
@@ -26,7 +26,7 @@ module('Integration | Component | mox/label', function(hooks) {
     assert.dom('[data-test-mox-label]').doesNotHaveClass('required');
   });
 
-  test('it is marked visually if set as required', async function(assert) {
+  test('it is marked visually if set as required', async function (assert) {
     await render(hbs`
       <Mox::Label @isRequired={{true}}>
         Label text
@@ -35,7 +35,7 @@ module('Integration | Component | mox/label', function(hooks) {
 
     assert.dom('[data-test-mox-label]').hasClass('required');
     assert.dom('[data-test-mox-label]').hasPseudoElementStyle(':after', {
-      content: "\"\"",
+      content: '""',
       backgroundColor: 'rgb(239, 68, 68)',
     });
   });

@@ -16,7 +16,7 @@ const Template = (args) => ({
 });
 
 function waitFor(ms) {
-  return new Promise(res => setTimeout(res, ms));
+  return new Promise((res) => setTimeout(res, ms));
 }
 
 export const Primary = Template.bind({});

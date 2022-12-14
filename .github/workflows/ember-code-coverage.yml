@@ -8,11 +8,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-    - name: Install dependencies
-      run: yarn install
-    - uses: mydea/ember-cli-code-coverage-action@v1
-      with:
-        repo-token: "${{ secrets.GITHUB_TOKEN }}"
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Install dependencies
+        run: yarn install
+      - uses: mydea/ember-cli-code-coverage-action@v1
+        with:
+          repo-token: '${{ secrets.GITHUB_TOKEN }}'
