@@ -5,4 +5,23 @@
 <script src="./testem.js"></script>
 <script src="./assets/vendor.js"></script>
 <script>runningTests = true; Ember.testing=true;</script>
+<script src="./assets/chunk.vendors-node_modules_tooltip_js_dist_esm_tooltip_js.d26dfa60a1ac03fa8731.js"></script>
+<script src="./assets/chunk.app.57f19883bb207a378c65.js"></script>
+<script src="./assets/chunk.vendors-node_modules_axe-core_axe_js-node_modules_qunit_qunit_qunit_js-node_modules_sinon_lib-252401.f7a29e4ff823e189d07e.js"></script>
+<script src="./assets/chunk.tests.09ea2637205b64b53a15.js"></script>
 <script src="./assets/dummy.js"></script>
+<script>
+            (function() {
+              var srcUrl = null;
+              var host = location.hostname || 'localhost';
+              var defaultPort = location.protocol === 'https:' ? 443 : 80;
+              var port = 4200;
+              var path = '';
+              var prefixURL = '';
+              var src = srcUrl || prefixURL + '/_lr/livereload.js?port=' + port + '&host=' + host + path;
+              var script = document.createElement('script');
+              script.type = 'text/javascript';
+              script.src = location.protocol + '//' + host + ':4200' + src;
+              document.getElementsByTagName('head')[0].appendChild(script);
+            }());
+          </script>
