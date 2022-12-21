@@ -35,9 +35,10 @@
     "build-storybook": "yarn run build:prod --"
   },
   "dependencies": {
+    "ember-auto-import": "^2.5.0",
     "ember-cli-babel": "^7.26.10",
     "ember-cli-htmlbars": "^6.1.1",
-    "ember-keyboard": "6.0.4",
+    "ember-keyboard": "8.2.0",
     "ember-named-blocks-polyfill": "^0.2.4",
     "ember-root-url": "^1.0.0"
   },
@@ -70,7 +71,6 @@
     "chromatic": "^6.2.1",
     "core-js": "^3.9.1",
     "ember-a11y-testing": "^4.0.6",
-    "ember-auto-import": "^2.5.0",
     "ember-cli": "~4.0.1",
     "ember-cli-code-coverage": "^1.0.2",
     "ember-cli-dependency-checker": "^3.2.0",
