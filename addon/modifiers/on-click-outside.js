@@ -20,5 +20,6 @@ export default modifier((element, [callback, outsideElementSelector], options) =
     return () => {
       outsideElement.removeEventListener('click', handleClick, options);
     };
-  }
+  },
+  { eager: false }
 );
