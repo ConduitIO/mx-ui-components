@@ -4,5 +4,24 @@
 <link rel="stylesheet" href="./assets/dummy.css" />
 <script src="./testem.js"></script>
 <script src="./assets/vendor.js"></script>
-<script>runningTests = true; Ember.testing=true;</script>
+<script>window.Ember = require("ember").default; runningTests = true; Ember.testing=true;</script>
+<script src="./assets/chunk.vendors-node_modules_ember-keyboard_dist_helpers_if-key_js-node_modules_ember-keyboard_dist_h-21090b.04c70e938c7bcd371bdd.js"></script>
+<script src="./assets/chunk.app.24f6103a8cfa4023c5c1.js"></script>
+<script src="./assets/chunk.vendors-node_modules_axe-core_axe_js-node_modules_qunit_qunit_qunit_js-node_modules_sinon_lib-252401.f7a29e4ff823e189d07e.js"></script>
+<script src="./assets/chunk.tests.ed282fe5ecb9bcc609d2.js"></script>
 <script src="./assets/dummy.js"></script>
+<script>
+            (function() {
+              var srcUrl = null;
+              var host = location.hostname || 'localhost';
+              var defaultPort = location.protocol === 'https:' ? 443 : 80;
+              var port = 4200;
+              var path = '';
+              var prefixURL = '';
+              var src = srcUrl || prefixURL + '/_lr/livereload.js?port=' + port + '&host=' + host + path;
+              var script = document.createElement('script');
+              script.type = 'text/javascript';
+              script.src = location.protocol + '//' + host + ':4200' + src;
+              document.getElementsByTagName('head')[0].appendChild(script);
+            }());
+          </script>
