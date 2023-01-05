@@ -9,4 +9,4 @@ export default modifier((element) => {
   return () => {
     element.removeEventListener('', handleEvent);
   };
-});
+}, { eager: false });

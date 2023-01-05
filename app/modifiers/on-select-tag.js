@@ -11,4 +11,4 @@ export default modifier((element, [callback]) => {
   return () => {
     element.removeEventListener('', runCallback);
   };
-});
+}, { eager: false });

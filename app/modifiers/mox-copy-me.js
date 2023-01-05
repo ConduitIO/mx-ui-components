@@ -26,4 +26,4 @@ export default modifier(async (el, [id]) => {
   return () => {
     el.removeEventListener('click', copyToClipboard.bind(null, id), false);
   };
-});
+}, { eager: false });
