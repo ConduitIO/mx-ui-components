@@ -1,5 +1,13 @@
 # mx-ui-components
 
+## 2.0.0
+
+### Major Changes
+
+- [#26](https://github.com/ConduitIO/mx-ui-components/pull/26) [`294d098`](https://github.com/ConduitIO/mx-ui-components/commit/294d098b5e74b184779eab666db181212b517503) Thanks [@jayjayjpg](https://github.com/jayjayjpg)! - fix(ci): upgrade to Node 16 to unblock release GH action
+
+- [#25](https://github.com/ConduitIO/mx-ui-components/pull/25) [`4b9273b`](https://github.com/ConduitIO/mx-ui-components/commit/4b9273bb0179e77751997aa2c805e71d71342cb9) Thanks [@brettgoulder](https://github.com/brettgoulder)! - BREAKING: deps(misc): upgrade to ember 4.0 and bump ember-keyboard to latest version
+
 ## 1.9.3
 
 ### Patch Changes
