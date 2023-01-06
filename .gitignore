@@ -30,3 +30,6 @@ build-storybook.log
 /.storybook/preview-head.html
 /package-lock.json.ember-try
 /yarn.lock.ember-try
+
+# broccoli-debug
+/DEBUG/
