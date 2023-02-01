@@ -1,5 +1,11 @@
 # mx-ui-components
 
+## 2.1.0
+
+### Minor Changes
+
+- [#30](https://github.com/ConduitIO/mx-ui-components/pull/30) [`f89436b`](https://github.com/ConduitIO/mx-ui-components/commit/f89436b63c51714f6a30e4768f9d1c3b5d88769a) Thanks [@jmar910](https://github.com/jmar910)! - feat: make accordion header toggle by default
+
 ## 2.0.0
 
 ### Major Changes
