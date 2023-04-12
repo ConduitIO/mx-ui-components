@@ -109,7 +109,7 @@
     "qunit-dom": "^2.0.0",
     "sinon": "^9.2.4",
     "tailwindcss": "^3.0.22",
-    "webpack": "^5.75.0"
+    "webpack": "^5.76.0"
   },
   "peerDependencies": {
     "ember-source": "^3.28.0 || ^4.0.0"
