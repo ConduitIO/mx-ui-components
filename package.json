@@ -43,7 +43,7 @@
     "ember-root-url": "^1.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.13.8",
+    "@babel/core": "^7.21.4",
     "@babel/preset-env": "^7.20.2",
     "@changesets/changelog-github": "^0.4.6",
     "@changesets/cli": "^2.24.4",
