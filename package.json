@@ -119,7 +119,8 @@
   },
   "resolutions": {
     "minimist": "^1.2.6",
-    "hawk": "^8.0.1"
+    "hawk": "^8.0.1",
+    "ansi-html": "^0.0.8"
   },
   "ember": {
     "edition": "octane"
