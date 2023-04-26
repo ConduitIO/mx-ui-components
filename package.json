@@ -18,6 +18,8 @@
   "scripts": {
     "build": "ember build --environment=production",
     "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\"",
+    "lint:css": "stylelint \"**/*.css\"",
+    "lint:css:fix": "concurrently \"npm:lint:css -- --fix\"",
     "lint:fix": "concurrently \"npm:lint:*:fix\" --names \"fix:\"",
     "lint:hbs": "ember-template-lint .",
     "lint:hbs:fix": "ember-template-lint . --fix",
@@ -35,16 +37,18 @@
     "build-storybook": "yarn run build:prod --"
   },
   "dependencies": {
-    "ember-auto-import": "^2.6.1",
+    "ember-auto-import": "^2.6.3",
     "ember-cli-babel": "^7.26.11",
     "ember-cli-htmlbars": "^6.2.0",
     "ember-keyboard": "8.2.0",
-    "ember-modifier": "^3.1.0",
+    "ember-modifier": "^4.1.0",
     "ember-named-blocks-polyfill": "^0.2.5",
     "ember-root-url": "^1.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.21.4",
+    "@babel/eslint-parser": "^7.21.3",
+    "@babel/plugin-proposal-decorators": "^7.21.0",
     "@babel/preset-env": "^7.20.2",
     "@changesets/changelog-github": "^0.4.6",
     "@changesets/cli": "^2.24.4",
@@ -68,16 +72,15 @@
     "@storybook/manager-webpack5": "^6.5.15",
     "@tailwindcss/forms": "^0.4.0",
     "autoprefixer": "^10.4.2",
-    "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "babel-plugin-ember-modules-api-polyfill": "^2.12.0",
     "babel-plugin-htmlbars-inline-precompile": "3",
     "broccoli-asset-rev": "^3.0.0",
     "chromatic": "^6.17.3",
-    "concurrently": "^7.6.0",
+    "concurrently": "^8.0.1",
     "core-js": "^3.9.1",
     "ember-a11y-testing": "^4.0.6",
-    "ember-cli": "~4.11.0",
+    "ember-cli": "~4.12.1",
     "ember-cli-code-coverage": "^1.0.2",
     "ember-cli-dependency-checker": "^3.3.1",
     "ember-cli-deprecation-workflow": "^2.1.0",
@@ -90,30 +93,33 @@
     "ember-page-title": "^7.0.0",
     "ember-qunit": "^6.2.0",
     "ember-resolver": "^10.0.0",
-    "ember-source": "~4.11.0",
+    "ember-source": "~4.12.0",
     "ember-source-channel-url": "^3.0.0",
-    "ember-template-lint": "^5.6.0",
+    "ember-template-lint": "^5.7.2",
     "ember-tooltips": "^3.5.1",
     "ember-truth-helpers": "^3.0.0",
     "ember-try": "^2.0.0",
-    "eslint": "^7.32.0",
-    "eslint-config-prettier": "^8.6.0",
-    "eslint-plugin-ember": "^11.4.7",
-    "eslint-plugin-n": "^15.6.1",
+    "eslint": "^8.37.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-ember": "^11.5.0",
+    "eslint-plugin-n": "^15.7.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-qunit": "^7.3.4",
     "eslint-plugin-storybook": "^0.6.8",
     "loader.js": "^4.7.0",
     "postcss-import": "^14.0.2",
-    "prettier": "^2.8.4",
+    "prettier": "^2.8.7",
     "qunit": "^2.19.4",
     "qunit-dom": "^2.0.0",
     "sinon": "^9.2.4",
+    "stylelint": "^15.4.0",
+    "stylelint-config-standard": "^32.0.0",
+    "stylelint-prettier": "^3.0.0",
     "tailwindcss": "^3.0.22",
-    "webpack": "^5.76.0"
+    "webpack": "^5.78.0"
   },
   "peerDependencies": {
-    "ember-source": "^3.28.0 || ^4.0.0"
+    "ember-source": "^4.0.0"
   },
   "engines": {
     "node": "14.* || 16.* || >= 18"
@@ -121,7 +127,11 @@
   "resolutions": {
     "minimist": "^1.2.6",
     "hawk": "^8.0.1",
-    "ansi-html": "^0.0.8"
+    "ansi-html": "^0.0.8",
+    "@embroider/macros": "^1.10.0",
+    "@embroider/util": "^1.10.0",
+    "ember-cli-babel": "^7.26.11",
+    "ember-modifier": "^4.1.0"
   },
   "ember": {
     "edition": "octane"
