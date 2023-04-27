@@ -1,5 +1,15 @@
 # mx-ui-components
 
+## 2.2.0
+
+### Minor Changes
+
+- [#57](https://github.com/ConduitIO/mx-ui-components/pull/57) [`812e151`](https://github.com/ConduitIO/mx-ui-components/commit/812e15104736b01ce637b2da92afe55b29deff0d) Thanks [@jayjayjpg](https://github.com/jayjayjpg)! - deps(ember): upgrade app to ember@4.12 + export of ember-modifier as direct dependency
+
+### Patch Changes
+
+- [#32](https://github.com/ConduitIO/mx-ui-components/pull/32) [`1f04538`](https://github.com/ConduitIO/mx-ui-components/commit/1f045387bbe607dd4693cc3f684f848e83b3529e) Thanks [@jayjayjpg](https://github.com/jayjayjpg)! - ci(dependabot): allow automatic upgrade of deps (patch version)
+
 ## 2.1.0
 
 ### Minor Changes
