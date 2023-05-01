@@ -11033,10 +11033,10 @@ eslint-plugin-qunit@^7.3.4:
     eslint-utils "^3.0.0"
     requireindex "^1.2.0"
 
-eslint-plugin-storybook@^0.6.8:
-  version "0.6.8"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-storybook/-/eslint-plugin-storybook-0.6.8.tgz#49b76aa577267267b14056838f7dc2b22de748d1"
-  integrity sha512-57vyICs19ODx0ql+shM0hKFn4Nvwcrdw29KJbj6QKGZ+Y47aDws/lvBx65++F0vpEsr0lkZljSdUbxWjIP2+Rw==
+eslint-plugin-storybook@^0.6.11:
+  version "0.6.11"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-storybook/-/eslint-plugin-storybook-0.6.11.tgz#3c52fc3e994d1539d8a69c4028999402601eaacb"
+  integrity sha512-lIVmCqQgA0bhcuS1yWYBFrnPHBKPEQI+LHPDtlN81UE1/17onCqgwUW7Nyt7gS2OHjCAiOR4npjTGEoe0hssKw==
   dependencies:
     "@storybook/csf" "^0.0.1"
     "@typescript-eslint/utils" "^5.45.0"
@@ -19966,12 +19966,7 @@ trough@^1.0.0:
   resolved "https://registry.yarnpkg.com/trough/-/trough-1.0.5.tgz#b8b639cefad7d0bb2abd37d433ff8293efa5f406"
   integrity sha512-rvuRbTarPXmMb79SmzEp8aqXNKcK+y0XaB298IXueQ8I2PsrATcPBCSPyK/dDNa2iWOhKlfNnOjdAOTBU/nkFA==
 
-ts-dedent@^2.0.0:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/ts-dedent/-/ts-dedent-2.1.1.tgz#6dd56870bb5493895171334fa5d7e929107e5bbc"
-  integrity sha512-riHuwnzAUCfdIeTBNUq7+Yj+ANnrMXo/7+Z74dIdudS7ys2k8aSGMzpJRMFDF7CLwUTbtvi1ZZff/Wl+XxmqIA==
-
-ts-dedent@^2.2.0:
+ts-dedent@^2.0.0, ts-dedent@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/ts-dedent/-/ts-dedent-2.2.0.tgz#39e4bd297cd036292ae2394eb3412be63f563bb5"
   integrity sha512-q5W7tVM71e2xjHZTlgfTDoPF/SmqKG5hddq9SzR49CH2hayqRKJtQ4mtRlSxKaJlR/+9rEM+mnBHf7I2/BQcpQ==
