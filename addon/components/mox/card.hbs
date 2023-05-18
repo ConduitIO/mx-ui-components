@@ -1,0 +1,37 @@
+<article
+  class="w-full bg-gray-800 rounded-lg border-solid border-2 border-gray-800 transition hover:border-cyan-500 focus-within:border-cyan-700 text-white"
+  data-test-mox-card
+  ...attributes
+>
+  <div class="flex items-center justify-between">
+
+    <Mox::Card::Main @route={{@route}} @model={{@model}} @onClick={{@onClick}}>
+
+      {{#if (has-block "icon")}}
+        <div class="bg-gray-900 rounded p-3" data-test-mox-card-icon>
+          {{yield to="icon"}}
+        </div>
+      {{/if}}
+
+      <div class="overflow-hidden">
+        <h3 class="text-xl font-semibold normal-case text-left truncate flex gap-x-2 text-white items-center" data-test-mox-card-title>
+          {{yield to="title"}}
+        </h3>
+        <p class="text-gray-300 text-xs truncate text-left" data-test-mox-card-subtitle>
+          {{yield to="subtitle"}}
+        </p>
+      </div>
+
+    </Mox::Card::Main>
+
+    {{#if (has-block "menu")}}
+      <div
+        class="flex items-center justify-center p-4 cursor-pointer h-full"
+        data-test-mox-card-menu
+      >
+        {{yield to="menu"}}
+      </div>
+    {{/if}}
+
+  </div>
+</article>
