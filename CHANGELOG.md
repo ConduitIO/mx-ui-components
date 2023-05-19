@@ -1,5 +1,11 @@
 # mx-ui-components
 
+## 2.3.0
+
+### Minor Changes
+
+- [#73](https://github.com/ConduitIO/mx-ui-components/pull/73) [`265b07e`](https://github.com/ConduitIO/mx-ui-components/commit/265b07e48a937f9424e16c6983aaa4dcc4bbfe7f) Thanks [@jayjayjpg](https://github.com/jayjayjpg)! - feat(mox): add mox::card component
+
 ## 2.2.0
 
 ### Minor Changes
