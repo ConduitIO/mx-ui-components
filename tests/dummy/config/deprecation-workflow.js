@@ -29,17 +29,17 @@ self.deprecationWorkflow.config = {
     { handler: 'throw', matchId: 'ember-cli.ember-cli-jshint-support' },
     { handler: 'throw', matchId: 'ember-cli.vendor-shim-blueprint' },
     /* Ember Data deprecations 4.x */
-    { handler: 'silence', matchId: 'ember-data:deprecate-array-like' },
-    { handler: 'silence', matchId: 'ember-data:deprecate-early-static' },
+    { handler: 'throw', matchId: 'ember-data:deprecate-array-like' },
+    { handler: 'throw', matchId: 'ember-data:deprecate-early-static' },
     {
-      handler: 'silence',
+      handler: 'throw',
       matchId: 'ember-data:deprecate-non-strict-relationships',
     },
     {
-      handler: 'silence',
+      handler: 'throw',
       matchId: 'ember-data:deprecate-promise-many-array-behaviors',
     },
-    { handler: 'silence', matchId: 'ember-data:deprecate-store-find' },
-    { handler: 'silence', matchId: 'ember-data:deprecate-promise-proxies' },
+    { handler: 'throw', matchId: 'ember-data:deprecate-store-find' },
+    { handler: 'throw', matchId: 'ember-data:deprecate-promise-proxies' },
   ],
 };
