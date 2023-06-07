@@ -37,6 +37,7 @@
     "build-storybook": "yarn run build:prod --"
   },
   "dependencies": {
+    "@ember/string": "^3.1.1",
     "ember-auto-import": "^2.6.3",
     "ember-cli-babel": "^7.26.11",
     "ember-cli-htmlbars": "^6.2.0",
@@ -54,7 +55,6 @@
     "@changesets/cli": "^2.24.4",
     "@ember/optional-features": "^2.0.0",
     "@ember/render-modifiers": "^2.0.3",
-    "@ember/string": "^3.0.1",
     "@ember/test-helpers": "^2.9.3",
     "@embroider/test-setup": "^2.1.1",
     "@glimmer/component": "^1.1.2",

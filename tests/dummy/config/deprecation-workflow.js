@@ -10,6 +10,7 @@ self.deprecationWorkflow.config = {
     { handler: 'throw', matchId: 'setting-on-hash' },
     { handler: 'throw', matchId: 'deprecate-ember-error' },
     { handler: 'throw', matchId: 'ember-string.from-ember-module' },
+    { handler: 'silence', matchId: 'ember-string.add-package' },
     /* Ember CLI deprecations 4.x */
     {
       handler: 'throw',
