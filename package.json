@@ -132,7 +132,8 @@
     "@embroider/util": "^1.10.0",
     "ember-cli-babel": "^7.26.11",
     "ember-modifier": "^4.1.0",
-    "engine.io": "^6.4.2"
+    "engine.io": "^6.4.2",
+    "socket.io-parser": "^4.2.3"
   },
   "ember": {
     "edition": "octane"
