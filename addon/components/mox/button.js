@@ -9,9 +9,9 @@ const buttonColors = {
   primary:
     'border-cyan-700 bg-cyan-700 active:bg-cyan-800 hover:border-cyan-600 hover:bg-cyan-600 focus:bg-cyan-600',
   secondary:
-    'border-gray-700 bg-gray-700 active:bg-gray-800 hover:border-gray-600 hover:bg-gray-600 focus:bg-gray-600',
+    'dark:border-gray-700 dark:bg-gray-700 border-gray-500 bg-gray-500 active:bg-gray-800 dark:active:bg-gray-400 hover:border-gray-600 hover:bg-gray-600 focus:bg-gray-600',
   danger:
-    'border-red-800 bg-red-800 active:bg-red-900 hover:bg-red-700 hover:border-red-700 focus:border-red-900',
+    'dark:border-red-800 dark:bg-red-800 bg-red-500 border-red-500 active:bg-red-900 hover:bg-red-700 hover:border-red-700 focus:border-red-900',
 };
 
 export default class MoxButtonComponent extends Component {

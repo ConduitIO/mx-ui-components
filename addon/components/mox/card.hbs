@@ -1,5 +1,5 @@
 <article
-  class="w-full bg-gray-800 rounded-lg border-solid border-2 border-gray-800 transition hover:border-cyan-500 focus-within:border-cyan-700 text-white"
+  class="w-full dark:bg-gray-800 dark:text-white bg-gray-50 text-gray-900 rounded-lg border-solid border-2 dark:border-gray-800 border-gray-100 transition hover:border-cyan-500 focus-within:border-cyan-700"
   data-test-mox-card
   ...attributes
 >
@@ -8,16 +8,16 @@
     <Mox::Card::Main @route={{@route}} @model={{@model}} @onClick={{@onClick}}>
 
       {{#if (has-block "icon")}}
-        <div class="bg-gray-900 rounded p-3" data-test-mox-card-icon>
+        <div class="dark:bg-gray-900 dark:text-white bg-gray-300 text-gray-900 rounded p-3" data-test-mox-card-icon>
           {{yield to="icon"}}
         </div>
       {{/if}}
 
       <div class="overflow-hidden">
-        <h3 class="text-xl font-semibold normal-case text-left truncate flex gap-x-2 text-white items-center" data-test-mox-card-title>
+        <h3 class="text-xl font-semibold normal-case text-left truncate flex gap-x-2 dark:text-white text-gray-900 items-center" data-test-mox-card-title>
           {{yield to="title"}}
         </h3>
-        <p class="text-gray-300 text-xs truncate text-left" data-test-mox-card-subtitle>
+        <p class="dark:text-gray-300 text-gray-600 text-xs truncate text-left" data-test-mox-card-subtitle>
           {{yield to="subtitle"}}
         </p>
       </div>
@@ -26,7 +26,7 @@
 
     {{#if (has-block "menu")}}
       <div
-        class="flex items-center justify-center p-4 cursor-pointer h-full"
+        class="flex items-center justify-center p-4 cursor-pointer h-full dark:text-white text-gray-900"
         data-test-mox-card-menu
       >
         {{yield to="menu"}}
