@@ -1,5 +1,13 @@
 # mx-ui-components
 
+## 2.3.1
+
+### Patch Changes
+
+- [#83](https://github.com/ConduitIO/mx-ui-components/pull/83) [`a8c247e`](https://github.com/ConduitIO/mx-ui-components/commit/a8c247eb8e0f381556b0f5bd8a90e3861893d1b7) Thanks [@jayjayjpg](https://github.com/jayjayjpg)! - config(depr.): update depr. workflow for 4.x warnings
+
+- [#86](https://github.com/ConduitIO/mx-ui-components/pull/86) [`83202fd`](https://github.com/ConduitIO/mx-ui-components/commit/83202fd819605c32749e96e19617b079ca7f9390) Thanks [@jayjayjpg](https://github.com/jayjayjpg)! - fix(misc): revert build breaking babel/preset-env upgrade and realign search input comp.
+
 ## 2.3.0
 
 ### Minor Changes
