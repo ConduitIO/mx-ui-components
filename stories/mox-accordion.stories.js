@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 
 export default {
-  title: 'Mox/Mox::Accordion',
+  title: 'Mox Dark/Mox::Accordion',
   parameters: {
     backgrounds: {
       default: 'Dark',

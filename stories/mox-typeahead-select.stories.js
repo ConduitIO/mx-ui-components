@@ -8,7 +8,7 @@ const options = [
 ];
 
 export default {
-  title: 'Mox/Mox::TypeaheadSelect',
+  title: 'Mox Dark/Mox::TypeaheadSelect',
   argTypes: {
     options: { control: 'text' },
     buttonType: { control: 'text' },

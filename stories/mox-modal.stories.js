@@ -2,7 +2,7 @@ import { hbs } from 'ember-cli-htmlbars';
 import { action } from '@storybook/addon-actions';
 
 export default {
-  title: 'Mox/Mox::Modal',
+  title: 'Mox Dark/Mox::Modal',
 };
 
 const actionsData = {

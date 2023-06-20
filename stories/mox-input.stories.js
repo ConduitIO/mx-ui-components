@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 
 export default {
-  title: 'Mox/Mox::Input',
+  title: 'Mox Dark/Mox::Input',
   parameters: {
     backgrounds: {
       default: 'Dark',

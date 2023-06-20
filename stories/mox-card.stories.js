@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 
 export default {
-  title: 'Mox/Mox::Card',
+  title: 'Mox Dark/Mox::Card',
   argTypes: {
     title: { control: 'text' },
     subtitle: { control: 'text' },
