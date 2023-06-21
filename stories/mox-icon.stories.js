@@ -3,7 +3,7 @@ import { hbs } from 'ember-cli-htmlbars';
 let colorOptions = ['text-white', 'text-gray-300', 'text-red-500', 'text-cyan-500'];
 
 export default {
-  title: 'Mox/Mox::Icon',
+  title: 'Mox Dark/Mox::Icon',
   argTypes: {
     color: {
       control: {

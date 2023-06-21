@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 
 export default {
-  title: 'Mox/Mox::Button',
+  title: 'Mox Dark/Mox::Button',
   argTypes: {
     children: { control: 'text' },
     buttonType: { control: 'text' },

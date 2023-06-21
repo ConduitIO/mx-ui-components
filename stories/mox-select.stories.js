@@ -24,7 +24,7 @@ const resourceTypes = [
 ];
 
 export default {
-  title: 'Mox/Mox::Select',
+  title: 'Mox Dark/Mox::Select',
   parameters: {
     backgrounds: {
       default: 'Dark',

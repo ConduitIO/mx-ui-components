@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 
 export default {
-  title: 'Mox/Mox::FormField',
+  title: 'Mox Dark/Mox::FormField',
   parameters: {
     backgrounds: {
       default: 'Dark',

@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 
 export default {
-  title: 'Mox/Mox::Navigation',
+  title: 'Mox Dark/Mox::Navigation',
   parameters: {
     backgrounds: {
       default: 'Dark',

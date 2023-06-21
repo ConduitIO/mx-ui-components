@@ -1,0 +1,25 @@
+<div class="mox-theme-switch" ...attributes>
+  <div class="flex items-center space-x-2 relative {{if this.isChecked "text-gray-800"}}">
+    <input
+      id={{this.fieldId}}
+      aria-label={{this.label}}
+      type="checkbox"
+      class="transform appearance-none outline-none
+      flex items-center rounded-full p-1 cursor-pointer transition"
+      checked={{this.isChecked}}
+      {{on 'change' (fn this.switchTheme this.otherTheme)}}
+      data-test-mox-theme-switch
+    />
+    <div class="mox-theme-switch-icon pointer-events-none {{if this.isChecked "is-checked"}}">
+      {{#if (eq this.currentTheme "dark")}}
+        <div class="text-white" data-test-mox-theme-switch-current="dark">
+          {{yield to="dark-icon"}}
+        </div>
+      {{else}}
+        <div class="text-gray-900" data-test-mox-theme-switch-current="light">
+          {{yield to="light-icon"}}
+        </div>
+      {{/if}}
+    </div>
+  </div>
+</div>

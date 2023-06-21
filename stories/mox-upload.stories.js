@@ -2,7 +2,7 @@ import { hbs } from 'ember-cli-htmlbars';
 import { action } from '@ember/object';
 
 export default {
-  title: 'Mox/Mox::Upload',
+  title: 'Mox Dark/Mox::Upload',
   parameters: {
     backgrounds: {
       default: 'Dark',
