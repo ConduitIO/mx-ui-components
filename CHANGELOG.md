@@ -1,5 +1,11 @@
 # mx-ui-components
 
+## 2.4.0
+
+### Minor Changes
+
+- [#97](https://github.com/ConduitIO/mx-ui-components/pull/97) [`9399632`](https://github.com/ConduitIO/mx-ui-components/commit/939963276c8994217c223fbb8fe2cf730b06569a) Thanks [@jayjayjpg](https://github.com/jayjayjpg)! - Add Theme Switcher Component
+
 ## 2.3.1
 
 ### Patch Changes
