@@ -165,3 +165,16 @@ a.arg-active.mox-tab-link:hover {
   font-weight: 700; /* font-bold */
   border-style: solid;
 }
+
+a.active.mox-link-button,
+a.active.mox-link-button:hover {
+  background-color: #d1d5db; /* gray-300 */
+  color: #1f2937; /* gray-800 */
+}
+
+.dark a.active.mox-link-button,
+.dark a.active.mox-link-button:hover,
+.dark a.mox-link-button:hover {
+  background-color: #374151; /* gray-700 */
+  color: #fff; /* white */
+}

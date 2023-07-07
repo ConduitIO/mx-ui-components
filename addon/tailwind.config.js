@@ -30,4 +30,5 @@ module.exports = {
     },
   },
   plugins: [require('@tailwindcss/forms'), require('@meroxa/ui-base')],
+  darkMode: 'class',
 };
