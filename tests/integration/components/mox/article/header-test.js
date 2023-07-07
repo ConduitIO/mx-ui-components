@@ -36,7 +36,6 @@ module('Integration | Component | mox/article/header', function (hooks) {
     assert.dom('[data-test-mox-article-header-subtitle]').hasTagName('p');
   });
 
-
   test('it is accessible (light mode)', async function (assert) {
     await render(hbs`
       <Mox::Article::Header>

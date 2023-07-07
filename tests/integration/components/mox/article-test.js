@@ -33,10 +33,18 @@ module('Integration | Component | mox/article', function (hooks) {
     </div>
     `);
 
-    assert.dom('[data-test-mox-article]').hasStyle({ backgroundColor: 'rgb(31, 41, 55)' });
-    assert.dom('[data-test-mox-article]').hasStyle({ color: 'rgb(255, 255, 255)' });
-    assert.dom('[data-test-mox-article-header-title]').hasStyle({ color: 'rgb(255, 255, 255)' });
-    assert.dom('[data-test-mox-article-header-subtitle]').hasStyle({ color: 'rgb(209, 213, 219)' });
+    assert
+      .dom('[data-test-mox-article]')
+      .hasStyle({ backgroundColor: 'rgb(31, 41, 55)' });
+    assert
+      .dom('[data-test-mox-article]')
+      .hasStyle({ color: 'rgb(255, 255, 255)' });
+    assert
+      .dom('[data-test-mox-article-header-title]')
+      .hasStyle({ color: 'rgb(255, 255, 255)' });
+    assert
+      .dom('[data-test-mox-article-header-subtitle]')
+      .hasStyle({ color: 'rgb(209, 213, 219)' });
   });
 
   test('it renders in light mode', async function (assert) {
@@ -53,10 +61,18 @@ module('Integration | Component | mox/article', function (hooks) {
       </Mox::Article>
     `);
 
-    assert.dom('[data-test-mox-article]').hasStyle({ backgroundColor: 'rgb(255, 255, 255)' });
-    assert.dom('[data-test-mox-article]').hasStyle({ color: 'rgb(55, 65, 81)' });
-    assert.dom('[data-test-mox-article-header-title]').hasStyle({ color: 'rgb(31, 41, 55)' });
-    assert.dom('[data-test-mox-article-header-subtitle]').hasStyle({ color: 'rgb(55, 65, 81)' });
+    assert
+      .dom('[data-test-mox-article]')
+      .hasStyle({ backgroundColor: 'rgb(255, 255, 255)' });
+    assert
+      .dom('[data-test-mox-article]')
+      .hasStyle({ color: 'rgb(55, 65, 81)' });
+    assert
+      .dom('[data-test-mox-article-header-title]')
+      .hasStyle({ color: 'rgb(31, 41, 55)' });
+    assert
+      .dom('[data-test-mox-article-header-subtitle]')
+      .hasStyle({ color: 'rgb(55, 65, 81)' });
   });
 
   test('it is accessible (light mode)', async function (assert) {

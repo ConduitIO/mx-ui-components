@@ -68,14 +68,14 @@ module('Integration | Component | mox/input', function (hooks) {
     assert
       .dom('[data-test-first-field] [data-test-mox-input-error]')
       .doesNotExist();
-    assert.equal(secondField.offsetTop, 54);
+    assert.strictEqual(secondField.offsetTop, 54);
 
     this.set('error', 'message1');
 
     assert
       .dom('[data-test-first-field] + [data-test-mox-input-error]')
       .includesText('message1');
-    assert.equal(
+    assert.strictEqual(
       secondField.offsetTop,
       54,
       'the second field does not change its position relative to the top'

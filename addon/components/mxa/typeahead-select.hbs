@@ -3,13 +3,10 @@
     <Mxa::Label for={{@id}} @isRequired={{@isRequired}}>{{@label}}</Mxa::Label>
   {{/if}}
   <div
-    class='flex items-center w-full rounded border {{if @isDisabled "border-gray-100" "border-gray-300"}} focus-within:outline-none focus-within:ring-purple-600 focus-within:border-purple-600'
-    aria-expanded={{this.isShowingMatches}}
-    aria-owns={{@id}}
-    aria-haspopup='listbox'
+    class='flex items-center w-full rounded border {{if @isDisabled "border-gray-100" "border-gray-300"}} focus-within:outline-none focus-within:ring-purple-600 focus-within:border-purple-600' aria-owns={{@id}}
   >
     <Input
-      type='text'
+      @type='text'
       id={{@id}}
       @value={{this.inputValue}}
       class='rounded pl-2 pr-4 py-2 text-xs focus:outline-none w-full placeholder-slate-100 border-gray-300 disabled:bg-gray-100 disabled:border-gray-100 disabled:text-gray-500'
@@ -54,13 +51,16 @@
       }}'
     data-test-typeahead-matches
   >
+    {{!-- template-lint-disable no-positive-tabindex --}}
     <ul
       id={{concat 'typeaheadselectlistbox' @id}}
       tabindex='1'
       role='listbox'
       class='max-h-56 rounded-md text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm'
     >
+    {{!-- template-lint-enable no-positive-tabindex --}}
       {{#each this.matches as |match idx|}}
+        {{!-- template-lint-disable require-presentational-children --}}
         <li
           id={{concat 'listbox-item-' idx}}
           role='option'
@@ -78,6 +78,7 @@
             (get @selectedOption this.optionValueKey)
           }}
         >
+          {{!-- template-lint-disable no-invalid-interactive --}}
           <div
             class='flex items-center cursor-pointer py-2 pl-3 pr-9'
             data-test-select-option-button={{get match this.optionNameKey}}
@@ -87,6 +88,7 @@
               {{get match this.optionNameKey}}
             </span>
           </div>
+          {{!-- template-lint-enable no-invalid-interactive --}}
           {{#if
             (eq
               (get match this.optionValueKey)
@@ -113,6 +115,7 @@
             </span>
           {{/if}}
         </li>
+        {{!-- template-lint-enable require-presentational-children --}}
       {{/each}}
     </ul>
   </div>

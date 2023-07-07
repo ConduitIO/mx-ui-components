@@ -12,7 +12,7 @@
       <div class="mt-6"></div>
       <Mox::Input
         id={{concat "delete-" @entityName}}
-        type="text"
+        @type="text"
         @value={{this.confirmedEntityName}}
         @onInput={{fn (mut this.confirmedEntityName)}}
         {{focus-on-render}}

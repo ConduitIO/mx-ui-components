@@ -1,6 +1,4 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from '@ember/object';
-import { Promise } from 'rsvp';
 
 export default {
   title: 'Mxa/Mxa::TagsInput',
@@ -22,10 +20,6 @@ const SimpleLabelTemplate = (args) => ({
     </Mxa::TagsInput>`,
   context: args,
 });
-
-function waitFor(ms) {
-  return new Promise(res => setTimeout(res, ms));
-}
 
 export const DefaultInput = Template.bind({});
 DefaultInput.args = {

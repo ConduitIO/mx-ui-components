@@ -3,10 +3,7 @@
     <Mox::Label for={{@id}} @isRequired={{@isRequired}}>{{@label}}</Mox::Label>
   {{/if}}
   <div
-    class="flex items-center w-full"
-    aria-expanded={{this.isShowingMatches}}
-    aria-owns={{@id}}
-    aria-haspopup="listbox"
+    class="flex items-center w-full" aria-owns={{@id}}
   >
     <Mox::Input
       @id={{@id}}
@@ -50,13 +47,16 @@
       {{if (or (not this.isShowingMatches) (eq this.matches.length 0)) "hidden"}}"
     data-test-typeahead-matches
   >
+    {{!-- template-lint-disable no-positive-tabindex --}}
     <ul
       id={{concat "typeaheadselectlistbox" @id}}
       tabindex="1"
       role="listbox"
       class="max-h-56 rounded-md text-base overflow-auto focus:outline-none sm:text-sm border border-gray-500"
     >
+    {{!-- template-lint-enable no-positive-tabindex --}}
       {{#each this.matches as |match idx|}}
+        {{!-- template-lint-disable require-presentational-children --}}
         <li
           id={{concat "listbox-item-" idx}}
           role="option"
@@ -74,15 +74,17 @@
             (get @selectedOption this.optionValueKey)
           }}
         >
+        {{!-- template-lint-disable no-invalid-interactive --}}
           <div
             class="flex items-center cursor-pointer py-2 pl-3 pr-9"
-            data-test-select-option-button={{get match this.optionNameKey}}
-            {{on "mousedown" (fn this.setSelectedOption match)}}
+            data-test-select-option-button={{get match this.optionNameKey}} type="button" {{on "mousedown" (fn this.setSelectedOption match)}}
           >
             <span class="ml-1 block font-normal truncate">
               {{get match this.optionNameKey}}
             </span>
           </div>
+         {{!-- template-lint-enable no-invalid-interactive --}}
+
           {{#if (eq (get match this.optionValueKey) (get @selectedOption this.optionValueKey))}}
             <span
               class="absolute inset-y-0 right-0 flex items-center pr-4"
@@ -104,6 +106,7 @@
             </span>
           {{/if}}
         </li>
+        {{!-- template-lint-enable require-presentational-children --}}
       {{/each}}
     </ul>
   </div>

@@ -89,7 +89,6 @@ export const Disabled = Template.bind({});
 Disabled.args = {
   connectorTypes: options,
   selectedConnectorType: options[0],
-  isEditing: false,
   setConnectorType: action(function (value) {
     this.set('selectedConnectorType', value);
   }),

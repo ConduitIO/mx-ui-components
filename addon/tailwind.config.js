@@ -11,7 +11,22 @@ module.exports = {
   safelist: [
     {
       pattern: /(mxa-btn\S*|\S*cyan\S*|\S*red\S*)/,
-      variants: ['active', 'checked', 'dark', 'dark:active', 'dark:disabled', 'dark:focus', 'dark:hover', 'dark:read-only', 'dark:read-only:focus', 'disabled', 'focus', 'hover', 'read-only', 'read-only:focus'],
+      variants: [
+        'active',
+        'checked',
+        'dark',
+        'dark:active',
+        'dark:disabled',
+        'dark:focus',
+        'dark:hover',
+        'dark:read-only',
+        'dark:read-only:focus',
+        'disabled',
+        'focus',
+        'hover',
+        'read-only',
+        'read-only:focus',
+      ],
     },
   ],
   theme: {

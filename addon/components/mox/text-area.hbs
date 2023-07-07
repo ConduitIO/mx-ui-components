@@ -10,9 +10,7 @@
   value={{@value}}
   placeholder={{@placeholder}}
   {{on "input" @onInput}}
-  aria-invalid={{not this.isValid}}
-  aria-describedBy={{concat @id "-error-message"}}
-  data-test-mox-text-area
+  aria-invalid={{not this.isValid}} data-test-mox-text-area
   ...attributes
 ></textarea>
 <Mox::FormError @error={{@error}} id={{concat @id "-error-message"}} data-test-mox-text-area-error />

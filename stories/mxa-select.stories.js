@@ -1,6 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { action } from '@ember/object';
-import { action as sbAction } from '@storybook/addon-actions';
 
 const connectorTypes = [
   { name: 'source', value: 'source' },

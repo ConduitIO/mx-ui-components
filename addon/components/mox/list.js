@@ -1,5 +1,6 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
+/* eslint-disable ember/no-computed-properties-in-native-classes */
 import { sort } from '@ember/object/computed';
 import { tracked } from '@glimmer/tracking';
 
@@ -14,6 +15,7 @@ export default class MoxListComponent extends Component {
   sortDirection;
 
   @sort('args.items', 'sortSetting') sortedItems;
+  /* eslint-enable ember/no-computed-properties-in-native-classes */
 
   get sortSetting() {
     return [`${this.sortedBy}:${this.sortDirection}`];

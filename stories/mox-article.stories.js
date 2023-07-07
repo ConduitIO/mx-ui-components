@@ -73,7 +73,6 @@ const AnotherHeaderTemplate = (args) => ({
   },
 });
 
-
 export const Default = Template.bind({});
 Default.args = {
   content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent condimentum pulvinar posuere. Quisque viverra ante ut risus auctor ullamcorper. Integer cursus quis ex in ultrices. Phasellus mollis risus massa, eu mattis dui laoreet sed. Pellentesque vel mi sagittis, porta purus vel, vulputate dolor. Donec eget nulla libero. Aenean mi ante, elementum nec blandit ut, luctus id odio. Nunc venenatis, nulla sed sodales ultricies, mauris sapien aliquam leo, bibendum aliquet dui arcu at orci. Nam lacinia, risus condimentum scelerisque pretium, lectus urna pellentesque nulla, eu rhoncus neque arcu ac metus. Nunc vel lacinia quam, sed vehicula nulla. Nunc vel cursus nibh, et pharetra sapien. Interdum et malesuada fames ac ante ipsum primis in faucibus.`,
@@ -90,4 +89,3 @@ WithSimpleHeader.args = {
   content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent condimentum pulvinar posuere. Quisque viverra ante ut risus auctor ullamcorper. Integer cursus quis ex in ultrices. Phasellus mollis risus massa, eu mattis dui laoreet sed. Pellentesque vel mi sagittis, porta purus vel, vulputate dolor. Donec eget nulla libero. Aenean mi ante, elementum nec blandit ut, luctus id odio. Nunc venenatis, nulla sed sodales ultricies, mauris sapien aliquam leo, bibendum aliquet dui arcu at orci. Nam lacinia, risus condimentum scelerisque pretium, lectus urna pellentesque nulla, eu rhoncus neque arcu ac metus. Nunc vel lacinia quam, sed vehicula nulla. Nunc vel cursus nibh, et pharetra sapien. Interdum et malesuada fames ac ante ipsum primis in faucibus.`,
   title: 'Integrations',
 };
-

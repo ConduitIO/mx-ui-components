@@ -3,14 +3,16 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
-module('Integration | Component | mxa/overview-list/item', function(hooks) {
+module('Integration | Component | mxa/overview-list/item', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
     await render(hbs`<Mxa::OverviewList::Item>Vamos</Mxa::OverviewList::Item>`);
 
     assert.dom('[data-test-mxa-overview-list-item]').includesText('Vamos');
-    assert.dom('[data-test-mxa-overview-list-item-content]').hasClass('text-sm');
+    assert
+      .dom('[data-test-mxa-overview-list-item-content]')
+      .hasClass('text-sm');
     assert.dom('[data-test-mxa-overview-list-item-link]').doesNotExist();
   });
 
@@ -20,7 +22,9 @@ module('Integration | Component | mxa/overview-list/item', function(hooks) {
     );
 
     assert.dom('[data-test-mxa-overview-list-item]').includesText('Vamos');
-    assert.dom('[data-test-mxa-overview-list-item-content]').hasClass('text-xs');
+    assert
+      .dom('[data-test-mxa-overview-list-item-content]')
+      .hasClass('text-xs');
     assert.dom('[data-test-mxa-overview-list-item-content]').hasClass('italic');
     assert.dom('[data-test-mxa-overview-list-item-link]').doesNotExist();
   });

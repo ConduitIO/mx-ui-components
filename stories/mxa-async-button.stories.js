@@ -16,14 +16,14 @@ const Template = (args) => ({
 });
 
 function waitFor(ms) {
-  return new Promise(res => setTimeout(res, ms));
+  return new Promise((res) => setTimeout(res, ms));
 }
 
 export const Primary = Template.bind({});
 Primary.args = {
   children: 'Button',
   buttonType: 'primary',
-  onClick: action(function (value) {
+  onClick: action(function () {
     return waitFor(500);
   }),
 };

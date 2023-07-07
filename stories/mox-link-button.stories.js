@@ -38,7 +38,7 @@ ActiveLink.args = {
   activeClass: 'active',
 };
 
-export const LinkToExternalPage= Template.bind({});
+export const LinkToExternalPage = Template.bind({});
 LinkToExternalPage.args = {
   route: null,
   model: null,
@@ -46,4 +46,3 @@ LinkToExternalPage.args = {
   isButton: false,
   text: 'External Link',
 };
-

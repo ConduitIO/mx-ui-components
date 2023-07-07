@@ -9,7 +9,6 @@ export default {
   },
 };
 
-
 const Template = (args) => ({
   template: hbs`
     <Mox::Accordion @isOpen={{this.isOpen}} @route="/">

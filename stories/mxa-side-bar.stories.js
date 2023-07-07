@@ -10,7 +10,7 @@ const Template = (args) => ({
         @route="application"
       >
       <div class="rounded w-10 h-10 overflow-hidden">
-        <img src="/brand-logo-example.svg" alt="Brand Logo" />
+        <img src="/brand-logo-example.svg" alt="Brand Example" />
       </div>
       </Mxa::SideBar::Item>
 
@@ -52,7 +52,7 @@ const LabellessTemplate = (args) => ({
         @isHome={{true}}
       >
       <div class="rounded w-10 h-10 overflow-hidden">
-        <img src="/brand-logo-example.svg" alt="Brand Logo" />
+        <img src="/brand-logo-example.svg" alt="Brand Example" />
       </div>
       </Mxa::SideBar::Item>
 
