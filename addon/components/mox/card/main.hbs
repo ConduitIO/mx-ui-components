@@ -2,7 +2,7 @@
   <Mox::Link
     @route={{@route}}
     @model={{@model}}
-    class="flex w-11/12 items-center justify-start p-4 gap-x-4 cursor-pointer"
+    class="flex flex-1 items-center justify-start p-4 gap-x-4 cursor-pointer overflow-hidden truncate"
     data-test-mox-card-link
   >
 
@@ -12,7 +12,7 @@
 {{else}}
   <button
     type="button"
-    class="flex w-11/12 items-center justify-start p-4 gap-x-4 cursor-pointer"
+    class="flex flex-1 items-center justify-start p-4 gap-x-4 cursor-pointer overflow-hidden truncate"
     {{on "click" this.onClick}}
     data-test-mox-card-button
   >

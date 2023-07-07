@@ -1,0 +1,18 @@
+{{#if (or (has-block "title") (has-block "subtitle"))}}
+  <div class="flex flex-col space-y-2 w-full">
+    {{#if (has-block "title")}}
+      <h2 class="text-2xl font-semibold text-gray-800 dark:text-white w-full" data-test-mox-article-header-title>
+        {{yield to="title"}}
+      </h2>
+    {{/if}}
+    {{#if (has-block "subtitle")}}
+      <p class="text-gray-700 dark:text-gray-300 text-base w-full" data-test-mox-article-header-subtitle>
+        {{yield to="subtitle"}}
+      </p>
+    {{/if}}
+  </div>
+{{else}}
+  <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-2 w-full" data-test-mox-article-header-title>
+    {{yield}}
+  </h2>
+{{/if}}
