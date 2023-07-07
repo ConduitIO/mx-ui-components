@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 
 export default {
-  title: 'Mox Dark/Mox::Card',
+  title: 'Mox Light/Mox::Card',
   argTypes: {
     title: { control: 'text' },
     subtitle: { control: 'text' },
@@ -13,15 +13,15 @@ export default {
   },
   parameters: {
     backgrounds: {
-      default: 'Dark',
+      default: 'Mute',
       values: [
         {
-          name: 'Dark',
-          value: '#111827',
+          name: 'White',
+          value: '#ffffff',
         },
         {
-          name: 'Sky',
-          value: '#06B6D4',
+          name: 'Mute',
+          value: '#F3F4F6',
         },
       ],
     },
@@ -30,27 +30,24 @@ export default {
 
 const Template = (args) => ({
   template: hbs`
-  <div class="dark">
-    <div class="flex flex-col space-y-4 box-border w-container">
-      <Mox::Card>
-        <:title>
-          {{this.title}}
-        </:title>
-        <:subtitle>
-          {{this.subtitle}}
-        </:subtitle>
-      </Mox::Card>
-    </div>
+  <div class="flex flex-col space-y-4 box-border w-container">
+    <Mox::Card>
+      <:title>
+        {{this.title}}
+      </:title>
+      <:subtitle>
+        {{this.subtitle}}
+      </:subtitle>
+    </Mox::Card>
   </div>`,
   context: args,
   parameters: {
-    background: 'Dark',
+    background: 'Mute',
   },
 });
 
 const IconTemplate = (args) => ({
   template: hbs`
-  <div class="dark">
     <div class="flex flex-col space-y-4 box-border w-container">
       <Mox::Card>
         <:icon>
@@ -58,11 +55,13 @@ const IconTemplate = (args) => ({
         </:icon>
         <:title>
           <span>{{this.title}}</span>
-          <Mox::Badge @status="healthy">Running</Mox::Badge>
         </:title>
         <:subtitle>
           {{this.subtitle}}
         </:subtitle>
+        <:details>
+          {{this.details}}
+        </:details>
         <:menu>
           <button type="button">
             <Mox::Icon @iconName="action-menu-16" />
@@ -70,14 +69,12 @@ const IconTemplate = (args) => ({
         </:menu>
       </Mox::Card>
     </div>
-  </div>
   `,
   context: args,
 });
 
 const LogoTemplate = (args) => ({
   template: hbs`
-  <div class="dark">
     <div class="flex flex-col space-y-4 box-border w-container">
       <Mox::Card>
         <:icon>
@@ -96,7 +93,6 @@ const LogoTemplate = (args) => ({
         </:menu>
       </Mox::Card>
     </div>
-  </div>
   `,
   context: args,
 });
@@ -104,17 +100,18 @@ const LogoTemplate = (args) => ({
 export const WithIcon = IconTemplate.bind({});
 WithIcon.args = {
   title: 'ecom-search-update',
-  subtitle: 'JavaScript · Turbine Application · Deployed to Common · Feb 23',
+  subtitle: 'Running on production',
   idd: 'ecom',
   icon: 'connectors-16',
   logo: null,
   buttonType: null,
   small: false,
+  details: 'Last deployed from main 1 week ago by anonymous',
 };
 
 export const WithLogo = LogoTemplate.bind({});
 WithLogo.args = {
-  title: 'ecom-search-update-but-with-a-veryveryveryveryveryvery-elaborate-text',
+  title: 'ecom-search-update-but-with-a-veryveryveryveryveryveryextremely-elaborate-text',
   subtitle: 'JavaScript · Turbine Application · Deployed to Common · Feb 23',
   idd: 'ecom',
   icon: null,
