@@ -136,4 +136,22 @@ module('Integration | Component | mox/card', function (hooks) {
     await a11yAudit();
     assert.ok(true, 'no a11y detected');
   });
+
+  test('it has no accessibility issues (dark mode)', async function (assert) {
+    await render(hbs`
+    <div class="dark bg-gray-900 p-4">
+      <Mox::Card @route="application">
+        <:title>
+          FFVII
+        </:title>
+        <:subtitle>
+          PS1 · RPG · 1994
+        </:subtitle>
+      </Mox::Card>
+    </div>
+    `);
+
+    await a11yAudit();
+    assert.ok(true, 'no a11y detected');
+  });
 });
