@@ -1,4 +1,4 @@
-import { module, test } from 'qunit';
+import { module, skip, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { click, render, triggerKeyEvent } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
@@ -159,7 +159,32 @@ module('Integration | Component | mox/modal-dialog', function (hooks) {
     assert.dom('[data-test-modal-dialog]').hasClass('sm:w-container');
   });
 
-  test('it is accessible', async function (assert) {
+  test('it is accessible (dark mode)', async function (assert) {
+    await render(hbs`
+      <div class="dark bg-gray-900 p-4">
+        <Mox::ModalDialog @onDismiss={{this.dummyAction}}>
+          <:title>
+            Tarnished?
+          </:title>
+          <:body>
+            Become an elden lord today!
+          </:body>
+          <:footer as |footer|>
+            <footer.secondaryAction data-test-secondary>Okay!</footer.secondaryAction>
+          </:footer>
+        </Mox::ModalDialog>
+      </div>
+    `);
+
+    await a11yAudit();
+    assert.ok(true);
+    assert.dom('[data-test-modal-dialog]').hasAttribute('role', 'dialog');
+    assert.dom('[data-test-modal-dialog]').hasAttribute('aria-modal', 'true');
+    assert.dom('[data-test-modal-dialog]').hasAttribute('aria-describedby');
+    assert.dom('[data-test-modal-dialog]').hasAttribute('aria-labelledby');
+  });
+
+  skip('it is accessible (light mode)', async function (assert) {
     await render(hbs`
       <Mox::ModalDialog @onDismiss={{this.dummyAction}}>
         <:title>

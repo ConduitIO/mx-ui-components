@@ -1,22 +1,22 @@
 import { hbs } from 'ember-cli-htmlbars';
 
 export default {
-  title: 'Mox Dark/Mox::Button',
+  title: 'Mox Light/Mox::Button',
   argTypes: {
     children: { control: 'text' },
     buttonType: { control: 'text' },
   },
   parameters: {
     backgrounds: {
-      default: 'Dark',
+      default: 'White',
       values: [
         {
-          name: 'Dark',
-          value: '#111827',
+          name: 'White',
+          value: '#ffffff',
         },
         {
-          name: 'Sky',
-          value: '#06B6D4',
+          name: 'Mute',
+          value: '#FBFBFB',
         },
       ],
     },
@@ -24,10 +24,7 @@ export default {
 };
 
 const Template = (args) => ({
-  template: hbs`
-  <div class="dark">
-    <Mox::Button @buttonType={{this.buttonType}} @small={{this.small}} disabled={{this.isDisabled}}>{{this.children}}</Mox::Button>
-  </div>`,
+  template: hbs`<Mox::Button @buttonType={{this.buttonType}} @small={{this.small}} disabled={{this.isDisabled}}>{{this.children}}</Mox::Button>`,
   context: args,
   parameters: {
     background: 'Dark',
@@ -36,13 +33,11 @@ const Template = (args) => ({
 
 const SmallTemplate = (args) => ({
   template: hbs`
-    <div class="dark">
-      <div class="flex flex-col space-y-4 box-border">
-        <Mox::Button @small={{true}} disabled={{this.isDisabled}}>{{this.children}}</Mox::Button>
-        <Mox::Button @buttonType="secondary" @small={{true}} disabled={{this.isDisabled}}>{{this.children}}</Mox::Button>
-        <Mox::Button @buttonType="danger" @small={{true}} disabled={{this.isDisabled}}>{{this.children}}</Mox::Button>
-        <Mox::Button @buttonType="primary" @small={{true}} disabled>{{this.children}}</Mox::Button>
-      </div>
+    <div class="flex flex-col space-y-4 box-border">
+      <Mox::Button @small={{true}} disabled={{this.isDisabled}}>{{this.children}}</Mox::Button>
+      <Mox::Button @buttonType="secondary" @small={{true}} disabled={{this.isDisabled}}>{{this.children}}</Mox::Button>
+      <Mox::Button @buttonType="danger" @small={{true}} disabled={{this.isDisabled}}>{{this.children}}</Mox::Button>
+      <Mox::Button @buttonType="primary" @small={{true}} disabled>{{this.children}}</Mox::Button>
     </div>
   `,
   context: args,
