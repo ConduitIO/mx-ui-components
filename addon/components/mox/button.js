@@ -7,11 +7,11 @@ import { waitFor } from '@ember/test-waiters';
 
 const buttonColors = {
   primary:
-    'border-cyan-700 bg-cyan-700 active:bg-cyan-800 hover:border-cyan-600 hover:bg-cyan-600 focus:bg-cyan-600',
+    'text-white border-cyan-700 bg-cyan-700 active:bg-cyan-600 hover:border-cyan-600 hover:bg-cyan-500 focus:bg-cyan-500',
   secondary:
-    'border-gray-700 bg-gray-700 active:bg-gray-800 hover:border-gray-600 hover:bg-gray-600 focus:bg-gray-600',
+    'text-gray-700 bg-transparent hover:text-gray-900 dark:text-white hover:text-gray-100 border-gray-300 dark:border-gray-700 active:border-gray-400 dark:active:border-gray-600 hover:border-gray-400 dark:hover:border-gray-400 focus:border-2 focus:border-gray-500 focus:text-gray-600 dark:focus:border-gray-200 dark:focus:text-gray-200',
   danger:
-    'border-red-800 bg-red-800 active:bg-red-900 hover:bg-red-700 hover:border-red-700 focus:border-red-900',
+    'text-white border-red-600 bg-red-600 active:bg-red-700 hover:bg-red-700 hover:border-red-700 focus:border-red-500 focus:bg-red-500 dark:border-red-800 dark:bg-red-800 dark:active:bg-red-900 dark:hover:bg-red-700 dark:hover:border-red-700 dark:focus:border-red-700 dark:focus:bg-red-700',
 };
 
 export default class MoxButtonComponent extends Component {
@@ -33,12 +33,11 @@ export default class MoxButtonComponent extends Component {
   buildButtonClass() {
     let classesList = [
       'border',
-      'text-white',
       'focus:outline-none',
       'focus:ring-1',
       'focus:ring-inset',
       'focus:ring-white',
-      'focus:border-white',
+      'transition',
     ];
 
     if (this.args.small) {
@@ -57,7 +56,7 @@ export default class MoxButtonComponent extends Component {
   }
 
   get disabledClass() {
-    return 'disabled:border-gray-400 disabled:bg-gray-800 disabled:text-gray-400 disabled:font-normal disabled:cursor-not-allowed';
+    return 'disabled:text-gray-800 disabled:bg-gray-300 disabled:border-gray-300 dark:disabled:text-gray-200 dark:disabled:bg-gray-700 dark:disabled:border-gray-700 disabled:cursor-not-allowed';
   }
 
   get buttonTitle() {
