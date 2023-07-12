@@ -51,46 +51,64 @@ module('Integration | Component | mox/select', function (hooks) {
     assert.dom('[data-test-select-button]').isDisabled();
   });
 
-  test('it highlights the field if it is invalid', async function(assert) {
+  test('it highlights the field if it is invalid (dark mode)', async function (assert) {
     this.set('onInput', () => {});
 
-    await render(hbs`<Mox::Select
-      @label="Ship Name"
-      @options={{this.options}}
-      @selectedOption={{this.selectedOption}}
-      @onChange={{this.onChange}}
-      @isDisabled={{false}}
-      @isValid={{false}}
-    />`);
+    await render(hbs`
+    <div class="dark bg-gray-900 p-4">
+      <Mox::Select
+        @label="Ship Name"
+        @options={{this.options}}
+        @selectedOption={{this.selectedOption}}
+        @onChange={{this.onChange}}
+        @isDisabled={{false}}
+        @isValid={{false}}
+      />
+    </div>`);
 
     assert.dom('[data-test-select-button]').hasClass('border-red-800');
+    assert.dom('[data-test-select-button]').hasStyle({
+      borderColor: 'rgb(153, 27, 27)',
+    });
   });
 
-  test('it allows to validate and invalidate the field after rendering', async function(assert) {
+  test('it allows to validate and invalidate the field after rendering (dark mode)', async function (assert) {
     this.set('onInput', () => {});
     this.set('isValid', null);
 
-    await render(hbs`<Mox::Select
-      @label="Ship Name"
-      @options={{this.options}}
-      @selectedOption={{this.selectedOption}}
-      @onChange={{this.onChange}}
-      @isDisabled={{false}}
-      @isValid={{this.isValid}}
-    />`);
+    await render(hbs`
+      <div class="dark bg-gray-900 p-4">
+        <Mox::Select
+        @label="Ship Name"
+        @options={{this.options}}
+        @selectedOption={{this.selectedOption}}
+        @onChange={{this.onChange}}
+        @isDisabled={{false}}
+        @isValid={{this.isValid}}
+      />
+    </div>`);
 
     assert.dom('[data-test-select-button]').doesNotHaveClass('border-red-800');
+    assert.dom('[data-test-select-button]').hasStyle({
+      borderColor: 'rgb(107, 114, 128)',
+    });
 
     this.set('isValid', false);
 
     assert.dom('[data-test-select-button]').hasClass('border-red-800');
+    assert.dom('[data-test-select-button]').hasStyle({
+      borderColor: 'rgb(153, 27, 27)',
+    });
 
     this.set('isValid', true);
 
     assert.dom('[data-test-select-button]').doesNotHaveClass('border-red-800');
+    assert.dom('[data-test-select-button]').hasStyle({
+      borderColor: 'rgb(107, 114, 128)',
+    });
   });
 
-  test('it may display a validation error alongside the field', async function(assert) {
+  test('it may display a validation error alongside the field', async function (assert) {
     this.set('onInput', () => {});
 
     await render(hbs`<Mox::Select
@@ -102,27 +120,31 @@ module('Integration | Component | mox/select', function (hooks) {
       @error="Connector missing"
     />`);
 
-    assert.dom('[data-test-mox-select-error]').includesText(`Connector missing`);
+    assert
+      .dom('[data-test-mox-select-error]')
+      .includesText(`Connector missing`);
   });
 
-  test('it is accessible', async function (assert) {
+  test('it is accessible (dark mode)', async function (assert) {
     await render(hbs`
-    <Mox::Select
-      @label="Ship Name"
-      @options={{this.options}}
-      @selectedOption={{this.selectedOption}}
-      @onChange={{this.onChange}}
-      @isDisabled={{false}}
-    />`);
+    <div class="dark bg-gray-800 p-4">
+      <Mox::Select
+        @label="Ship Name"
+        @options={{this.options}}
+        @selectedOption={{this.selectedOption}}
+        @onChange={{this.onChange}}
+        @isDisabled={{false}}
+      />
+    </div>`);
 
     await a11yAudit();
     assert.ok(true, 'no a11y detected');
   });
 
-  test('the invalid input state is accessible', async function(assert) {
+  test('the invalid input state is accessible', async function (assert) {
     this.set('onInput', () => {});
 
-    await render(hbs`<div class="bg-gray-900">
+    await render(hbs`<div class="dark bg-gray-900 p-4">
       <Mox::Select
         @label="Ship Name"
         @options={{this.options}}
