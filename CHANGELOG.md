@@ -1,5 +1,17 @@
 # mx-ui-components
 
+## 2.5.0
+
+### Minor Changes
+
+- [#110](https://github.com/ConduitIO/mx-ui-components/pull/110) [`f673d20`](https://github.com/ConduitIO/mx-ui-components/commit/f673d20f8e4f313ed95a36d8dea04a852f4a6fe5) Thanks [@jmar910](https://github.com/jmar910)! - feat: add mox status ball component
+
+- [#106](https://github.com/ConduitIO/mx-ui-components/pull/106) [`f5f4b4d`](https://github.com/ConduitIO/mx-ui-components/commit/f5f4b4d6d86f812c1ccfe4812259a230efed661f) Thanks [@jayjayjpg](https://github.com/jayjayjpg)! - feat(mox/link-button): add new link-button component
+
+- [#111](https://github.com/ConduitIO/mx-ui-components/pull/111) [`863757c`](https://github.com/ConduitIO/mx-ui-components/commit/863757cfa94e29b31c756c3630eef1dcfd3f005d) Thanks [@jayjayjpg](https://github.com/jayjayjpg)! - [WIP] feat(button): add light mode variant for mox::button
+
+- [#108](https://github.com/ConduitIO/mx-ui-components/pull/108) [`20bfafd`](https://github.com/ConduitIO/mx-ui-components/commit/20bfafd1d8ffe7701f18d2499061050190a93dd0) Thanks [@jayjayjpg](https://github.com/jayjayjpg)! - Update mox::card UI + add new mox::article component
+
 ## 2.4.0
 
 ### Minor Changes
