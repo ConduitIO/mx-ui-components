@@ -1,20 +1,28 @@
 import { hbs } from 'ember-cli-htmlbars';
 
 export default {
-  title: 'Mox Dark/Mox::Label',
+  title: 'Mox Light/Mox::Label',
   parameters: {
     backgrounds: {
-      default: 'Dark',
+      default: 'Mute',
+      values: [
+        {
+          name: 'White',
+          value: '#ffffff',
+        },
+        {
+          name: 'Mute',
+          value: '#FBFBFB',
+        },
+      ],
     },
   },
 };
 
 export const DefaultLabel = () => hbs`
-<div class="dark">
   <Mox::Label>Label</Mox::Label>
-</div>`;
+`;
 
 export const RequiredLabel = () => hbs`
-<div class="dark">
   <Mox::Label @isRequired={{true}}>This is required</Mox::Label>
-</div>`;
+`;

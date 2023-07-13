@@ -47,40 +47,56 @@ module('Integration | Component | mox/typeahead-select', function (hooks) {
     assert.dom('[data-test-typeahead-select-input]').isDisabled();
   });
 
-  test('it highlights the field if it is invalid', async function (assert) {
+  test('it highlights the field if it is invalid (dark mode)', async function (assert) {
     await render(hbs`
-    <Mox::TypeaheadSelect
-      @options={{this.options}}
-      @selectedOption={{this.selectedOption}}
-      @onChange={{this.onChange}}
-      @isDisabled={{true}}
-      @isValid={{false}}
-    />`);
+    <div class="dark bg-gray-900 p-4">
+      <Mox::TypeaheadSelect
+        @options={{this.options}}
+        @selectedOption={{this.selectedOption}}
+        @onChange={{this.onChange}}
+        @isDisabled={{false}}
+        @isValid={{false}}
+      />
+    </div>`);
 
-    assert.dom('[data-test-mox-input]').hasClass('border-red-800');
+    assert.dom('[data-test-mox-input]').hasClass('dark:border-red-800');
+    assert.dom('[data-test-mox-input]').hasStyle({
+      borderColor: 'rgb(153, 27, 27)',
+    });
   });
 
-  test('it allows to validate and invalidate the field after rendering', async function(assert) {
+  test('it allows to validate and invalidate the field after rendering (dark mode)', async function (assert) {
     this.set('isValid', null);
 
     await render(hbs`
-    <Mox::TypeaheadSelect
-      @options={{this.options}}
-      @selectedOption={{this.selectedOption}}
-      @onChange={{this.onChange}}
-      @isDisabled={{true}}
-      @isValid={{this.isValid}}
-    />`);
+    <div class="dark bg-gray-900 p-4">
+      <Mox::TypeaheadSelect
+        @options={{this.options}}
+        @selectedOption={{this.selectedOption}}
+        @onChange={{this.onChange}}
+        @isDisabled={{false}}
+        @isValid={{this.isValid}}
+      />
+    </div>`);
 
-    assert.dom('[data-test-mox-input]').doesNotHaveClass('border-red-800');
+    assert.dom('[data-test-mox-input]').doesNotHaveClass('dark:border-red-800');
+    assert.dom('[data-test-mox-input]').hasStyle({
+      borderColor: 'rgb(107, 114, 128)',
+    });
 
     this.set('isValid', false);
 
-    assert.dom('[data-test-mox-input]').hasClass('border-red-800');
+    assert.dom('[data-test-mox-input]').hasClass('dark:border-red-800');
+    assert.dom('[data-test-mox-input]').hasStyle({
+      borderColor: 'rgb(153, 27, 27)',
+    });
 
     this.set('isValid', true);
 
-    assert.dom('[data-test-mox-input]').doesNotHaveClass('border-red-800');
+    assert.dom('[data-test-mox-input]').doesNotHaveClass('dark:border-red-800');
+    assert.dom('[data-test-mox-input]').hasStyle({
+      borderColor: 'rgb(107, 114, 128)',
+    });
   });
 
   test('it may display a validation error alongside the field', async function (assert) {
@@ -93,7 +109,9 @@ module('Integration | Component | mox/typeahead-select', function (hooks) {
       @error="Name can't be blank"
     />`);
 
-    assert.dom('[data-test-mox-input-error]').includesText(`Name can't be blank`);
+    assert
+      .dom('[data-test-mox-input-error]')
+      .includesText(`Name can't be blank`);
   });
 
   test('it is accessible (with embedded label)', async function (assert) {
@@ -141,9 +159,9 @@ module('Integration | Component | mox/typeahead-select', function (hooks) {
     assert.ok(true, 'no a11y detected');
   });
 
-  test('it is accessible (validation error)', async function (assert) {
+  test('it is accessible (validation error / dark mode)', async function (assert) {
     await render(hbs`
-    <div class="bg-gray-900">
+    <div class="dark bg-gray-900 p-4">
       <Mox::TypeaheadSelect
         @id="my-random-id"
         @label="Your Instrument"

@@ -1,10 +1,20 @@
 import { hbs } from 'ember-cli-htmlbars';
 
 export default {
-  title: 'Mox Dark/Mox::Input',
+  title: 'Mox Light/Mox::Input',
   parameters: {
     backgrounds: {
-      default: 'Dark',
+      default: 'Mute',
+      values: [
+        {
+          name: 'White',
+          value: '#ffffff',
+        },
+        {
+          name: 'Mute',
+          value: '#FBFBFB',
+        },
+      ],
     },
   },
   inputAction: () => {},
@@ -12,20 +22,19 @@ export default {
 
 const Template = (args) => ({
   template: hbs`
-  <div class="dark">
   <Mox::Input
     @value={{this.value}} @onInput={{this.inputAction}}
     @placeholder={{this.placeholder}} @label={{this.label}}
     disabled={{this.isDisabled}} @isRequired={{this.isRequired}}
     readonly={{this.readOnly}}
     @isValid={{this.isValid}} @error={{this.error}} />
-  </div>`,
+  `,
   context: args,
 });
 
 const TemplateStackedFormFields = (args) => ({
   template: hbs`
-  <div class="dark flex flex-col">
+  <div class="flex flex-col">
     <Mox::Input
       @value={{this.value}} @onInput={{this.inputAction}}
       @placeholder={{this.placeholder}} @label={{this.label}}
