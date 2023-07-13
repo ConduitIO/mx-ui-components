@@ -1,5 +1,11 @@
 # mx-ui-components
 
+## 2.6.0
+
+### Minor Changes
+
+- [#116](https://github.com/ConduitIO/mx-ui-components/pull/116) [`c878739`](https://github.com/ConduitIO/mx-ui-components/commit/c878739e26047787b97db886835cb2600b1a6da1) Thanks [@jayjayjpg](https://github.com/jayjayjpg)! - Update Mox::Input Component UI and several light-mode UI tweaks
+
 ## 2.5.0
 
 ### Minor Changes
