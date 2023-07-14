@@ -24,7 +24,7 @@ const Template = (args) => ({
       </:description>
       <:controls>
         <Mox::Toggle
-          @id="form-field-example"
+          @id={{this.toggleId}}
           @toggleAction={{this.toggleAction}}
         />
       </:controls>
@@ -37,6 +37,7 @@ const Template = (args) => ({
 export const ToggleFormFieldFullWidth = Template.bind({});
 ToggleFormFieldFullWidth.args = {
   toggleAction: () => {},
+  toggleId: 'form-field-example-1',
 };
 ToggleFormFieldFullWidth.parameters = {
   layout: 'fullscreen',
@@ -45,5 +46,6 @@ ToggleFormFieldFullWidth.parameters = {
 export const ToggleFormFieldInContainer = Template.bind({});
 ToggleFormFieldInContainer.args = {
   toggleAction: () => {},
+  toggleId: 'form-field-example-2',
   containerClass: 'w-container',
 };

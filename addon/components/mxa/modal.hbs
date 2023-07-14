@@ -1,11 +1,13 @@
-<!-- #TODO hook up animation -->
+{{!-- #TODO hook up animation --}}
 <div class="fixed z-10 inset-0 overflow-y-auto" ...attributes>
   <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+    {{!-- template-lint-disable no-invalid-interactive --}}
     <div class="fixed inset-0 transition-opacity" {{on 'click' @onDismiss}} {{on-key 'Escape' @onDismiss}} data-test-modal-outside-trigger>
       <div class="absolute inset-0 bg-slate-dark opacity-75"></div>
     </div>
+    {{!-- template-lint-enable no-invalid-interactive --}}
 
-    <!-- This element is to trick the browser into centering the modal contents. -->
+    {{!-- This element is to trick the browser into centering the modal contents. --}}
     <span class="hidden sm:inline-block sm:align-middle sm:h-screen"></span>&#8203;
     {{yield}}
   </div>

@@ -111,7 +111,8 @@ WithIcon.args = {
 
 export const WithLogo = LogoTemplate.bind({});
 WithLogo.args = {
-  title: 'ecom-search-update-but-with-a-veryveryveryveryveryveryextremely-elaborate-text',
+  title:
+    'ecom-search-update-but-with-a-veryveryveryveryveryveryextremely-elaborate-text',
   subtitle: 'JavaScript · Turbine Application · Deployed to Common · Feb 23',
   idd: 'ecom',
   icon: null,

@@ -18,8 +18,6 @@ const Template = (args) => ({
     @entityName={{this.selectedNode.name}}
     @confirmedAction={{fn this.destroyConnector this.selectedNode}}
     @isTextInputRequired={{this.isInputTextRequired}}
-    as
-    |entityName|
   >
     {{this.modalText}}
   </Mox::ConfirmModal>`,

@@ -462,13 +462,13 @@ module('Integration | Component | mox/button', function (hooks) {
         const initialWidth = buttonElement.offsetWidth;
 
         // button has the same width initially...
-        assert.equal(buttonElement.offsetWidth, initialWidth);
+        assert.strictEqual(buttonElement.offsetWidth, initialWidth);
 
         click('[data-test-mox-button]');
         await waitFor('[data-test-mox-button-loading]');
 
         // ...as it has while loading...
-        assert.equal(buttonElement.offsetWidth, initialWidth);
+        assert.strictEqual(buttonElement.offsetWidth, initialWidth);
 
         await waitUntil(
           function () {
@@ -480,7 +480,7 @@ module('Integration | Component | mox/button', function (hooks) {
         );
 
         // ...as it has after it finished loading.
-        assert.equal(buttonElement.offsetWidth, initialWidth);
+        assert.strictEqual(buttonElement.offsetWidth, initialWidth);
       });
     });
 

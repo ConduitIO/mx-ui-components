@@ -19,7 +19,7 @@ export default class MoxThemeSwitchComponent extends Component {
   }
 
   get otherTheme() {
-    return this.allThemes.filter(theme => theme !== this.currentTheme)[0];
+    return this.allThemes.filter((theme) => theme !== this.currentTheme)[0];
   }
 
   get label() {

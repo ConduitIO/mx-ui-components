@@ -40,7 +40,7 @@ module('Integration | Component | mxa/async-button', function (hooks) {
       assert.dom('button').hasClass('mxa-btn-danger');
     });
 
-    test('it renders the the button in its disabled state', async function(assert) {
+    test('it renders the the button in its disabled state', async function (assert) {
       await render(hbs`<Mxa::Button disabled />`);
 
       assert.dom('button').hasStyle({
@@ -49,7 +49,7 @@ module('Integration | Component | mxa/async-button', function (hooks) {
       });
     });
 
-    test('it renders the the button - no fill state', async function(assert) {
+    test('it renders the the button - no fill state', async function (assert) {
       await render(hbs`<Mxa::Button @buttonType="danger" @noFill={{true}} />`);
 
       assert.dom('button').hasStyle({
@@ -58,7 +58,7 @@ module('Integration | Component | mxa/async-button', function (hooks) {
       });
     });
 
-    test('it renders the the button - small', async function(assert) {
+    test('it renders the the button - small', async function (assert) {
       await render(hbs`<Mxa::Button @small={{true}} />`);
 
       assert.dom('button').hasClass('mxa-btn-small');
@@ -121,13 +121,13 @@ module('Integration | Component | mxa/async-button', function (hooks) {
       const initialWidth = buttonElement.offsetWidth;
 
       // button has the same width initially...
-      assert.equal(buttonElement.offsetWidth, initialWidth);
+      assert.strictEqual(buttonElement.offsetWidth, initialWidth);
 
       click('[data-test-async-button]');
       await waitFor('[data-test-async-button-loading]');
 
       // ...as it has while loading...
-      assert.equal(buttonElement.offsetWidth, initialWidth);
+      assert.strictEqual(buttonElement.offsetWidth, initialWidth);
 
       await waitUntil(
         function () {
@@ -139,7 +139,7 @@ module('Integration | Component | mxa/async-button', function (hooks) {
       );
 
       // ...as it has after it finished loading.
-      assert.equal(buttonElement.offsetWidth, initialWidth);
+      assert.strictEqual(buttonElement.offsetWidth, initialWidth);
     });
   });
 

@@ -9,7 +9,7 @@ module('Integration | Component | mxa/badge', function (hooks) {
   test('it renders the badge with the default color', async function (assert) {
     await render(hbs`<Mox::Badge>Badge text</Mox::Badge>`);
 
-    assert.equal(this.element.textContent.trim(), 'Badge text');
+    assert.strictEqual(this.element.textContent.trim(), 'Badge text');
     assert.dom('[data-test-badge]').hasClass('bg-gray-600');
     assert.dom('[data-test-badge]').hasClass('text-white');
   });

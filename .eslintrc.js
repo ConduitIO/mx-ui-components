@@ -7,8 +7,8 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
     ecmaFeatures: {
-      legacyDecorators: true
-    }
+      legacyDecorators: true,
+    },
     requireConfigFile: false,
     babelOptions: {
       plugins: [
@@ -17,11 +17,19 @@ module.exports = {
     },
   },
   plugins: ['ember'],
-  extends: ['eslint:recommended', 'plugin:ember/recommended', 'plugin:prettier/recommended', 'plugin:storybook/recommended'],
+  extends: [
+    'eslint:recommended',
+    'plugin:ember/recommended',
+    'plugin:prettier/recommended',
+    'plugin:storybook/recommended',
+  ],
   env: {
-    browser: true
+    browser: true,
   },
-  rules: {},
+  rules: {
+    'require-valid-named-block-naming-format': 'off',
+    'qunit/no-assert-equal': 'off',
+  },
   overrides: [
     // node files
     {
@@ -37,7 +45,12 @@ module.exports = {
         './config/**/*.js',
         './tests/dummy/config/**/*.js',
       ],
-      excludedFiles: ['addon/**', 'addon-test-support/**', 'app/**', 'tests/dummy/app/**'],
+      excludedFiles: [
+        'addon/**',
+        'addon-test-support/**',
+        'app/**',
+        'tests/dummy/app/**',
+      ],
       parserOptions: {
         sourceType: 'script',
       },
@@ -46,16 +59,12 @@ module.exports = {
         node: true,
       },
       extends: ['plugin:n/recommended'],
+      plugins: ['node'],
     },
-    env: {
-      browser: false,
-      node: true
+    {
+      // test files
+      files: ['tests/**/*-test.{js,ts}'],
+      extends: ['plugin:qunit/recommended'],
     },
-    plugins: ['node'],
-    extends: ['plugin:node/recommended']
-  }, {
-    // test files
-    files: ['tests/**/*-test.{js,ts}'],
-    extends: ['plugin:qunit/recommended']
-  }]
+  ],
 };

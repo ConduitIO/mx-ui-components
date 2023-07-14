@@ -1,7 +1,7 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { hbs } from 'ember-cli-htmlbars';
-import { render, click } from '@ember/test-helpers';
+import { render } from '@ember/test-helpers';
 
 import { a11yAudit } from 'ember-a11y-testing/test-support';
 
@@ -48,6 +48,8 @@ module('Unit | Component | mox/global-header', function (hooks) {
 
     await a11yAudit();
     assert.ok(true, 'no a11y errors');
-    assert.dom('[data-test-global-header-logo]').hasAttribute('aria-label', 'Go to Homepage');
+    assert
+      .dom('[data-test-global-header-logo]')
+      .hasAttribute('aria-label', 'Go to Homepage');
   });
 });

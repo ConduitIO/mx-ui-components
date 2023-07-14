@@ -2,10 +2,12 @@ import Component from '@glimmer/component';
 
 export default class MxaButtonComponent extends Component {
   get buttonTypeClass() {
-    return this.args.buttonType ? `mxa-btn-${this.args.buttonType}` : 'mxa-btn-primary';
+    return this.args.buttonType
+      ? `mxa-btn-${this.args.buttonType}`
+      : 'mxa-btn-primary';
   }
 
-  buildButtonClass(buttonType) {
+  buildButtonClass() {
     let classesList = [];
 
     if (this.args.small) {
@@ -15,7 +17,12 @@ export default class MxaButtonComponent extends Component {
     }
 
     if (this.args.noFill) {
-      classesList.push('bg-white', 'border-red-600', 'text-red-600', 'active:bg-gray-50');
+      classesList.push(
+        'bg-white',
+        'border-red-600',
+        'text-red-600',
+        'active:bg-gray-50'
+      );
     }
 
     classesList.push(this.buttonTypeClass);

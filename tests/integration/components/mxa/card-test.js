@@ -5,24 +5,24 @@ import { hbs } from 'ember-cli-htmlbars';
 
 import { a11yAudit } from 'ember-a11y-testing/test-support';
 
-module('Integration | Component | mxa/card', function(hooks) {
+module('Integration | Component | mxa/card', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders the full width card by default', async function(assert) {
+  test('it renders the full width card by default', async function (assert) {
     await render(hbs`<Mxa::Card />`);
 
     assert.dom('[data-test-mxa-card]').hasClass('w-full');
     assert.dom('[data-test-mxa-card]').doesNotHaveClass('w-container');
   });
 
-  test('it renders the container width card if @isContainer is true', async function(assert) {
+  test('it renders the container width card if @isContainer is true', async function (assert) {
     await render(hbs`<Mxa::Card @isContainer={{true}} />`);
 
     assert.dom('[data-test-mxa-card]').hasClass('w-container');
     assert.dom('[data-test-mxa-card]').doesNotHaveClass('w-full');
   });
 
-  test('it renders the main title', async function(assert) {
+  test('it renders the main title', async function (assert) {
     await render(hbs`<Mxa::Card>
       <:title>Hello World!</:title>
     </Mxa::Card>`);
@@ -31,7 +31,7 @@ module('Integration | Component | mxa/card', function(hooks) {
     assert.dom('[data-test-mxa-card-sub-title]').doesNotExist();
   });
 
-  test('it renders the sub title', async function(assert) {
+  test('it renders the sub title', async function (assert) {
     await render(hbs`<Mxa::Card>
       <:sub-title>Hello World!</:sub-title>
     </Mxa::Card>`);
@@ -40,11 +40,11 @@ module('Integration | Component | mxa/card', function(hooks) {
     assert.dom('[data-test-mxa-card-title]').doesNotExist();
   });
 
-  test('it renders (full configuration)', async function(assert) {
+  test('it renders (full configuration)', async function (assert) {
     await render(hbs`<Mxa::Card>
       <:title>Hello World!</:title>
       <:sub-title>Hi again!</:sub-title>
-      <:body>Sample text: <input type="text" value="rendering" /></:body>
+      <:body>Sample text: <input id="hi" type="text" value="rendering" /><label for="hi">Hey</label></:body>
     </Mxa::Card>`);
 
     assert.dom('[data-test-mxa-card-title]').includesText('Hello World!');
@@ -53,11 +53,11 @@ module('Integration | Component | mxa/card', function(hooks) {
     assert.dom('[data-test-mxa-card-body] input').hasValue('rendering');
   });
 
-  test('it renders (simple yield usage)', async function(assert) {
+  test('it renders (simple yield usage)', async function (assert) {
     await render(hbs`<Mxa::Card>
       <h1>Hello World!</h1>
       <h2>Hi again!</h2>
-      <p>Sample text: <input type="text" value="rendering" /></p>
+      <p>Sample text: <input id="foo" type="text" value="rendering" /><label for="foo">rendering</label></p>
     </Mxa::Card>`);
 
     assert.dom('[data-test-mxa-card] h1').includesText('Hello World!');
@@ -66,7 +66,7 @@ module('Integration | Component | mxa/card', function(hooks) {
     assert.dom('[data-test-mxa-card] input').hasValue('rendering');
   });
 
-  test('it is accessible', async function(assert) {
+  test('it is accessible', async function (assert) {
     await render(hbs`<Mxa::Card>
       <:title>Hello World!</:title>
       <:sub-title>Hi again!</:sub-title>

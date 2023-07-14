@@ -9,7 +9,7 @@
     {{#if @isTextInputRequired}}
       <Input
         id={{concat "delete-" @entityName}}
-        type="text"
+        @type="text"
         class="mxa-input w-full bg-white border-gray-300"
         @value={{this.confirmedEntityName}}
         {{focus-on-render}}

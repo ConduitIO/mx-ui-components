@@ -32,7 +32,7 @@ Default.args = {
   isContainer: true,
 };
 
-export const Simple= TemplateSimple.bind({});
+export const Simple = TemplateSimple.bind({});
 Simple.args = {
   titleText: 'Fullscreen',
   subTitleText: 'Layout (fullscreen)',

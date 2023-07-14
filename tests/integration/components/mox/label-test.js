@@ -14,7 +14,7 @@ module('Integration | Component | mox/label', function (hooks) {
       </Mox::Label>
     `);
 
-    assert.equal(this.element.textContent.trim(), 'Label text');
+    assert.strictEqual(this.element.textContent.trim(), 'Label text');
   });
 
   test('it is not marked as required by default', async function (assert) {

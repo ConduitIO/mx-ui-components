@@ -4,7 +4,6 @@ import { click, render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { a11yAudit } from 'ember-a11y-testing/test-support';
 
-
 module('Integration | Component | mox/card/aside', function (hooks) {
   setupRenderingTest(hooks);
 
@@ -27,7 +26,9 @@ module('Integration | Component | mox/card/aside', function (hooks) {
 
     assert.dom('[data-test-mox-card-aside-link]').exists();
     assert.dom('[data-test-mox-card-aside-button]').doesNotExist();
-    assert.dom('[data-test-mox-card-aside-link]').hasText('template block text');
+    assert
+      .dom('[data-test-mox-card-aside-link]')
+      .hasText('template block text');
   });
 
   test('it renders the button element if no route is passed', async function (assert) {
@@ -39,7 +40,9 @@ module('Integration | Component | mox/card/aside', function (hooks) {
 
     assert.dom('[data-test-mox-card-aside-button]').exists();
     assert.dom('[data-test-mox-card-aside-link]').doesNotExist();
-    assert.dom('[data-test-mox-card-aside-button]').hasText('template block text');
+    assert
+      .dom('[data-test-mox-card-aside-button]')
+      .hasText('template block text');
   });
 
   test('it triggers the @onClick action when clicked', async function (assert) {
