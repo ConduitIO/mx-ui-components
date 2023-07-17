@@ -11,12 +11,12 @@ module('Unit | Component | mox/global-header', function (hooks) {
   test('it renders the header correctly', async function (assert) {
     await render(hbs`
 	<Mox::GlobalHeader>
+    <:global-links>
+      <div>Global links</div>
+    </:global-links>
 		<:env-switcher>
             <div>Env switcher</div>
 		</:env-switcher>
-		<:help-menu>
-            <div>Help menu</div>
-		</:help-menu>
 		<:user-menu>
             <div>User menu</div>
 		</:user-menu>
@@ -24,21 +24,21 @@ module('Unit | Component | mox/global-header', function (hooks) {
     `);
 
     assert.dom('[data-test-global-header]').hasTagName('header');
+    assert.dom('[data-test-global-header]').containsText('Global links');
     assert.dom('[data-test-global-header]').containsText('Env switcher');
-    assert.dom('[data-test-global-header]').containsText('Help menu');
     assert.dom('[data-test-global-header]').containsText('User menu');
   });
 
   test('it is accessible', async function (assert) {
     await render(hbs`
-      <div class="bg-gray-900">
+      <div>
         <Mox::GlobalHeader>
+          <:global-links>
+            <div>Global links</div>
+          </:global-links>
           <:env-switcher>
             <div>Env switcher</div>
           </:env-switcher>
-          <:help-menu>
-            <div>Help menu</div>
-          </:help-menu>
           <:user-menu>
             <div>User menu</div>
           </:user-menu>
