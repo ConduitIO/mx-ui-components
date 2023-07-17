@@ -22,17 +22,17 @@
         ></path>
       </svg>
     </a>
-    {{#if (has-block "env-switcher")}}
-      <div class="text-white">
-        {{yield to="env-switcher"}}
+    {{#if (has-block "global-links")}}
+      <div>
+        {{yield to="global-links"}}
       </div>
     {{/if}}
   </div>
 
   <div class="flex items-center space-x-2 text-white">
-    {{#if (has-block "help-menu")}}
+    {{#if (has-block "env-switcher")}}
       <div>
-        {{yield to="help-menu"}}
+        {{yield to="env-switcher"}}
       </div>
     {{/if}}
 
