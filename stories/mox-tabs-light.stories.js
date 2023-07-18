@@ -1,23 +1,29 @@
 import { hbs } from 'ember-cli-htmlbars';
 
 export default {
-  title: 'Mox Dark/Mox::Tabs',
+  title: 'Mox Light/Mox::Tabs',
   parameters: {
     backgrounds: {
-      default: 'Dark',
+      default: 'Mute',
+      values: [
+        {
+          name: 'White',
+          value: '#ffffff',
+        },
+        {
+          name: 'Mute',
+          value: '#F3F4F6',
+        },
+      ],
     },
   },
 };
 
 const Template = (args) => ({
-  template: hbs`
-    <div class="dark">
-    <Mox::Tabs>
-      <Mox::Tabs::Item @isActive={{this.isActive}}>Item One</Mox::Tabs::Item>
-      <Mox::Tabs::Item class={{this.linkClass}}>Item Two</Mox::Tabs::Item>
-    </Mox::Tabs>
-    </div>
-  `,
+  template: hbs`<Mox::Tabs>
+    <Mox::Tabs::Item @isActive={{this.isActive}}>Item One</Mox::Tabs::Item>
+    <Mox::Tabs::Item class={{this.linkClass}}>Item Two</Mox::Tabs::Item>
+  </Mox::Tabs>`,
   context: args,
 });
 
