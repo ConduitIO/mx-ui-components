@@ -1,5 +1,15 @@
 # mx-ui-components
 
+## 2.7.0
+
+### Minor Changes
+
+- [#120](https://github.com/ConduitIO/mx-ui-components/pull/120) [`7d50ae0`](https://github.com/ConduitIO/mx-ui-components/commit/7d50ae015ec901efc8916c979632f5f332771ee8) Thanks [@jmar910](https://github.com/jmar910)! - feat: add links block to global header
+
+### Patch Changes
+
+- [#109](https://github.com/ConduitIO/mx-ui-components/pull/109) [`6830014`](https://github.com/ConduitIO/mx-ui-components/commit/683001451d8dc6d81b357fd3bc276444d907bbe5) Thanks [@jayjayjpg](https://github.com/jayjayjpg)! - Resolve linter errors and add linter CI step
+
 ## 2.6.0
 
 ### Minor Changes
