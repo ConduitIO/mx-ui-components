@@ -145,15 +145,9 @@
 
 a.mox-tab-link {
   padding: 1rem 0.5rem;
-  color: #d1d5db; /* gray-300 */
   border-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: transparent; /* transparent */
-}
-
-a.mox-tab-link:hover:not(:focus) {
-  color: #fff;
-  border-bottom-color: #d1d5db; /* white */
 }
 
 a.active.mox-tab-link,

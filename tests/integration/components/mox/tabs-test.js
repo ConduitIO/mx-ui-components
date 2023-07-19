@@ -17,14 +17,26 @@ module('Integration | Component | mox/tabs', function (hooks) {
     assert.dom('[data-test-mox-tabs]').hasText('template block text');
   });
 
-  test('it is accessible', async function (assert) {
+  test('it is accessible (dark mode)', async function (assert) {
     await render(hbs`
-      <div class="bg-gray-900">
+      <div class="bg-gray-900 dark">
         <Mox::Tabs>
           <Mox::Tabs::Item>Item One</Mox::Tabs::Item>
           <Mox::Tabs::Item>Item Two</Mox::Tabs::Item>
         </Mox::Tabs>
       </div>
+    `);
+
+    await a11yAudit();
+    assert.ok(true, 'no a11y errors detected');
+  });
+
+  test('it is accessible (light mode)', async function (assert) {
+    await render(hbs`
+      <Mox::Tabs>
+        <Mox::Tabs::Item>Item One</Mox::Tabs::Item>
+        <Mox::Tabs::Item>Item Two</Mox::Tabs::Item>
+      </Mox::Tabs>
     `);
 
     await a11yAudit();

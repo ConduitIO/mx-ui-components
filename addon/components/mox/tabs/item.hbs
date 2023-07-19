@@ -1,8 +1,8 @@
 <li data-test-mox-tab-item={{@route}}>
   <Mox::Link
     @route={{@route}}
-    class="{{if @isActive "arg-active"}}
-      mox-tab-link hover:border-gray-500 hover:border-dotted hover:text-white cursor-pointer"
+    class="{{if @isActive 'arg-active'}}
+      mox-tab-link text-gray-800 dark:text-gray-300 hover:border-gray-800 hover:dark:border-white hover:border-dotted hover:dark:text-white cursor-pointer"
     tabindex="0"
     ...attributes
   >
