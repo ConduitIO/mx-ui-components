@@ -1,5 +1,11 @@
 # mx-ui-components
 
+## 2.8.0
+
+### Minor Changes
+
+- [#124](https://github.com/ConduitIO/mx-ui-components/pull/124) [`3e1f159`](https://github.com/ConduitIO/mx-ui-components/commit/3e1f1597a952e7a5a5fcf14ae57caf9ba3535146) Thanks [@jmar910](https://github.com/jmar910)! - feat: light mode mox-tab-items + mox-link
+
 ## 2.7.0
 
 ### Minor Changes
