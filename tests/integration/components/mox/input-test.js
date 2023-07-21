@@ -103,8 +103,8 @@ module('Integration | Component | mox/input', function (hooks) {
       await render(hbs`<Mox::Input @onInput={{this.onInput}} readonly />`);
 
       assert.dom('[data-test-mox-input]').hasStyle({
-        borderColor: 'rgb(229, 231, 235)',
-        backgroundColor: 'rgb(229, 231, 235)',
+        borderColor: 'rgb(156, 163, 175)',
+        backgroundColor: 'rgb(249, 250, 251)',
         color: 'rgb(31, 41, 55)',
       });
     });
@@ -119,7 +119,7 @@ module('Integration | Component | mox/input', function (hooks) {
 
       assert.dom('[data-test-mox-input]').doesNotHaveClass('border-red-500');
       assert.dom('[data-test-mox-input]').hasStyle({
-        borderColor: 'rgb(243, 244, 246)',
+        borderColor: 'rgb(156, 163, 175)',
       });
 
       this.set('isValid', false);
@@ -133,7 +133,7 @@ module('Integration | Component | mox/input', function (hooks) {
 
       assert.dom('[data-test-mox-input]').doesNotHaveClass('border-red-500');
       assert.dom('[data-test-mox-input]').hasStyle({
-        borderColor: 'rgb(243, 244, 246)',
+        borderColor: 'rgb(156, 163, 175)',
       });
     });
 
@@ -165,6 +165,17 @@ module('Integration | Component | mox/input', function (hooks) {
       await render(
         hbs`<div class="bg-gray-50"><Mox::Input @onInput={{this.onInput}} @label="Address" @id="address-field" @isValid={{false}} @error="Missing something?" /></div>`
       );
+      await a11yAudit();
+      assert.ok(true, 'no accessibility errors');
+    });
+
+    test('the default state is accessible', async function (assert) {
+      this.set('onInput', () => {});
+
+      await render(
+        hbs`<div class="bg-gray-50 p-4"><Mox::Input @onInput={{this.onInput}} @label="Address" @id="address-field" /></div>`
+      );
+
       await a11yAudit();
       assert.ok(true, 'no accessibility errors');
     });
@@ -265,6 +276,17 @@ module('Integration | Component | mox/input', function (hooks) {
       await render(
         hbs`<div class="bg-gray-900 dark p-4"><Mox::Input @onInput={{this.onInput}} @label="Address" @id="address-field" @isValid={{false}} @error="Missing something?" /></div>`
       );
+      await a11yAudit();
+      assert.ok(true, 'no accessibility errors');
+    });
+
+    test('the default state is accessible', async function (assert) {
+      this.set('onInput', () => {});
+
+      await render(
+        hbs`<div class="bg-gray-900 p-4 dark"><Mox::Input @onInput={{this.onInput}} @label="Address" @id="address-field" /></div>`
+      );
+
       await a11yAudit();
       assert.ok(true, 'no accessibility errors');
     });

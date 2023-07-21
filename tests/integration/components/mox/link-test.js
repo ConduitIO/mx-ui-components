@@ -64,9 +64,9 @@ module('Integration | Component | mox/link', function (hooks) {
     assert.dom('[data-test-mox-link]').hasClass('bg-cyan-700');
   });
 
-  test('it is accessible (@route)', async function (assert) {
+  test('it is accessible (@route + dark mode)', async function (assert) {
     await render(hbs`
-      <div class="bg-gray-900">
+      <div class="bg-gray-900 dark">
         <Mox::Link @route="application">
           Internal link
         </Mox::Link>
@@ -77,9 +77,35 @@ module('Integration | Component | mox/link', function (hooks) {
     assert.ok(true, 'no a11y errors detected');
   });
 
-  test('it is accessible (@externalUrl)', async function (assert) {
+  test('it is accessible (@route + light mode)', async function (assert) {
     await render(hbs`
-      <div class="bg-gray-900">
+      <div class="bg-gray-50">
+        <Mox::Link @route="application">
+          Internal link
+        </Mox::Link>
+      </div>
+    `);
+
+    await a11yAudit();
+    assert.ok(true, 'no a11y errors detected');
+  });
+
+  test('it is accessible (@externalUrl + dark mode)', async function (assert) {
+    await render(hbs`
+      <div class="bg-gray-900 dark">
+        <Mox::Link @externalUrl="http://localhost:7357">
+          External link
+        </Mox::Link>
+      </div>
+    `);
+
+    await a11yAudit();
+    assert.ok(true, 'no a11y errors detected');
+  });
+
+  test('it is accessible (@externalUrl + light mode)', async function (assert) {
+    await render(hbs`
+      <div class="bg-gray-50">
         <Mox::Link @externalUrl="http://localhost:7357">
           External link
         </Mox::Link>
