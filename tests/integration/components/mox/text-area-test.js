@@ -39,35 +39,6 @@ module('Integration | Component | mox/text-area', function (hooks) {
     assert.dom('[data-test-mox-text-area]').isDisabled();
   });
 
-  test('it highlights the field if it is invalid', async function (assert) {
-    this.set('onInput', () => {});
-
-    await render(
-      hbs`<Mox::TextArea @onInput={{this.onInput}} @isValid={{false}} />`
-    );
-
-    assert.dom('[data-test-mox-text-area]').hasClass('border-red-800');
-  });
-
-  test('it allows to validate and invalidate the field after rendering', async function (assert) {
-    this.set('onInput', () => {});
-    this.set('isValid', null);
-
-    await render(
-      hbs`<Mox::TextArea @onInput={{this.onInput}} @isValid={{this.isValid}} />`
-    );
-
-    assert.dom('[data-test-mox-text-area]').doesNotHaveClass('border-red-800');
-
-    this.set('isValid', false);
-
-    assert.dom('[data-test-mox-text-area]').hasClass('border-red-800');
-
-    this.set('isValid', true);
-
-    assert.dom('[data-test-mox-text-area]').doesNotHaveClass('border-red-800');
-  });
-
   test('it may display a validation error alongside the field', async function (assert) {
     this.set('onInput', () => {});
 
@@ -80,37 +51,165 @@ module('Integration | Component | mox/text-area', function (hooks) {
       .includesText(`Name can't be blank`);
   });
 
-  test('the disabled input state is accessible (dark mode)', async function (assert) {
-    this.set('onInput', () => {});
+  module('dark mode', function () {
+    test('the disabled input state is accessible (dark mode)', async function (assert) {
+      this.set('onInput', () => {});
 
-    await render(hbs`
-      <div class="dark bg-gray-900 p-4">
-      <Mox::TextArea @onInput={{this.onInput}} @label="Address" @id="address-field" disabled />
-      </div>`);
-    await a11yAudit();
-    assert.ok(true, 'no accessibility errors');
+      await render(hbs`
+        <div class="dark bg-gray-900 p-4">
+        <Mox::TextArea @onInput={{this.onInput}} @label="Address" @id="address-field" disabled />
+        </div>`);
+      await a11yAudit();
+      assert.ok(true, 'no accessibility errors');
+    });
+
+    test('the disabled input state used together with an external label is accessible', async function (assert) {
+      this.set('onInput', () => {});
+
+      await render(hbs`
+        <div class="dark bg-gray-900 p-4">
+        <label for="address-field">Address</label>
+        <Mox::TextArea @onInput={{this.onInput}} id="address-field" disabled />
+        </div>
+      `);
+      await a11yAudit();
+      assert.ok(true, 'no accessibility errors');
+    });
+
+    test('the invalid input state is accessible', async function (assert) {
+      this.set('onInput', () => {});
+
+      await render(
+        hbs`<div class="dark bg-gray-900 p-4"><Mox::TextArea @onInput={{this.onInput}} @label="Address" @id="address-field" @isValid={{false}} @error="Missing something?" /></div>`
+      );
+      await a11yAudit();
+      assert.ok(true, 'no accessibility errors');
+    });
+
+    test('it highlights the field if it is invalid', async function (assert) {
+      this.set('onInput', () => {});
+
+      await render(
+        hbs`<div class="dark bg-gray-900 p-4"><Mox::TextArea @onInput={{this.onInput}} @isValid={{false}} /></div>`
+      );
+
+      assert.dom('[data-test-mox-text-area]').hasClass('dark:border-red-800');
+      assert
+        .dom('[data-test-mox-text-area]')
+        .hasStyle({ borderColor: 'rgb(153, 27, 27)' });
+    });
+
+    test('it allows to validate and invalidate the field after rendering', async function (assert) {
+      this.set('onInput', () => {});
+      this.set('isValid', null);
+
+      await render(
+        hbs`<div class="dark bg-gray-900 p-4"><Mox::TextArea @onInput={{this.onInput}} @isValid={{this.isValid}} /></div>`
+      );
+
+      assert
+        .dom('[data-test-mox-text-area]')
+        .doesNotHaveClass('dark:border-red-800');
+      assert
+        .dom('[data-test-mox-text-area]')
+        .hasStyle({ borderColor: 'rgb(107, 114, 128)' });
+
+      this.set('isValid', false);
+
+      assert.dom('[data-test-mox-text-area]').hasClass('dark:border-red-800');
+      assert
+        .dom('[data-test-mox-text-area]')
+        .hasStyle({ borderColor: 'rgb(153, 27, 27)' });
+
+      this.set('isValid', true);
+
+      assert
+        .dom('[data-test-mox-text-area]')
+        .doesNotHaveClass('dark:border-red-800');
+      assert
+        .dom('[data-test-mox-text-area]')
+        .hasStyle({ borderColor: 'rgb(107, 114, 128)' });
+    });
   });
 
-  test('the disabled input state used together with an external label is accessible', async function (assert) {
-    this.set('onInput', () => {});
+  module('light mode', function () {
+    test('the disabled input state is accessible (light mode)', async function (assert) {
+      this.set('onInput', () => {});
 
-    await render(hbs`
-      <div class="dark bg-gray-900 p-4">
-      <label for="address-field">Address</label>
-      <Mox::TextArea @onInput={{this.onInput}} id="address-field" disabled />
-      </div>
-    `);
-    await a11yAudit();
-    assert.ok(true, 'no accessibility errors');
-  });
+      await render(hbs`
+        <div class="bg-gray-50 p-4">
+          <Mox::TextArea @onInput={{this.onInput}} @label="Address" @id="address-field" disabled />
+        </div>`);
+      await a11yAudit();
+      assert.ok(true, 'no accessibility errors');
+    });
 
-  test('the invalid input state is accessible', async function (assert) {
-    this.set('onInput', () => {});
+    test('the disabled input state used together with an external label is accessible', async function (assert) {
+      this.set('onInput', () => {});
 
-    await render(
-      hbs`<div class="dark bg-gray-900 p-4"><Mox::TextArea @onInput={{this.onInput}} @label="Address" @id="address-field" @isValid={{false}} @error="Missing something?" /></div>`
-    );
-    await a11yAudit();
-    assert.ok(true, 'no accessibility errors');
+      await render(hbs`
+        <div class="bg-gray-50 p-4">
+          <label for="address-field">Address</label>
+          <Mox::TextArea @onInput={{this.onInput}} id="address-field" disabled />
+        </div>
+      `);
+      await a11yAudit();
+      assert.ok(true, 'no accessibility errors');
+    });
+
+    test('the invalid input state is accessible', async function (assert) {
+      this.set('onInput', () => {});
+
+      await render(
+        hbs`<div class="bg-gray-50 p-4"><Mox::TextArea @onInput={{this.onInput}} @label="Address" @id="address-field" @isValid={{false}} @error="Missing something?" /></div>`
+      );
+      await a11yAudit();
+      assert.ok(true, 'no accessibility errors');
+    });
+
+    test('it highlights the field if it is invalid', async function (assert) {
+      this.set('onInput', () => {});
+
+      await render(
+        hbs`<div class="bg-gray-50 p-4"><Mox::TextArea @onInput={{this.onInput}} @isValid={{false}} /></div>`
+      );
+
+      assert.dom('[data-test-mox-text-area]').hasClass('border-red-500');
+      assert
+        .dom('[data-test-mox-text-area]')
+        .hasStyle({ borderColor: 'rgb(239, 68, 68)' });
+    });
+
+    test('it allows to validate and invalidate the field after rendering', async function (assert) {
+      this.set('onInput', () => {});
+      this.set('isValid', null);
+
+      await render(
+        hbs`<div class="bg-gray-50 p-4"><Mox::TextArea @onInput={{this.onInput}} @isValid={{this.isValid}} /></div>`
+      );
+
+      assert
+        .dom('[data-test-mox-text-area]')
+        .doesNotHaveClass('border-red-500');
+      assert
+        .dom('[data-test-mox-text-area]')
+        .hasStyle({ borderColor: 'rgb(156, 163, 175)' });
+
+      this.set('isValid', false);
+
+      assert.dom('[data-test-mox-text-area]').hasClass('border-red-500');
+      assert
+        .dom('[data-test-mox-text-area]')
+        .hasStyle({ borderColor: 'rgb(239, 68, 68)' });
+
+      this.set('isValid', true);
+
+      assert
+        .dom('[data-test-mox-text-area]')
+        .doesNotHaveClass('border-red-500');
+      assert
+        .dom('[data-test-mox-text-area]')
+        .hasStyle({ borderColor: 'rgb(156, 163, 175)' });
+    });
   });
 });
