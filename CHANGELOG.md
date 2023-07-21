@@ -1,5 +1,11 @@
 # mx-ui-components
 
+## 2.8.1
+
+### Patch Changes
+
+- [#128](https://github.com/ConduitIO/mx-ui-components/pull/128) [`325979b`](https://github.com/ConduitIO/mx-ui-components/commit/325979bca19dad731b6ef0a2ce770970c38bde3d) Thanks [@jayjayjpg](https://github.com/jayjayjpg)! - upd(mox:input): update light mode UI for input fields + links
+
 ## 2.8.0
 
 ### Minor Changes
