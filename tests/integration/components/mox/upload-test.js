@@ -129,17 +129,89 @@ module('Integration | Component | mox/upload', function (hooks) {
     assert.dom('[data-test-mox-upload-paste-field]').hasValue('Caperezoson');
   });
 
-  test('it is accessible', async function (assert) {
-    await render(hbs`
-      <div class="bg-gray-900">
-        <Mox::Upload
-          @label="Charizard"
-          @format=".pdf"
-          @onInput={{this.dummyAction}} />
-      </div>
-    `);
+  module('dark mode', function () {
+    test('it renders correctly', async function (assert) {
+      await render(hbs`
+        <div class="dark bg-gray-900">
+          <Mox::Upload
+            @label="Charizard"
+            @format=".pdf"
+            @onInput={{this.dummyAction}} />
+        </div>
+      `);
 
-    await a11yAudit();
-    assert.ok(true, 'it is accessible');
+      assert
+        .dom('[data-test-mox-upload-label]')
+        .hasStyle({ color: 'rgb(209, 213, 219)' });
+      assert
+        .dom('[data-test-mox-upload-start-upload]')
+        .hasStyle({ borderColor: 'rgb(107, 114, 128)' });
+      assert
+        .dom('[data-test-mox-upload-paste]')
+        .hasStyle({ color: 'rgb(6, 182, 212)' });
+      assert
+        .dom('[data-test-mox-upload-file-upload]')
+        .hasStyle({ color: 'rgb(6, 182, 212)' });
+      assert
+        .dom('[data-test-mox-upload-format-requirements]')
+        .hasStyle({ color: 'rgb(255, 255, 255)' });
+    });
+
+    test('it is accessible', async function (assert) {
+      await render(hbs`
+        <div class="dark bg-gray-900">
+          <Mox::Upload
+            @label="Charizard"
+            @format=".pdf"
+            @onInput={{this.dummyAction}} />
+        </div>
+      `);
+
+      await a11yAudit();
+      assert.ok(true, 'it is accessible');
+    });
+  });
+
+  module('light mode', function () {
+    test('it renders correctly', async function (assert) {
+      await render(hbs`
+        <div class="bg-gray-50">
+          <Mox::Upload
+            @label="Charizard"
+            @format=".pdf"
+            @onInput={{this.dummyAction}} />
+        </div>
+      `);
+
+      assert
+        .dom('[data-test-mox-upload-label]')
+        .hasStyle({ color: 'rgb(55, 65, 81)' });
+      assert
+        .dom('[data-test-mox-upload-start-upload]')
+        .hasStyle({ borderColor: 'rgb(156, 163, 175)' });
+      assert
+        .dom('[data-test-mox-upload-paste]')
+        .hasStyle({ color: 'rgb(14, 116, 144)' });
+      assert
+        .dom('[data-test-mox-upload-file-upload]')
+        .hasStyle({ color: 'rgb(14, 116, 144)' });
+      assert
+        .dom('[data-test-mox-upload-format-requirements]')
+        .hasStyle({ color: 'rgb(31, 41, 55)' });
+    });
+
+    test('it is accessible', async function (assert) {
+      await render(hbs`
+        <div class="bg-gray-50">
+          <Mox::Upload
+            @label="Charizard"
+            @format=".pdf"
+            @onInput={{this.dummyAction}} />
+        </div>
+      `);
+
+      await a11yAudit();
+      assert.ok(true, 'it is accessible');
+    });
   });
 });

@@ -11,6 +11,9 @@ export default class MoxUploadComponent extends Component {
   @tracked
   pastingValue = '';
 
+  ctaClasses =
+    'text-cyan-700 dark:text-cyan-500 hover:text-cyan-500 focus:text-cyan-500 hover:dark:text-white focus:dark:text-white transition duration-300';
+
   get fieldName() {
     let label = this.args.label || 'file-upload';
     return dasherize(label);

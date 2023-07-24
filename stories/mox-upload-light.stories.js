@@ -2,18 +2,18 @@ import { hbs } from 'ember-cli-htmlbars';
 import { action } from '@ember/object';
 
 export default {
-  title: 'Mox Dark/Mox::Upload',
+  title: 'Mox Light/Mox::Upload',
   parameters: {
     backgrounds: {
-      default: 'Dark',
+      default: 'Mute',
       values: [
         {
-          name: 'Dark',
-          value: '#111827',
+          name: 'White',
+          value: '#ffffff',
         },
         {
-          name: 'Sky',
-          value: '#06B6D4',
+          name: 'Mute',
+          value: '#F3F4F6',
         },
       ],
     },
@@ -21,7 +21,7 @@ export default {
 };
 
 const Template = (args) => ({
-  template: hbs`<div class="dark w-72">
+  template: hbs`<div class="w-72">
     <Mox::Upload @isActive={{this.isActive}}
       @label={{this.label}}
       @format={{this.format}}
