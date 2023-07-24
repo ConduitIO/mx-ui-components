@@ -3,16 +3,17 @@
     <input
       id={{this.fieldId}}
       type="checkbox"
-      class="transform appearance-none outline-none
-      flex items-center rounded-full border p-1 cursor-pointer
-      bg-gray-400 border-gray-400
-      checked:bg-cyan-500 checked:border-cyan-500 checked:text-cyan-500"
+      class="transform transition appearance-none outline-none flex items-center rounded-full border p-1 cursor-pointer bg-gray-300 border-gray-300 dark:bg-gray-400 dark:border-gray-400 checked:bg-green-500 checked:border-green-500 checked:text-green-500 dark:checked:bg-cyan-500 dark:checked:border-cyan-500 dark:checked:text-cyan-500 after:bg-gray-500 checked:after:bg-white dark:after:bg-gray-700 dark:checked:after:bg-white"
       checked={{this.isChecked}}
-      {{on 'change' this.toggleAction}}
+      {{on "change" this.toggleAction}}
       data-test-mox-toggle
     />
     {{#if @label}}
-      <label class="text-sm w-20 text-gray-300" for={{this.fieldId}} data-test-mox-toggle-label>
+      <label
+        class="text-sm w-20 text-gray-700 dark:text-gray-300"
+        for={{this.fieldId}}
+        data-test-mox-toggle-label
+      >
         {{@label}}
       </label>
     {{/if}}

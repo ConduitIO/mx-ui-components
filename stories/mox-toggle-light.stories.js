@@ -1,18 +1,18 @@
 import { hbs } from 'ember-cli-htmlbars';
 
 export default {
-  title: 'Mox Dark/Mox::Toggle',
+  title: 'Mox Light/Mox::Toggle',
   parameters: {
     backgrounds: {
-      default: 'Dark',
+      default: 'Mute',
       values: [
         {
-          name: 'Dark',
-          value: '#111827',
+          name: 'White',
+          value: '#ffffff',
         },
         {
-          name: 'Sky',
-          value: '#06B6D4',
+          name: 'Mute',
+          value: '#F3F4F6',
         },
       ],
     },
@@ -21,14 +21,12 @@ export default {
 
 const Template = (args) => ({
   template: hbs`
-    <div class="dark">
-      <label class="text-gray-300" for={{this.id}}>{{this.externalLabel}}</label>
-      <Mox::Toggle
-        @toggleAction={{this.toggleAction}}
-        @id={{this.id}}
-        @label={{this.label}}
-      />
-  </div>`,
+    <label class="text-gray-700" for={{this.id}}>{{this.externalLabel}}</label>
+    <Mox::Toggle
+      @toggleAction={{this.toggleAction}}
+      @id={{this.id}}
+      @label={{this.label}}
+  />`,
   context: args,
 });
 

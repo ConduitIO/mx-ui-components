@@ -1,18 +1,18 @@
 import { hbs } from 'ember-cli-htmlbars';
 
 export default {
-  title: 'Mox Dark/Mox::SearchInput',
+  title: 'Mox Light/Mox::SearchInput',
   parameters: {
     backgrounds: {
-      default: 'Dark',
+      default: 'Mute',
       values: [
         {
-          name: 'Dark',
-          value: '#111827',
+          name: 'White',
+          value: '#ffffff',
         },
         {
-          name: 'Sky',
-          value: '#06B6D4',
+          name: 'Mute',
+          value: '#F3F4F6',
         },
       ],
     },
@@ -22,7 +22,7 @@ export default {
 
 const Template = (args) => ({
   template: hbs`
-  <div class="dark"><Mox::SearchInput class="mb-2" @onInput={{this.inputAction}} /></div>`,
+  <Mox::SearchInput class="mb-2" @onInput={{this.inputAction}} />`,
   context: args,
 });
 

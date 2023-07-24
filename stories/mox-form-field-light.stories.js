@@ -1,18 +1,18 @@
 import { hbs } from 'ember-cli-htmlbars';
 
 export default {
-  title: 'Mox Dark/Mox::FormField',
+  title: 'Mox Light/Mox::FormField',
   parameters: {
     backgrounds: {
-      default: 'Dark',
+      default: 'White',
       values: [
         {
-          name: 'Dark',
-          value: '#111827',
+          name: 'White',
+          value: '#ffffff',
         },
         {
-          name: 'Sky',
-          value: '#06B6D4',
+          name: 'Mute',
+          value: '#F3F4F6',
         },
       ],
     },
@@ -21,7 +21,7 @@ export default {
 
 const Template = (args) => ({
   template: hbs`
-  <div class="dark {{this.containerClass}}">
+  <div class={{this.containerClass}}>
     <Mox::FormField @id="form-field-example">
       <:icon>
         <Mox::Icon @iconName="connectors-16" />
