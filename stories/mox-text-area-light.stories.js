@@ -1,23 +1,30 @@
 import { hbs } from 'ember-cli-htmlbars';
 
 export default {
-  title: 'Mox Dark/Mox::TextArea',
+  title: 'Mox Light/Mox::TextArea',
   parameters: {
     backgrounds: {
-      default: 'Dark',
+      default: 'Mute',
+      values: [
+        {
+          name: 'White',
+          value: '#ffffff',
+        },
+        {
+          name: 'Mute',
+          value: '#F3F4F6',
+        },
+      ],
     },
   },
 };
 
 const Template = (args) => ({
-  template: hbs`
-  <div class="dark">
-    <Mox::TextArea
+  template: hbs`<Mox::TextArea
     @value={{this.value}} @onInput={{this.inputAction}}
     @placeholder={{this.placeholder}} @label={{this.label}}
     disabled={{this.isDisabled}} @isRequired={{this.isRequired}}
-    @isValid={{this.isValid}} @error={{this.error}} />
-  </div>`,
+    @isValid={{this.isValid}} @error={{this.error}} />`,
   context: args,
 });
 
