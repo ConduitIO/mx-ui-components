@@ -4,10 +4,10 @@
     class="absolute top-0.5 -mt-2 left-0 flex items-center h-full"
     data-test-mox-search-input-label
   >
-    <svg class="text-white fill-current h-4 w-4 ml-3">
+    <svg class="text-gray-800 dark:text-white fill-current h-4 w-4 ml-3" data-test-mox-search-input-icon>
       <use xlink:href={{root-url "/svg-defs.svg#search-16"}}></use>
     </svg>
     <span class="sr-only">Search</span>
   </label>
-  <Mox::Input class="pl-8" @id="mox-search-input" @placeholder="Search..." @onInput={{@onInput}} />
+  <Mox::Input class="pl-8" @id="mox-search-input" @placeholder={{if @placeholder @placeholder "Search..."}} @onInput={{@onInput}} data-test-mox-search-input />
 </div>
