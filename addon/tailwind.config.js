@@ -16,6 +16,8 @@ module.exports = {
         'checked',
         'dark',
         'dark:active',
+        'dark:checked',
+        'dark:checked:after',
         'dark:disabled',
         'dark:focus',
         'dark:hover',
