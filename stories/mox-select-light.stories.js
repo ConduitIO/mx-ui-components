@@ -24,18 +24,18 @@ const resourceTypes = [
 ];
 
 export default {
-  title: 'Mox Dark/Mox::Select',
+  title: 'Mox Light/Mox::Select',
   parameters: {
     backgrounds: {
-      default: 'Dark',
+      default: 'Mute',
       values: [
         {
-          name: 'Dark',
-          value: '#111827',
+          name: 'White',
+          value: '#ffffff',
         },
         {
-          name: 'Sky',
-          value: '#06B6D4',
+          name: 'Mute',
+          value: '#F3F4F6',
         },
       ],
     },
@@ -145,7 +145,7 @@ Default.args = {
   setConnectorType: action(function (value) {
     this.set('selectedConnectorType', value);
   }),
-  wrapperClass: 'dark',
+  wrapperClass: null,
 };
 
 export const Short = Template.bind({});
@@ -156,7 +156,7 @@ Short.args = {
   setConnectorType: action(function (value) {
     this.set('selectedConnectorType', value);
   }),
-  wrapperClass: 'dark w-20',
+  wrapperClass: 'w-20',
 };
 
 export const Disabled = Template.bind({});
@@ -167,7 +167,7 @@ Disabled.args = {
   setConnectorType: action(function (value) {
     this.set('selectedConnectorType', value);
   }),
-  wrapperClass: 'dark',
+  wrapperClass: null,
   isDisabled: true,
 };
 
@@ -179,7 +179,7 @@ CustomOptions.args = {
   setConnectorType: action(function (value) {
     this.set('selectedConnectorType', value);
   }),
-  wrapperClass: 'dark w-48',
+  wrapperClass: 'w-48',
   categoryKey: 'type',
 };
 
@@ -191,7 +191,7 @@ IconOptions.args = {
   setResourceType: action(function (value) {
     this.set('selectedResourceType', value);
   }),
-  wrapperClass: 'dark w-48',
+  wrapperClass: 'w-48',
 };
 
 export const DisabledOptions = DisabledOptionsTemplate.bind({});
@@ -202,7 +202,7 @@ DisabledOptions.args = {
   setConnectorType: action(function (value) {
     this.set('selectedConnectorType', value);
   }),
-  wrapperClass: 'dark w-48',
+  wrapperClass: 'w-48',
 };
 
 export const Errors = Template.bind({});
@@ -213,7 +213,7 @@ Errors.args = {
   setConnectorType: action(function (value) {
     this.set('selectedConnectorType', value);
   }),
-  wrapperClass: 'dark',
+  wrapperClass: null,
   isValid: false,
   error: 'Invalid connector',
   inputAction: () => {},
