@@ -1,20 +1,22 @@
 {{#if @label}}
   <Mox::Label for={{@id}} @isRequired={{@isRequired}}>{{@label}}</Mox::Label>
 {{/if}}
-<input
-  id={{@id}}
-  type="text"
-  class="px-4 py-2 w-full text-gray-800 dark:text-white text-sm rounded bg-white dark:bg-gray-800
-    read-only:text-gray-800 dark:read-only:text-white disabled:text-gray-600 dark:disabled:text-gray-500
-    disabled:bg-gray-200 read-only:bg-gray-50 disabled:border-gray-200 read-only:border-gray-400
-    dark:disabled:bg-gray-700 dark:read-only:bg-gray-700 dark:disabled:border-gray-700 dark:read-only:border-gray-700 disabled:cursor-not-allowed
-    read-only:focus:border-cyan-500 dark:read-only:focus:border-white dark:ready-only:focus:ring-white
-    {{if this.isValid 'border-gray-400 dark:border-gray-500 focus:border-cyan-500 focus:ring-cyan-500'
-    'border-red-500 dark:border-red-800 active:border-red-500 dark:active:border-red-900 focus:border-red-500 dark:focus:border-red-900 focus:ring-red-500 dark:focus:ring-red-900'}}"
-  value={{@value}}
-  placeholder={{@placeholder}}
-  aria-invalid={{not this.isValid}} {{on "input" this.onInput}}
-  data-test-mox-input
-  ...attributes
-/>
-<Mox::FormError @error={{@error}} id={{concat @id "-error-message"}} data-test-mox-input-error />
+<div class="flex flex-col justify-center space-y-1">
+  <input
+    id={{@id}}
+    type="text"
+    class="px-4 py-2 w-full text-gray-800 dark:text-white text-sm rounded bg-white dark:bg-gray-800
+      read-only:text-gray-800 dark:read-only:text-white disabled:text-gray-600 dark:disabled:text-gray-500
+      disabled:bg-gray-200 read-only:bg-gray-50 disabled:border-gray-200 read-only:border-gray-400
+      dark:disabled:bg-gray-700 dark:read-only:bg-gray-700 dark:disabled:border-gray-700 dark:read-only:border-gray-700 disabled:cursor-not-allowed
+      read-only:focus:border-cyan-500 dark:read-only:focus:border-white dark:ready-only:focus:ring-white
+      {{if this.isValid 'border-gray-400 dark:border-gray-500 focus:border-cyan-500 focus:ring-cyan-500'
+      'border-red-500 dark:border-red-800 active:border-red-500 dark:active:border-red-900 focus:border-red-500 dark:focus:border-red-900 focus:ring-red-500 dark:focus:ring-red-900'}}"
+    value={{@value}}
+    placeholder={{@placeholder}}
+    aria-invalid={{not this.isValid}} {{on "input" this.onInput}}
+    data-test-mox-input
+    ...attributes
+  />
+  <Mox::FormError @error={{@error}} id={{concat @id "-error-message"}} data-test-mox-input-error />
+</div>
