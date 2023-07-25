@@ -1,13 +1,17 @@
-{{!-- template-lint-disable require-presentational-children --}}
+{{! template-lint-disable require-presentational-children }}
 <li
-  id="listbox-item-0"
+  id="listbox-item-{{this.optionValue}}"
   aria-selected={{eq this.optionValue this.selectedOptionValue}}
   role="option"
-  class="cursor-default select-none relative hover:bg-gray-700
-    {{if @isDisabled "text-gray-500 bg-gray-700" "text-white"}}"
+  class="cursor-default select-none relative hover:bg-gray-200 dark:hover:bg-gray-700
+    {{if
+      @isDisabled
+      'text-gray-600 dark:text-gray-500 bg-gray-200 dark:bg-gray-700'
+      'text-gray-800 dark:text-white'
+    }}"
   data-test-select-option
 >
-  {{!-- template-lint-disable no-invalid-interactive --}}
+  {{! template-lint-disable no-invalid-interactive }}
   <div
     class="flex items-center cursor-pointer py-2 pl-4 pr-9 mr-2"
     data-test-select-option-button={{this.optionName}}
@@ -24,7 +28,7 @@
       </span>
     {{/if}}
   </div>
-  {{!-- template-lint-enable no-invalid-interactive --}}
+  {{! template-lint-enable no-invalid-interactive }}
 
   {{#if (eq this.optionValue this.selectedOptionValue)}}
     <span
@@ -47,4 +51,4 @@
     </span>
   {{/if}}
 </li>
-{{!-- template-lint-enable require-presentational-children --}}
+{{! template-lint-enable require-presentational-children }}

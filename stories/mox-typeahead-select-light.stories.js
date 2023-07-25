@@ -8,22 +8,22 @@ const options = [
 ];
 
 export default {
-  title: 'Mox Dark/Mox::TypeaheadSelect',
+  title: 'Mox Light/Mox::TypeaheadSelect',
   argTypes: {
     options: { control: 'text' },
     buttonType: { control: 'text' },
   },
   parameters: {
     backgrounds: {
-      default: 'Dark',
+      default: 'Mute',
       values: [
         {
-          name: 'Dark',
-          value: '#111827',
+          name: 'White',
+          value: '#ffffff',
         },
         {
-          name: 'Sky',
-          value: '#06B6D4',
+          name: 'Mute',
+          value: '#F3F4F6',
         },
       ],
     },
@@ -50,17 +50,15 @@ const Template = (args) => ({
 
 const LabelledTemplate = (args) => ({
   template: hbs`
-  <div class="dark">
-    <Mox::Label for={{this.id}}>Food</Mox::Label>
-    <div class={{this.wrapperClass}}>
-      <Mox::TypeaheadSelect
-        @options={{this.connectorTypes}}
-        @selectedOption={{this.selectedConnectorType}}
-        @onChange={{this.setConnectorType}}
-        @isDisabled={{this.isEditing}}
-        @id={{this.id}}
-      />
-    </div>
+  <Mox::Label for={{this.id}}>Food</Mox::Label>
+  <div class={{this.wrapperClass}}>
+    <Mox::TypeaheadSelect
+      @options={{this.connectorTypes}}
+      @selectedOption={{this.selectedConnectorType}}
+      @onChange={{this.setConnectorType}}
+      @isDisabled={{this.isEditing}}
+      @id={{this.id}}
+    />
   </div>
 `,
   context: args,
@@ -74,7 +72,7 @@ Default.args = {
   setConnectorType: action(function (value) {
     this.set('selectedConnectorType', value);
   }),
-  wrapperClass: 'dark',
+  wrapperClass: null,
   label: 'Fruit',
   id: 'fruit-basket',
 };
@@ -87,7 +85,7 @@ Short.args = {
   setConnectorType: action(function (value) {
     this.set('selectedConnectorType', value);
   }),
-  wrapperClass: 'dark w-20',
+  wrapperClass: 'w-20',
   label: 'Fruit',
   id: 'fruit-basket',
 };
@@ -100,7 +98,7 @@ ExternalLabel.args = {
   setConnectorType: action(function (value) {
     this.set('selectedConnectorType', value);
   }),
-  wrapperClass: 'dark',
+  wrapperClass: null,
   id: 'fruit-basket',
 };
 
@@ -114,7 +112,6 @@ Disabled.args = {
   }),
   label: 'Fruit',
   id: 'fruit-basket',
-  wrapperClass: 'dark',
 };
 
 export const Errors = Template.bind({});
@@ -129,5 +126,4 @@ Errors.args = {
   id: 'fruit-basket',
   isValid: false,
   error: 'No more fruit',
-  wrapperClass: 'dark',
 };

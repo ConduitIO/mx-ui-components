@@ -114,70 +114,6 @@ module('Integration | Component | mox/typeahead-select', function (hooks) {
       .includesText(`Name can't be blank`);
   });
 
-  test('it is accessible (with embedded label)', async function (assert) {
-    await render(hbs`
-    <Mox::TypeaheadSelect
-      @id="my-random-id"
-      @label="Your Instrument"
-      @options={{this.options}}
-      @selectedOption={{this.selectedOption}}
-      @onChange={{this.onChange}}
-      @isDisabled={{false}}
-    />`);
-
-    await a11yAudit();
-    assert.ok(true, 'no a11y detected');
-  });
-
-  test('it is accessible (with external label)', async function (assert) {
-    await render(hbs`
-    <label for="my-random-id">My external label</label>
-    <Mox::TypeaheadSelect
-      @id="my-random-id"
-      @options={{this.options}}
-      @selectedOption={{this.selectedOption}}
-      @onChange={{this.onChange}}
-      @isDisabled={{false}}
-    />`);
-
-    await a11yAudit();
-    assert.ok(true, 'no a11y detected');
-  });
-
-  test('it is accessible (disabled)', async function (assert) {
-    await render(hbs`
-    <label for="my-random-id">My external label</label>
-    <Mox::TypeaheadSelect
-      @id="my-random-id"
-      @options={{this.options}}
-      @selectedOption={{this.selectedOption}}
-      @onChange={{this.onChange}}
-      @isDisabled={{true}}
-    />`);
-
-    await a11yAudit();
-    assert.ok(true, 'no a11y detected');
-  });
-
-  test('it is accessible (validation error / dark mode)', async function (assert) {
-    await render(hbs`
-    <div class="dark bg-gray-900 p-4">
-      <Mox::TypeaheadSelect
-        @id="my-random-id"
-        @label="Your Instrument"
-        @options={{this.options}}
-        @selectedOption={{this.selectedOption}}
-        @onChange={{this.onChange}}
-        @isDisabled={{false}}
-        @isValid={{false}}
-        @error="Missing something?"
-      />
-    </div>`);
-
-    await a11yAudit();
-    assert.ok(true, 'no a11y detected');
-  });
-
   test('it hides the option list when not focused', async function (assert) {
     await render(hbs`
     <Mox::TypeaheadSelect
@@ -243,29 +179,6 @@ module('Integration | Component | mox/typeahead-select', function (hooks) {
       assert.dom('[data-test-typeahead-matches]').doesNotHaveClass('hidden');
     });
 
-    test('it allows keyboard navigation', async function (assert) {
-      const options = this.element.querySelectorAll(
-        '[data-test-select-option]'
-      );
-      assert.dom(options[0]).hasClass('bg-gray-700');
-
-      await triggerKeyEvent(
-        '[data-test-typeahead-select-input]',
-        'keydown',
-        'ArrowDown'
-      );
-      assert.dom(options[0]).doesNotHaveClass('bg-gray-700');
-      assert.dom(options[1]).hasClass('bg-gray-700');
-
-      await triggerKeyEvent(
-        '[data-test-typeahead-select-input]',
-        'keydown',
-        'ArrowUp'
-      );
-      assert.dom(options[0]).hasClass('bg-gray-700');
-      assert.dom(options[1]).doesNotHaveClass('bg-gray-700');
-    });
-
     test('it hides the options when the escape key is pressed', async function (assert) {
       assert.dom('[data-test-typeahead-matches]').doesNotHaveClass('hidden');
       await triggerKeyEvent(
@@ -328,6 +241,225 @@ module('Integration | Component | mox/typeahead-select', function (hooks) {
           sinon.match({ name: 'Piano', value: 'piano' })
         )
       );
+    });
+  });
+
+  module('dark mode', function () {
+    test('it allows keyboard navigation', async function (assert) {
+      await render(hbs`
+      <div class="bg-gray-900 dark p-4">
+        <Mox::TypeaheadSelect
+          @options={{this.options}}
+          @selectedOption={{this.selectedOption}}
+          @onChange={{this.onChange}}
+          @isDisabled={{false}}
+        />
+      </div>`);
+
+      await click('[data-test-typeahead-select-input]');
+
+      const options = this.element.querySelectorAll(
+        '[data-test-select-option]'
+      );
+      assert.dom(options[0]).hasClass('dark:bg-gray-700');
+
+      await triggerKeyEvent(
+        '[data-test-typeahead-select-input]',
+        'keydown',
+        'ArrowDown'
+      );
+      assert.dom(options[0]).doesNotHaveClass('dark:bg-gray-700');
+      assert.dom(options[1]).hasClass('dark:bg-gray-700');
+
+      await triggerKeyEvent(
+        '[data-test-typeahead-select-input]',
+        'keydown',
+        'ArrowUp'
+      );
+      assert.dom(options[0]).hasClass('dark:bg-gray-700');
+      assert.dom(options[1]).doesNotHaveClass('dark:bg-gray-700');
+    });
+
+    test('it is accessible (with embedded label)', async function (assert) {
+      await render(hbs`
+      <div class="bg-gray-900 dark p-4">
+        <Mox::TypeaheadSelect
+          @id="my-random-id"
+          @label="Your Instrument"
+          @options={{this.options}}
+          @selectedOption={{this.selectedOption}}
+          @onChange={{this.onChange}}
+          @isDisabled={{false}}
+        />
+      </div>`);
+
+      await a11yAudit();
+      assert.ok(true, 'no a11y detected');
+    });
+
+    test('it is accessible (with external label)', async function (assert) {
+      await render(hbs`
+      <div class="bg-gray-900 dark p-4">
+        <Mox::Label for="my-random-id">My external label</Mox::Label>
+        <Mox::TypeaheadSelect
+          @id="my-random-id"
+          @options={{this.options}}
+          @selectedOption={{this.selectedOption}}
+          @onChange={{this.onChange}}
+          @isDisabled={{false}}
+        />
+      </div>`);
+
+      await a11yAudit();
+      assert.ok(true, 'no a11y detected');
+    });
+
+    test('it is accessible (disabled)', async function (assert) {
+      await render(hbs`
+      <div class="bg-gray-900 dark p-4">
+        <label for="my-random-id">My external label</label>
+        <Mox::TypeaheadSelect
+          @id="my-random-id"
+          @options={{this.options}}
+          @selectedOption={{this.selectedOption}}
+          @onChange={{this.onChange}}
+          @isDisabled={{true}}
+        />
+      </div>`);
+
+      await a11yAudit();
+      assert.ok(true, 'no a11y detected');
+    });
+
+    test('it is accessible (validation error / dark mode)', async function (assert) {
+      await render(hbs`
+      <div class="dark bg-gray-900 p-4">
+        <Mox::TypeaheadSelect
+          @id="my-random-id"
+          @label="Your Instrument"
+          @options={{this.options}}
+          @selectedOption={{this.selectedOption}}
+          @onChange={{this.onChange}}
+          @isDisabled={{false}}
+          @isValid={{false}}
+          @error="Missing something?"
+        />
+      </div>`);
+
+      await a11yAudit();
+      assert.ok(true, 'no a11y detected');
+    });
+  });
+
+  module('light mode', function () {
+    test('it allows keyboard navigation', async function (assert) {
+      await render(hbs`
+      <div class="bg-gray-50 p-4">
+        <Mox::TypeaheadSelect
+          @options={{this.options}}
+          @selectedOption={{this.selectedOption}}
+          @onChange={{this.onChange}}
+          @isDisabled={{false}}
+        />
+      </div>`);
+
+      await click('[data-test-typeahead-select-input]');
+
+      const options = this.element.querySelectorAll(
+        '[data-test-select-option]'
+      );
+      assert.dom(options[0]).hasClass('bg-gray-200');
+      assert.dom(options[0]).doesNotHaveClass('bg-white');
+
+      await triggerKeyEvent(
+        '[data-test-typeahead-select-input]',
+        'keydown',
+        'ArrowDown'
+      );
+
+      assert.dom(options[0]).hasClass('bg-white');
+      assert.dom(options[0]).doesNotHaveClass('bg-gray-200');
+      assert.dom(options[1]).hasClass('bg-gray-200');
+      assert.dom(options[1]).doesNotHaveClass('bg-white');
+
+      await triggerKeyEvent(
+        '[data-test-typeahead-select-input]',
+        'keydown',
+        'ArrowUp'
+      );
+      assert.dom(options[0]).hasClass('bg-gray-200');
+      assert.dom(options[1]).doesNotHaveClass('bg-gray-200');
+      assert.dom(options[1]).hasClass('bg-white');
+    });
+
+    test('it is accessible (with embedded label)', async function (assert) {
+      await render(hbs`
+      <div class="bg-gray-50 p-4">
+        <Mox::TypeaheadSelect
+          @id="my-random-id"
+          @label="Your Instrument"
+          @options={{this.options}}
+          @selectedOption={{this.selectedOption}}
+          @onChange={{this.onChange}}
+          @isDisabled={{false}}
+        />
+      </div>`);
+
+      await a11yAudit();
+      assert.ok(true, 'no a11y detected');
+    });
+
+    test('it is accessible (with external label)', async function (assert) {
+      await render(hbs`
+      <div class="bg-gray-50 p-4">
+        <Mox::Label for="my-random-id">My external label</Mox::Label>
+        <Mox::TypeaheadSelect
+          @id="my-random-id"
+          @options={{this.options}}
+          @selectedOption={{this.selectedOption}}
+          @onChange={{this.onChange}}
+          @isDisabled={{false}}
+        />
+      </div>`);
+
+      await a11yAudit();
+      assert.ok(true, 'no a11y detected');
+    });
+
+    test('it is accessible (disabled)', async function (assert) {
+      await render(hbs`
+      <div class="bg-gray-50 p-4">
+        <label for="my-random-id">My external label</label>
+        <Mox::TypeaheadSelect
+          @id="my-random-id"
+          @options={{this.options}}
+          @selectedOption={{this.selectedOption}}
+          @onChange={{this.onChange}}
+          @isDisabled={{true}}
+        />
+      </div>`);
+
+      await a11yAudit();
+      assert.ok(true, 'no a11y detected');
+    });
+
+    test('it is accessible (validation error / light mode)', async function (assert) {
+      await render(hbs`
+      <div class="bg-gray-50 p-4">
+        <Mox::TypeaheadSelect
+          @id="my-random-id"
+          @label="Your Instrument"
+          @options={{this.options}}
+          @selectedOption={{this.selectedOption}}
+          @onChange={{this.onChange}}
+          @isDisabled={{false}}
+          @isValid={{false}}
+          @error="Missing something?"
+        />
+      </div>`);
+
+      await a11yAudit();
+      assert.ok(true, 'no a11y detected');
     });
   });
 });

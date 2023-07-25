@@ -65,10 +65,14 @@ module('Integration | Component | mox/input', function (hooks) {
       `);
 
     let secondField = await find('[data-test-second-field]');
+    let initialPosition = secondField.getBoundingClientRect().top;
     assert
       .dom('[data-test-first-field] [data-test-mox-input-error]')
       .doesNotExist();
-    assert.strictEqual(secondField.offsetTop, 54);
+    assert.strictEqual(
+      secondField.getBoundingClientRect().top,
+      initialPosition
+    );
 
     this.set('error', 'message1');
 
@@ -76,9 +80,19 @@ module('Integration | Component | mox/input', function (hooks) {
       .dom('[data-test-first-field] + [data-test-mox-input-error]')
       .includesText('message1');
     assert.strictEqual(
-      secondField.offsetTop,
-      54,
+      secondField.getBoundingClientRect().top,
+      initialPosition,
       'the second field does not change its position relative to the top'
+    );
+
+    this.set('error', null);
+
+    assert
+      .dom('[data-test-first-field] [data-test-mox-input-error]')
+      .doesNotExist();
+    assert.strictEqual(
+      secondField.getBoundingClientRect().top,
+      initialPosition
     );
   });
 
