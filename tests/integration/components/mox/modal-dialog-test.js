@@ -1,4 +1,4 @@
-import { module, skip, test } from 'qunit';
+import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { click, render, triggerKeyEvent } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
@@ -184,7 +184,7 @@ module('Integration | Component | mox/modal-dialog', function (hooks) {
     assert.dom('[data-test-modal-dialog]').hasAttribute('aria-labelledby');
   });
 
-  skip('it is accessible (light mode)', async function (assert) {
+  test('it is accessible (light mode)', async function (assert) {
     await render(hbs`
       <Mox::ModalDialog @onDismiss={{this.dummyAction}}>
         <:title>

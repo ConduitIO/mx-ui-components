@@ -12,18 +12,21 @@ const actionsData = {
 
 const Template = (args) => ({
   template: hbs`
-  <Mox::ModalDialog @onDismiss={{this.hideModal}}>
-    <:title>
-      {{this.title}}
-    </:title>
-    <:body>
-      <p class="text-sm">Check them out in your team inbox!</p>
-    </:body>
-    <:footer as |footer|>
-      <footer.secondaryAction>Cancel</footer.secondaryAction>
-      <footer.primaryAction @onClick={{this.submit}}>Go to my inbox</footer.primaryAction>
-    </:footer>
-  </Mox::ModalDialog>`,
+  <div class="dark">
+    <Mox::ModalDialog @onDismiss={{this.hideModal}}>
+      <:title>
+        {{this.title}}
+      </:title>
+      <:body>
+        <p class="text-sm">Check them out in your team inbox!</p>
+      </:body>
+      <:footer as |footer|>
+        <footer.secondaryAction>Cancel</footer.secondaryAction>
+        <footer.primaryAction @onClick={{this.submit}}>Go to my inbox</footer.primaryAction>
+      </:footer>
+    </Mox::ModalDialog>
+  </div>
+  `,
   context: args,
 });
 
