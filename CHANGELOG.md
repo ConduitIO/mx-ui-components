@@ -1,5 +1,17 @@
 # mx-ui-components
 
+## 2.9.0
+
+### Minor Changes
+
+- [#134](https://github.com/ConduitIO/mx-ui-components/pull/134) [`27d3065`](https://github.com/ConduitIO/mx-ui-components/commit/27d3065b8f230903c25c0cda7084b83aea0acf0a) Thanks [@jayjayjpg](https://github.com/jayjayjpg)! - feat(mox): add light mode to mox/select + mox/typeahead components
+
+- [#132](https://github.com/ConduitIO/mx-ui-components/pull/132) [`3883233`](https://github.com/ConduitIO/mx-ui-components/commit/38832334121110b000e812c3516871d0f6368c5b) Thanks [@jayjayjpg](https://github.com/jayjayjpg)! - upd(mox): add light mode to several form field components
+
+- [#131](https://github.com/ConduitIO/mx-ui-components/pull/131) [`8b7043e`](https://github.com/ConduitIO/mx-ui-components/commit/8b7043e8edb0f24e8b11b7067b04c675825b31be) Thanks [@jayjayjpg](https://github.com/jayjayjpg)! - upd(mox:upload): add light mode for mox:upload comp.
+
+- [#130](https://github.com/ConduitIO/mx-ui-components/pull/130) [`498730e`](https://github.com/ConduitIO/mx-ui-components/commit/498730e39c3a0e7a83240ff969d18630727e987a) Thanks [@jayjayjpg](https://github.com/jayjayjpg)! - upd(mox:text-area): add light mode for component
+
 ## 2.8.1
 
 ### Patch Changes
