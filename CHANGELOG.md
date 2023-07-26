@@ -1,5 +1,11 @@
 # mx-ui-components
 
+## 2.9.1
+
+### Patch Changes
+
+- [#137](https://github.com/ConduitIO/mx-ui-components/pull/137) [`f352083`](https://github.com/ConduitIO/mx-ui-components/commit/f3520838e729090a4b3f3bfa914656b7efdf9d73) Thanks [@jayjayjpg](https://github.com/jayjayjpg)! - fix(mox): fix layout + alignment of mox:input + mox:theme-switch comp
+
 ## 2.9.0
 
 ### Minor Changes
