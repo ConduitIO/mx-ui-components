@@ -12,15 +12,17 @@ const actionsData = {
 
 const Template = (args) => ({
   template: hbs`
-  <Mox::Modal @onDismiss={{this.hideModal}}>
-    <:content as |content|>
-      <p class="text-sm">Check them out in your team inbox!</p>
-      <div class="mt-6">
-        <content.secondaryAction>Cancel</content.secondaryAction>
-        <content.primaryAction @onClick={{this.submit}}>Go to my inbox</content.primaryAction>
-      </div>
-    </:content>
-  </Mox::Modal>`,
+  <div class="dark">
+    <Mox::Modal @onDismiss={{this.hideModal}}>
+      <:content as |content|>
+        <p class="text-sm">Check them out in your team inbox!</p>
+        <div class="mt-6">
+          <content.secondaryAction>Cancel</content.secondaryAction>
+          <content.primaryAction @onClick={{this.submit}}>Go to my inbox</content.primaryAction>
+        </div>
+      </:content>
+    </Mox::Modal>
+  </div>`,
   context: args,
 });
 

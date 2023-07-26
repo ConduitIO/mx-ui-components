@@ -6,7 +6,11 @@
 >
   <:default as |titleId|>
     <div class="flex items-center justify-between mb-6">
-      <h1 id={{titleId}} class="text-white font-semibold text-2xl" data-test-modal-dialog-title>
+      <h1
+        id={{titleId}}
+        class="text-gray-800 dark:text-white font-semibold text-2xl"
+        data-test-modal-dialog-title
+      >
         {{yield to="title"}}
       </h1>
       <button
@@ -17,7 +21,7 @@
         {{focus-on-render}}
         data-test-modal-dialog-close
       >
-        <svg class="text-white fill-current h-4 w-4">
+        <svg class="dark:text-white fill-current h-4 w-4">
           <use xlink:href={{root-url "/svg-defs.svg#close-16"}}></use>
         </svg>
       </button>
