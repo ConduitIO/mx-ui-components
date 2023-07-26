@@ -87,7 +87,6 @@
 .mox-theme-switch input:checked::after,
 .mox-theme-switch-icon.is-checked {
   transform: translateX(15px);
-  background-color: #fff;
 }
 
 .mox-theme-switch input:checked::after {
