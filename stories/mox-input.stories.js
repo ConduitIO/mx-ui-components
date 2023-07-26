@@ -12,7 +12,7 @@ export default {
 
 const Template = (args) => ({
   template: hbs`
-  <div class="dark">
+  <div class="dark w-48">
   <Mox::Input
     @value={{this.value}} @onInput={{this.inputAction}}
     @placeholder={{this.placeholder}} @label={{this.label}}
@@ -25,7 +25,7 @@ const Template = (args) => ({
 
 const TemplateStackedFormFields = (args) => ({
   template: hbs`
-  <div class="dark flex flex-col">
+  <div class="dark flex flex-col w-48">
     <Mox::Input
       @value={{this.value}} @onInput={{this.inputAction}}
       @placeholder={{this.placeholder}} @label={{this.label}}
