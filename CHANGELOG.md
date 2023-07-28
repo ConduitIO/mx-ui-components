@@ -1,5 +1,11 @@
 # mx-ui-components
 
+## 2.9.2
+
+### Patch Changes
+
+- [#141](https://github.com/ConduitIO/mx-ui-components/pull/141) [`0498287`](https://github.com/ConduitIO/mx-ui-components/commit/0498287fcae1100f602375d649df8ac486d66814) Thanks [@jmar910](https://github.com/jmar910)! - fix: add attributes to global header
+
 ## 2.9.1
 
 ### Patch Changes
