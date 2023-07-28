@@ -31,6 +31,13 @@ module('Integration | Component | mox/search-input', function (hooks) {
       .hasAttribute('placeholder', 'Astro Boy');
   });
 
+  test('it allows passing a predefined value', async function (assert) {
+    await render(
+      hbs`<Mox::SearchInput @onInput={{this.onInput}} @value="Astro Boy" />`
+    );
+    assert.dom('[data-test-mox-search-input]').hasValue('Astro Boy');
+  });
+
   test('it allows triggering searches on user input', async function (assert) {
     assert.expect(1);
 

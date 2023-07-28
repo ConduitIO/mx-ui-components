@@ -1,4 +1,4 @@
-<div class="relative" ...attributes>
+<div class="relative w-full" ...attributes>
   <label
     for="mox-search-input"
     class="absolute top-0 -mt-2 left-0 flex items-center h-full"
@@ -9,5 +9,5 @@
     </svg>
     <span class="sr-only">Search</span>
   </label>
-  <Mox::Input class="pl-8" @id="mox-search-input" @placeholder={{if @placeholder @placeholder "Search..."}} @onInput={{@onInput}} data-test-mox-search-input />
+  <Mox::Input class="pl-8" @id="mox-search-input" @value={{@value}} @placeholder={{if @placeholder @placeholder "Search..."}} @onInput={{@onInput}} data-test-mox-search-input />
 </div>
