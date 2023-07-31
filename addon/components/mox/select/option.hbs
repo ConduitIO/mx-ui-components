@@ -1,21 +1,25 @@
 {{! template-lint-disable require-presentational-children }}
-<li
+<button
   id="listbox-item-{{this.optionValue}}"
   aria-selected={{eq this.optionValue this.selectedOptionValue}}
   role="option"
-  class="cursor-default select-none relative hover:bg-gray-200 dark:hover:bg-gray-700
+  type="button"
+  class="cursor-default select-none relative {{if this.hasSecondaryTheme "hover:bg-gray-100 dark:hover:bg-gray-600" "hover:bg-gray-200 dark:hover:bg-gray-700"}} px-3 w-full
     {{if
       @isDisabled
       'text-gray-600 dark:text-gray-500 bg-gray-200 dark:bg-gray-700'
       'text-gray-800 dark:text-white'
     }}"
+    data-test-select-option-button={{this.optionName}} {{on "click" (fn this.setOption @option)}}
+    {{on "keydown" (fn this.onKeydown @option)}}
+    ...attributes
   data-test-select-option
 >
   {{! template-lint-disable no-invalid-interactive }}
-  <div
-    class="flex items-center cursor-pointer py-2 pl-4 pr-9 mr-2"
-    data-test-select-option-button={{this.optionName}}
-    {{on "click" (fn this.setOption @option)}}
+  <span
+
+    class="flex items-center cursor-pointer py-2 pr-9 mr-2 w-full"
+
   >
     {{#if this.optionCategory}}
       <Mxa::Select::Option::Category @name={{this.optionName}} @category={{this.optionCategory}} />
@@ -27,7 +31,7 @@
         {{this.optionName}}
       </span>
     {{/if}}
-  </div>
+  </span>
   {{! template-lint-enable no-invalid-interactive }}
 
   {{#if (eq this.optionValue this.selectedOptionValue)}}
@@ -50,5 +54,5 @@
       </svg>
     </span>
   {{/if}}
-</li>
+</button>
 {{! template-lint-enable require-presentational-children }}

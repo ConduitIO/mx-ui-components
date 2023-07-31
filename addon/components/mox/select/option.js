@@ -23,13 +23,28 @@ export default class MoxSelectOptionComponent extends Component {
   get selectedOptionValue() {
     const optionValueKey = this.args.optionValueKey;
 
-    return get(this.args.selectedOption, optionValueKey);
+    if (this.args.selectedOption) {
+      return get(this.args.selectedOption, optionValueKey);
+    }
+
+    return null;
+  }
+
+  get hasSecondaryTheme() {
+    return this.args.theme === 'secondary';
   }
 
   @action
   setOption(option) {
     if (!this.args.isDisabled) {
       this.args.setSelectedOption(option);
+    }
+  }
+
+  @action
+  onKeydown(option, event) {
+    if (this.args.onKeydown) {
+      this.args.onKeydown(option, event);
     }
   }
 }

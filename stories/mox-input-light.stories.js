@@ -28,7 +28,8 @@ const Template = (args) => ({
     @placeholder={{this.placeholder}} @label={{this.label}}
     disabled={{this.isDisabled}} @isRequired={{this.isRequired}}
     readonly={{this.readOnly}}
-    @isValid={{this.isValid}} @error={{this.error}} />
+    @isValid={{this.isValid}} @error={{this.error}}
+    @theme={{this.theme}} />
   </div>
   `,
   context: args,
@@ -101,6 +102,17 @@ Errors.args = {
   isRequired: true,
   isValid: false,
   error: 'You forgot to specify a planet',
+  inputAction: () => {},
+};
+
+export const SecondaryTheme = Template.bind({});
+SecondaryTheme.args = {
+  value: 'Secondary',
+  placeholder: 'Theme...',
+  label: 'Theme Name',
+  theme: 'secondary',
+  isRequired: true,
+  isValid: true,
   inputAction: () => {},
 };
 

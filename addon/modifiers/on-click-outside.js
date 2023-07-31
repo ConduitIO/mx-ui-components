@@ -16,10 +16,10 @@ export default modifier(
       outsideElement = document.querySelector(outsideElementSelector);
     }
 
-    outsideElement.addEventListener('click', handleClick, options);
+    outsideElement.addEventListener('mousedown', handleClick, options);
 
     return () => {
-      outsideElement.removeEventListener('click', handleClick, options);
+      outsideElement.removeEventListener('mousedown', handleClick, options);
     };
   },
   { eager: false }

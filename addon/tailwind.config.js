@@ -7,6 +7,7 @@ module.exports = {
     './addon/components/**/*.js',
     './stories/**/*.js',
     './tests/**/*.js',
+    '/tests/dummy/**/*.hbs',
   ],
   safelist: [
     {
@@ -20,11 +21,13 @@ module.exports = {
         'dark:checked:after',
         'dark:disabled',
         'dark:focus',
+        'dark:focus-within',
         'dark:hover',
         'dark:read-only',
         'dark:read-only:focus',
         'disabled',
         'focus',
+        'focus-within',
         'hover',
         'read-only',
         'read-only:focus',
