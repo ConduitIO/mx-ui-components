@@ -65,6 +65,63 @@ module('Integration | Component | mox/confirm-modal', function (hooks) {
     });
   });
 
+  module('styling: light mode', function (hooks) {
+    hooks.beforeEach(async function () {
+      this.set('onDismiss', sinon.spy());
+      this.set('confirmedAction', sinon.spy());
+      this.set('confirmableActionName', 'Squanch');
+
+      await render(hbs`
+        <div class="p-4">
+          <Mox::ConfirmModal
+            @onDismiss={{this.onDismiss}}
+            @confirmableActionName={{this.confirmableActionName}}
+            @entityName='Plumbus'
+            @confirmedAction={{this.confirmedAction}}
+            @isTextInputRequired={{this.isTextInputRequired}}
+            as |entityName|
+          >
+            Are you sure you want to squanch {{entityName}}?
+          </Mox::ConfirmModal>
+        </div>
+      `);
+    });
+
+    module('when confirming', function (hooks) {
+      hooks.beforeEach(async function () {
+        this.set('isTextInputRequired', false);
+      });
+
+      test('it displays the default submit button (light mode)', async function (assert) {
+        assert
+          .dom('[data-test-confirm-submit-button]')
+          .hasClass('border-red-600');
+      });
+
+      test('it is accessible', async function (assert) {
+        await a11yAudit();
+        assert.ok(true, 'no a11y detected');
+      });
+    });
+
+    module('when text confirming', function (hooks) {
+      hooks.beforeEach(async function () {
+        this.set('isTextInputRequired', true);
+      });
+
+      test('it displays the danger submit button (light mode)', async function (assert) {
+        assert
+          .dom('[data-test-confirm-submit-button]')
+          .hasClass('border-red-600');
+      });
+
+      test('it is accessible', async function (assert) {
+        await a11yAudit();
+        assert.ok(true, 'no a11y detected');
+      });
+    });
+  });
+
   module('user interaction', function (hooks) {
     hooks.beforeEach(async function () {
       this.set('onDismiss', sinon.spy());
