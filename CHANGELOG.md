@@ -1,5 +1,15 @@
 # mx-ui-components
 
+## 2.10.0
+
+### Minor Changes
+
+- [#143](https://github.com/ConduitIO/mx-ui-components/pull/143) [`82574e7`](https://github.com/ConduitIO/mx-ui-components/commit/82574e7e55e0063554b74b5b600b2f346e1e7ef7) Thanks [@jmar910](https://github.com/jmar910)! - feat: add light theme for modal components
+
+### Patch Changes
+
+- [#145](https://github.com/ConduitIO/mx-ui-components/pull/145) [`83a4a32`](https://github.com/ConduitIO/mx-ui-components/commit/83a4a323be243fcba3948d67f6e6986adc57d4e6) Thanks [@jayjayjpg](https://github.com/jayjayjpg)! - fix(mox:link): allow mox:link to accept query params
+
 ## 2.9.2
 
 ### Patch Changes
