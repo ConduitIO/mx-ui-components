@@ -1,12 +1,24 @@
 {{#if @model}}
-  <LinkTo
-    @route={{@route}}
-    @model={{@model}}
-    data-test-mox-link={{@route}}
-    ...attributes
-  >
-    {{yield}}
-  </LinkTo>
+  {{#if @queryParams}}
+    <LinkTo
+      @route={{@route}}
+      @model={{@model}}
+      @query={{@queryParams}}
+      data-test-mox-link={{@route}}
+      ...attributes
+    >
+      {{yield}}
+    </LinkTo>
+  {{else}}
+    <LinkTo
+      @route={{@route}}
+      @model={{@model}}
+      data-test-mox-link={{@route}}
+      ...attributes
+    >
+      {{yield}}
+    </LinkTo>
+  {{/if}}
 {{else}}
   <LinkTo
     @route={{@route}}

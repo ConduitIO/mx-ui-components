@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
+import { click, currentURL, render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { a11yAudit } from 'ember-a11y-testing/test-support';
 
@@ -27,6 +27,34 @@ module('Integration | Component | mox/link', function (hooks) {
 
     assert.dom('[data-test-mox-link]').includesText('Internal link');
     assert.dom('[data-test-mox-link]').hasAttribute('href', '/');
+  });
+
+  test('it renders (@route + @model)', async function (assert) {
+    this.set('model', { id: 1 });
+    await render(hbs`
+      <Mox::Link @route="subroute" @model={{this.model}}>
+        Internal link
+      </Mox::Link>
+    `);
+
+    assert.dom('[data-test-mox-link]').includesText('Internal link');
+    assert.dom('[data-test-mox-link]').hasAttribute('href', '/1');
+  });
+
+  test('it renders (@route + @model + @queryParams)', async function (assert) {
+    this.set('model', { id: 1 });
+    await render(hbs`
+      <Mox::Link @route="subroute" @model={{this.model}} @queryParams={{hash filter="foo"}}>
+        Internal link
+      </Mox::Link>
+    `);
+
+    assert.dom('[data-test-mox-link]').includesText('Internal link');
+    assert.dom('[data-test-mox-link]').hasAttribute('href', '/1?filter=foo');
+
+    await click('[data-test-mox-link]');
+
+    assert.strictEqual(currentURL(), '/1');
   });
 
   test('it renders (@externalUrl)', async function (assert) {
