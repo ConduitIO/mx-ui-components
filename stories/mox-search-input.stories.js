@@ -22,11 +22,17 @@ export default {
 
 const Template = (args) => ({
   template: hbs`
-  <div class="dark"><Mox::SearchInput class="mb-2" @onInput={{this.inputAction}} /></div>`,
+  <div class="dark"><Mox::SearchInput class="mb-2" @onInput={{this.inputAction}} @value={{this.value}} /></div>`,
   context: args,
 });
 
 export const Default = Template.bind({});
 Default.args = {
   inputAction: () => {},
+};
+
+export const WithValue = Template.bind({});
+WithValue.args = {
+  inputAction: () => {},
+  value: 'Luna',
 };

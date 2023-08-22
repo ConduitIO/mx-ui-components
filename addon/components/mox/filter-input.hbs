@@ -1,0 +1,107 @@
+<div class="relative w-full" {{on-click-tag-input}}>
+  {{#if (has-block "label")}}
+  <Mox::Label for="tags-input" data-test-mox-filter-input-label>
+    {{yield
+      to="label"
+    }}
+  </Mox::Label>
+  {{else}}
+    <label for="tags-input" class="sr-only" data-test-mox-filter-input-label>{{@label}}</label>
+  {{/if}}
+  <div
+    class="w-72 flex items-center relative w-full text-gray-800 dark:text-white text-sm rounded
+      disabled:text-gray-600 dark:disabled:text-gray-500
+      disabled:bg-gray-200 disabled:border-gray-200 border
+      dark:disabled:bg-gray-700 dark:disabled:border-gray-700 disabled:cursor-not-allowed
+      {{if this.isDisabled "bg-gray-200 border-gray-200 dark:bg-gray-700 dark:border-gray-700" "border-gray-400 dark:border-gray-500 bg-white dark:bg-gray-800"}}
+      dark:focus-within:border-cyan-500 dark:focus-within:ring-cyan-500
+      focus-within:border-cyan-500 focus-within:ring-cyan-500"
+      tabindex="0"
+  >
+    {{#if this.primarySelectedTags}}
+      <div class="relative flex items-center space-x-1 pl-2">
+        {{#each this.primarySelectedTags as |tag|}}
+          <Mox::FilterInput::Tag
+            @tag={{tag}}
+            @secondaryTags={{this.secondarySelectedTags}}
+            @value={{this.secondaryValue}}
+            @id={{this.nestedInputId}}
+            @onInput={{this.checkSecondaryInputForExistingTags}}
+            @onKeydown={{this.keyboardAction}}
+            @placeholder={{@placeholder}}
+            @removeTag={{fn this.removeTag tag}}
+            @hasFullSelection={{this.hasSelectedAllOptions}}
+            />
+        {{/each}}
+      </div>
+    {{/if}}
+
+    <Mox::Input
+      id={{this.mainInputId}}
+      role="combobox"
+      autocomplete="off"
+      aria-controls={{concat "filterinputlistbox" this.focusId}}
+      aria-expanded={{or this.foundTags this.showWildCardOption}}
+      tabindex={{if this.isNested "-1" "0"}}
+      @value={{this.value}}
+      @onInput={{this.checkInputForExistingTags}}
+      @placeholder={{if this.isDisabled "" @placeholder}}
+      disabled={{this.isDisabled}}
+      @isRequired={{@isRequired}}
+      @isValid={{@isValid}}
+      @hideError={{true}}
+      @noBorder={{true}}
+      @theme={{@theme}}
+      {{on "keydown" this.keyboardAction}}
+      {{on "focus" this.checkForExistingTags}}
+      {{on-key "Escape" this.hideTags}}
+      data-test-mox-filter-input
+    />
+  </div>
+
+  <aside class="h-4 w-full text-xs text-gray-600 dark:text-gray-400 text-left mt-2" data-test-mox-filter-input-info>
+    {{#if this.hasSelectedAllOptions}}
+      You have selected the maximum number of filter options. Remove at least one filter to start a new search.
+    {{/if}}
+  </aside>
+
+  {{#if (and this.showTags (or this.foundTags this.showWildCardOption))}}
+    <div
+      class="absolute -mt-2 min-w-min w-full rounded-md {{if this.hasSecondaryTheme "bg-gray-200 dark:bg-gray-700" "bg-gray-50 dark:bg-gray-800"}} shadow-lg z-10"
+      {{on-click-outside this.hideTags "document" capture=true}}
+    >
+      <ul
+        tabindex="-1"
+        role="listbox"
+        id={{concat "filterinputlistbox" this.focusId}}
+        aria-label={{concat @label " options"}}
+        class="max-h-52 rounded-md p-1 text-base border-gray-300 dark:border-gray-500 overflow-auto focus:outline-none sm:text-sm"
+      >
+
+        {{#each this.foundTags as |filter idx|}}
+          <Mox::Select::Option
+            id={{concat "listbox-item-" idx}}
+            @option={{filter}}
+            @setSelectedOption={{fn this.setOption filter}}
+            @onKeydown={{this.keyboardActionOption}}
+            @theme={{@theme}}
+            @optionNameKey="name"
+            @optionValueKey="value"
+            data-test-tags-found={{filter.value}} />
+        {{/each}}
+
+        {{#if this.showWildCardOption}}
+          <Mox::Select::Option
+            @option={{this.wildCard}}
+            @setSelectedOption={{fn this.setCustomFilter this.wildCard}}
+            @onKeydown={{this.keyboardActionCustomOption}}
+            @theme={{@theme}}
+            @optionNameKey="name"
+            @optionValueKey="value"
+            data-test-tags-found={{this.value}}
+          />
+        {{/if}}
+      </ul>
+    </div>
+  {{/if}}
+</div>

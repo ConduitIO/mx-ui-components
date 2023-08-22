@@ -1,5 +1,17 @@
 {{page-title "Dummy"}}
 
-<h2 id="title">Welcome to Ember</h2>
+<main class="dark text-center flex flex-col justify-center items-center bg-gray-800 h-screen py-4">
+
+  <section class="flex items-center justify-center mt-6 mb-6 px-4 py-4 w-full">
+    <Mox::FilterInput
+      @availableTags={{this.allTags}}
+      @placeholder={{this.placeholder}}
+      @onSelect={{this.selectFilter}}
+      @theme="secondary">
+      <:label>Filter me!</:label>
+    </Mox::FilterInput>
+  </section>
+
+</main>
 
 {{outlet}}

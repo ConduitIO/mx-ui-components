@@ -1,0 +1,37 @@
+<div
+  class="dark:bg-gray-700 dark:text-white bg-gray-200 text-gray-700 p-1 text-xs rounded flex items-center"
+  data-test-mox-filter-input-tag={{@tag.value}}
+>
+  {{#unless @tag.noKey}}
+    <span class="mr-1 whitespace-nowrap">{{if @tag.customLabel @tag.customLabel @tag.value}}:</span>
+  {{/unless}}
+
+  {{#if this.subTag}}
+    <span class="mr-1 whitespace-nowrap">{{this.subTag.value}}</span>
+  {{else}}
+    <input
+      id={{@id}}
+      aria-controls={{concat "filterinputlistbox" @id}}
+      type="text"
+      class="p-0 text-gray-800 dark:text-white text-xs bg-transparent border-0 ring-0 focus:ring-0"
+      value={{@value}}
+      {{did-insert this.resizeInput}}
+      {{on "input" this.onInput}}
+      {{on "keydown" this.onKeydown}}
+      data-test-mox-filter-input-tag-input
+      ...attributes
+    />
+  {{/if}}
+
+  <button
+    type="button"
+    class="flex items-center justify-center dark:text-white text-gray-800"
+    tabindex={{if @hasFullSelection "0" "-1"}}
+    {{on "click" @removeTag}}
+    data-test-mox-filter-input-tag-remove-button
+  >
+    <svg class="fill-current h-2 w-2">
+      <use xlink:href={{root-url "/svg-defs.svg#close-16"}}></use>
+    </svg>
+  </button>
+</div>
