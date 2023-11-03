@@ -1,5 +1,11 @@
 # mx-ui-components
 
+## 2.11.0
+
+### Minor Changes
+
+- [#164](https://github.com/ConduitIO/mx-ui-components/pull/164) [`20c41c6`](https://github.com/ConduitIO/mx-ui-components/commit/20c41c687e2cd0fc5b17cde812abede55382780a) Thanks [@jmar910](https://github.com/jmar910)! - feat: mdpx table, section, and theme switch tweaks
+
 ## 2.10.0
 
 ### Minor Changes
