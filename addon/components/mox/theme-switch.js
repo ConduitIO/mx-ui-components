@@ -37,6 +37,8 @@ export default class MoxThemeSwitchComponent extends Component {
   @action
   switchTheme(newTheme, event) {
     this.isChecked = !this.isChecked;
-    this.args.toggleAction(newTheme, event);
+    if (this.args.toggleAction) {
+      this.args.toggleAction(newTheme, event);
+    }
   }
 }
