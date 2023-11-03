@@ -1,6 +1,6 @@
 <div data-test-mox-list ...attributes>
-  {{!-- template-lint-disable table-groups  --}}
-  <table class="table-auto w-full text-left">
+  {{! template-lint-disable table-groups  }}
+  <table class="{{if @isFixed 'table-fixed' 'table-auto'}} w-full text-left">
     <Mox::List::Header>
       {{yield (hash sortByColumn=this.sortByColumn sortedBy=this.sortedBy) to="header"}}
     </Mox::List::Header>
@@ -8,5 +8,5 @@
       {{yield this.sortedItems to="body"}}
     </Mox::List::Body>
   </table>
-  {{!-- template-lint-enable table-groups  --}}
+  {{! template-lint-enable table-groups  }}
 </div>
