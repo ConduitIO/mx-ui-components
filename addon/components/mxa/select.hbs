@@ -6,22 +6,23 @@
       aria-expanded="true"
       aria-labelledby="listbox-label"
       class="relative w-full
-        {{if @isDisabled 'bg-gray-100 border-gray-100 text-gray-500' 'bg-white border-gray-300 focus:border-purple-600 focus:ring-purple-600 focus:ring-1'}}
-         border rounded shadow-sm pl-3 pr-10 py-2 text-left cursor-default
-         focus:outline-none sm:text-sm"
+        {{if
+          @isDisabled
+          'bg-gray-100 border-gray-100 text-gray-500'
+          'bg-white border-gray-300 focus:border-purple-600 focus:ring-purple-600 focus:ring-1'
+        }}
+        border rounded shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none sm:text-sm"
       data-test-select-button
       ...attributes
-      {{on 'click' this.toggleOptions}}
+      {{on "click" this.toggleOptions}}
     >
       <span class="flex items-center">
         <span class="ml-1 block truncate" data-test-select-display-selected>
           {{this.selectedOptionName}}
         </span>
       </span>
-      <span
-        class="ml-3 absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none"
-      >
-        {{!-- Heroicon name: selector --}}
+      <span class="ml-3 absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+        {{! Heroicon name: selector }}
         <svg
           class="h-5 w-5 text-gray-400"
           xmlns="http://www.w3.org/2000/svg"
@@ -37,7 +38,7 @@
         </svg>
       </span>
     </button>
-    {{!--
+    {{!
       Select popover, show/hide based on select state.
 
       Entering: ""
@@ -46,15 +47,11 @@
       Leaving: "transition ease-in duration-100"
         From: "opacity-100"
         To: "opacity-0"
-    --}}
+    }}
     {{#if this.isShowingOptions}}
       <div
-        class="absolute mt-1 min-w-min w-full rounded-md bg-white shadow-lg z-10"
-        {{on-click-outside
-          (fn (mut this.isShowingOptions) false)
-          'document'
-          capture=true
-        }}
+        class="absolute mt-1 min-w-min w-full rounded-md bg-white drop-shadow z-10"
+        {{on-click-outside (fn (mut this.isShowingOptions) false) "document" capture=true}}
       >
         <ul
           tabindex="0"
@@ -76,11 +73,11 @@
               />
             {{/each}}
           {{/if}}
-          {{!--
+          {{!
             Select option, manage highlight styles based on mouseenter/mouseleave and keyboard navigation.
 
             Highlighted: "text-white bg-indigo-600", Not Highlighted: "text-gray-900"
-          --}}
+          }}
         </ul>
       </div>
     {{/if}}

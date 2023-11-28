@@ -36,7 +36,7 @@
     </button>
     {{#if this.isShowingOptions}}
       <div
-        class="absolute mt-1 min-w-min w-full rounded-md bg-gray-50 dark:bg-gray-800 shadow-lg z-10"
+        class="absolute mt-1 min-w-min w-full rounded-md bg-gray-50 dark:bg-gray-800 drop-shadow z-10"
         {{on-click-outside (fn (mut this.isShowingOptions) false) "document" capture=true}}
       >
         <ul

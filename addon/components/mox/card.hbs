@@ -1,5 +1,5 @@
 <article
-  class="w-full bg-white dark:bg-gray-800 rounded-lg border-solid border-2 border-white dark:border-gray-800 transition hover:border-cyan-500 focus-within:border-cyan-700 text-gray-700 dark:text-white shadow-lg shadow-gray-800/20"
+  class="w-full bg-white dark:bg-gray-800 rounded-lg border-solid border-2 border-white dark:border-gray-800 transition hover:border-cyan-500 focus-within:border-cyan-700 text-gray-700 dark:text-white drop-shadow"
   data-test-mox-card
   ...attributes
 >
@@ -8,16 +8,25 @@
     <Mox::Card::Main @route={{@route}} @model={{@model}} @onClick={{@onClick}}>
 
       {{#if (has-block "icon")}}
-        <div class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-white rounded p-3" data-test-mox-card-icon>
+        <div
+          class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white rounded p-3"
+          data-test-mox-card-icon
+        >
           {{yield to="icon"}}
         </div>
       {{/if}}
 
       <div class="overflow-hidden">
-        <h3 class="text-xl font-semibold normal-case text-left overflow-hidden truncate flex gap-x-2 text-gray-800 dark:text-white items-center" data-test-mox-card-title>
+        <h3
+          class="text-xl font-semibold normal-case text-left overflow-hidden truncate flex gap-x-2 text-gray-800 dark:text-white items-center"
+          data-test-mox-card-title
+        >
           {{yield to="title"}}
         </h3>
-        <p class="text-gray-500 dark:text-gray-300 text-xs truncate text-left" data-test-mox-card-subtitle>
+        <p
+          class="text-gray-500 dark:text-gray-300 text-xs truncate text-left"
+          data-test-mox-card-subtitle
+        >
           {{yield to="subtitle"}}
         </p>
       </div>
@@ -35,7 +44,6 @@
           </div>
         </Mox::Card::Aside>
       {{/if}}
-
 
       {{#if (has-block "menu")}}
         <div
