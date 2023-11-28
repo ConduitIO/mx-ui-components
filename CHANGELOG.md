@@ -1,5 +1,11 @@
 # mx-ui-components
 
+## 2.12.0
+
+### Minor Changes
+
+- [#166](https://github.com/ConduitIO/mx-ui-components/pull/166) [`b704a42`](https://github.com/ConduitIO/mx-ui-components/commit/b704a427a2b52cc465bff2dcc605923d10e36d0d) Thanks [@jmar910](https://github.com/jmar910)! - feat: dark/light consistency across mox components
+
 ## 2.11.0
 
 ### Minor Changes
