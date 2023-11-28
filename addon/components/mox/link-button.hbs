@@ -1,14 +1,18 @@
 {{#if @route}}
-  <Mox::LinkTo @route={{@route}} @model={{@model}}
-    class="mox-link-button cursor-pointer block w-fit rounded-md font-semibold px-4 py-2 text-gray-800 hover:text-gray-900 hover:bg-gray-300 dark:text-gray-300 transition duration-300"
-    data-test-mox-link={{@route}} ...attributes>
+  <Mox::LinkTo
+    @route={{@route}}
+    @model={{@model}}
+    class="mox-link-button cursor-pointer block w-fit rounded-md font-semibold px-4 py-2 text-gray-800 hover:text-gray-900 hover:bg-gray-200 dark:text-gray-300 transition duration-300"
+    data-test-mox-link={{@route}}
+    ...attributes
+  >
     {{yield}}
   </Mox::LinkTo>
 {{else}}
   <a
     href={{@externalUrl}}
     target="_blank"
-    class="mox-link-button cursor-pointer block w-fit rounded-md font-semibold px-4 py-2 text-gray-800 hover:text-gray-900 hover:bg-gray-300 dark:text-gray-300 transition duration-300"
+    class="mox-link-button cursor-pointer block w-fit rounded-md font-semibold px-4 py-2 text-gray-800 hover:text-gray-900 hover:bg-gray-200 dark:text-gray-300 transition duration-300"
     data-test-mox-link
     rel="noopener noreferrer"
     ...attributes

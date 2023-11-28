@@ -7,6 +7,7 @@
       checked={{this.isChecked}}
       {{on "change" this.toggleAction}}
       data-test-mox-toggle
+      disabled={{@isDisabled}}
     />
     {{#if @label}}
       <label

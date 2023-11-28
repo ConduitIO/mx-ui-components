@@ -1,18 +1,20 @@
 <div class="mox-theme-switch" ...attributes>
-  <div class="flex items-center space-x-2 relative {{if this.isChecked "text-gray-800"}}">
-    {{!-- template-lint-disable require-input-label --}}
+  <div class="flex items-center space-x-2 relative {{if this.isChecked 'text-gray-800'}}">
+    {{! template-lint-disable require-input-label }}
     <input
       id={{this.fieldId}}
       aria-label={{this.label}}
       type="checkbox"
-      class="transform appearance-none outline-none
-      flex items-center rounded-full p-1 cursor-pointer transition"
+      class="flex items-center w-10 h-6 p-1 transition transform bg-gray-200 border-none rounded-full outline-none appearance-none cursor-pointer checked:bg-none after:h-[18px] after:w-[18px] after:absolute after:left-[3px] after:right-auto after:block after:rounded-2xl after:outline-none after:translate-x-0 after:transition-transform after:ease-in-out after:bg-white checked:bg-gray-600 checked:text-gray-600 focus:outline focus:outline-2 focus:outline-cyan-500 focus:shadow-none focus:outline-offset-0 after:top-[3px] checked:after:translate-x-[15px] checked:after:bg-gray-800 checked:transition checked:after:transition"
       checked={{this.isChecked}}
-      {{on 'change' (fn this.switchTheme this.otherTheme)}}
+      {{on "change" (fn this.switchTheme this.otherTheme)}}
       data-test-mox-theme-switch
     />
-    {{!-- template-lint-disable require-input-label --}}
-    <div class="mox-theme-switch-icon pointer-events-none {{if this.isChecked "is-checked"}}">
+    {{! template-lint-disable require-input-label }}
+    <div
+      class="mox-theme-switch-icon pointer-events-none absolute top-1 -left-1 right-auto block outline-none translate-x-0 transition-transform ease-in-out
+        {{if this.isChecked 'translate-x-[15px]'}}"
+    >
       {{#if (eq this.currentTheme "dark")}}
         <div class="text-white" data-test-mox-theme-switch-current="dark">
           {{yield to="dark-icon"}}

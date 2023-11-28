@@ -20,7 +20,7 @@
           data-test-tags-selected={{tag}}
         >
           <span class="mr-1">{{tag}}</span>
-          {{!-- template-lint-disable no-invalid-interactive --}}
+          {{! template-lint-disable no-invalid-interactive }}
           <svg
             class="text-slate-100 fill-current h-3 w-3 pt-0.5"
             {{on "click" (fn this.removeTag tag)}}
@@ -28,7 +28,7 @@
           >
             <use xlink:href={{root-url "/svg-defs.svg#close-16"}}></use>
           </svg>
-          {{!-- template-lint-enable no-invalid-interactive --}}
+          {{! template-lint-enable no-invalid-interactive }}
         </div>
       {{/each}}
     </div>
@@ -45,7 +45,7 @@
   </div>
 
   {{#if this.foundTags}}
-    <div class="absolute mt-1 w-full rounded-md bg-white shadow-lg z-10">
+    <div class="absolute mt-1 w-full rounded-md bg-white drop-shadow z-10">
       <ul
         tabindex="0"
         role="listbox"
