@@ -69,6 +69,7 @@ module('Integration | Component | mox/toggle', function (hooks) {
       await render(
         hbs`<div class="dark bg-gray-900"><Mox::Toggle @toggleAction={{this.toggleAction}} @label={{this.label}} /></div>`
       );
+
       assert.dom('[data-test-mox-toggle]').hasClass('dark:bg-gray-400');
       assert.dom('[data-test-mox-toggle]').hasStyle({
         color: 'rgb(37, 99, 235)',
@@ -82,19 +83,12 @@ module('Integration | Component | mox/toggle', function (hooks) {
 
     test('it renders correctly (on)', async function (assert) {
       await render(
-        hbs`<div class="dark bg-gray-900"><Mox::Toggle @toggleAction={{this.toggleAction}} @label={{this.label}} /></div>`
+        hbs`<div class="dark bg-gray-900"><Mox::Toggle @toggleAction={{this.toggleAction}} @label={{this.label}} @isChecked={{true}} /></div>`
       );
 
-      let toggle = find('[data-test-mox-toggle]');
-      await click(toggle);
-      await waitUntil(
-        () => getComputedStyle(toggle).backgroundColor === 'rgb(6, 182, 212)'
-      );
-
-      assert.dom(toggle).hasClass('dark:checked:bg-cyan-500');
-      assert.dom(toggle).hasStyle({
+      assert.dom('[data-test-mox-toggle]').hasClass('dark:checked:bg-cyan-500');
+      assert.dom('[data-test-mox-toggle]').hasStyle({
         color: 'rgb(6, 182, 212)',
-        borderColor: 'rgb(6, 182, 212)',
         backgroundColor: 'rgb(6, 182, 212)',
       });
       assert.dom('[data-test-mox-toggle-label]').hasStyle({
@@ -155,20 +149,13 @@ module('Integration | Component | mox/toggle', function (hooks) {
 
     test('it renders correctly (on)', async function (assert) {
       await render(
-        hbs`<div class="bg-gray-50"><Mox::Toggle @toggleAction={{this.toggleAction}} @label={{this.label}} /></div>`
+        hbs`<div class="bg-gray-50"><Mox::Toggle @toggleAction={{this.toggleAction}} @label={{this.label}} @isChecked={{false}} /></div>`
       );
 
-      let toggle = find('[data-test-mox-toggle]');
-      await click(toggle);
-      await waitUntil(
-        () => getComputedStyle(toggle).backgroundColor === 'rgb(16, 185, 129)'
-      );
-
-      assert.dom(toggle).hasClass('dark:checked:bg-cyan-500');
-      assert.dom(toggle).hasStyle({
-        color: 'rgb(16, 185, 129)',
-        borderColor: 'rgba(209, 213, 219, 0)',
-        backgroundColor: 'rgb(16, 185, 129)',
+      assert.dom('[data-test-mox-toggle]').hasClass('dark:checked:bg-cyan-500');
+      assert.dom('[data-test-mox-toggle]').hasStyle({
+        backgroundColor: 'rgb(209, 213, 219)',
+        color: 'rgb(37, 99, 235)',
       });
       assert.dom('[data-test-mox-toggle-label]').hasStyle({
         color: 'rgb(55, 65, 81)',

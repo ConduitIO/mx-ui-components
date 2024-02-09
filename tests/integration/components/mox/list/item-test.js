@@ -18,7 +18,12 @@ module('Integration | Component | mox/list/item', function (hooks) {
         .dom(
           '[data-test-mox-list-header-item] [data-test-mox-list-header-item-label]'
         )
-        .hasClass('text-gray-300');
+        .hasClass('text-gray-800');
+      assert
+        .dom(
+          '[data-test-mox-list-header-item] [data-test-mox-list-header-item-label]'
+        )
+        .hasClass('dark:text-gray-300');
       assert.dom('[data-test-mox-list-header-sort-asc]').doesNotExist();
       assert.dom('[data-test-mox-list-header-sort-desc]').doesNotExist();
     });

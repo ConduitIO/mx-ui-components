@@ -7,7 +7,11 @@
     >
       <div
         class="inline-block mt-auto py-0.5
-          {{if @isActive 'text-white font-semibold' 'text-gray-300 font-medium'}}"
+          {{if
+            @isActive
+            'text-white font-semibold'
+            'text-gray-800 dark:text-gray-300 font-medium'
+          }}"
         data-test-mox-list-header-item-label
       >
         {{yield}}
@@ -45,7 +49,7 @@
         </div>
       </td>
     {{else}}
-      <td class="p-4 text-white" data-test-mox-list-item ...attributes>
+      <td class="p-4 text-gray-800 dark:text-gray-300" data-test-mox-list-item ...attributes>
         <div class="font-medium text-sm" data-test-mox-list-item-content>
           {{yield}}
         </div>
