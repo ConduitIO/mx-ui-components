@@ -1,5 +1,11 @@
 # mx-ui-components
 
+## 2.12.1
+
+### Patch Changes
+
+- [#168](https://github.com/ConduitIO/mx-ui-components/pull/168) [`da7ab48`](https://github.com/ConduitIO/mx-ui-components/commit/da7ab48e5f1e71c41840b214366ba3229378930d) Thanks [@jmar910](https://github.com/jmar910)! - fix: light mode theming for tables
+
 ## 2.12.0
 
 ### Minor Changes
