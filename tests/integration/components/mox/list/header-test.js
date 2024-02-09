@@ -20,7 +20,7 @@ module('Integration | Component | mox/list/header', function (hooks) {
 
   test('it is accessible (dark background)', async function (assert) {
     await render(hbs`
-      <div class="bg-gray-900">
+      <div class="bg-gray-900 dark">
         <Mox::List::Header>
           header item
         </Mox::List::Header>
