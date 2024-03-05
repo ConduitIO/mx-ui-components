@@ -1,5 +1,11 @@
 # mx-ui-components
 
+## 3.0.0
+
+### Major Changes
+
+- [#170](https://github.com/ConduitIO/mx-ui-components/pull/170) [`8251bd9`](https://github.com/ConduitIO/mx-ui-components/commit/8251bd997ff4fd10d6fde0f8adb51597121831a8) Thanks [@jmar910](https://github.com/jmar910)! - Ember 5.6.0 upgrade
+
 ## 2.12.1
 
 ### Patch Changes
