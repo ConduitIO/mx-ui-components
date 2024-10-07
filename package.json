@@ -43,7 +43,7 @@
     "ember-cli-htmlbars": "^6.3.0",
     "ember-concurrency": "^4.0.0",
     "ember-keyboard": "8.2.1",
-    "ember-modifier": "^4.1.0",
+    "ember-modifier": "^4.2.0",
     "ember-named-blocks-polyfill": "^0.2.5",
     "ember-root-url": "^1.0.1"
   },
@@ -94,7 +94,7 @@
     "ember-cli-terser": "^4.0.2",
     "ember-concurrency": "^4.0.0",
     "ember-load-initializers": "^2.1.2",
-    "ember-modifier": "^4.1.0",
+    "ember-modifier": "^4.2.0",
     "ember-page-title": "^8.2.2",
     "ember-qunit": "^8.0.2",
     "ember-resolver": "^11.0.1",
