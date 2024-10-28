@@ -54,7 +54,7 @@
     "@babel/preset-env": "^7.20.2",
     "@changesets/changelog-github": "^0.4.6",
     "@changesets/cli": "^2.24.4",
-    "@ember/optional-features": "^2.1.0",
+    "@ember/optional-features": "^2.2.0",
     "@ember/render-modifiers": "^2.1.0",
     "@ember/test-helpers": "^3.3.0",
     "@embroider/macros": "^1.14.0",
