@@ -1,3 +1,6 @@
+> [!IMPORTANT]  
+> This repository was archived on December 19, 2024, due to https://github.com/ConduitIO/conduit/pull/2036 as part of [this Conduit initiative]([url](https://github.com/ConduitIO/conduit/issues/1911)).
+
 # mx-ui-components
 
 Meroxa UI component library.
